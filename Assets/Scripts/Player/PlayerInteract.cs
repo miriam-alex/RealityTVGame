@@ -4,8 +4,27 @@ public class PlayerInteract : MonoBehaviour
 {
     [Header("Key Bindings")]
     public string interactKey = "E";
+    public string giveKey = "F";
 
     public float interactRange = 2f;
+
+    private void Start()
+    {
+        PlayerIdentity playerIdentity = GetComponent<PlayerIdentity>();
+        if (playerIdentity != null)
+        {
+            if (playerIdentity.playerIndex == 0) // Player 1
+            {
+                interactKey = "E";
+                giveKey = "F";
+            }
+            else if (playerIdentity.playerIndex == 1) // Player 2
+            {
+                interactKey = "O";
+                giveKey = "P";
+            }
+        }
+    }
 
     // Update is called once per frame
     
@@ -23,13 +42,20 @@ public class PlayerInteract : MonoBehaviour
                     {
                         // If we're in range of another player, we should see a way for them to do an action.
                         // TODO: Other player's spotlight should change color.
-                        playerInteractable.ShowVicinityMessage();
+                        playerInteractable.ShowVicinityMessage(interactKey, giveKey);
                         
                         // If we hit E to interact, then we should do the action.
                         if (Keyboard.current[GetKey(interactKey)].wasPressedThisFrame)
                         {
                             Debug.Log($"Player {playerIndex + 1} interacted with {otherPlayerIndex + 1}!");
                             playerInteractable.Interact(id);
+                            break;
+                        }
+
+                        if (Keyboard.current[GetKey(giveKey)].wasPressedThisFrame) //steal points from other player
+                        {
+                            Debug.Log($"Player {playerIndex + 1} gave points to {otherPlayerIndex + 1}!");
+                            playerInteractable.Give(id);
                             break;
                         }
                     }

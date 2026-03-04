@@ -4,4 +4,6 @@ using UnityEngine;
 public class Resource : ScriptableObject
 {
     public string resourceName;
+    public Sprite resourceIcon;
+    public Color tint = Color.white;
 }

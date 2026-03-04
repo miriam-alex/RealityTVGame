@@ -37,6 +37,7 @@ public class Station : MonoBehaviour
             }
             
             // add resource to inventory 
+            inventory.RemoveResource(resourceRequired);
             inventory.AddResource(resourceProduced);
             chain.NextState(resourceProduced);
         }
