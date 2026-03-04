@@ -65,6 +65,19 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public void GivePoints(int playerIndexFrom, int playerIndexTo)
+    {
+        if (playerScores.ContainsKey(playerIndexFrom) && playerScores.ContainsKey(playerIndexTo))
+        {
+            // We attempt to give up to the steal amount 
+            int pointsGiven = Mathf.Min(stealAmount, playerScores[playerIndexFrom]);
+            AddScore(-pointsGiven, playerIndexFrom);
+            AddScore(pointsGiven, playerIndexTo);
+        }
+        
+    }
+
+
     // Updates the visual text element
     private void UpdateScoreText()
     {

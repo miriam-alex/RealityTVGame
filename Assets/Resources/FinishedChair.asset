@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: FinishedChair
   m_EditorClassIdentifier: Assembly-CSharp::Resource
   resourceName: FinishedChair
+  resourceIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  tint: {r: 0.8679245, g: 0.11690705, b: 0.08597365, a: 1}
