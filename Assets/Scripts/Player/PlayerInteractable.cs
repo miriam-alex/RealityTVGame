@@ -29,11 +29,19 @@ public class PlayerInteractable : MonoBehaviour
         // Handle responses when this player is being asked for points
         if (waitingForResponse && currentRequestorId != null)
         {
-            if (Input.GetKeyDown(KeyCode.Y))
+            bool yesPressed = Input.GetKeyDown(KeyCode.Y);
+            bool noPressed = Input.GetKeyDown(KeyCode.N);
+            // Controller support for Player 1
+            if (id.playerIndex == 0 && UnityEngine.InputSystem.Gamepad.current != null)
+            {
+                yesPressed |= UnityEngine.InputSystem.Gamepad.current.buttonSouth.wasPressedThisFrame; // A button
+                noPressed |= UnityEngine.InputSystem.Gamepad.current.buttonEast.wasPressedThisFrame; // B button
+            }
+            if (yesPressed)
             {
                 AcceptPointRequest();
             }
-            else if (Input.GetKeyDown(KeyCode.N))
+            else if (noPressed)
             {
                 RejectPointRequest();
             }
