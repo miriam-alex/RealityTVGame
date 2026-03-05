@@ -29,16 +29,17 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         identity = GetComponent<PlayerIdentity>();
+    }
+
+    void FixedUpdate()
+    {
         // Check for controller connection (only for Player 1)
         if (identity != null && identity.playerIndex == 0)
         {
             useController = Gamepad.current != null && Gamepad.current.wasUpdatedThisFrame;
             Debug.Log("using controller: " + useController);
         }
-    }
 
-    void FixedUpdate()
-    {
         float moveX = 0f;
         float moveZ = 0f;
 
