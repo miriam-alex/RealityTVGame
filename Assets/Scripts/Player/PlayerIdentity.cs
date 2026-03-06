@@ -9,7 +9,7 @@ public class PlayerIdentity : MonoBehaviour {
     public PlayerRuntimeSet runtimeSet;
     private List<GameObject> activePlayers;
     private GameObject bodyObject;
-    public TMP_Text scoreText; // Reference to the UI Text element
+    private TMP_Text scoreText; 
     void Start()
     {
         bodyObject = transform.Find("Player Body/Body").gameObject;
@@ -49,8 +49,52 @@ public class PlayerIdentity : MonoBehaviour {
         runtimeSet.Remove(this.gameObject);
     }
     
-    public void UpdateScoreUI(int newScore) {
+    public void UpdateScoreUI(int newScore, bool gainedPoints) 
+    {
+        // 1. Update the text
         scoreText.text = newScore.ToString();
-        // You could also trigger a "BUMP" animation or color change here!
+
+        // 2. Restart the animation logic (Stop current one so they don't fight)
+        StopAllCoroutines(); 
+        StartCoroutine(AnimateScoreChange(gainedPoints));
+    }
+
+    private IEnumerator AnimateScoreChange(bool gainedPoints) 
+    {
+        // Store original scale
+        Vector3 originalScale = Vector3.one;
+        Vector3 punchScale = Vector3.one * 1.5f; // Scale up by 50%
+
+        // Flash color to Yellow
+        if (gainedPoints)
+        {
+            scoreText.color = Color.green;
+        }
+        else
+        {
+            scoreText.color = Color.red;
+        }
+
+        // "Punch" animation: Scale up
+        float elapsed = 0f;
+        float duration = 0.2f;
+        while (elapsed < duration) 
+        {
+            scoreText.transform.localScale = Vector3.Lerp(originalScale, punchScale, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Shrink animation: Scale back down
+        elapsed = 0f;
+        while (elapsed < duration) 
+        {
+            scoreText.transform.localScale = Vector3.Lerp(punchScale, originalScale, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Reset color to white
+        scoreText.color = Color.white;
     }
 }

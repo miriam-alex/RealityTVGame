@@ -185,7 +185,7 @@ public class PlayerInteractable : MonoBehaviour
             globalInteractionLock = true;
             currentActiveInteraction = this;
             
-            CreateBubbleAndClearPrevious("MY POINTS!", 2f);
+            // CreateBubbleAndClearPrevious("MY POINTS!", 2f);
             scoreManager.TransferPoints(gameObject, interactorId.gameObject);
             
             // Clear lock after steal action completes

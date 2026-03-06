@@ -33,7 +33,7 @@ public class ScoreManager : MonoBehaviour
         {
             playerScores[player] = 0;
             PlayerIdentity id = player.GetComponent<PlayerIdentity>();
-            id.UpdateScoreUI(0);
+            id.UpdateScoreUI(0, true);
         }
     }
 
@@ -45,7 +45,9 @@ public class ScoreManager : MonoBehaviour
             playerScores[player] = Mathf.Max(0, playerScores[player]);
             PlayerIdentity id = player.GetComponent<PlayerIdentity>();
             Debug.Log($"Player {id.playerIndex + 1} score: {playerScores[player]}");
-            id.UpdateScoreUI(playerScores[player]);
+
+            bool gainedPoints = (amount > 0);
+            id.UpdateScoreUI(playerScores[player], gainedPoints);
         }
     }
 
@@ -59,8 +61,6 @@ public class ScoreManager : MonoBehaviour
             AddScore(pointsStolen, playerTo);
             PlayerIdentity playerFromId = playerFrom.GetComponent<PlayerIdentity>();
             PlayerIdentity playerToId = playerTo.GetComponent<PlayerIdentity>();
-            playerFromId.UpdateScoreUI(playerScores[playerFrom]);
-            playerToId.UpdateScoreUI(playerScores[playerTo]);
         }
     }
     
