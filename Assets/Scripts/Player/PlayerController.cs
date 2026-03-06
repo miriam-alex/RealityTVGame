@@ -72,10 +72,6 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    void OnCollisionEnter(Collision collision) {
-        Debug.Log($"P{identity.playerIndex + 1}: Collided with {collision.collider.name}");
-    }
-
     private Key GetKey(string keyName)
     {
         if (System.Enum.TryParse(keyName, ignoreCase: true, out Key key))

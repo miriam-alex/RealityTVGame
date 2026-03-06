@@ -6,10 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="548baca1-a2e6-4029-95e1-d3838846d670" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RealityTVGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RealityTVGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChatBubble.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChatBubble.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChatBubbleBG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChatBubbleBG.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteract.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteract.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteractable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteractable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

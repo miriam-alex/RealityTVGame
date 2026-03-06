@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 401750333459850929}
   - component: {fileID: 5698096162189170547}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 1761078566536798512}
   - component: {fileID: 8929016852031341808}
   - component: {fileID: 5079824612719633164}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 8692756128366527219}
   - component: {fileID: 5711336868813938894}
   - component: {fileID: 7176718225336178666}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ChatBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -319,6 +319,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 150f739dda77947409c649d911b1d400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  defaultDisplayDuration: 3
+  fadeOut: 1
+  fadeOutDuration: 0.5
 --- !u!114 &7176718225336178666
 MonoBehaviour:
   m_ObjectHideFlags: 0

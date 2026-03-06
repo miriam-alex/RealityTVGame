@@ -126,9 +126,9 @@ public class PlayerInteractable : MonoBehaviour
             {
                 scoreManager.AddScore(-pointsToGive, gameObject);
                 scoreManager.AddScore(pointsToGive, currentRequestorId.gameObject);
+                // Always give favorability bonus if they give more than 0 points
+                scoreManager.AddScore(5, currentRequestorId.gameObject);
             }
-            // Always give favorability bonus
-            scoreManager.AddScore(5, currentRequestorId.gameObject);
             ResetRequest();
         }
     }
