@@ -7,7 +7,8 @@ public class SpotlightManager : MonoBehaviour
     public static SpotlightManager Instance { get; private set; }
 
     [Header("Active Players")]
-    public List<GameObject> activePlayers = new List<GameObject>();
+    public PlayerRuntimeSet playerRuntimeSet;
+    private List<GameObject> activePlayers;
 
     [Header("Settings")]
     public float interval = 10f;
@@ -31,6 +32,7 @@ public class SpotlightManager : MonoBehaviour
     void Start()
     {
         spotlightCoroutine = StartCoroutine(SpotlightRoutine());
+        activePlayers = playerRuntimeSet.Items;
     }
 
     IEnumerator SpotlightRoutine()
@@ -89,29 +91,5 @@ public class SpotlightManager : MonoBehaviour
         PlayerIdentity id = player.GetComponent<PlayerIdentity>();
         if (id != null)
             id.spotlightOn = visible;
-    }
-
-    public void AddPlayer(GameObject player)
-    {
-        if (!activePlayers.Contains(player))
-            activePlayers.Add(player);
-    }
-
-    public void RemovePlayer(GameObject player)
-    {
-        if (!activePlayers.Contains(player))
-            return;
-
-        if (currentSpotlightPlayer == player)
-        {
-            SetSpotlightVisible(player, false);
-            currentSpotlightPlayer = null;
-
-            // Immediately pick a new one if others exist
-            if (activePlayers.Count > 1)
-                ForcePickNewSpotlight();
-        }
-
-        activePlayers.Remove(player);
     }
 }

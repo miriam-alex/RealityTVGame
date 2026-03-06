@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
         if (identity != null && identity.playerIndex == 0)
         {
             useController = Gamepad.current != null && Gamepad.current.wasUpdatedThisFrame;
-            Debug.Log("using controller: " + useController);
         }
 
         float moveX = 0f;

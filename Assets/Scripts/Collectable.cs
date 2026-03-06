@@ -6,11 +6,11 @@ public class Collectable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerIdentity id = other.GetComponent<PlayerIdentity>();
-        if (other.CompareTag("Player") && id != null)
+        GameObject player = other.gameObject;
+        if (other.CompareTag("Player"))
         {
             Debug.Log("Collected!");
-            FindObjectOfType<ScoreManager>().AddScore(points, id.playerIndex);
+            FindAnyObjectByType<ScoreManager>().AddScore(points, player);
             Destroy(gameObject); 
         }
     }
