@@ -62,8 +62,7 @@ public class PlayerInteract : MonoBehaviour
             _nearbyGrabbable = null;
         }
         // We can interact while we hold a grabbable, so that's priority 2
-        // Currently took out handling for the spotlight in the input
-        else if (_currentInteractable)
+        else if (!_myId.spotlightOn && _currentInteractable)
         {
             _currentInteractable.ShowVicinityMessage(interactKey, giveKey);
             if (interactPressed)
