@@ -15,19 +15,25 @@ public class PlayerInteract : MonoBehaviour
 
     private PlayerIdentity _myId;
     private PlayerInteractable _currentInteractable;
+    private Grabbable _heldObject;
+    private Grabbable _nearbyGrabbable;
+    private Transform _carryPoint;
 
     private void Start()
     {
         _myId = GetComponent<PlayerIdentity>();
-        
         SphereCollider trigger = gameObject.AddComponent<SphereCollider>();
         trigger.isTrigger = true;
         trigger.radius = interactRange;
+        
+        _carryPoint = transform.Find("ObjectCarryPoint");
     }
 
     private void Update()
     {
-        if (_currentInteractable == null || _myId.spotlightOn) return;
+        // Rules for interaction:
+        // 1. You cannot initiate a steal/trade in the spotlight.
+        if (_currentInteractable == null && _nearbyGrabbable == null && _carryPoint == null) return;
 
         HandleInput();
     }
@@ -38,8 +44,6 @@ public class PlayerInteract : MonoBehaviour
         string interactKey = isP1 ? p1Interact : p2Interact;
         string giveKey = isP1 ? p1Give : p2Give;
         
-        _currentInteractable.ShowVicinityMessage(interactKey, giveKey);
-
         bool interactPressed = Keyboard.current[GetKey(interactKey)].wasPressedThisFrame;
         bool givePressed = Keyboard.current[GetKey(giveKey)].wasPressedThisFrame;
 
@@ -48,19 +52,49 @@ public class PlayerInteract : MonoBehaviour
             interactPressed |= Gamepad.current.buttonSouth.wasPressedThisFrame;
             givePressed |= Gamepad.current.buttonEast.wasPressedThisFrame;
         }
-
-        if (interactPressed)
+        
+        // Priority order: if there's a grabbable, we go for the grabbable
+        if (interactPressed && _nearbyGrabbable != null)
         {
-            _currentInteractable.Trade(_myId);
+            Debug.Log("Calling grab");
+            _heldObject = _nearbyGrabbable;
+            _heldObject.Grab(_carryPoint);
+            _nearbyGrabbable = null;
         }
-        else if (givePressed)
+        // We can interact while we hold a grabbable, so that's priority 2
+        // Currently took out handling for the spotlight in the input
+        else if (_currentInteractable)
         {
-            _currentInteractable.Give(_myId);
+            _currentInteractable.ShowVicinityMessage(interactKey, giveKey);
+            if (interactPressed)
+            {
+                _currentInteractable.Trade(_myId);
+            }
+            else if (givePressed)
+            {
+                _currentInteractable.Give(_myId);
+            }
         }
+        else if (interactPressed && _heldObject != null)
+        {
+            Debug.Log("Calling drop");
+            _heldObject.Drop();
+            _heldObject = null;
+        }
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (IsInLayerMask(other.gameObject, pickUpLayerMask))
+        {
+            if (other.TryGetComponent(out Grabbable grabbable))
+            {
+                _nearbyGrabbable = grabbable;
+                Debug.Log("Nearby grabbable: " + grabbable.name);
+            }
+        }
+        
         if (other.TryGetComponent(out PlayerInteractable interactable))
         {
             // Don't interact with yourself
@@ -79,6 +113,15 @@ public class PlayerInteract : MonoBehaviour
                 _currentInteractable = null;
             }
         }
+        
+        if (IsInLayerMask(other.gameObject, pickUpLayerMask))
+        {
+            if (other.TryGetComponent(out Grabbable grabbable))
+            {
+                _nearbyGrabbable = null;
+                Debug.Log("No more nearby grabbable: " + grabbable.name);
+            }
+        }
     }
 
     private Key GetKey(string keyName)
@@ -86,5 +129,10 @@ public class PlayerInteract : MonoBehaviour
         if (System.Enum.TryParse(keyName, true, out Key key))
             return key;
         return Key.None;
+    }
+    
+    private bool IsInLayerMask(GameObject obj, LayerMask mask)
+    {
+        return (mask.value & (1 << obj.layer)) > 0;
     }
 }
