@@ -14,10 +14,12 @@ public class PlayerInteractable : MonoBehaviour
     // Global interaction lock to prevent race conditions
     private static bool globalInteractionLock = false;
     private static PlayerInteractable currentActiveInteraction = null;
+    private ScoreManager scoreManager;
 
     private void Start()
     {
         id = GetComponent<PlayerIdentity>();
+        scoreManager = FindAnyObjectByType<ScoreManager>();
     }
 
     private void Update()
@@ -119,7 +121,6 @@ public class PlayerInteractable : MonoBehaviour
             Debug.Log($"Player {id.playerIndex + 1} accepted point request from Player {currentRequestorId.playerIndex + 1}");
             CreateBubbleAndClearPrevious("Yes! Here you go!", 2f);
             
-            var scoreManager = FindAnyObjectByType<ScoreManager>();
             scoreManager.AddScore(-10, gameObject); // Remove 10 from giver
             scoreManager.AddScore(10, currentRequestorId.gameObject); // Give 10 to requestor
             scoreManager.AddScore(5, currentRequestorId.gameObject); // Bonus +5 to requestor
@@ -135,7 +136,6 @@ public class PlayerInteractable : MonoBehaviour
             Debug.Log($"Player {id.playerIndex + 1} rejected point request from Player {currentRequestorId.playerIndex + 1}");
             CreateBubbleAndClearPrevious("No way!", 2f);
             
-            var scoreManager = FindAnyObjectByType<ScoreManager>();
             scoreManager.AddScore(-5, currentRequestorId.gameObject);
             
             ResetRequest();
@@ -154,7 +154,6 @@ public class PlayerInteractable : MonoBehaviour
             // Decrease requestor's score by 5 for no response
             if (currentRequestorId != null)
             {
-                var scoreManager = FindAnyObjectByType<ScoreManager>();
                 scoreManager.AddScore(-5, gameObject);
             }
             
@@ -187,7 +186,7 @@ public class PlayerInteractable : MonoBehaviour
             currentActiveInteraction = this;
             
             CreateBubbleAndClearPrevious("MY POINTS!", 2f);
-            FindAnyObjectByType<ScoreManager>().TransferPoints(gameObject, interactorId.gameObject);
+            scoreManager.TransferPoints(gameObject, interactorId.gameObject);
             
             // Clear lock after steal action completes
             StartCoroutine(ClearStealLock());
