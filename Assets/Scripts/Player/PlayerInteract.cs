@@ -3,9 +3,11 @@ using UnityEngine.InputSystem;
 public class PlayerInteract : MonoBehaviour
 {
     public float interactRange = 2f;
-    // Key bindings for interaction
-    public string interactKey = "E";
-    public string giveKey = "F";
+    // Key bindings for interaction (Player 1: E/F, Player 2: O/P)
+    public string interactKey = "E"; // P1 ask
+    public string giveKey = "F";     // P1 steal
+    public string interactKeyP2 = "O"; // P2 ask
+    public string giveKeyP2 = "P";     // P2 steal
     private PlayerInput playerInput;
 
     private void Start()
@@ -27,33 +29,47 @@ public class PlayerInteract : MonoBehaviour
                     int otherPlayerIndex = collider.GetComponent<PlayerIdentity>().playerIndex;
                     if (playerIndex != otherPlayerIndex)
                     {
-                        // If we're in range of another player, we should see a way for them to do an action.
-                        // TODO: Other player's spotlight should change color.
-                        playerInteractable.ShowVicinityMessage(interactKey, giveKey);
-                        
-                        // If we hit E to interact, or controller A button
-                        bool interactPressed = Keyboard.current[GetKey(interactKey)].wasPressedThisFrame;
-                        bool givePressed = Keyboard.current[GetKey(giveKey)].wasPressedThisFrame;
-
-                        // Controller support for Player 1
-                        if (id.playerIndex == 0 && Gamepad.current != null)
+                        // Only allow action if this player is NOT in the spotlight
+                        if (!id.spotlightOn)
                         {
-                            interactPressed |= Gamepad.current.buttonSouth.wasPressedThisFrame; // A button
-                            givePressed |= Gamepad.current.buttonEast.wasPressedThisFrame; // B button
-                        }
+                            // Show correct keys for each player
+                            if (id.playerIndex == 1)
+                                playerInteractable.ShowVicinityMessage(interactKeyP2, giveKeyP2);
+                            else
+                                playerInteractable.ShowVicinityMessage(interactKey, giveKey);
 
-                        if (interactPressed)
-                        {
-                            Debug.Log($"Player {playerIndex + 1} interacted with {otherPlayerIndex + 1}!");
-                            playerInteractable.Interact(id);
-                            break;
-                        }
+                            // Key and controller checks
+                            bool interactPressed, givePressed;
+                            if (id.playerIndex == 1)
+                            {
+                                interactPressed = Keyboard.current[GetKey(interactKeyP2)].wasPressedThisFrame;
+                                givePressed = Keyboard.current[GetKey(giveKeyP2)].wasPressedThisFrame;
+                                // Optionally add controller support for P2 here
+                            }
+                            else
+                            {
+                                interactPressed = Keyboard.current[GetKey(interactKey)].wasPressedThisFrame;
+                                givePressed = Keyboard.current[GetKey(giveKey)].wasPressedThisFrame;
+                                if (Gamepad.current != null)
+                                {
+                                    interactPressed |= Gamepad.current.buttonSouth.wasPressedThisFrame; // A button
+                                    givePressed |= Gamepad.current.buttonEast.wasPressedThisFrame; // B button
+                                }
+                            }
 
-                        if (givePressed) //steal points from other player
-                        {
-                            Debug.Log($"Player {playerIndex + 1} gave points to {otherPlayerIndex + 1}!");
-                            playerInteractable.Give(id);
-                            break;
+                            if (interactPressed)
+                            {
+                                Debug.Log($"Player {playerIndex + 1} interacted with {otherPlayerIndex + 1}!");
+                                playerInteractable.Interact(id);
+                                break;
+                            }
+
+                            if (givePressed)
+                            {
+                                Debug.Log($"Player {playerIndex + 1} gave points to {otherPlayerIndex + 1}!");
+                                playerInteractable.Give(id);
+                                break;
+                            }
                         }
                     }
                 }

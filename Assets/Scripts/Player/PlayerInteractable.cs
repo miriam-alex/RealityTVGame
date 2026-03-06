@@ -120,11 +120,15 @@ public class PlayerInteractable : MonoBehaviour
         {
             Debug.Log($"Player {id.playerIndex + 1} accepted point request from Player {currentRequestorId.playerIndex + 1}");
             CreateBubbleAndClearPrevious("Yes! Here you go!", 2f);
-            
-            scoreManager.AddScore(-10, gameObject); // Remove 10 from giver
-            scoreManager.AddScore(10, currentRequestorId.gameObject); // Give 10 to requestor
-            scoreManager.AddScore(5, currentRequestorId.gameObject); // Bonus +5 to requestor
-            
+            int giverScore = scoreManager.GetScore(gameObject);
+            int pointsToGive = Mathf.Min(10, giverScore);
+            if (pointsToGive > 0)
+            {
+                scoreManager.AddScore(-pointsToGive, gameObject);
+                scoreManager.AddScore(pointsToGive, currentRequestorId.gameObject);
+            }
+            // Always give favorability bonus
+            scoreManager.AddScore(5, currentRequestorId.gameObject);
             ResetRequest();
         }
     }
@@ -176,19 +180,19 @@ public class PlayerInteractable : MonoBehaviour
             Debug.Log($"Steal attempt blocked - another player interaction is in progress");
             return;
         }
-        
+        int victimScore = scoreManager.GetScore(gameObject);
+        if (victimScore <= 0)
+        {
+            CreateBubbleAndClearPrevious("Can't steal from a player with 0 points!", 2f);
+            return;
+        }
         if (id.spotlightOn)
         {
             Debug.Log($"Player {interactorId.playerIndex + 1} stealing points from Player {id.playerIndex + 1}");
-            
             // Set global lock for steal action
             globalInteractionLock = true;
             currentActiveInteraction = this;
-            
-            // CreateBubbleAndClearPrevious("MY POINTS!", 2f);
             scoreManager.TransferPoints(gameObject, interactorId.gameObject);
-            
-            // Clear lock after steal action completes
             StartCoroutine(ClearStealLock());
         }
     }
