@@ -9,7 +9,6 @@ public class PlayerInteractable : MonoBehaviour
     private bool waitingForResponse = false;
     private PlayerIdentity currentRequestorId = null;
     
-    // Track active bubbles to prevent crowding
     private List<ChatBubble> activeBubbles = new List<ChatBubble>();
     
     // Global interaction lock to prevent race conditions
@@ -120,10 +119,10 @@ public class PlayerInteractable : MonoBehaviour
             Debug.Log($"Player {id.playerIndex + 1} accepted point request from Player {currentRequestorId.playerIndex + 1}");
             CreateBubbleAndClearPrevious("Yes! Here you go!", 2f);
             
-            var scoreManager = FindObjectOfType<ScoreManager>();
-            scoreManager.AddScore(-10, id.playerIndex); // Remove 10 from giver
-            scoreManager.AddScore(10, currentRequestorId.playerIndex); // Give 10 to requestor
-            scoreManager.AddScore(5, currentRequestorId.playerIndex); // Bonus +5 to requestor
+            var scoreManager = FindAnyObjectByType<ScoreManager>();
+            scoreManager.AddScore(-10, gameObject); // Remove 10 from giver
+            scoreManager.AddScore(10, currentRequestorId.gameObject); // Give 10 to requestor
+            scoreManager.AddScore(5, currentRequestorId.gameObject); // Bonus +5 to requestor
             
             ResetRequest();
         }
@@ -136,8 +135,8 @@ public class PlayerInteractable : MonoBehaviour
             Debug.Log($"Player {id.playerIndex + 1} rejected point request from Player {currentRequestorId.playerIndex + 1}");
             CreateBubbleAndClearPrevious("No way!", 2f);
             
-            var scoreManager = FindObjectOfType<ScoreManager>();
-            scoreManager.AddScore(-5, currentRequestorId.playerIndex);
+            var scoreManager = FindAnyObjectByType<ScoreManager>();
+            scoreManager.AddScore(-5, currentRequestorId.gameObject);
             
             ResetRequest();
         }
@@ -155,8 +154,8 @@ public class PlayerInteractable : MonoBehaviour
             // Decrease requestor's score by 5 for no response
             if (currentRequestorId != null)
             {
-                var scoreManager = FindObjectOfType<ScoreManager>();
-                scoreManager.AddScore(-5, currentRequestorId.playerIndex);
+                var scoreManager = FindAnyObjectByType<ScoreManager>();
+                scoreManager.AddScore(-5, gameObject);
             }
             
             ResetRequest();
@@ -188,7 +187,7 @@ public class PlayerInteractable : MonoBehaviour
             currentActiveInteraction = this;
             
             CreateBubbleAndClearPrevious("MY POINTS!", 2f);
-            FindObjectOfType<ScoreManager>().StealPoints(id.playerIndex, interactorId.playerIndex);
+            FindAnyObjectByType<ScoreManager>().TransferPoints(gameObject, interactorId.gameObject);
             
             // Clear lock after steal action completes
             StartCoroutine(ClearStealLock());
