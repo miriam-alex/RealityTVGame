@@ -51,6 +51,13 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public int GetScore(GameObject player)
+    {
+        if (playerScores.ContainsKey(player))
+            return playerScores[player];
+        return 0;
+    }
+
     public void TransferPoints(GameObject playerFrom, GameObject playerTo)
     {
         if (playerScores.ContainsKey(playerFrom) && playerScores.ContainsKey(playerTo))
