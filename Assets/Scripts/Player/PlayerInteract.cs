@@ -1,106 +1,90 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class PlayerInteract : MonoBehaviour
 {
+    [Header("Settings")]
     public float interactRange = 2f;
-    // Key bindings for interaction (Player 1: E/F, Player 2: O/P)
-    public string interactKey = "E"; // P1 ask
-    public string giveKey = "F";     // P1 steal
-    public string interactKeyP2 = "O"; // P2 ask
-    public string giveKeyP2 = "P";     // P2 steal
-    private PlayerInput playerInput;
+    [SerializeField] private LayerMask pickUpLayerMask;
+
+    [Header("Key Bindings")]
+    public string p1Interact = "E";
+    public string p1Give = "F";
+    public string p2Interact = "O";
+    public string p2Give = "P";
+
+    private PlayerIdentity _myId;
+    private PlayerInteractable _currentInteractable;
 
     private void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
+        _myId = GetComponent<PlayerIdentity>();
+        
+        SphereCollider trigger = gameObject.AddComponent<SphereCollider>();
+        trigger.isTrigger = true;
+        trigger.radius = interactRange;
     }
 
-    // Update is called once per frame
-    
-    void Update()
+    private void Update()
     {
-            Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
-            foreach (Collider collider in colliderArray)
-            {
-                if (collider.TryGetComponent(out PlayerInteractable playerInteractable))
-                {
-                    PlayerIdentity id = GetComponent<PlayerIdentity>();
-                    int playerIndex = id.playerIndex;
-                    int otherPlayerIndex = collider.GetComponent<PlayerIdentity>().playerIndex;
-                    if (playerIndex != otherPlayerIndex)
-                    {
-                        // Only allow action if this player is NOT in the spotlight
-                        if (!id.spotlightOn)
-                        {
-                            // Show correct keys for each player
-                            if (id.playerIndex == 1)
-                                playerInteractable.ShowVicinityMessage(interactKeyP2, giveKeyP2);
-                            else
-                                playerInteractable.ShowVicinityMessage(interactKey, giveKey);
+        if (_currentInteractable == null || _myId.spotlightOn) return;
 
-                            // Key and controller checks
-                            bool interactPressed, givePressed;
-                            if (id.playerIndex == 1)
-                            {
-                                interactPressed = Keyboard.current[GetKey(interactKeyP2)].wasPressedThisFrame;
-                                givePressed = Keyboard.current[GetKey(giveKeyP2)].wasPressedThisFrame;
-                                // Optionally add controller support for P2 here
-                            }
-                            else
-                            {
-                                interactPressed = Keyboard.current[GetKey(interactKey)].wasPressedThisFrame;
-                                givePressed = Keyboard.current[GetKey(giveKey)].wasPressedThisFrame;
-                                if (Gamepad.current != null)
-                                {
-                                    interactPressed |= Gamepad.current.buttonSouth.wasPressedThisFrame; // A button
-                                    givePressed |= Gamepad.current.buttonEast.wasPressedThisFrame; // B button
-                                }
-                            }
-
-                            if (interactPressed)
-                            {
-                                Debug.Log($"Player {playerIndex + 1} interacted with {otherPlayerIndex + 1}!");
-                                playerInteractable.Interact(id);
-                                break;
-                            }
-
-                            if (givePressed)
-                            {
-                                Debug.Log($"Player {playerIndex + 1} gave points to {otherPlayerIndex + 1}!");
-                                playerInteractable.Give(id);
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-
+        HandleInput();
     }
 
-    private PlayerInteractable GetInteractableObject()
+    private void HandleInput()
     {
-        Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
-        foreach (Collider collider in colliderArray)
+        bool isP1 = (_myId.playerIndex == 0);
+        string interactKey = isP1 ? p1Interact : p2Interact;
+        string giveKey = isP1 ? p1Give : p2Give;
+        
+        _currentInteractable.ShowVicinityMessage(interactKey, giveKey);
+
+        bool interactPressed = Keyboard.current[GetKey(interactKey)].wasPressedThisFrame;
+        bool givePressed = Keyboard.current[GetKey(giveKey)].wasPressedThisFrame;
+
+        if (isP1 && Gamepad.current != null)
         {
-            if (collider.TryGetComponent(out PlayerInteractable playerInteractable))
+            interactPressed |= Gamepad.current.buttonSouth.wasPressedThisFrame;
+            givePressed |= Gamepad.current.buttonEast.wasPressedThisFrame;
+        }
+
+        if (interactPressed)
+        {
+            _currentInteractable.Trade(_myId);
+        }
+        else if (givePressed)
+        {
+            _currentInteractable.Give(_myId);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out PlayerInteractable interactable))
+        {
+            // Don't interact with yourself
+            if (interactable.gameObject == gameObject) return;
+            
+            _currentInteractable = interactable;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out PlayerInteractable interactable))
+        {
+            if (_currentInteractable == interactable)
             {
-                int playerIndex = GetComponent<PlayerIdentity>().playerIndex;
-                int otherPlayerIndex = collider.GetComponent<PlayerIdentity>().playerIndex;
-                if (playerIndex != otherPlayerIndex)
-                {
-                    return playerInteractable;
-                }
+                _currentInteractable = null;
             }
         }
-        return null;
     }
 
     private Key GetKey(string keyName)
     {
-        if (System.Enum.TryParse(keyName, ignoreCase: true, out Key key))
+        if (System.Enum.TryParse(keyName, true, out Key key))
             return key;
-
-        Debug.LogWarning($"Invalid key name: '{keyName}', defaulting to None");
         return Key.None;
     }
 }

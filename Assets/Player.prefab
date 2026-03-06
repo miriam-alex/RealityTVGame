@@ -266,7 +266,7 @@ RectTransform:
   m_GameObject: {fileID: 4151683602638145941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.27, y: 1.27, z: 1.27}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6538854052649554233}
@@ -540,6 +540,8 @@ MonoBehaviour:
   interactRange: 0.5
   interactKey: E
   giveKey: F
+  interactKeyP2: O
+  giveKeyP2: P
 --- !u!114 &2235829238541629541
 MonoBehaviour:
   m_ObjectHideFlags: 0
