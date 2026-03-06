@@ -72,7 +72,7 @@ public class PlayerInteractable : MonoBehaviour
         }
     }
 
-    public void Interact(PlayerIdentity interactorId)
+    public void Trade(PlayerIdentity interactorId)
     {
         // Check if there's already a global interaction happening
         if (globalInteractionLock && currentActiveInteraction != this)
