@@ -1,83 +1,72 @@
 using UnityEngine;
 using TMPro;
-using System.Collections;
+using System.Collections.Generic;
 
 public class ChatBubble : MonoBehaviour
 {
-    [Header("Timing Settings")]
-    [SerializeField] private float defaultDisplayDuration = 3f;
-    [SerializeField] private bool fadeOut = true;
-    [SerializeField] private float fadeOutDuration = 0.5f;
-    
+    // Track active bubbles by the object they are attached to
+    private static Dictionary<Transform, ChatBubble> activeBubbles = new Dictionary<Transform, ChatBubble>();
+
+    [Header("Settings")]
+    public float defaultDisplayDuration = 0.25f; // Short duration for prompts
+
     private SpriteRenderer backgroundSpriteRenderer;
     private TextMeshPro textMeshPro;
-    private float displayDuration;
 
-    public static void Create(ChatBubble chatBubblePrefab, Vector3 localPosition, Transform parent, string text)
+    public static void Create(ChatBubble prefab, Vector3 localPosition, Transform parent, string text, float duration)
     {
-        Create(chatBubblePrefab, localPosition, parent, text, chatBubblePrefab.defaultDisplayDuration);
+        // 1. If an active bubble exists for this specific parent, destroy it
+        if (activeBubbles.ContainsKey(parent) && activeBubbles[parent] != null)
+        {
+            Destroy(activeBubbles[parent].gameObject);
+        }
+
+        // 2. Instantiate new bubble
+        ChatBubble newBubble = Instantiate(prefab, parent);
+        newBubble.transform.localPosition = localPosition;
+        
+        // 3. Register this bubble
+        activeBubbles[parent] = newBubble;
+        
+        newBubble.Setup(text);
+        newBubble.StartCoroutine(newBubble.HandleTiming(duration, parent));
     }
-
-    public static void Create(ChatBubble chatBubblePrefab, Vector3 localPosition, Transform parent, string text, float duration)
+    
+    private System.Collections.IEnumerator HandleTiming(float duration, Transform parent)
     {
-        ChatBubble newChatBubble = Instantiate(chatBubblePrefab, parent);
-        Transform chatBubbleTransform = newChatBubble.transform;
-        chatBubbleTransform.localPosition = localPosition;
-        newChatBubble.displayDuration = duration;
-        newChatBubble.Setup(text);
-        newChatBubble.StartCoroutine(newChatBubble.HandleTiming());
+        yield return new WaitForSeconds(duration);
+        
+        // Remove from registry before destroying
+        if (activeBubbles.ContainsKey(parent) && activeBubbles[parent] == this)
+        {
+            activeBubbles.Remove(parent);
+        }
+        Destroy(gameObject);
     }
 
     private void Awake()
     {
         backgroundSpriteRenderer = transform.Find("Background").GetComponent<SpriteRenderer>();
-        textMeshPro =  transform.Find("Text").GetComponent<TextMeshPro>();
+        textMeshPro = transform.Find("Text").GetComponent<TextMeshPro>();
     }
 
-    private IEnumerator HandleTiming()
-    {
-        // Wait for the display duration
-        yield return new WaitForSeconds(displayDuration);
-        
-        if (fadeOut)
-        {
-            yield return StartCoroutine(FadeOut());
-        }
-        
-        Destroy(gameObject);
-    }
-    
-    private IEnumerator FadeOut()
-    {
-        float elapsedTime = 0f;
-        Color originalBackgroundColor = backgroundSpriteRenderer.color;
-        Color originalTextColor = textMeshPro.color;
-        
-        while (elapsedTime < fadeOutDuration)
-        {
-            float alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeOutDuration);
-            
-            backgroundSpriteRenderer.color = new Color(originalBackgroundColor.r, originalBackgroundColor.g, originalBackgroundColor.b, alpha);
-            textMeshPro.color = new Color(originalTextColor.r, originalTextColor.g, originalTextColor.b, alpha);
-            
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-    }
-
-    // void Start()
-    // {
-    //     Setup("Hello world. I'm going to take a big fat little nap.");
-    // }
-
-    void Setup(string text)
+    private void Setup(string text)
     {
         textMeshPro.SetText(text);
+    
+        // 1. Force the mesh update to generate the geometry
         textMeshPro.ForceMeshUpdate();
+    
+        // 2. Get the rendered values of the text
+        // The 'false' argument ensures we are looking at the pre-padding bounds
         Vector2 textSize = textMeshPro.GetRenderedValues(false);
-        float horizontalPadding = 0.1f;
-        float verticalPadding = 1f;
-        Vector2 padding = new Vector2(horizontalPadding, verticalPadding);
-        backgroundSpriteRenderer.size = textSize + padding;
+    
+        // 3. Define padding
+        float horizontalPadding = 0f; 
+        float verticalPadding = 0.5f;
+    
+        // 4. Update the background sprite size
+        // We add the padding to the text bounds
+        backgroundSpriteRenderer.size = new Vector2(textSize.x + horizontalPadding, textSize.y + verticalPadding);
     }
 }

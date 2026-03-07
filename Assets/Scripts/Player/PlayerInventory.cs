@@ -1,48 +1,40 @@
-using UnityEngine;
-using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public List<Resource> resources = new List<Resource>();
+    [Header("Settings")]
+    public Transform carryPoint;
+    public float stackOffset = 0.4f; 
+    public int maxCapacity = 5;
 
-    // 🔥 THIS is what your UI is trying to access
-    public event Action OnInventoryChanged;
+    private List<Grabbable> _heldItems = new List<Grabbable>();
 
-    public void AddResource(Resource resource)
+    public bool HasItems => _heldItems.Count > 0;
+    public bool IsFull => _heldItems.Count >= maxCapacity;
+
+    public void AddItem(Grabbable item)
     {
-        if (resource == null) return;
+        if (IsFull) return;
 
-        resources.Add(resource);
-
-        Debug.Log(gameObject.name + " added: " + resource.resourceName);
-
-        // Notify UI
-        OnInventoryChanged?.Invoke();
+        _heldItems.Add(item);
+        
+        item.OnPickedUp();
+        item.transform.SetParent(carryPoint);
+        float verticalOffset = (_heldItems.Count - 1) * stackOffset;
+        item.transform.localPosition = new Vector3(0, verticalOffset, 0);
     }
 
-    public void RemoveResource(Resource resource)
+    public void DropLastItem()
     {
-        if (resource == null) return;
+        if (!HasItems) return;
 
-        resources.Remove(resource);
-        Debug.Log(gameObject.name + " removed: " + resource.resourceName);
-        OnInventoryChanged?.Invoke();
-    }
+        int lastIndex = _heldItems.Count - 1;
+        Grabbable itemToDrop = _heldItems[lastIndex];
 
+        itemToDrop.transform.SetParent(null);
+        itemToDrop.OnDropped();
 
-    public bool HasResource(Resource resource)
-    {
-        return resources.Contains(resource);
-    }
-
-    public bool HasResource(string resourceName)
-    {
-        foreach (var r in resources)
-        {
-            if (r.resourceName == resourceName)
-                return true;
-        }
-        return false;
+        _heldItems.RemoveAt(lastIndex);
     }
 }

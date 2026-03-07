@@ -1,219 +1,90 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
-public class PlayerInteractable : MonoBehaviour
+public class PlayerInteractable : MonoBehaviour, IInteractable
 {
+    [Header("References")]
     public ChatBubble chatBubblePrefab;
-    private PlayerIdentity id;
-    private bool waitingForResponse = false;
-    private PlayerIdentity currentRequestorId = null;
     
-    private List<ChatBubble> activeBubbles = new List<ChatBubble>();
+    private PlayerIdentity _myId;
+    private ScoreManager _scoreManager;
     
-    // Global interaction lock to prevent race conditions
-    private static bool globalInteractionLock = false;
-    private static PlayerInteractable currentActiveInteraction = null;
-    private ScoreManager scoreManager;
+    private float _lastInteractionTime;
+    private const float COOLDOWN = 1.0f; 
 
     private void Start()
     {
-        id = GetComponent<PlayerIdentity>();
-        scoreManager = FindAnyObjectByType<ScoreManager>();
+        _myId = GetComponent<PlayerIdentity>();
+        _scoreManager = FindAnyObjectByType<ScoreManager>();
     }
 
-    private void Update()
+    public bool IsAvailable(PlayerIdentity requester) 
     {
-        // Clean up destroyed bubbles from our tracking list
-        activeBubbles.RemoveAll(bubble => bubble == null);
+        // Strict availability: Neither party can be busy, and we respect the cooldown
+        if (_myId == null || requester == null) return false;
+        return !_myId.IsBusy && !requester.IsBusy && (Time.time - _lastInteractionTime > COOLDOWN);
+    }
+
+    public float GetHoldDuration(PlayerIdentity requester) => 1.2f;
+
+    // Trade
+    public void Interact(PlayerIdentity requester)
+    {
+        // Handshake verification: Ensure both are still available before executing
+        if (!IsAvailable(requester)) return;
+
+        LockPlayers(requester);
+
+        string label = _myId.spotlightOn ? "Public Trade (Taxed!)" : "Secret Trade!";
+        TransferPoints(requester, 5, label);
+
+        StartCoroutine(UnlockPlayers(0.5f, requester));
+    }
+
+    // Steal
+    public void AltInteract(PlayerIdentity requester) 
+    {
+        if (!IsAvailable(requester)) return;
+
+        LockPlayers(requester);
         
-        // Handle responses when this player is being asked for points
-        if (waitingForResponse && currentRequestorId != null)
-        {
-            bool yesPressed = Input.GetKeyDown(KeyCode.Y);
-            bool noPressed = Input.GetKeyDown(KeyCode.N);
-            // Controller support for Player 1
-            if (id.playerIndex == 0 && UnityEngine.InputSystem.Gamepad.current != null)
-            {
-                yesPressed |= UnityEngine.InputSystem.Gamepad.current.buttonSouth.wasPressedThisFrame; // A button
-                noPressed |= UnityEngine.InputSystem.Gamepad.current.buttonEast.wasPressedThisFrame; // B button
-            }
-            if (yesPressed)
-            {
-                AcceptPointRequest();
-            }
-            else if (noPressed)
-            {
-                RejectPointRequest();
-            }
-        }
+        _scoreManager.TransferPoints(gameObject, requester.gameObject);
+        ChatBubble.Create(chatBubblePrefab, Vector3.up * 2, transform, "STOLEN!", 2f);
+
+        StartCoroutine(UnlockPlayers(0.5f, requester));
     }
 
-    private void CreateBubbleAndClearPrevious(string text, float duration = 3f)
+    private void LockPlayers(PlayerIdentity requester)
     {
-        // Destroy all previous bubbles
-        foreach (var bubble in activeBubbles)
-        {
-            if (bubble != null)
-            {
-                Destroy(bubble.gameObject);
-            }
-        }
-        activeBubbles.Clear();
-        
-        // Create new bubble using the existing static method
-        ChatBubble.Create(chatBubblePrefab, new Vector3(0f, 1.7f, 0f), transform, text, duration);
-        
-        // Find and track the newly created bubble
-        ChatBubble[] bubbles = GetComponentsInChildren<ChatBubble>();
-        if (bubbles.Length > 0)
-        {
-            activeBubbles.Add(bubbles[bubbles.Length - 1]); // Add the most recently created one
-        }
+        _myId.SetBusy(true, null);
+        requester.SetBusy(true, null);
+        _lastInteractionTime = Time.time;
     }
 
-    public void Trade(PlayerIdentity interactorId)
+    private IEnumerator UnlockPlayers(float delay, PlayerIdentity requester)
     {
-        // Check if there's already a global interaction happening
-        if (globalInteractionLock && currentActiveInteraction != this)
+        yield return new WaitForSeconds(delay);
+        _myId.SetBusy(false, null);
+        if (requester != null) requester.SetBusy(false, null);
+    }
+
+    private void TransferPoints(PlayerIdentity requester, int amount, string label)
+    {
+        int giverScore = _scoreManager.GetScore(gameObject);
+        int finalAmount = Mathf.Min(amount, giverScore);
+        
+        if (finalAmount > 0)
         {
-            Debug.Log($"Interaction blocked - another player interaction is in progress");
-            return;
+            _scoreManager.AddScore(-finalAmount, gameObject);
+            _scoreManager.AddScore(finalAmount, requester.gameObject);
         }
         
-        if (id.spotlightOn && !waitingForResponse)
-        {
-            Debug.Log($"Player {interactorId.playerIndex + 1} requesting 10 points from Player {id.playerIndex + 1}");
-            
-            globalInteractionLock = true;
-            currentActiveInteraction = this;
-            
-            waitingForResponse = true;
-            currentRequestorId = interactorId;
-            
-            CreateBubbleAndClearPrevious($"Player {interactorId.playerIndex + 1} wants 10 points! [Y]es or [N]o?", 6f);
-            
-            StartCoroutine(RequestTimeoutDelayed());
-        }
-        else if (waitingForResponse)
-        {
-            Debug.Log($"Player {id.playerIndex + 1} is already handling a request from Player {currentRequestorId?.playerIndex + 1}");
-        }
-    }
-    
-    private static void ClearGlobalLock()
-    {
-        globalInteractionLock = false;
-        currentActiveInteraction = null;
+        ChatBubble.Create(chatBubblePrefab, Vector3.up * 2, transform, label, 2f);
     }
 
-    private IEnumerator RequestTimeoutDelayed()
+    public string GetInteractionPrompt(string i, string a) 
     {
-        // Small delay to ensure the request message is displayed first
-        yield return new WaitForSeconds(0.1f);
-        yield return StartCoroutine(RequestTimeout());
+        // This ensures the prompt displays the keys of the target (the interactable object)
+        return $"Hold [{_myId.interactKey}] Trade | [{_myId.altInteractKey}] Steal";
     }
-
-    private void AcceptPointRequest()
-    {
-        if (waitingForResponse && currentRequestorId != null)
-        {
-            Debug.Log($"Player {id.playerIndex + 1} accepted point request from Player {currentRequestorId.playerIndex + 1}");
-            CreateBubbleAndClearPrevious("Yes! Here you go!", 2f);
-            int giverScore = scoreManager.GetScore(gameObject);
-            int pointsToGive = Mathf.Min(10, giverScore);
-            if (pointsToGive > 0)
-            {
-                scoreManager.AddScore(-pointsToGive, gameObject);
-                scoreManager.AddScore(pointsToGive, currentRequestorId.gameObject);
-                // Always give favorability bonus if they give more than 0 points
-                scoreManager.AddScore(5, currentRequestorId.gameObject);
-            }
-            ResetRequest();
-        }
-    }
-
-    private void RejectPointRequest()
-    {
-        if (waitingForResponse && currentRequestorId != null)
-        {
-            Debug.Log($"Player {id.playerIndex + 1} rejected point request from Player {currentRequestorId.playerIndex + 1}");
-            CreateBubbleAndClearPrevious("No way!", 2f);
-            
-            scoreManager.AddScore(-5, currentRequestorId.gameObject);
-            
-            ResetRequest();
-        }
-    }
-
-    private IEnumerator RequestTimeout()
-    {
-        yield return new WaitForSeconds(5f);
-        
-        if (waitingForResponse)
-        {
-            Debug.Log($"Point request from Player {currentRequestorId?.playerIndex + 1} to Player {id.playerIndex + 1} timed out");
-            CreateBubbleAndClearPrevious("No response...", 2f);
-            
-            // Decrease requestor's score by 5 for no response
-            if (currentRequestorId != null)
-            {
-                scoreManager.AddScore(-5, gameObject);
-            }
-            
-            ResetRequest();
-        }
-    }
-
-    private void ResetRequest()
-    {
-        waitingForResponse = false;
-        currentRequestorId = null;
-        ClearGlobalLock();
-    }
-
-    public void Give(PlayerIdentity interactorId)
-    {
-        // Check if there's already a global interaction happening
-        if (globalInteractionLock && currentActiveInteraction != this)
-        {
-            Debug.Log($"Steal attempt blocked - another player interaction is in progress");
-            return;
-        }
-        int victimScore = scoreManager.GetScore(gameObject);
-        if (victimScore <= 0)
-        {
-            CreateBubbleAndClearPrevious("Can't steal from a player with 0 points!", 2f);
-            return;
-        }
-        if (id.spotlightOn)
-        {
-            Debug.Log($"Player {interactorId.playerIndex + 1} stealing points from Player {id.playerIndex + 1}");
-            // Set global lock for steal action
-            globalInteractionLock = true;
-            currentActiveInteraction = this;
-            scoreManager.TransferPoints(gameObject, interactorId.gameObject);
-            StartCoroutine(ClearStealLock());
-        }
-    }
-    
-    private IEnumerator ClearStealLock()
-    {
-        // Wait for the bubble duration, then clear lock
-        yield return new WaitForSeconds(2.5f);
-        ClearGlobalLock();
-    }
-    
-    
-    public void ShowVicinityMessage(string interactKey = "E", string giveKey = "F")
-    {
-        // Don't show vicinity message if we're waiting for a response to a point request
-        // or if there's a global interaction lock
-        if (id.spotlightOn && !waitingForResponse && !globalInteractionLock)
-        {
-            CreateBubbleAndClearPrevious($"[{interactKey}] Ask Points | [{giveKey}] Steal Points", 0.25f);
-            GetComponentInChildren<SpotlightVisual>().FlashRed(0.1f);
-        }
-    }
-
 }
