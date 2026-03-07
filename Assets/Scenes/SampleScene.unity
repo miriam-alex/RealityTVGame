@@ -1174,8 +1174,16 @@ PrefabInstance:
       value: 0.66516984
       objectReference: {fileID: 0}
     - target: {fileID: 2992388302253331442, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
+      propertyPath: interactKey
+      value: O
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992388302253331442, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
       propertyPath: playerIndex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992388302253331442, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
+      propertyPath: altInteractKey
+      value: P
       objectReference: {fileID: 0}
     - target: {fileID: 3779507246593982365, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
       propertyPath: giveKey

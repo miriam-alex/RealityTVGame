@@ -526,7 +526,7 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 0}
   runtimeSet: {fileID: 11400000, guid: 35d9d90b045664a289cbdc748927308e, type: 2}
   interactKey: E
-  altInteractKey: F
+  altInteractKey: R
   spotlightOn: 0
 --- !u!114 &3779507246593982365
 MonoBehaviour:

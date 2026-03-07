@@ -78,14 +78,22 @@ public class PlayerInteract : MonoBehaviour
         {
             bool iPressed = Keyboard.current[iKey].isPressed;
 
+            // CHECK: Is this interactable another Player or just an object?
+            bool isPlayer = ((MonoBehaviour)_currentInteractable).TryGetComponent<PlayerInteract>(out _);
+
             if (iPressed)
             {
-                // --- MUTUAL HANDSHAKE LOGIC ---
-                if (IsTargetHoldingKey(_currentInteractable))
+                // If it's a player, enforce the handshake
+                if (isPlayer && !IsTargetHoldingKey(_currentInteractable))
                 {
+                    ChatBubble.Create(chatBubble, Vector3.up * 2.2f, ((MonoBehaviour)_currentInteractable).transform, "Waiting...", 0.1f);
+                    _holdTimer = 0;
+                }
+                else 
+                {
+                    // Either it's an object OR both players are holding: execute!
                     float duration = _currentInteractable.GetHoldDuration(_myId);
                     _holdTimer += Time.deltaTime;
-                
                     UpdateHoldUI(Mathf.Clamp01(_holdTimer / duration));
 
                     if (_holdTimer >= duration)
@@ -93,12 +101,6 @@ public class PlayerInteract : MonoBehaviour
                         _currentInteractable.Interact(_myId);
                         _holdTimer = 0; 
                     }
-                }
-                else 
-                {
-                    // Target is not holding: Show a "Waiting" status
-                    ChatBubble.Create(chatBubble, Vector3.up * 2.2f, transform, "Waiting...", 0.1f);
-                    _holdTimer = 0; // Reset progress until they join in
                 }
             }
             else if (Keyboard.current[iKey].wasReleasedThisFrame)
@@ -112,7 +114,11 @@ public class PlayerInteract : MonoBehaviour
                 _currentInteractable.AltInteract(_myId);
             }
         }
-        // ... rest of inventory code
+        // --- INVENTORY DROP ---
+        else if (Keyboard.current[iKey].wasPressedThisFrame && _inventory.HasItems)
+        {
+            _inventory.DropLastItem();
+        }
     }
 
     // Helper to check the other player's input
