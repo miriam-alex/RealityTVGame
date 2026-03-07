@@ -3,10 +3,16 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 public class PlayerIdentity : MonoBehaviour {
+    [Header("Essentials")]
     public int playerIndex; // Set this to 0 for P1, 1 for P2 in the Inspector
-    public bool spotlightOn;
     public Color color;
     public PlayerRuntimeSet runtimeSet;
+    [Header("Key Bindings")]
+    public string interactKey = "E";
+    public string altInteractKey = "F";
+    public bool spotlightOn;
+    public bool IsBusy { get; private set; }
+    public PlayerInteractable activeTradeHandler { get; private set; }
     private List<GameObject> activePlayers;
     private GameObject bodyObject;
     private TMP_Text scoreText; 
@@ -47,6 +53,12 @@ public class PlayerIdentity : MonoBehaviour {
     void OnDisable() 
     {
         runtimeSet.Remove(this.gameObject);
+    }
+    
+    public void SetBusy(bool busy, PlayerInteractable handler) 
+    {
+        IsBusy = busy;
+        activeTradeHandler = handler;
     }
     
     public void UpdateScoreUI(int newScore, bool gainedPoints) 

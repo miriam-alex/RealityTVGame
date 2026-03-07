@@ -4,134 +4,155 @@ using UnityEngine.InputSystem;
 public class PlayerInteract : MonoBehaviour
 {
     [Header("Settings")]
-    public float interactRange = 2f;
-    [SerializeField] private LayerMask pickUpLayerMask;
-
-    [Header("Key Bindings")]
-    public string p1Interact = "E";
-    public string p1Give = "F";
-    public string p2Interact = "O";
-    public string p2Give = "P";
-
+    public float interactRange = 2.5f;
+    [Header("Prefabs")]
+    public ChatBubble chatBubble;
+    
+    private float _holdTimer = 0f;
+    private string _interactKey;
+    private string _altInteractKey;
+    
+    private float _msgTimer = 0f;
     private PlayerIdentity _myId;
-    private PlayerInteractable _currentInteractable;
-    private Grabbable _heldObject;
-    private Grabbable _nearbyGrabbable;
-    private Transform _carryPoint;
+    private PlayerInventory _inventory;
+    private IInteractable _currentInteractable;
 
     private void Start()
     {
         _myId = GetComponent<PlayerIdentity>();
-        SphereCollider trigger = gameObject.AddComponent<SphereCollider>();
-        trigger.isTrigger = true;
-        trigger.radius = interactRange;
+        _interactKey = _myId.interactKey;
+        _altInteractKey = _myId.altInteractKey;
+        _inventory = GetComponent<PlayerInventory>();
         
-        _carryPoint = transform.Find("ObjectCarryPoint");
+        // Ensure trigger setup
+        SphereCollider col = gameObject.GetComponent<SphereCollider>();
+        if (col == null) col = gameObject.AddComponent<SphereCollider>();
+        col.isTrigger = true;
+        col.radius = interactRange;
     }
 
     private void Update()
     {
-        // Rules for interaction:
-        // 1. You cannot initiate a steal/trade in the spotlight.
-        if (_currentInteractable == null && _nearbyGrabbable == null && _carryPoint == null) return;
-
         HandleInput();
+        HandleVicinityDisplay();
+    }
+    
+    private void HandleVicinityDisplay()
+    {
+        // 1. If I am busy, I should NOT be looking for things to interact with
+        // 2. If the current object is busy, it shouldn't show a prompt
+        if (_myId.IsBusy || _currentInteractable == null || !_currentInteractable.IsAvailable(_myId)) 
+        {
+            return;
+        }
+
+        _msgTimer -= Time.deltaTime;
+        if (_msgTimer <= 0)
+        {
+            // Only show if the target is physically available right now
+            if (_currentInteractable is MonoBehaviour target)
+            {
+                string prompt = _currentInteractable.GetInteractionPrompt(_interactKey, _altInteractKey);
+                ChatBubble.Create(chatBubble, Vector3.up * 1.7f, target.transform, prompt, 0.25f);
+            
+                if (target.TryGetComponent(out SpotlightVisual visual)) 
+                    visual.FlashRed(0.1f);
+            }
+
+            _msgTimer = 0.2f; 
+        }
     }
 
     private void HandleInput()
     {
-        bool isP1 = (_myId.playerIndex == 0);
-        string interactKey = isP1 ? p1Interact : p2Interact;
-        string giveKey = isP1 ? p1Give : p2Give;
-        
-        bool interactPressed = Keyboard.current[GetKey(interactKey)].wasPressedThisFrame;
-        bool givePressed = Keyboard.current[GetKey(giveKey)].wasPressedThisFrame;
+        if (_myId.IsBusy) 
+        {
+            _holdTimer = 0;
+            return;
+        }
 
-        if (isP1 && Gamepad.current != null)
+        Key iKey = GetKey(_myId.interactKey);
+        Key altKey = GetKey(_myId.altInteractKey);
+
+        if (_currentInteractable != null)
         {
-            interactPressed |= Gamepad.current.buttonSouth.wasPressedThisFrame;
-            givePressed |= Gamepad.current.buttonEast.wasPressedThisFrame;
-        }
-        
-        // Priority order: if there's a grabbable, we go for the grabbable
-        if (interactPressed && _nearbyGrabbable != null)
-        {
-            Debug.Log("Calling grab");
-            _heldObject = _nearbyGrabbable;
-            _heldObject.Grab(_carryPoint);
-            _nearbyGrabbable = null;
-        }
-        // We can interact while we hold a grabbable, so that's priority 2
-        else if (!_myId.spotlightOn && _currentInteractable)
-        {
-            _currentInteractable.ShowVicinityMessage(interactKey, giveKey);
-            if (interactPressed)
+            bool iPressed = Keyboard.current[iKey].isPressed;
+
+            if (iPressed)
             {
-                _currentInteractable.Trade(_myId);
+                // --- MUTUAL HANDSHAKE LOGIC ---
+                if (IsTargetHoldingKey(_currentInteractable))
+                {
+                    float duration = _currentInteractable.GetHoldDuration(_myId);
+                    _holdTimer += Time.deltaTime;
+                
+                    UpdateHoldUI(Mathf.Clamp01(_holdTimer / duration));
+
+                    if (_holdTimer >= duration)
+                    {
+                        _currentInteractable.Interact(_myId);
+                        _holdTimer = 0; 
+                    }
+                }
+                else 
+                {
+                    // Target is not holding: Show a "Waiting" status
+                    ChatBubble.Create(chatBubble, Vector3.up * 2.2f, transform, "Waiting...", 0.1f);
+                    _holdTimer = 0; // Reset progress until they join in
+                }
             }
-            else if (givePressed)
+            else if (Keyboard.current[iKey].wasReleasedThisFrame)
             {
-                _currentInteractable.Give(_myId);
+                _holdTimer = 0;
+            }
+
+            // --- ALT INTERACTION ---
+            if (Keyboard.current[altKey].wasPressedThisFrame)
+            {
+                _currentInteractable.AltInteract(_myId);
             }
         }
-        else if (interactPressed && _heldObject != null)
+        // ... rest of inventory code
+    }
+
+    // Helper to check the other player's input
+    private bool IsTargetHoldingKey(IInteractable interactable)
+    {
+        if (interactable is MonoBehaviour targetMB)
         {
-            Debug.Log("Calling drop");
-            _heldObject.Drop();
-            _heldObject = null;
+            var targetInteract = targetMB.GetComponent<PlayerInteract>();
+            if (targetInteract != null)
+            {
+                Key targetKey = GetKey(targetInteract._myId.interactKey);
+                return Keyboard.current[targetKey].isPressed;
+            }
         }
-        
+        return false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (IsInLayerMask(other.gameObject, pickUpLayerMask))
-        {
-            if (other.TryGetComponent(out Grabbable grabbable))
-            {
-                _nearbyGrabbable = grabbable;
-                Debug.Log("Nearby grabbable: " + grabbable.name);
-            }
-        }
-        
-        if (other.TryGetComponent(out PlayerInteractable interactable))
-        {
-            // Don't interact with yourself
-            if (interactable.gameObject == gameObject) return;
-            
+        if (other.TryGetComponent(out IInteractable interactable))
             _currentInteractable = interactable;
-        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out PlayerInteractable interactable))
+        if (other.TryGetComponent(out IInteractable interactable) && _currentInteractable == interactable)
         {
-            if (_currentInteractable == interactable)
-            {
-                _currentInteractable = null;
-            }
+            _currentInteractable = null;
+            _holdTimer = 0; // Reset if we walk away
         }
-        
-        if (IsInLayerMask(other.gameObject, pickUpLayerMask))
-        {
-            if (other.TryGetComponent(out Grabbable grabbable))
-            {
-                _nearbyGrabbable = null;
-                Debug.Log("No more nearby grabbable: " + grabbable.name);
-            }
-        }
-    }
-
-    private Key GetKey(string keyName)
-    {
-        if (System.Enum.TryParse(keyName, true, out Key key))
-            return key;
-        return Key.None;
     }
     
-    private bool IsInLayerMask(GameObject obj, LayerMask mask)
+    private void UpdateHoldUI(float percent)
     {
-        return (mask.value & (1 << obj.layer)) > 0;
+        int totalSegments = 10;
+        int filledSegments = Mathf.RoundToInt(percent * totalSegments);
+        string bar = new string('■', filledSegments) + new string('□', totalSegments - filledSegments);
+        string colorTag = _myId.spotlightOn ? "<color=red>" : "<color=green>";
+        ChatBubble.Create(chatBubble, Vector3.up * 2.2f, transform, $"{colorTag}{bar}</color>", 0.1f);
     }
+
+    private Key GetKey(string name) => System.Enum.TryParse(name, true, out Key k) ? k : Key.None;
 }

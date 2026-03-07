@@ -1,55 +1,46 @@
-using System.Numerics;
 using UnityEngine;
-using Vector3 = UnityEngine.Vector3;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Grabbable : MonoBehaviour
+public class Grabbable : MonoBehaviour, IInteractable
 {
     private Rigidbody _rb;
-    private Collider[] _colliders; // Store all colliders on the chair
-    private Transform _objectGrabTransform;
+    private bool _isGrabbed = false;
 
-    private void Awake()
+    private void Awake() => _rb = GetComponent<Rigidbody>();
+
+    public bool IsAvailable(PlayerIdentity requester) => !_isGrabbed;
+    public float GetHoldDuration(PlayerIdentity requester) => 0f;
+    
+    public string GetInteractionPrompt(string i, string a) => $"[{i}] Pick Up";
+
+    public void Interact(PlayerIdentity requester)
     {
-        _rb = GetComponent<Rigidbody>();
-        // Get all colliders (including the mesh and your new box trigger)
-        _colliders = GetComponentsInChildren<Collider>();
+        if (!IsAvailable(requester)) return;
+
+        if (requester.TryGetComponent(out PlayerInventory inventory))
+        {
+            inventory.AddItem(this);
+        }
     }
 
-    public void Grab(Transform objectGrabTransform)
+    public void AltInteract(PlayerIdentity requester) { /* Optional */ }
+
+    // This is called BY the inventory
+    public void OnPickedUp()
     {
-        _objectGrabTransform = objectGrabTransform;
+        _isGrabbed = true;
         _rb.isKinematic = true;
         _rb.useGravity = false;
-
-        // Turn off colliders so it doesn't hit the player's body
-        foreach (var col in _colliders)
-        {
-            col.enabled = false;
-        }
+        _rb.detectCollisions = false; // Prevents the player from tripping over it
     }
 
-    public void Drop()
+    // This is called BY the inventory
+    public void OnDropped()
     {
-        _objectGrabTransform = null;
+        _isGrabbed = false;
         _rb.isKinematic = false;
         _rb.useGravity = true;
-
-        // Turn colliders back on so it can land on the floor
-        foreach (var col in _colliders)
-        {
-            col.enabled = true;
-        }
+        _rb.detectCollisions = true;
     }
-
-    private void FixedUpdate()
-    {
-        if (_objectGrabTransform != null)
-        {
-            // Note: Use fixedDeltaTime inside FixedUpdate for smoother movement
-            float lerpSpeed = 20f; 
-            Vector3 newPosition = Vector3.Lerp(transform.position, _objectGrabTransform.position, Time.fixedDeltaTime * lerpSpeed);
-            _rb.MovePosition(newPosition);
-        }
-    }
+    
 }

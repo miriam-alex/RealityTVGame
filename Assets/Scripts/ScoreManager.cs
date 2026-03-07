@@ -63,7 +63,7 @@ public class ScoreManager : MonoBehaviour
         if (playerScores.ContainsKey(playerFrom) && playerScores.ContainsKey(playerTo))
         {
             // We attempt to take up to the steal amount 
-            int pointsStolen = Mathf.Min(stealAmount, playerScores[playerTo]);
+            int pointsStolen = Mathf.Min(stealAmount, playerScores[playerFrom]);
             AddScore(-pointsStolen, playerFrom);
             AddScore(pointsStolen, playerTo);
             PlayerIdentity playerFromId = playerFrom.GetComponent<PlayerIdentity>();
