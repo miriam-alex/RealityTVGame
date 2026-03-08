@@ -41,7 +41,20 @@ public class PlayerInteract : MonoBehaviour
     {
         // 1. If I am busy, I should NOT be looking for things to interact with
         // 2. If the current object is busy, it shouldn't show a prompt
-        if (_myId.IsBusy || _currentInteractable == null || !_currentInteractable.IsAvailable(_myId)) 
+        if (_myId.IsBusy || _currentInteractable == null) 
+        {
+            return;
+        }
+
+        // Check if the object has been destroyed (Unity null check)
+        MonoBehaviour interactableMono = _currentInteractable as MonoBehaviour;
+        if (interactableMono == null)
+        {
+            _currentInteractable = null;
+            return;
+        }
+
+        if (!_currentInteractable.IsAvailable(_myId))
         {
             return;
         }
@@ -49,15 +62,12 @@ public class PlayerInteract : MonoBehaviour
         _msgTimer -= Time.deltaTime;
         if (_msgTimer <= 0)
         {
-            // Only show if the target is physically available right now
-            if (_currentInteractable is MonoBehaviour target)
-            {
-                string prompt = _currentInteractable.GetInteractionPrompt(_interactKey, _altInteractKey);
-                ChatBubble.Create(chatBubble, Vector3.up * 1.7f, target.transform, prompt, 0.25f);
-            
-                if (target.TryGetComponent(out SpotlightVisual visual)) 
-                    visual.FlashRed(0.1f);
-            }
+            // Use the already-validated MonoBehaviour reference
+            string prompt = _currentInteractable.GetInteractionPrompt(_interactKey, _altInteractKey);
+            ChatBubble.Create(chatBubble, Vector3.up * 1.7f, interactableMono.transform, prompt, 0.25f);
+        
+            if (interactableMono.TryGetComponent(out SpotlightVisual visual)) 
+                visual.FlashRed(0.1f);
 
             _msgTimer = 0.2f; 
         }
@@ -76,17 +86,25 @@ public class PlayerInteract : MonoBehaviour
 
         if (_currentInteractable != null)
         {
+            // Check if the object has been destroyed (Unity null check)
+            MonoBehaviour interactableMono = _currentInteractable as MonoBehaviour;
+            if (interactableMono == null)
+            {
+                _currentInteractable = null;
+                return;
+            }
+
             bool iPressed = Keyboard.current[iKey].isPressed;
 
             // CHECK: Is this interactable another Player or just an object?
-            bool isPlayer = ((MonoBehaviour)_currentInteractable).TryGetComponent<PlayerInteract>(out _);
+            bool isPlayer = interactableMono.TryGetComponent<PlayerInteract>(out _);
 
             if (iPressed)
             {
                 // If it's a player, enforce the handshake
                 if (isPlayer && !IsTargetHoldingKey(_currentInteractable))
                 {
-                    ChatBubble.Create(chatBubble, Vector3.up * 2.2f, ((MonoBehaviour)_currentInteractable).transform, "Waiting...", 0.1f);
+                    ChatBubble.Create(chatBubble, Vector3.up * 2.2f, interactableMono.transform, "Waiting...", 0.1f);
                     _holdTimer = 0;
                 }
                 else 

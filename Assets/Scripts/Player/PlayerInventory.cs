@@ -12,6 +12,36 @@ public class PlayerInventory : MonoBehaviour
 
     public bool HasItems => _heldItems.Count > 0;
     public bool IsFull => _heldItems.Count >= maxCapacity;
+    public int ItemCount => _heldItems.Count;
+
+    public List<Grabbable> GetItems() => _heldItems;
+    
+    public int CountItemsOfType(string itemType)
+    {
+        int count = 0;
+        foreach (var item in _heldItems)
+        {
+            if (item.name.Contains(itemType))
+                count++;
+        }
+        return count;
+    }
+    
+    public bool RemoveItemsOfType(string itemType, int amount)
+    {
+        int removed = 0;
+        for (int i = _heldItems.Count - 1; i >= 0 && removed < amount; i--)
+        {
+            if (_heldItems[i].name.Contains(itemType))
+            {
+                _heldItems[i].OnDropped();
+                Destroy(_heldItems[i].gameObject);
+                _heldItems.RemoveAt(i);
+                removed++;
+            }
+        }
+        return removed == amount;
+    }
 
     public void AddItem(Grabbable item)
     {

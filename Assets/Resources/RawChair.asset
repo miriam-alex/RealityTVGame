@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ffb08f97c2b226449121c84135cf1ef, type: 3}
   m_Name: RawChair
   m_EditorClassIdentifier: Assembly-CSharp::Resource
-  resourceName: RawChair
-  resourceIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  tint: {r: 0.8396226, g: 0.69486487, b: 0, a: 1}
+  resourceName: Raw Chair
+  pointsValue: 30
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  prefab: {fileID: 3625914136064843970, guid: 23703c79af225493882cc8cd5d04a3ee, type: 3}
