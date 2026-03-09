@@ -39,7 +39,7 @@ public class PlayerInteract : MonoBehaviour
     
     private void HandleVicinityDisplay()
     {
-        if (_myId.IsBusy || _currentInteractable == null) return;
+        if (_currentInteractable == null) return;
 
         MonoBehaviour interactableMono = _currentInteractable as MonoBehaviour;
         if (interactableMono == null) { _currentInteractable = null; return; }
@@ -63,7 +63,6 @@ public class PlayerInteract : MonoBehaviour
 
     private void HandleInput()
     {
-        if (_myId.IsBusy) { _holdTimer = 0; return; }
 
         Key iKey = GetKey(_myId.interactKey);
         Key aKey = GetKey(_myId.altInteractKey);
@@ -115,24 +114,22 @@ public class PlayerInteract : MonoBehaviour
             _inventory.TryDrop(); 
         }
     }
-    private void RunHoldTimer()
-    {
-        float duration = _currentInteractable.GetHoldDuration(_myId);
-        _holdTimer += Time.deltaTime;
-        UpdateHoldUI(Mathf.Clamp01(_holdTimer / duration));
-
-        if (_holdTimer >= duration)
-        {
-            // Just trigger the master controller
-            _currentInteractable.Interact(_myId);
-            _holdTimer = 0;
-        }
-    }
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out IInteractable interactable))
-            _currentInteractable = interactable;
+        if (other.TryGetComponent(out IInteractable interactable)) 
+		{
+			_currentInteractable = interactable;
+ 			if (_currentInteractable is PlayerInteractable targetPlayer)
+        	{
+            	CameramanNPC cam = FindObjectOfType<CameramanNPC>();
+            	if (cam != null)
+            	{
+                	cam.SetDramaState(DirectorPersonality.Aggressive, other.transform, 5.0f);
+					Debug.Log($"Camera tracking {other.name}");
+            	}
+        	}
+		}
     }
 
     private void OnTriggerExit(Collider other)
@@ -144,14 +141,28 @@ public class PlayerInteract : MonoBehaviour
         }
     }
     
-    private void UpdateHoldUI(float percent)
-    {
-        int totalSegments = 10;
-        int filledSegments = Mathf.RoundToInt(percent * totalSegments);
-        string bar = new string('■', filledSegments) + new string('□', totalSegments - filledSegments);
-        string colorTag = _myId.spotlightOn ? "<color=red>" : "<color=green>";
-        ChatBubble.Create(chatBubble, Vector3.up * 2.2f, transform, $"{colorTag}{bar}</color>", 0.1f);
-    }
+    // private void RunHoldTimer()
+    // {
+    //     float duration = _currentInteractable.GetHoldDuration(_myId);
+    //     _holdTimer += Time.deltaTime;
+    //     UpdateHoldUI(Mathf.Clamp01(_holdTimer / duration));
+    //
+    //     if (_holdTimer >= duration)
+    //     {
+    //         // Just trigger the master controller
+    //         _currentInteractable.Interact(_myId);
+    //         _holdTimer = 0;
+    //     }
+    // }
+    
+    // private void UpdateHoldUI(float percent)
+    // {
+    //     int totalSegments = 10;
+    //     int filledSegments = Mathf.RoundToInt(percent * totalSegments);
+    //     string bar = new string('■', filledSegments) + new string('□', totalSegments - filledSegments);
+    //     // string colorTag = _myId.spotlightOn ? "<color=red>" : "<color=green>";
+    //     ChatBubble.Create(chatBubble, Vector3.up * 2.2f, transform, $"{bar}</color>", 0.1f);
+    // }
     
     public IInteractable GetCurrentTarget()
     {

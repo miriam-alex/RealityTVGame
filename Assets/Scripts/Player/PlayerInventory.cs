@@ -60,7 +60,6 @@ public class PlayerInventory : MonoBehaviour
         item.transform.SetParent(carryPoint);
         float verticalOffset = (_heldItems.Count - 1) * stackOffset;
         item.transform.localPosition = new Vector3(0, verticalOffset, 0);
-        Debug.Log($"Added {item.name} to {_myId.name}'s inventory");
     }
 
     public Grabbable DropLastItem()
@@ -92,10 +91,8 @@ public class PlayerInventory : MonoBehaviour
     public bool TransferToPlayerInventory(PlayerInventory recieverInventory)
     {
         Assert.IsTrue(recieverInventory != null);
-        Debug.Log($"In TransferToPlayerInventory: Does player have inventory?: {HasItems}");
         if (!HasItems) return false;
         Grabbable item = this.DropLastItem();
-        Debug.Log($"Dropped {item.name} from {_myId.name}'s inventory");
         recieverInventory.AddItem(item);
         return true;
     }

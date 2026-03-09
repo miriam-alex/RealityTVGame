@@ -6,12 +6,14 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
     [Header("References")]
     public ChatBubble chatBubblePrefab;
     
+	private ScoreManager _scoreManager;
     private PlayerIdentity _myId;
     private PlayerInventory _myInventory;
     private const float COOLDOWN = 1.0f; 
 
     private void Start()
     {
+		_scoreManager = FindAnyObjectByType<ScoreManager>();
         _myId = GetComponent<PlayerIdentity>();
         _myInventory = GetComponent<PlayerInventory>();
     }
@@ -37,18 +39,24 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
     
     public void Interact(PlayerIdentity requester)
     {
-        // The Coordinator is now the one-stop-shop for the transaction
         if (!InteractionCoordinator.Instance.CanInteract(requester, _myId)) return;
         ExecuteInventoryTransfer(_myId, requester, "Here you go!");
+		// You get followers for doing a good thing on camera!
+        if (requester.isSpotted)
+        {
+            _scoreManager.RewardGive(requester.gameObject);
+        }
     }
     
     public void AltInteract(PlayerIdentity requester) 
     {
-        // Stealing shouldn't require a mutual handshake, but should check if busy
         if (!InteractionCoordinator.Instance.CanInteract(requester, _myId)) return;
-
-        // Direct transfer without handshake
         ExecuteInventoryTransfer(requester, _myId, "Stolen!");
+		// If caught, you lose followers for doing a bad thing on camera.
+        if (requester.isSpotted)
+        {
+            _scoreManager.PenalizeSteal(requester.gameObject);
+        }
     }
     
     private void ExecuteInventoryTransfer(PlayerIdentity taker, PlayerIdentity giver, string label)
@@ -73,7 +81,6 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
 
         // 4. Visual feedback
         ChatBubble.Create(chatBubblePrefab, Vector3.up * 2, transform, label, 2f);
-        Debug.Log("Inventory transfer requested!");
     }
     
     public string GetInteractionPrompt(string i, string a) => $"[{_myId.interactKey}] Give | [{_myId.altInteractKey}] Steal";
