@@ -80,6 +80,14 @@ public class PlayerInventory : MonoBehaviour
         _heldItems.RemoveAt(lastIndex);
         return itemToDrop;
     }
+    
+    public void TryDrop()
+    {
+        if (HasItems) 
+        {
+            DropLastItem();
+        }
+    }
 
     public bool TransferToPlayerInventory(PlayerInventory recieverInventory)
     {

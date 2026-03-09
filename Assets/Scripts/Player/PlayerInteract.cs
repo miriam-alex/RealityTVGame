@@ -51,7 +51,7 @@ public class PlayerInteract : MonoBehaviour
         {
             // Pass empty strings or null because GetInteractionPrompt now ignores them 
             // and uses its own Internal Identity (as per our updated PlayerInteractable)
-            string prompt = _currentInteractable.GetInteractionPrompt("", "");
+            string prompt = _currentInteractable.GetInteractionPrompt(_interactKey, _altInteractKey);
             ChatBubble.Create(chatBubble, Vector3.up * 1.7f, interactableMono.transform, prompt, 0.25f);
         
             if (interactableMono.TryGetComponent(out SpotlightVisual visual)) 
@@ -68,19 +68,21 @@ public class PlayerInteract : MonoBehaviour
         Key iKey = GetKey(_myId.interactKey);
         Key aKey = GetKey(_myId.altInteractKey);
 
+        // 1. If we are looking at something, handle interactions
         if (_currentInteractable != null)
         {
-            // 1. Logic for Stealing (Instant, no handshake required)
+            // Stealing (Alt)
             if (Keyboard.current[aKey].wasPressedThisFrame)
             {
                 _currentInteractable.AltInteract(_myId);
             }
-            
+        
+            // Trading or Normal Interaction (Primary)
             if (Keyboard.current[iKey].wasPressedThisFrame)
             {
                 _currentInteractable.Interact(_myId);
             }
-
+        
             // // 2. Logic for Trading (Requires handshake + timer)
             // if (_currentInteractable is PlayerInteractable targetPlayer)
             // {
@@ -104,6 +106,13 @@ public class PlayerInteract : MonoBehaviour
             //         _currentInteractable.Interact(_myId);
             //     }
             // }
+        }
+        
+        // 2. Fallback: Drop item if NOT looking at anything
+        else if (Keyboard.current[iKey].wasPressedThisFrame)
+        {
+            // Simply ask the inventory to drop, don't write the logic here
+            _inventory.TryDrop(); 
         }
     }
     private void RunHoldTimer()
