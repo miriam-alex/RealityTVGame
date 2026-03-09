@@ -5,7 +5,6 @@ public class Grabbable : MonoBehaviour, IInteractable
 {
     private Rigidbody _rb;
     private bool _isGrabbed = false;
-    private PlayerIdentity _myId;
 
     private void Awake() => _rb = GetComponent<Rigidbody>();
 
