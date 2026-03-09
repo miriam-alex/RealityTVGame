@@ -75,30 +75,35 @@ public class PlayerInteract : MonoBehaviour
             {
                 _currentInteractable.AltInteract(_myId);
             }
-
-            // 2. Logic for Trading (Requires handshake + timer)
-            if (_currentInteractable is PlayerInteractable targetPlayer)
+            
+            if (Keyboard.current[iKey].wasPressedThisFrame)
             {
-                bool iPressed = Keyboard.current[iKey].isPressed;
-                InteractionCoordinator.Instance.SetHandshake(_myId, targetPlayer.GetPlayerIdentity(), iPressed);
+                _currentInteractable.Interact(_myId);
+            }
 
-                if (iPressed && InteractionCoordinator.Instance.IsTradeReady(_myId, targetPlayer.GetPlayerIdentity()))
-                {
-                    RunHoldTimer();
-                }
-                else if (Keyboard.current[iKey].wasReleasedThisFrame)
-                {
-                    _holdTimer = 0;
-                }
-            }
-            else
-            {
-                // 3. Logic for Generic Objects (Instant)
-                if (Keyboard.current[iKey].wasPressedThisFrame)
-                {
-                    _currentInteractable.Interact(_myId);
-                }
-            }
+            // // 2. Logic for Trading (Requires handshake + timer)
+            // if (_currentInteractable is PlayerInteractable targetPlayer)
+            // {
+            //     bool iPressed = Keyboard.current[iKey].isPressed;
+            //     InteractionCoordinator.Instance.SetHandshake(_myId, targetPlayer.GetPlayerIdentity(), iPressed);
+            //
+            //     if (iPressed && InteractionCoordinator.Instance.IsTradeReady(_myId, targetPlayer.GetPlayerIdentity()))
+            //     {
+            //         RunHoldTimer();
+            //     }
+            //     else if (Keyboard.current[iKey].wasReleasedThisFrame)
+            //     {
+            //         _holdTimer = 0;
+            //     }
+            // }
+            // else
+            // {
+            //     // 3. Logic for Generic Objects (Instant)
+            //     if (Keyboard.current[iKey].wasPressedThisFrame)
+            //     {
+            //         _currentInteractable.Interact(_myId);
+            //     }
+            // }
         }
     }
     private void RunHoldTimer()
