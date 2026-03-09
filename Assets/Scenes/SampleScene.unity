@@ -3097,10 +3097,10 @@ MonoBehaviour:
   runtimeSet: {fileID: 11400000, guid: 35d9d90b045664a289cbdc748927308e, type: 2}
   headTransform: {fileID: 1066069190}
   cameraTransform: {fileID: 0}
-  baseMoveSpeed: 2
+  baseMoveSpeed: 0.75
   stoppingDistance: 5
-  headRotationSpeed: 60
-  orbitSpeed: 0.5
+  headRotationSpeed: 10
+  orbitSpeed: 0.1
 --- !u!136 &1460137549
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3594,6 +3594,10 @@ PrefabInstance:
     - target: {fileID: 4151683602638145941, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539908133405845938, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
+      propertyPath: speed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4539908133405845938, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
       propertyPath: moveUpKey
@@ -5163,6 +5167,10 @@ PrefabInstance:
     - target: {fileID: 4151683602638145941, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539908133405845938, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
+      propertyPath: speed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4539908133405845938, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
       propertyPath: groundPlane
