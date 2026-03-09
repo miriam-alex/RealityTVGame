@@ -9,6 +9,7 @@ public class PlayerInteract : MonoBehaviour
     public ChatBubble chatBubble;
     
     private float _holdTimer = 0f;
+    
     private string _interactKey;
     private string _altInteractKey;
     
@@ -24,7 +25,6 @@ public class PlayerInteract : MonoBehaviour
         _altInteractKey = _myId.altInteractKey;
         _inventory = GetComponent<PlayerInventory>();
         
-        // Ensure trigger setup
         SphereCollider col = gameObject.GetComponent<SphereCollider>();
         if (col == null) col = gameObject.AddComponent<SphereCollider>();
         col.isTrigger = true;
@@ -39,31 +39,19 @@ public class PlayerInteract : MonoBehaviour
     
     private void HandleVicinityDisplay()
     {
-        // 1. If I am busy, I should NOT be looking for things to interact with
-        // 2. If the current object is busy, it shouldn't show a prompt
-        if (_myId.IsBusy || _currentInteractable == null) 
-        {
-            return;
-        }
+        if (_myId.IsBusy || _currentInteractable == null) return;
 
-        // Check if the object has been destroyed (Unity null check)
         MonoBehaviour interactableMono = _currentInteractable as MonoBehaviour;
-        if (interactableMono == null)
-        {
-            _currentInteractable = null;
-            return;
-        }
+        if (interactableMono == null) { _currentInteractable = null; return; }
 
-        if (!_currentInteractable.IsAvailable(_myId))
-        {
-            return;
-        }
+        if (!_currentInteractable.IsAvailable(_myId)) return;
 
         _msgTimer -= Time.deltaTime;
         if (_msgTimer <= 0)
         {
-            // Use the already-validated MonoBehaviour reference
-            string prompt = _currentInteractable.GetInteractionPrompt(_interactKey, _altInteractKey);
+            // Pass empty strings or null because GetInteractionPrompt now ignores them 
+            // and uses its own Internal Identity (as per our updated PlayerInteractable)
+            string prompt = _currentInteractable.GetInteractionPrompt("", "");
             ChatBubble.Create(chatBubble, Vector3.up * 1.7f, interactableMono.transform, prompt, 0.25f);
         
             if (interactableMono.TryGetComponent(out SpotlightVisual visual)) 
@@ -75,85 +63,58 @@ public class PlayerInteract : MonoBehaviour
 
     private void HandleInput()
     {
-        if (_myId.IsBusy) 
-        {
-            _holdTimer = 0;
-            return;
-        }
+        if (_myId.IsBusy) { _holdTimer = 0; return; }
 
         Key iKey = GetKey(_myId.interactKey);
-        Key altKey = GetKey(_myId.altInteractKey);
+        Key aKey = GetKey(_myId.altInteractKey);
 
         if (_currentInteractable != null)
         {
-            // Check if the object has been destroyed (Unity null check)
-            MonoBehaviour interactableMono = _currentInteractable as MonoBehaviour;
-            if (interactableMono == null)
-            {
-                _currentInteractable = null;
-                return;
-            }
-
-            bool iPressed = Keyboard.current[iKey].isPressed;
-
-            // CHECK: Is this interactable another Player or just an object?
-            bool isPlayer = interactableMono.TryGetComponent<PlayerInteract>(out _);
-
-            if (iPressed)
-            {
-                // If it's a player, enforce the handshake
-                if (isPlayer && !IsTargetHoldingKey(_currentInteractable))
-                {
-                    ChatBubble.Create(chatBubble, Vector3.up * 2.2f, interactableMono.transform, "Waiting...", 0.1f);
-                    _holdTimer = 0;
-                }
-                else 
-                {
-                    // Either it's an object OR both players are holding: execute!
-                    float duration = _currentInteractable.GetHoldDuration(_myId);
-                    _holdTimer += Time.deltaTime;
-                    UpdateHoldUI(Mathf.Clamp01(_holdTimer / duration));
-
-                    if (_holdTimer >= duration)
-                    {
-                        _currentInteractable.Interact(_myId);
-                        _holdTimer = 0; 
-                    }
-                }
-            }
-            else if (Keyboard.current[iKey].wasReleasedThisFrame)
-            {
-                _holdTimer = 0;
-            }
-
-            // --- ALT INTERACTION ---
-            if (Keyboard.current[altKey].wasPressedThisFrame)
+            // 1. Logic for Stealing (Instant, no handshake required)
+            if (Keyboard.current[aKey].wasPressedThisFrame)
             {
                 _currentInteractable.AltInteract(_myId);
             }
-        }
-        // --- INVENTORY DROP ---
-        else if (Keyboard.current[iKey].wasPressedThisFrame && _inventory.HasItems)
-        {
-            _inventory.DropLastItem();
-        }
-    }
 
-    // Helper to check the other player's input
-    private bool IsTargetHoldingKey(IInteractable interactable)
-    {
-        if (interactable is MonoBehaviour targetMB)
-        {
-            var targetInteract = targetMB.GetComponent<PlayerInteract>();
-            if (targetInteract != null)
+            // 2. Logic for Trading (Requires handshake + timer)
+            if (_currentInteractable is PlayerInteractable targetPlayer)
             {
-                Key targetKey = GetKey(targetInteract._myId.interactKey);
-                return Keyboard.current[targetKey].isPressed;
+                bool iPressed = Keyboard.current[iKey].isPressed;
+                InteractionCoordinator.Instance.SetHandshake(_myId, targetPlayer.GetPlayerIdentity(), iPressed);
+
+                if (iPressed && InteractionCoordinator.Instance.IsTradeReady(_myId, targetPlayer.GetPlayerIdentity()))
+                {
+                    RunHoldTimer();
+                }
+                else if (Keyboard.current[iKey].wasReleasedThisFrame)
+                {
+                    _holdTimer = 0;
+                }
+            }
+            else
+            {
+                // 3. Logic for Generic Objects (Instant)
+                if (Keyboard.current[iKey].wasPressedThisFrame)
+                {
+                    _currentInteractable.Interact(_myId);
+                }
             }
         }
-        return false;
     }
+    private void RunHoldTimer()
+    {
+        float duration = _currentInteractable.GetHoldDuration(_myId);
+        _holdTimer += Time.deltaTime;
+        UpdateHoldUI(Mathf.Clamp01(_holdTimer / duration));
 
+        if (_holdTimer >= duration)
+        {
+            // Just trigger the master controller
+            _currentInteractable.Interact(_myId);
+            _holdTimer = 0;
+        }
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out IInteractable interactable))
@@ -165,7 +126,7 @@ public class PlayerInteract : MonoBehaviour
         if (other.TryGetComponent(out IInteractable interactable) && _currentInteractable == interactable)
         {
             _currentInteractable = null;
-            _holdTimer = 0; // Reset if we walk away
+            _holdTimer = 0;
         }
     }
     
@@ -176,6 +137,11 @@ public class PlayerInteract : MonoBehaviour
         string bar = new string('■', filledSegments) + new string('□', totalSegments - filledSegments);
         string colorTag = _myId.spotlightOn ? "<color=red>" : "<color=green>";
         ChatBubble.Create(chatBubble, Vector3.up * 2.2f, transform, $"{colorTag}{bar}</color>", 0.1f);
+    }
+    
+    public IInteractable GetCurrentTarget()
+    {
+        return _currentInteractable;
     }
 
     private Key GetKey(string name) => System.Enum.TryParse(name, true, out Key k) ? k : Key.None;
