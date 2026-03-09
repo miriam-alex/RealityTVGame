@@ -29,18 +29,19 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         identity = GetComponent<PlayerIdentity>();
+        // Check for controller connection (only for Player 1)
     }
 
     void FixedUpdate()
     {
-        // Check for controller connection (only for Player 1)
+        float moveX = 0f;
+        float moveZ = 0f;
+        
         if (identity != null && identity.playerIndex == 0)
         {
             useController = Gamepad.current != null && Gamepad.current.wasUpdatedThisFrame;
+            Debug.Log("using controller: " + useController);
         }
-
-        float moveX = 0f;
-        float moveZ = 0f;
 
         if (useController)
         {
@@ -72,6 +73,10 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    void OnCollisionEnter(Collision collision) {
+        Debug.Log($"P{identity.playerIndex + 1}: Collided with {collision.collider.name}");
+    }
+
     private Key GetKey(string keyName)
     {
         if (System.Enum.TryParse(keyName, ignoreCase: true, out Key key))
