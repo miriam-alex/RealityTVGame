@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -9,12 +10,18 @@ public class PlayerInventory : MonoBehaviour
     public int maxCapacity = 5;
 
     private List<Grabbable> _heldItems = new List<Grabbable>();
+    private PlayerIdentity _myId;
 
     public bool HasItems => _heldItems.Count > 0;
     public bool IsFull => _heldItems.Count >= maxCapacity;
     public int ItemCount => _heldItems.Count;
 
     public List<Grabbable> GetItems() => _heldItems;
+        
+    void Start()
+    {
+        _myId = GetComponent<PlayerIdentity>();
+    }
     
     public int CountItemsOfType(string itemType)
     {
@@ -53,11 +60,16 @@ public class PlayerInventory : MonoBehaviour
         item.transform.SetParent(carryPoint);
         float verticalOffset = (_heldItems.Count - 1) * stackOffset;
         item.transform.localPosition = new Vector3(0, verticalOffset, 0);
+        Debug.Log($"Added {item.name} to {_myId.name}'s inventory");
     }
 
-    public void DropLastItem()
+    public Grabbable DropLastItem()
     {
-        if (!HasItems) return;
+        if (!HasItems)
+        {
+            Debug.Log("Cannot DropLastItem: No items in inventory!");
+            return null;
+        }
 
         int lastIndex = _heldItems.Count - 1;
         Grabbable itemToDrop = _heldItems[lastIndex];
@@ -66,5 +78,17 @@ public class PlayerInventory : MonoBehaviour
         itemToDrop.OnDropped();
 
         _heldItems.RemoveAt(lastIndex);
+        return itemToDrop;
+    }
+
+    public bool TransferToPlayerInventory(PlayerInventory recieverInventory)
+    {
+        Assert.IsTrue(recieverInventory != null);
+        Debug.Log($"In TransferToPlayerInventory: Does player have inventory?: {HasItems}");
+        if (!HasItems) return false;
+        Grabbable item = this.DropLastItem();
+        Debug.Log($"Dropped {item.name} from {_myId.name}'s inventory");
+        recieverInventory.AddItem(item);
+        return true;
     }
 }
