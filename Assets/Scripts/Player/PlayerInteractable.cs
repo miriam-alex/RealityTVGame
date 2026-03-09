@@ -38,11 +38,8 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
     public void Interact(PlayerIdentity requester)
     {
         // The Coordinator is now the one-stop-shop for the transaction
-        InteractionCoordinator.Instance.TryTrade(requester, _myId, () => 
-        {
-            _myInventory.TransferToPlayerInventory(requester.GetComponent<PlayerInventory>());
-            ChatBubble.Create(chatBubblePrefab, Vector3.up * 2, transform, "Trade Complete!", 1f);
-        });
+        if (!InteractionCoordinator.Instance.CanInteract(requester, _myId)) return;
+        ExecuteInventoryTransfer(_myId, requester, "Here you go!");
     }
     
     public void AltInteract(PlayerIdentity requester) 
@@ -51,7 +48,7 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
         if (!InteractionCoordinator.Instance.CanInteract(requester, _myId)) return;
 
         // Direct transfer without handshake
-        ExecuteInventoryTransfer(requester, _myId, "STOLEN!");
+        ExecuteInventoryTransfer(requester, _myId, "Stolen!");
     }
     
     private void ExecuteInventoryTransfer(PlayerIdentity taker, PlayerIdentity giver, string label)
@@ -79,7 +76,7 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
         Debug.Log("Inventory transfer requested!");
     }
     
-    public string GetInteractionPrompt(string i, string a) => $"Hold [{_myId.interactKey}] Trade | [{_myId.altInteractKey}] Steal";
+    public string GetInteractionPrompt(string i, string a) => $"[{_myId.interactKey}] Give | [{_myId.altInteractKey}] Steal";
     
     public PlayerIdentity GetPlayerIdentity() => _myId;
 }
