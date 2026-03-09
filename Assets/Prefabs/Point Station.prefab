@@ -126,8 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Container
   items: []
-  capacity: 20
-  autoDetectItems: 1
 --- !u!1 &1228528148330239035
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +218,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9100482406f8d46bba676004746e137c, type: 2}
+  - {fileID: 2100000, guid: 4f49fdfab496543458d2e19a42db2e26, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

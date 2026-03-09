@@ -101,18 +101,19 @@ public class InputStation : MonoBehaviour
         }
     }
     
-    public void AssignToPlayer(GameObject player)
+    public void AssignToPlayer(GameObject player, Color color)
     {
         assignedPlayer = player;
+        playerColor = color; // Use the color passed in from the Manager
         
         PlayerIdentity playerIdentity = player?.GetComponent<PlayerIdentity>();
         if (playerIdentity != null)
         {
             playerIndex = playerIdentity.playerIndex;
-            playerColor = GetPlayerColor(playerIndex);
+            // The manager already handled the color, so we just update the name
             stationName = $"Player {playerIndex + 1} Collection Station";
             
-            Debug.Log($"[{name}] Assigned to Player {playerIndex + 1}");
+            Debug.Log($"[{name}] Assigned to Player {playerIndex + 1} with color {color}");
         }
         else
         {
@@ -121,6 +122,9 @@ public class InputStation : MonoBehaviour
         
         UpdateVisualFeedback();
     }
+
+// REMOVE the private GetPlayerColor(int index) method entirely 
+// to ensure the Manager is the only source of truth for colors.
     
     private Color GetPlayerColor(int index)
     {
