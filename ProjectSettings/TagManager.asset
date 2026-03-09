@@ -8,12 +8,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Players
   - Water
   - UI
   - Grabbable
-  - 
-  - 
+  - Cameraman
+  - CameramanCone
   - 
   - 
   - 
