@@ -4,8 +4,8 @@ using UnityEngine;
 public class Grabbable : MonoBehaviour, IInteractable
 {
     private Rigidbody _rb;
-    private bool _isGrabbed = false;
     private PlayerIdentity _myId;
+    private bool _isGrabbed = false;
 
     private void Awake() => _rb = GetComponent<Rigidbody>();
 

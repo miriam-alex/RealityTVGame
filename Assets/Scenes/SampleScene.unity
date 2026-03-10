@@ -675,14 +675,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProcessingStation
   recipes:
   - recipeName: Wood Chair to Finished Chair
-    ingredients:
-    - resource: {fileID: 11400000, guid: d4ad9e0595230de40a12e7259e331348, type: 2}
-      amount: 1
+    ingredients: []
     outputResource: {fileID: 11400000, guid: c7c0c2c66ddb7d14eb40e0f26337ebcd, type: 2}
     outputAmount: 1
     processingTime: 0
   inputContainer: {fileID: 165551738}
-  spawnPoint: {fileID: 1484683310}
+  spawnPoint: {fileID: 0}
 --- !u!1 &246782845
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,7 +990,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 57.728794
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1019,7 +1017,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3204267, y: -2.809958e-15, z: 9.505022e-16, w: 0.9472734}
-  m_LocalPosition: {x: 1.2884798, y: 8.503239, z: -7.626402}
+  m_LocalPosition: {x: 1.2884798, y: 6.071576, z: -4.319625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1893,12 +1891,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineGroupFraming
   FramingMode: 2
-  FramingSize: 0.32
+  FramingSize: 0.6
   CenterOffset: {x: 0, y: 0}
-  Damping: 2
+  Damping: 6
   SizeAdjustment: 2
   LateralAdjustment: 0
-  FovRange: {x: 1, y: 100}
+  FovRange: {x: 80, y: 100}
   DollyRange: {x: -100, y: 100}
   OrthoSizeRange: {x: 1, y: 1000}
 --- !u!114 &573746303
@@ -2328,7 +2326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 600dcab800ce2bc42af18100d0b0863d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OutputStation
-  spawnPoint: {fileID: 36848951}
+  spawnPoint: {fileID: 0}
   resourcePrefab: {fileID: 7845127901731481815, guid: 934dbd411d21468419f8a4bb01c332a2, type: 3}
   generationInterval: 20
   maxSupply: 5
@@ -2535,6 +2533,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3220898118647282058, guid: 00b2ce0087fb322459fc35430532ed7b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431502234585408060, guid: 00b2ce0087fb322459fc35430532ed7b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8436142446211001849, guid: 00b2ce0087fb322459fc35430532ed7b, type: 3}
       propertyPath: m_Name
       value: GwangjuTheater_Interior
@@ -3096,7 +3102,7 @@ MonoBehaviour:
   currentPersonality: 0
   runtimeSet: {fileID: 11400000, guid: 35d9d90b045664a289cbdc748927308e, type: 2}
   headTransform: {fileID: 1066069190}
-  cameraTransform: {fileID: 0}
+  cameraTransform: {fileID: 735360344}
   baseMoveSpeed: 0.75
   stoppingDistance: 5
   headRotationSpeed: 10
@@ -3937,14 +3943,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProcessingStation
   recipes:
   - recipeName: Wood to Chair
-    ingredients:
-    - resource: {fileID: 11400000, guid: bb0d01406cea9844caa0367efda2504e, type: 2}
-      amount: 1
+    ingredients: []
     outputResource: {fileID: 11400000, guid: d4ad9e0595230de40a12e7259e331348, type: 2}
     outputAmount: 1
     processingTime: 0
   inputContainer: {fileID: 1062042853}
-  spawnPoint: {fileID: 1499892004}
+  spawnPoint: {fileID: 0}
 --- !u!4 &1739043570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3731036007339153515, guid: 42ca7096524ce92478dcf2b0b3f143de, type: 3}
@@ -5039,6 +5043,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5791545612793304825, guid: 934dbd411d21468419f8a4bb01c332a2, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7356195972340965601, guid: 934dbd411d21468419f8a4bb01c332a2, type: 3}
       propertyPath: m_Name
       value: Wood

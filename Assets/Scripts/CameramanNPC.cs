@@ -12,7 +12,9 @@ public class CameramanNPC : MonoBehaviour
     [Header("Movement")]
     public PlayerRuntimeSet runtimeSet;
     public Transform headTransform;
-    public Transform cameraTransform;
+    public GameObject cone;
+    private Renderer coneRenderer;
+    private MeshFilter coneMeshFilter;
     public float baseMoveSpeed = 2.0f; // Slower "prowl" speed
     public float stoppingDistance = 6.0f;
     public float headRotationSpeed = 80f;
@@ -21,8 +23,17 @@ public class CameramanNPC : MonoBehaviour
     public float orbitSpeed = 0.5f; // How fast he circles while watching
     
     private Transform currentTarget;
-    private float personalityTimer;
     private Coroutine resetCoroutine;
+    private float personalityTimer;
+    [SerializeField] private float detectionRadius = 1.0f;
+    [SerializeField] private float detectionOffset = 1.0f;
+
+    void Awake()
+    {
+        coneRenderer = cone.GetComponent<Renderer>();
+        coneRenderer.material.color = Color.darkRed;
+        coneMeshFilter = cone.GetComponent<MeshFilter>();
+    }
 
     void Update()
     {
@@ -32,33 +43,37 @@ public class CameramanNPC : MonoBehaviour
         DetectPlayers();
     }
     
+    private void OnDrawGizmos()
+    {
+        if (cone.transform == null) return;
+    
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(cone.transform.position + detectionOffset * Vector3.forward, detectionRadius);
+    }
+    
     private void DetectPlayers()
     {
-        float beamLength = 10f; // How long the light goes
-        float beamRadius = 1.5f; // How wide the beam is
+        Vector3 center = cone.transform.position;
+        Collider[] hitColliders = Physics.OverlapSphere(center, detectionRadius);
 
-        // Define the cylinder points: From the lens to the tip of the beam
-        Vector3 point1 = headTransform.position;
-        Vector3 point2 = headTransform.position + (headTransform.forward * beamLength);
-
-        // Get all colliders currently inside this "Capsule" (Cylinder) volume
-        Collider[] hitColliders = Physics.OverlapCapsule(point1, point2, beamRadius);
-
-        // Reset all players first (assume none are spotted until we find them)
         foreach (var player in runtimeSet.Items)
         {
             if (player.TryGetComponent(out PlayerIdentity id)) id.isSpotted = false;
         }
 
         // Now mark only the ones currently inside the beam
+        bool playersSpotted = false;
         foreach (var hit in hitColliders)
         {
             if (hit.TryGetComponent(out PlayerIdentity id) || hit.GetComponentInParent<PlayerIdentity>())
             {
                 var pId = hit.GetComponent<PlayerIdentity>() ?? hit.GetComponentInParent<PlayerIdentity>();
                 pId.isSpotted = true;
+                playersSpotted = true;
             }
         }
+
+        coneRenderer.material.color = playersSpotted ? Color.green : Color.darkRed;
     }
 
     private void ManagePersonality()
