@@ -20,18 +20,13 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
 
     public bool IsAvailable(PlayerIdentity requester)
     {
-        // 1. Basic sanity checks
         if (_myId == null || requester == null || requester == _myId) return false;
-
-        // 2. Check if either player is already "Busy" (locked in a trade)
-        // We add a helper method to the Coordinator to check this cleanly
+        
         if (!InteractionCoordinator.Instance.CanInteract(requester, _myId))
         {
             return false;
         }
-
-        // 3. Optional: Are they currently looking at each other? 
-        // You could add a distance check here if you want to be extra safe
+        
         return true;
     }
 
@@ -40,9 +35,9 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
     public void Interact(PlayerIdentity requester)
     {
         if (!InteractionCoordinator.Instance.CanInteract(requester, _myId)) return;
-        ExecuteInventoryTransfer(_myId, requester, "Here you go!");
+        bool isSuccess = ExecuteInventoryTransfer(_myId, requester, "Here you go!");
 		// You get followers for doing a good thing on camera!
-        if (requester.isSpotted)
+        if (requester.isSpotted && isSuccess)
         {
             _scoreManager.RewardGive(requester.gameObject);
         }
@@ -59,19 +54,16 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
         }
     }
     
-    private void ExecuteInventoryTransfer(PlayerIdentity taker, PlayerIdentity giver, string label)
+    private bool ExecuteInventoryTransfer(PlayerIdentity taker, PlayerIdentity giver, string label)
     {
         // 1. Retrieve the inventories from the passed identities
         PlayerInventory takerInv = taker.GetComponent<PlayerInventory>();
         PlayerInventory giverInv = giver.GetComponent<PlayerInventory>();
-    
-        // 2. Perform the logic ONLY if components exist
+
+        bool success = false;
         if (takerInv != null && giverInv != null)
         {
-            // 3. The transfer is now unambiguous because the Coordinator 
-            // has already validated that 'taker' and 'giver' are distinct 
-            // and available.
-            bool success = giverInv.TransferToPlayerInventory(takerInv);
+            success = giverInv.TransferToPlayerInventory(takerInv);
         
             if (!success) 
             {
@@ -81,6 +73,7 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
 
         // 4. Visual feedback
         ChatBubble.Create(chatBubblePrefab, Vector3.up * 2, transform, label, 2f);
+        return success;
     }
     
     public string GetInteractionPrompt(string i, string a) => $"[{_myId.interactKey}] Give | [{_myId.altInteractKey}] Steal";

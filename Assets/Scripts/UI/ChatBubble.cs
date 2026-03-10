@@ -21,11 +21,9 @@ public class ChatBubble : MonoBehaviour
             Destroy(activeBubbles[parent].gameObject);
         }
 
-        // 2. Instantiate new bubble
         ChatBubble newBubble = Instantiate(prefab, parent);
         newBubble.transform.localPosition = localPosition;
         
-        // 3. Register this bubble
         activeBubbles[parent] = newBubble;
         
         newBubble.Setup(text);
