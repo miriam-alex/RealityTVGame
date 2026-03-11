@@ -3,11 +3,19 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 public class PlayerIdentity : MonoBehaviour {
+    [Header("Essentials")]
     public int playerIndex; // Set this to 0 for P1, 1 for P2 in the Inspector
-    public bool spotlightOn;
     public Color color;
     public PlayerRuntimeSet runtimeSet;
-    private List<GameObject> activePlayers;
+    [Header("Key Bindings")]
+    public string interactKey = "E";
+    public string altInteractKey = "F";
+    public bool isSpotted;
+    
+    [Header("UI Feedback")]
+    public Color spottedColor = Color.red;
+    private Color normalColor = Color.white;
+    private bool wasSpottedLastFrame;
     private GameObject bodyObject;
     private TMP_Text scoreText; 
     void Start()
@@ -21,15 +29,15 @@ public class PlayerIdentity : MonoBehaviour {
         }
         
         Transform scoreTextTransform = transform.Find("Overhead Canvas/Score");
-        Debug.Log("found: " + scoreTextTransform.name);
         if (scoreTextTransform != null)
         { 
             scoreText = scoreTextTransform.GetComponent<TextMeshProUGUI>();
         }
-        else
-        {
-            Debug.Log("Score Text Transform is null");
-        }
+    }
+    
+    void Update()
+    {
+        HandleSpottedVisuals();
     }
     
     void OnEnable() 
@@ -57,6 +65,41 @@ public class PlayerIdentity : MonoBehaviour {
         // 2. Restart the animation logic (Stop current one so they don't fight)
         StopAllCoroutines(); 
         StartCoroutine(AnimateScoreChange(gainedPoints));
+    }
+    
+    private void HandleSpottedVisuals()
+    {
+        // Only trigger changes when the state actually flips
+        if (isSpotted != wasSpottedLastFrame)
+        {
+            if (isSpotted)
+            {
+                // Start a pulsating effect or change color immediately
+                scoreText.text = "!!! " + scoreText.text + " !!!"; 
+                scoreText.color = spottedColor;
+                StartCoroutine(PulsateScore());
+            }
+            else
+            {
+                // Reset to normal
+                scoreText.color = normalColor;
+                scoreText.transform.localScale = Vector3.one;
+                // Remove the exclamation marks
+                scoreText.text = scoreText.text.Replace("!!! ", "").Replace(" !!!", "");
+                StopCoroutine(PulsateScore());
+            }
+            wasSpottedLastFrame = isSpotted;
+        }
+    }
+
+    private IEnumerator PulsateScore()
+    {
+        while (isSpotted)
+        {
+            float pulse = 1f + Mathf.PingPong(Time.time * 5f, 0.3f);
+            scoreText.transform.localScale = new Vector3(pulse, pulse, pulse);
+            yield return null;
+        }
     }
 
     private IEnumerator AnimateScoreChange(bool gainedPoints) 

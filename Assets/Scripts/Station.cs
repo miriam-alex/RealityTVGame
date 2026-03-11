@@ -24,21 +24,22 @@ public class Station : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (resourceRequired != null && !inventory.HasResource(resourceRequired))
-            {
-                Debug.Log("Resource required: " + resourceRequired.resourceName);
-                return;
-            }
-
-            if (chain.currentState != requiredPreviousState)
-            {
-                Debug.Log("Wrong state! Required: " + requiredPreviousState);
-                return;
-            }
+            // TODO: REWRITE
+            // if (resourceRequired != null && !inventory.HasResource(resourceRequired))
+            // {
+            //     Debug.Log("Resource required: " + resourceRequired.resourceName);
+            //     return;
+            // }
+            //
+            // if (chain.currentState != requiredPreviousState)
+            // {
+            //     Debug.Log("Wrong state! Required: " + requiredPreviousState);
+            //     return;
+            // }
             
             // add resource to inventory 
-            inventory.RemoveResource(resourceRequired);
-            inventory.AddResource(resourceProduced);
+            // inventory.RemoveResource(resourceRequired);
+            // inventory.AddResource(resourceProduced);
             chain.NextState(resourceProduced);
         }
     }

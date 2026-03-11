@@ -8,7 +8,9 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance; // Singleton instance
     
-    public int stealAmount = 20;
+    [Header("Settings")]
+    public int giveReward = 10;
+    public int stealPenalty = 20;
     public PlayerRuntimeSet playerRuntimeSet;
     private Dictionary<GameObject, int> playerScores = new Dictionary<GameObject, int>();
     void Awake()
@@ -36,6 +38,16 @@ public class ScoreManager : MonoBehaviour
             id.UpdateScoreUI(0, true);
         }
     }
+    
+    public void PenalizeSteal(GameObject player)
+    {
+        AddScore(-stealPenalty, player);
+    }
+    
+    public void RewardGive(GameObject player)
+    {
+        AddScore(giveReward, player);
+    }
 
     public void AddScore(int amount, GameObject player)
     {
@@ -58,17 +70,17 @@ public class ScoreManager : MonoBehaviour
         return 0;
     }
 
-    public void TransferPoints(GameObject playerFrom, GameObject playerTo)
-    {
-        if (playerScores.ContainsKey(playerFrom) && playerScores.ContainsKey(playerTo))
-        {
-            // We attempt to take up to the steal amount 
-            int pointsStolen = Mathf.Min(stealAmount, playerScores[playerTo]);
-            AddScore(-pointsStolen, playerFrom);
-            AddScore(pointsStolen, playerTo);
-            PlayerIdentity playerFromId = playerFrom.GetComponent<PlayerIdentity>();
-            PlayerIdentity playerToId = playerTo.GetComponent<PlayerIdentity>();
-        }
-    }
+    // public void TransferPoints(GameObject playerFrom, GameObject playerTo)
+    // {
+    //     if (playerScores.ContainsKey(playerFrom) && playerScores.ContainsKey(playerTo))
+    //     {
+    //         // We attempt to take up to the steal amount 
+    //         int pointsStolen = Mathf.Min(stealAmount, playerScores[playerFrom]);
+    //         AddScore(-pointsStolen, playerFrom);
+    //         AddScore(pointsStolen, playerTo);
+    //         PlayerIdentity playerFromId = playerFrom.GetComponent<PlayerIdentity>();
+    //         PlayerIdentity playerToId = playerTo.GetComponent<PlayerIdentity>();
+    //     }
+    // }
     
 }
