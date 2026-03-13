@@ -81,9 +81,9 @@ public class PlayerInteract : MonoBehaviour
             if (_playerInput != null)
             {
                 interactPressed = _playerInput.actions["Interact"].WasPressedThisFrame();
-                var giveAction = _playerInput.actions.FindAction("Give", false);
-                if (giveAction != null)
-                    altInteractPressed = giveAction.WasPressedThisFrame();
+                //var giveAction = _playerInput.actions.FindAction("Give", false);
+                //if (giveAction != null)
+                //    altInteractPressed = giveAction.WasPressedThisFrame();
             }
         }
         
