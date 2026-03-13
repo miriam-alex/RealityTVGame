@@ -25,9 +25,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Give",
+                    "name": "Steal",
                     "type": "Button",
-                    "id": "ac03d03e-bb1b-4cbd-9907-65091c0502e4",
+                    "id": "7ad7ba7c-00dc-4ab5-86e0-d953af936199",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -70,12 +70,23 @@
                 },
                 {
                     "name": "",
-                    "id": "ccd717b1-29d2-4987-83e2-7ecb88975d65",
-                    "path": "<Gamepad>/buttonSouth",
+                    "id": "bd3f9930-1e0f-4538-b2aa-9a7525e6f9ab",
+                    "path": "<Keyboard>/#(R)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Give",
+                    "action": "Steal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5016c293-2db0-44c1-86fb-36aa700a2e78",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
