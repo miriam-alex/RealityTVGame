@@ -29,29 +29,39 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         identity = GetComponent<PlayerIdentity>();
-        // Check for controller connection (only for Player 1)
+        identity = GetComponent<PlayerIdentity>();
     }
 
     void FixedUpdate()
     {
-        float moveX = 0f;
-        float moveZ = 0f;
+        Vector3 movement = Vector3.zero;
+        
+        // NEED TO FIX: for testing purposes, we are checking per playerIndex
+        // controllers need to work for both players (it does, I had to change the playerIndex to 1 to check for the other player)
+        // when checking
         
         if (identity != null && identity.playerIndex == 0)
         {
-            useController = Gamepad.current != null && Gamepad.current.wasUpdatedThisFrame;
-            Debug.Log("using controller: " + useController);
+            // uses PLayer Input -> Input Actions map
+            if (playerInput != null)
+            {
+                moveInput = playerInput.actions["Move"].ReadValue<Vector2>();
+            }
+
+            else
+            {
+                moveInput = Vector2.zero;
+            }
+            
+            movement = new Vector3(moveInput.x, 0f, moveInput.y).normalized * speed;
         }
 
-        if (useController)
-        {
-            // Use left stick for movement
-            Vector2 stick = Gamepad.current != null ? Gamepad.current.leftStick.ReadValue() : Vector2.zero;
-            moveX = stick.x;
-            moveZ = stick.y;
-        }
+        // for testing reasons, keeping option to move using keyboard for PLAYER 2 (IJKL)
         else
         {
+            float moveX = 0f;
+            float moveZ = 0f;
+            
             if (Keyboard.current[GetKey(moveLeftKey)].isPressed)
                 moveX = -1f;
             else if (Keyboard.current[GetKey(moveRightKey)].isPressed)
@@ -61,9 +71,10 @@ public class PlayerController : MonoBehaviour
                 moveZ = 1f;
             else if (Keyboard.current[GetKey(moveDownKey)].isPressed)
                 moveZ = -1f;
+            
+            movement = new Vector3(moveX, 0f, moveZ).normalized * speed;
         }
 
-        Vector3 movement = new Vector3(moveX, 0f, moveZ).normalized * speed;
         rb.linearVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
 
         if (movement != Vector3.zero)
