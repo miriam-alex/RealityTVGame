@@ -2044,6 +2044,50 @@ Transform:
   - {fileID: 246782846}
   m_Father: {fileID: 1066069190}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &749237431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 749237433}
+  - component: {fileID: 749237432}
+  m_Layer: 0
+  m_Name: HapticsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &749237432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749237431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24b644730e1d224c90a0dc00396c9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HapticsManager
+--- !u!4 &749237433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749237431}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.00652, y: 4, z: -0.48}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &790947586
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,6 +2685,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &942250799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619708729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6278142f8fe864db2c430fc473aa67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HapticsTester
 --- !u!1 &952931005 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5795073664236620774, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
@@ -5366,6 +5422,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5795073664236620774, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
       insertIndex: -1
       addedObject: {fileID: 942250789}
+    - targetCorrespondingSourceObject: {fileID: 5795073664236620774, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 942250799}
   m_SourcePrefab: {fileID: 100100000, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
 --- !u!1001 &8315919611577838931
 PrefabInstance:
@@ -5449,3 +5508,4 @@ SceneRoots:
   - {fileID: 903810490}
   - {fileID: 278752124}
   - {fileID: 968999052}
+  - {fileID: 749237433}
