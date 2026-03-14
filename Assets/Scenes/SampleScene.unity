@@ -2697,6 +2697,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6278142f8fe864db2c430fc473aa67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HapticsTester
+--- !u!114 &942250800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619708729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db24e0fd2ecd82f4fa21d2a20f8158cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHaptics
 --- !u!1 &952931005 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5795073664236620774, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
@@ -3830,6 +3842,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5795073664236620774, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1945178724}
+    - targetCorrespondingSourceObject: {fileID: 5795073664236620774, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1945178734}
   m_SourcePrefab: {fileID: 100100000, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
 --- !u!1001 &1622637646
 PrefabInstance:
@@ -4313,6 +4328,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1945178734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952931005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db24e0fd2ecd82f4fa21d2a20f8158cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHaptics
 --- !u!1 &2019528818
 GameObject:
   m_ObjectHideFlags: 0
@@ -5425,6 +5452,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5795073664236620774, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
       insertIndex: -1
       addedObject: {fileID: 942250799}
+    - targetCorrespondingSourceObject: {fileID: 5795073664236620774, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 942250800}
   m_SourcePrefab: {fileID: 100100000, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
 --- !u!1001 &8315919611577838931
 PrefabInstance:

@@ -162,6 +162,7 @@ public class PlayerInteract : MonoBehaviour
          _currentInteractable = interactable;
          if (_currentInteractable is PlayerInteractable targetPlayer) 
          {
+               GetComponent<PlayerHaptics>()?.Pulse(0.3f, 0.6f);
                CameramanNPC cam = FindObjectOfType<CameramanNPC>();
                if (cam != null)
                {

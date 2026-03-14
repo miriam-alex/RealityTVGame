@@ -29,7 +29,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         identity = GetComponent<PlayerIdentity>();
-        identity = GetComponent<PlayerIdentity>();
+
+        // adds haptics component at start of game
+        if (GetComponent<PlayerHaptics>() == null)
+            gameObject.AddComponent<PlayerHaptics>();
     }
 
     void FixedUpdate()
@@ -85,7 +88,16 @@ public class PlayerController : MonoBehaviour
     }
     
     void OnCollisionEnter(Collision collision) {
-        Debug.Log($"P{identity.playerIndex + 1}: Collided with {collision.collider.name}");
+        
+        // return if colliding with other object or self
+        PlayerIdentity otherIdentity = collision.gameObject.GetComponent<PlayerIdentity>();
+        if (otherIdentity == null || otherIdentity == identity)
+            return;
+
+        GetComponent<PlayerHaptics>()?.Pulse(0.5f, 0.2f);
+        
+        if (identity != null) 
+            Debug.Log($"P{identity.playerIndex + 1}: Collided with {collision.collider.name}");
     }
 
     private Key GetKey(string keyName)
