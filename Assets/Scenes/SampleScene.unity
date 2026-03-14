@@ -5398,6 +5398,14 @@ PrefabInstance:
       propertyPath: color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2992388302253331442, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
+      propertyPath: interactKey
+      value: A
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992388302253331442, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
+      propertyPath: altInteractKey
+      value: B
+      objectReference: {fileID: 0}
     - target: {fileID: 3078141419304760218, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
       propertyPath: m_Layer
       value: 3
