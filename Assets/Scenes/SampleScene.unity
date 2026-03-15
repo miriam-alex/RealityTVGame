@@ -3321,7 +3321,7 @@ MonoBehaviour:
   currentPersonality: 0
   runtimeSet: {fileID: 11400000, guid: 35d9d90b045664a289cbdc748927308e, type: 2}
   headTransform: {fileID: 1066069190}
-  cone: {fileID: 0}
+  cone: {fileID: 735360343}
   baseMoveSpeed: 0.75
   stoppingDistance: 5
   headRotationSpeed: 10
