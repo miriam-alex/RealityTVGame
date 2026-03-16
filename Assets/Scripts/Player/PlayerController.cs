@@ -38,43 +38,30 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 movement = Vector3.zero;
-        
+
         // NEED TO FIX: for testing purposes, we are checking per playerIndex
         // controllers need to work for both players (it does, I had to change the playerIndex to 1 to check for the other player)
         // when checking
-        
+
         if (identity != null && identity.playerIndex == 0)
         {
-            // uses PLayer Input -> Input Actions map
             if (playerInput != null)
-            {
                 moveInput = playerInput.actions["Move"].ReadValue<Vector2>();
-            }
-
             else
-            {
                 moveInput = Vector2.zero;
-            }
-            
             movement = new Vector3(moveInput.x, 0f, moveInput.y).normalized * speed;
         }
-
-        // for testing reasons, keeping option to move using keyboard for PLAYER 2 (IJKL)
         else
         {
-            float moveX = 0f;
-            float moveZ = 0f;
-            
-            if (Keyboard.current[GetKey(moveLeftKey)].isPressed)
-                moveX = -1f;
-            else if (Keyboard.current[GetKey(moveRightKey)].isPressed)
-                moveX = 1f;
-
-            if (Keyboard.current[GetKey(moveUpKey)].isPressed)
-                moveZ = 1f;
-            else if (Keyboard.current[GetKey(moveDownKey)].isPressed)
-                moveZ = -1f;
-            
+            // for testing reasons, keeping option to move using keyboard for PLAYER 2 (IJKL)
+            float moveX = 0f, moveZ = 0f;
+            if (Keyboard.current != null)
+            {
+                if (Keyboard.current[GetKey(moveLeftKey)].isPressed) moveX = -1f;
+                else if (Keyboard.current[GetKey(moveRightKey)].isPressed) moveX = 1f;
+                if (Keyboard.current[GetKey(moveUpKey)].isPressed) moveZ = 1f;
+                else if (Keyboard.current[GetKey(moveDownKey)].isPressed) moveZ = -1f;
+            }
             movement = new Vector3(moveX, 0f, moveZ).normalized * speed;
         }
 
