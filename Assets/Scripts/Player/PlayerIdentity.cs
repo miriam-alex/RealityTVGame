@@ -57,7 +57,7 @@ public class PlayerIdentity : MonoBehaviour {
         runtimeSet.Remove(this.gameObject);
     }
     
-    public void UpdateScoreUI(int newScore, bool gainedPoints) 
+    public void UpdateScoreUI(int newScore, int newCommunityScore, bool gainedPoints) 
     {
         // 1. Update the text
         scoreText.text = newScore.ToString();

@@ -92,7 +92,7 @@ public class InputStation : MonoBehaviour
         // Add points to player via ScoreManager
         if (ScoreManager.Instance != null)
         {
-            ScoreManager.Instance.AddScore(points, assignedPlayer);
+            ScoreManager.Instance.RewardResource(assignedPlayer, resourceItem);
             Debug.Log($"[{name}] Player {playerIndex + 1} gained {points} points from {resourceItem.ResourceName} (Total: {totalPointsCollected})");
         }
         else

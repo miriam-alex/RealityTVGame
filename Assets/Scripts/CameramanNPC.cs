@@ -8,7 +8,7 @@ public class CameramanNPC : MonoBehaviour
 {
     [Header("Personality Settings")]
     public DirectorPersonality currentPersonality = DirectorPersonality.Indifferent;
-
+    
     [Header("Movement")]
     public PlayerRuntimeSet runtimeSet;
     public Transform headTransform;
@@ -21,100 +21,66 @@ public class CameramanNPC : MonoBehaviour
 
     [Header("Orbit Behavior")]
     public float orbitSpeed = 0.5f; // How fast he circles while watching
-
+    
     [Header("Bump Penalty (score penalty for bumping into the cameraman)")]
     public int bumpPenalty = 5;
-
+    
     private Transform currentTarget;
     private Coroutine resetCoroutine;
     private float personalityTimer;
-    private float detectionRadius = 5f;
-    private float detectionOffset = 4f;
-    private static bool _warnedNoRuntimeSet;
-    private static bool _warnedNoPlayers;
+    [SerializeField] private float detectionRadius = 1.0f;
+    [SerializeField] private float detectionOffset = 1.0f;
 
     void Awake()
     {
-        if (cone != null)
-        {
-            coneRenderer = cone.GetComponent<Renderer>();
-            coneMeshFilter = cone.GetComponent<MeshFilter>();
-            if (coneRenderer != null) coneRenderer.material.color = Color.darkRed;
-        }
-
-        else
-        {
-            Debug.LogWarning("Assign cone in inspector");
-        }
-       
+        coneRenderer = cone.GetComponent<Renderer>();
+        coneRenderer.material.color = Color.darkRed;
+        coneMeshFilter = cone.GetComponent<MeshFilter>();
     }
 
     void Update()
     {
-        if (runtimeSet == null)
-        {
-            if (!_warnedNoRuntimeSet) 
-            { 
-                Debug.LogWarning("CameramanNPC: Assign Runtime Set in the Inspector (same PlayerRuntimeSet as your players)."); 
-                _warnedNoRuntimeSet = true; 
-            }
-            return;
-        }
-        if (runtimeSet.Items.Count == 0 && !_warnedNoPlayers) 
-        { 
-            Debug.LogWarning("CameramanNPC: Runtime Set has no players. Ensure players are in the scene and use the same PlayerRuntimeSet."); 
-            _warnedNoPlayers = true; 
-        }
-
         ManagePersonality();
         MoveMechanically();
         RotateHead();
         DetectPlayers();
     }
-
+    
     private void OnDrawGizmos()
     {
-        if (cone == null) return;
-        Vector3 center = cone.transform.position + cone.transform.forward * detectionOffset;
+        if (cone.transform == null) return;
+    
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(center, detectionRadius);
+        Gizmos.DrawWireSphere(cone.transform.position + detectionOffset * Vector3.forward, detectionRadius);
     }
-
+    
     private void DetectPlayers()
     {
-        if (runtimeSet == null || runtimeSet.Items.Count == 0) return;
+        Vector3 center = cone.transform.position;
+        Collider[] hitColliders = Physics.OverlapSphere(center, detectionRadius);
 
         foreach (var player in runtimeSet.Items)
         {
-            if (player != null && player.TryGetComponent(out PlayerIdentity id))
-                id.isSpotted = false;
+            if (player.TryGetComponent(out PlayerIdentity id)) id.isSpotted = false;
         }
 
+        // Now mark only the ones currently inside the beam
         bool playersSpotted = false;
-        if (cone != null && coneRenderer != null)
+        foreach (var hit in hitColliders)
         {
-            Vector3 center = cone.transform.position + cone.transform.forward * detectionOffset;
-            Collider[] hitColliders = Physics.OverlapSphere(center, detectionRadius);
-
-
-            foreach (var hit in hitColliders)
+            if (hit.TryGetComponent(out PlayerIdentity id) || hit.GetComponentInParent<PlayerIdentity>())
             {
-                if (hit == null) continue;
                 var pId = hit.GetComponent<PlayerIdentity>() ?? hit.GetComponentInParent<PlayerIdentity>();
-                if (pId != null)
-                {
-                    pId.isSpotted = true;
-                    playersSpotted = true;
-                }
+                pId.isSpotted = true;
+                playersSpotted = true;
             }
-            coneRenderer.material.color = playersSpotted ? Color.green : Color.darkRed;
         }
+
+        coneRenderer.material.color = playersSpotted ? Color.green : Color.darkRed;
     }
 
     private void ManagePersonality()
     {
-        if (runtimeSet == null || runtimeSet.Items.Count == 0) return;
-
         if (currentPersonality == DirectorPersonality.Indifferent)
         {
             personalityTimer -= Time.deltaTime;
@@ -124,7 +90,7 @@ public class CameramanNPC : MonoBehaviour
                 if (players.Count > 0)
                 {
                     currentTarget = players[Random.Range(0, players.Count)].transform;
-                    personalityTimer = Random.Range(5f, 10f);
+                    personalityTimer = Random.Range(5f, 10f); 
                 }
             }
         }
@@ -135,7 +101,7 @@ public class CameramanNPC : MonoBehaviour
         if (currentTarget == null) return;
 
         float dist = Vector3.Distance(transform.position, currentTarget.position);
-
+        
         // 1. DYNAMIC STATS BASED ON MODE
         float speed = baseMoveSpeed;
         float currentStopDist = stoppingDistance;
@@ -156,7 +122,7 @@ public class CameramanNPC : MonoBehaviour
         {
             // Rotate the NPC's position around the player so he never stops
             transform.RotateAround(currentTarget.position, Vector3.up, orbitSpeed * 20f * Time.deltaTime);
-
+            
             // Gently maintain the distance so he doesn't drift away
             Vector3 desiredPos = (transform.position - currentTarget.position).normalized * currentStopDist + currentTarget.position;
             transform.position = Vector3.Lerp(transform.position, desiredPos, Time.deltaTime);
@@ -169,7 +135,7 @@ public class CameramanNPC : MonoBehaviour
 
         // 1. Aim for the "Chest" (1 unit up from pivot)
         Vector3 targetPoint = currentTarget.position + Vector3.up * 1.0f;
-
+    
         // 2. Calculate direction from the HEAD's current position
         Vector3 direction = (targetPoint - headTransform.position).normalized;
 
@@ -178,11 +144,11 @@ public class CameramanNPC : MonoBehaviour
             // 3. Create the target rotation
             Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-            // 4. Smoothly rotate. If this is still "wrong,"
+            // 4. Smoothly rotate. If this is still "wrong," 
             // your mesh is likely rotated 90 degrees inside the child object.
             headTransform.rotation = Quaternion.RotateTowards(
-                headTransform.rotation,
-                targetRotation,
+                headTransform.rotation, 
+                targetRotation, 
                 headRotationSpeed * (currentPersonality != DirectorPersonality.Indifferent ? 3f : 1f) * Time.deltaTime
             );
         }
@@ -202,7 +168,7 @@ public class CameramanNPC : MonoBehaviour
         yield return new WaitForSeconds(delay);
         currentPersonality = DirectorPersonality.Indifferent;
     }
-
+    
     void OnCollisionEnter(Collision collision)
     {
         var id = collision.gameObject.GetComponent<PlayerIdentity>() ?? collision.gameObject.GetComponentInParent<PlayerIdentity>();
@@ -219,4 +185,5 @@ public class CameramanNPC : MonoBehaviour
 
         id.GetComponent<PlayerHaptics>()?.Pulse(0.5f, 0.2f);
     }
+    
 }
