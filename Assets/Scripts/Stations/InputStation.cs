@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class InputStation : MonoBehaviour
@@ -13,6 +14,7 @@ public class InputStation : MonoBehaviour
     [Header("Visual Feedback")]
     public Color playerColor = Color.white;
     private Renderer stationRenderer;
+    private TextMeshPro stationNameText;
     
     [Header("Debug")]
     public int totalPointsCollected = 0;
@@ -20,6 +22,8 @@ public class InputStation : MonoBehaviour
     private void Start()
     {
         stationRenderer = GetComponent<Renderer>();
+        stationNameText = GetComponentInChildren<TextMeshPro>();
+        
         if (stationRenderer == null)
         {
             stationRenderer = GetComponentInChildren<Renderer>();
@@ -92,13 +96,15 @@ public class InputStation : MonoBehaviour
         // Add points to player via ScoreManager
         if (ScoreManager.Instance != null)
         {
-            ScoreManager.Instance.AddScore(points, assignedPlayer);
+            ScoreManager.Instance.RewardResources(assignedPlayer, resourceItem);
             Debug.Log($"[{name}] Player {playerIndex + 1} gained {points} points from {resourceItem.ResourceName} (Total: {totalPointsCollected})");
         }
         else
         {
             Debug.LogError($"[{name}] ScoreManager.Instance is null!");
         }
+
+        stationNameText.text = $"{totalPointsCollected}";
     }
     
     public void AssignToPlayer(GameObject player, Color color)

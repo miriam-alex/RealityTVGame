@@ -13,6 +13,7 @@ public class ScoreManager : MonoBehaviour
     public int stealPenalty = 20;
     public PlayerRuntimeSet playerRuntimeSet;
     private Dictionary<GameObject, int> playerScores = new Dictionary<GameObject, int>();
+    private Dictionary<GameObject, int> playerCommunityScores = new Dictionary<GameObject, int>();
     void Awake()
     {
         if (Instance == null)
@@ -34,6 +35,7 @@ public class ScoreManager : MonoBehaviour
         foreach (GameObject player in activePlayers)
         {
             playerScores[player] = 0;
+            playerCommunityScores[player] = 0;
             PlayerIdentity id = player.GetComponent<PlayerIdentity>();
             id.UpdateScoreUI(0, true);
         }
@@ -47,6 +49,11 @@ public class ScoreManager : MonoBehaviour
     public void RewardGive(GameObject player)
     {
         AddScore(giveReward, player);
+    }
+
+    public void RewardResources(GameObject player, ResourceItem resource)
+    {
+        AddScore(resource.PointsValue, player);
     }
 
     public void AddScore(int amount, GameObject player)
