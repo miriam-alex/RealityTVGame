@@ -13,14 +13,12 @@ public class ScoreManager : MonoBehaviour
     public int stealPenalty = 20;
     public PlayerRuntimeSet playerRuntimeSet;
     private Dictionary<GameObject, int> playerScores = new Dictionary<GameObject, int>();
-    private Dictionary<GameObject, int> playerCommunityScores = new Dictionary<GameObject, int>();
+
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            // Optional: Keep the manager across scenes
-            // DontDestroyOnLoad(gameObject); 
         }
         else
         {
@@ -31,13 +29,12 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         List<GameObject> activePlayers = playerRuntimeSet.Items;
-        // Initializing mapping from Player -> Score
         foreach (GameObject player in activePlayers)
         {
             playerScores[player] = 0;
-            playerCommunityScores[player] = 0;
             PlayerIdentity id = player.GetComponent<PlayerIdentity>();
-            id.UpdateScoreUI(0, true);
+            if (id != null)
+                id.UpdateScoreUI(0, true);
         }
     }
     
@@ -58,15 +55,23 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(int amount, GameObject player)
     {
-        if (playerScores.ContainsKey(player))
-        {
-            playerScores[player] += amount;
-            playerScores[player] = Mathf.Max(0, playerScores[player]);
-            PlayerIdentity id = player.GetComponent<PlayerIdentity>();
-            Debug.Log($"Player {id.playerIndex + 1} score: {playerScores[player]}");
+        if (player == null) return;
 
-            bool gainedPoints = (amount > 0);
-            id.UpdateScoreUI(playerScores[player], gainedPoints);
+        if (!playerScores.ContainsKey(player))
+            playerScores[player] = 0;
+
+        int oldScore = playerScores[player];
+        playerScores[player] += amount;
+        playerScores[player] = Mathf.Max(0, playerScores[player]);
+        int newScore = playerScores[player];
+        int delta = newScore - oldScore;
+
+        PlayerIdentity id = player.GetComponent<PlayerIdentity>();
+        if (id != null)
+        {
+            Debug.Log($"Player {id.playerIndex + 1} score: {newScore}");
+            bool gainedPoints = delta > 0;
+            id.UpdateScoreUI(newScore, gainedPoints);
         }
     }
 
@@ -76,18 +81,4 @@ public class ScoreManager : MonoBehaviour
             return playerScores[player];
         return 0;
     }
-
-    // public void TransferPoints(GameObject playerFrom, GameObject playerTo)
-    // {
-    //     if (playerScores.ContainsKey(playerFrom) && playerScores.ContainsKey(playerTo))
-    //     {
-    //         // We attempt to take up to the steal amount 
-    //         int pointsStolen = Mathf.Min(stealAmount, playerScores[playerFrom]);
-    //         AddScore(-pointsStolen, playerFrom);
-    //         AddScore(pointsStolen, playerTo);
-    //         PlayerIdentity playerFromId = playerFrom.GetComponent<PlayerIdentity>();
-    //         PlayerIdentity playerToId = playerTo.GetComponent<PlayerIdentity>();
-    //     }
-    // }
-    
 }
