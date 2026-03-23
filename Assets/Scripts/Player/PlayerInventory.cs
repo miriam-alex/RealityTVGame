@@ -96,4 +96,15 @@ public class PlayerInventory : MonoBehaviour
         recieverInventory.AddItem(item);
         return true;
     }
+
+    public bool TransferToPlayerInventory(PlayerInventory recieverInventory, out Grabbable transferredItem)
+    {
+        transferredItem = null;
+        Assert.IsTrue(recieverInventory != null);
+        if (!HasItems) return false;
+        Grabbable item = this.DropLastItem();
+        transferredItem = item;
+        recieverInventory.AddItem(item);
+        return true;
+    }
 }

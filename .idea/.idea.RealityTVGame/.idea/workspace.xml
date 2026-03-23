@@ -6,797 +6,47 @@
   <component name="ChangeListManager">
     <list default="true" id="548baca1-a2e6-4029-95e1-d3838846d670" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RealityTVGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RealityTVGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Lighting Settings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Lighting Settings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Materials/Wooden Chair mat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Materials/Wooden Chair mat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Materials/Wooden Stool mat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Materials/Wooden Stool mat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Materials/chair albedo 1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Materials/chair albedo 1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Materials/chair albedo.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Materials/chair albedo.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Meshes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Meshes/Wooden Chair.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Meshes/Wooden Chair.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Meshes/Wooden Stool.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Meshes/Wooden Stool.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Prefabs/Wooden Chair.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Prefabs/Wooden Chair.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Prefabs/Wooden Stool.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Prefabs/Wooden Stool.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Scenes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Scenes/Test Scene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Scenes/Test Scene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Textures/Stool albedo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Textures/Stool albedo.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Textures/chair albedo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/Aegis77/Wooden Chair Set/Textures/chair albedo.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/FBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/FBX/Korv.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/FBX/Korv.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/FBX/Log.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/FBX/Log.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/FBX/Plank.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/FBX/Plank.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Materials/Korv.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Materials/Korv.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Materials/Log.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Materials/Log.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Materials/Plank.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Materials/Plank.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Prefabs/Korv.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Prefabs/Korv.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Prefabs/Log.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Prefabs/Log.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Prefabs/Plank.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Prefabs/Plank.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Korv_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Korv_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Korv_Korv_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Korv_Korv_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Korv_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Korv_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Log_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Log_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Log_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Log_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Log_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Log_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Plank_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Plank_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Plank_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Plank_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Plank_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/Props_Demo/Textures/Plank_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_Heater2.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_Heater2.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_LargeOwenHandle.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_LargeOwenHandle.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_LargePot.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_LargePot.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_LargePotTop.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_LargePotTop.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_LargeSimplePot.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_LargeSimplePot.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_MediumBlock2.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_MediumBlock2.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_MediumSimplePot.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_MediumSimplePot.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_PlankItteration1.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_PlankItteration1.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_PlankItteration3.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_PlankItteration3.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_PlankItteration4.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_PlankItteration4.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_PlankItteration5.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_PlankItteration5.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_Plate.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_Plate.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_SmallScrew.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_SmallScrew.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_TableLeg.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_TableLeg.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_TableLegFoot.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_TableLegFoot.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_TableRidge.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_TableRidge.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_TableTop.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleCookingStation_Demo/C_TableTop.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_ChiselChipper.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_ChiselChipper.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_ChiselTool.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_ChiselTool.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_CutStone.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_CutStone.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_CutStonePart.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_CutStonePart.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_Plank2.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_Plank2.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_Plank3.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_Plank3.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_Stone1.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_Stone1.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_Stone5.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_Stone5.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_StoneBlockLong2.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_StoneBlockLong2.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_StoneBowlSmall.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_StoneBowlSmall.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_SupportMediumThick1.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_SupportMediumThick1.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_SupportMediumThick2.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_SupportMediumThick2.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_TablePartSmall.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleStonecutter_Demo/SC_TablePartSmall.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_GardenSaw.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_GardenSaw.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_MiscWood2.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_MiscWood2.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_Nail.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_Nail.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_NailBox.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_NailBox.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_PlankShort1.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_PlankShort1.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_PlankShort2.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_PlankShort2.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_PlankShort3.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_PlankShort3.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_WoodCaseSupport2.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_WoodCaseSupport2.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_WoodPillar3.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_WoodPillar3.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_WoodPillar4.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/FBX/SimpleWoodStation_Demo/W_WoodPillar4.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/CompleteStation_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/CompleteStation_Demo/CompleteCooking_Demo.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/CompleteStation_Demo/CompleteCooking_Demo.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_Heater2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_Heater2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_LargeOwenHandle.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_LargeOwenHandle.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_LargePot.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_LargePot.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_LargePotTop.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_LargePotTop.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_LargeSimplePot.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_LargeSimplePot.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_MediumBlock2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_MediumBlock2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_MediumSimplePot.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_MediumSimplePot.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_PlankItteration1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_PlankItteration1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_PlankItteration3.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_PlankItteration3.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_PlankItteration4.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_PlankItteration4.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_PlankItteration5.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_PlankItteration5.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_Plate.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_Plate.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_SmallScrew.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_SmallScrew.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_TableLeg.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_TableLeg.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_TableLegFoot.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_TableLegFoot.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_TableRidge.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_TableRidge.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_TableTop.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleCookingStation_Demo/IndividualParts_Demo/C_TableTop.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/CompleteStation_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/CompleteStation_Demo/CompleteStonecutter_Demo.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/CompleteStation_Demo/CompleteStonecutter_Demo.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_ChiselChipper.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_ChiselChipper.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_ChiselTool.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_ChiselTool.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_CutStone.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_CutStone.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_CutStonePart.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_CutStonePart.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_Plank2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_Plank2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_Plank3.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_Plank3.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_Stone1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_Stone1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_Stone5.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_Stone5.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_StoneBlockLong2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_StoneBlockLong2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_StoneBowlSmall.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_StoneBowlSmall.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_SupportMediumThick1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_SupportMediumThick1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_SupportMediumThick2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_SupportMediumThick2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_TablePartSmall.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleStonecutter_Demo/SimpleStonecutter_Demo/SC_TablePartSmall.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/CompleteStation_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/CompleteStation_Demo/CompleteWoodworker_Demo.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/CompleteStation_Demo/CompleteWoodworker_Demo.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_GardenSaw.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_GardenSaw.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_MiscWood2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_MiscWood2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_Nail.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_Nail.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_NailBox.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_NailBox.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_PlankShort1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_PlankShort1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_PlankShort2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_PlankShort2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_PlankShort3.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_PlankShort3.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_WoodCaseSupport2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_WoodCaseSupport2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_WoodPillar3.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_WoodPillar3.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_WoodPillar4.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/PreFabs/SimpleWoodStation_Demo/IndividualParts_Demo/W_WoodPillar4.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Shader/Demo_GrassWindShader.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Shader/Demo_GrassWindShader.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_Heater2_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_Heater2_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_Heater2_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_Heater2_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_Heater2_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_Heater2_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargeOwenHandle_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargeOwenHandle_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargeOwenHandle_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargeOwenHandle_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargeOwenHandle_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargeOwenHandle_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargePotTop_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargePotTop_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargePotTop_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargePotTop_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargePotTop_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargePotTop_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargePot_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargePot_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargePot_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargePot_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargePot_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargePot_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargeSimplePot_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargeSimplePot_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargeSimplePot_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargeSimplePot_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargeSimplePot_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_LargeSimplePot_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumBlock2_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumBlock2_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumBlock2_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumBlock2_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumBlock2_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumBlock2_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumBlock_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumBlock_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumBlock_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumBlock_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumBlock_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumBlock_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumSimplePot_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumSimplePot_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumSimplePot_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumSimplePot_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumSimplePot_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_MediumSimplePot_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration1_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration1_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration1_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration1_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration1_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration1_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration3_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration3_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration3_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration3_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration3_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration3_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration4_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration4_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration4_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration4_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration4_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration4_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration5_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration5_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration5_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration5_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration5_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_PlankItteration5_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_Plate_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_Plate_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_Plate_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_Plate_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_Plate_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_Plate_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_SmallScrew_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_SmallScrew_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_SmallScrew_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_SmallScrew_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_SmallScrew_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_SmallScrew_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableLegFoot_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableLegFoot_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableLegFoot_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableLegFoot_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableLegFoot_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableLegFoot_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableLeg_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableLeg_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableLeg_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableLeg_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableLeg_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableLeg_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableRidge_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableRidge_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableRidge_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableRidge_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableRidge_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableRidge_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableTop_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableTop_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableTop_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableTop_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableTop_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleCookingStation_Demo/C_TableTop_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_ChiselChipper_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_ChiselChipper_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_ChiselChipper_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_ChiselChipper_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_ChiselChipper_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_ChiselChipper_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_ChiselTool_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_ChiselTool_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_ChiselTool_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_ChiselTool_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_ChiselTool_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_ChiselTool_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_CutStonePart_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_CutStonePart_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_CutStonePart_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_CutStonePart_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_CutStonePart_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_CutStonePart_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_CutStone_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_CutStone_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_CutStone_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_CutStone_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_CutStone_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_CutStone_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Plank2_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Plank2_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Plank2_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Plank2_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Plank2_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Plank2_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Plank3_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Plank3_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Plank3_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Plank3_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Plank3_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Plank3_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone1_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone1_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone1_Emission.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone1_Emission.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone1_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone1_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone1_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone1_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone5_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone5_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone5_Emission.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone5_Emission.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone5_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone5_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone5_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_Stone5_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_StoneBlockLong2_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_StoneBlockLong2_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_StoneBlockLong2_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_StoneBlockLong2_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_StoneBlockLong2_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_StoneBlockLong2_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_StoneBowlSmall_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_StoneBowlSmall_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_StoneBowlSmall_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_StoneBowlSmall_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_StoneBowlSmall_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_StoneBowlSmall_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_SupportMediumThick1_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_SupportMediumThick1_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_SupportMediumThick1_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_SupportMediumThick1_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_SupportMediumThick1_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_SupportMediumThick1_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_SupportMediumThick2_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_SupportMediumThick2_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_SupportMediumThick2_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_SupportMediumThick2_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_SupportMediumThick2_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_SupportMediumThick2_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_TablePartSmall_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_TablePartSmall_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_TablePartSmall_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_TablePartSmall_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_TablePartSmall_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleStonecutter_Demo/SC_TablePartSmall_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_GardenSaw_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_GardenSaw_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_GardenSaw_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_GardenSaw_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_GardenSaw_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_GardenSaw_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_MiscWood1_AlbedoTransparency 1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_MiscWood1_AlbedoTransparency 1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_MiscWood1_MetallicSmoothness 1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_MiscWood1_MetallicSmoothness 1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_MiscWood1_Normal 1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_MiscWood1_Normal 1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_NailBox_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_NailBox_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_NailBox_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_NailBox_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_NailBox_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_NailBox_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_Nail_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_Nail_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_Nail_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_Nail_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_Nail_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_Nail_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort1_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort1_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort1_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort1_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort1_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort1_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort2_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort2_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort2_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort2_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort2_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort2_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort3_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort3_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort3_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort3_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort3_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_PlankShort3_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodCaseSupport2_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodCaseSupport2_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodCaseSupport2_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodCaseSupport2_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodCaseSupport2_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodCaseSupport2_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodPillar3_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodPillar3_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodPillar3_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodPillar3_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodPillar3_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodPillar3_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodPillar4_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodPillar4_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodPillar4_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodPillar4_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodPillar4_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/Textures/SimpleWoodStation_Demo/W_WoodPillar4_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_Heater2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_Heater2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_LargeOwenHandle.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_LargeOwenHandle.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_LargePot.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_LargePot.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_LargePotTop.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_LargePotTop.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_LargeSimplePot.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_LargeSimplePot.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_MediumBlock2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_MediumBlock2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_MediumSimplePot.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_MediumSimplePot.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_PlankItteration1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_PlankItteration1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_PlankItteration3.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_PlankItteration3.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_PlankItteration4.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_PlankItteration4.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_PlankItteration5.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_PlankItteration5.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_Plate.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_Plate.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_SmallScrew.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_SmallScrew.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_SmallSimplePot.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_SmallSimplePot.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_TableLeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_TableLeg.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_TableLegFoot.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_TableLegFoot.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_TableRidge.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_TableRidge.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_TableTop.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleCookingStation_Demo/C_TableTop.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_ChiselChipper.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_ChiselChipper.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_ChiselTool.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_ChiselTool.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_CutStone.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_CutStone.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_CutStonePart.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_CutStonePart.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_Plank2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_Plank2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_Plank3.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_Plank3.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_Stone1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_Stone1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_Stone5.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_Stone5.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_StoneBlockLong2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_StoneBlockLong2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_StoneBowlSmall.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_StoneBowlSmall.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_SupportMediumThick1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_SupportMediumThick1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_SupportMediumThick2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_SupportMediumThick2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_TablePartSmall.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleStonecutter_Demo/SC_TablePartSmall.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_GardenSaw.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_GardenSaw.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_MiscWood2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_MiscWood2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_Nail.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_Nail.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_NailBox.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_NailBox.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_PlankShort1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_PlankShort1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_PlankShort2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_PlankShort2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_PlankShort3.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_PlankShort3.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_WoodCaseSupport2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_WoodCaseSupport2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_WoodPillar3.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_WoodPillar3.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_WoodPillar4.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/URP_Materials/SimpleWoodStation_Demo/W_WoodPillar4.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/DemoPack.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/DemoPack.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainData.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainData/CookingData.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainData/CookingData.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainData/StoneTerrain.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainData/StoneTerrain.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainData/WoodTerrain.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainData/WoodTerrain.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainFBX.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainFBX/SmallGrassClump.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainFBX/SmallGrassClump.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainFBX/WeedClump.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainFBX/WeedClump.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainLayers.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainLayers/DirtFloor_demo.terrainlayer" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainLayers/DirtFloor_demo.terrainlayer.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainLayers/GrassDark_demo.terrainlayer" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainLayers/GrassDark_demo.terrainlayer.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainLayers/GrassLight_demo.terrainlayer" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainLayers/GrassLight_demo.terrainlayer.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainLayers/PlankFloor_demo.terrainlayer" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainLayers/PlankFloor_demo.terrainlayer.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainLayers/StoneFloor_demo.terrainlayer" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainLayers/StoneFloor_demo.terrainlayer.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainMaterials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainMaterials/SmallGrassClump.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainMaterials/SmallGrassClump.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainMaterials/WeedClump.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainMaterials/WeedClump.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainPrefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainPrefabs/CookingTerrain.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainPrefabs/CookingTerrain.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainPrefabs/SmallGrassClump.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainPrefabs/SmallGrassClump.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainPrefabs/StoneCutterTerrain.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainPrefabs/StoneCutterTerrain.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainPrefabs/WeedClump.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainPrefabs/WeedClump.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainPrefabs/WoodworkerTerrain.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainPrefabs/WoodworkerTerrain.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/SmallGrassClump.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/SmallGrassClump/SmallGrassClump_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/SmallGrassClump/SmallGrassClump_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/SmallGrassClump/SmallGrassClump_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/SmallGrassClump/SmallGrassClump_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/SmallGrassClump/SmallGrassClump_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/SmallGrassClump/SmallGrassClump_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrass2K.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrass2K/grass_01_ambient_occlusion_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrass2K/grass_01_ambient_occlusion_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrass2K/grass_01_color_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrass2K/grass_01_color_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrass2K/grass_01_height_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrass2K/grass_01_height_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrass2K/grass_01_normal_gl_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrass2K/grass_01_normal_gl_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrass2K/grass_01_roughness_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrass2K/grass_01_roughness_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrassV2K.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrassV2K/grass_02_amibent_occlusion_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrassV2K/grass_02_amibent_occlusion_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrassV2K/grass_02_base_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrassV2K/grass_02_base_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrassV2K/grass_02_height_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrassV2K/grass_02_height_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrassV2K/grass_02_normal_dx_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrassV2K/grass_02_normal_dx_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrassV2K/grass_02_normal_gl_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrassV2K/grass_02_normal_gl_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrassV2K/grass_02_roughness_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGrassV2K/grass_02_roughness_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundDirt2K.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundDirt2K/ground_with_rocks_02_ambient_occlusion_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundDirt2K/ground_with_rocks_02_ambient_occlusion_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundDirt2K/ground_with_rocks_02_color_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundDirt2K/ground_with_rocks_02_color_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundDirt2K/ground_with_rocks_02_height_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundDirt2K/ground_with_rocks_02_height_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundDirt2K/ground_with_rocks_02_normal_dx_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundDirt2K/ground_with_rocks_02_normal_dx_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundDirt2K/ground_with_rocks_02_normal_gl_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundDirt2K/ground_with_rocks_02_normal_gl_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundDirt2K/ground_with_rocks_02_roughness_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundDirt2K/ground_with_rocks_02_roughness_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_ambientOcclusion_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_ambientOcclusion_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_baseColo_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_baseColo_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_height_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_height_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_m_ao_h_r_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_m_ao_h_r_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_metallic_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_metallic_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_normal_dx_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_normal_dx_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_normal_gl_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_normal_gl_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_roughness_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedGroundTiles2K/ground_tiles_24_roughness_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedWoodPlanks2K.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedWoodPlanks2K/wood_planks_05_ambient_occlusion_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedWoodPlanks2K/wood_planks_05_ambient_occlusion_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedWoodPlanks2K/wood_planks_05_color_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedWoodPlanks2K/wood_planks_05_color_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedWoodPlanks2K/wood_planks_05_height_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedWoodPlanks2K/wood_planks_05_height_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedWoodPlanks2K/wood_planks_05_normal_dx_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedWoodPlanks2K/wood_planks_05_normal_dx_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedWoodPlanks2K/wood_planks_05_normal_gl_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedWoodPlanks2K/wood_planks_05_normal_gl_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedWoodPlanks2K/wood_planks_05_roughness_2k.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/StylizedWoodPlanks2K/wood_planks_05_roughness_2k.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/WeedClump.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/WeedClump/WeedClump_WeedClump_AlbedoTransparency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/WeedClump/WeedClump_WeedClump_AlbedoTransparency.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/WeedClump/WeedClump_WeedClump_MetallicSmoothness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/WeedClump/WeedClump_WeedClump_MetallicSmoothness.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/WeedClump/WeedClump_WeedClump_Normal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_DemoScene/TerrainTextures/WeedClump/WeedClump_WeedClump_Normal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_Documentation.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_Documentation/Documentation_Support_FAQ.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/OnePotatoKingdom_CraftingTablePack_Demo/_Documentation/Documentation_Support_FAQ.pdf.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/SimpleNaturePack.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/SimpleNaturePack/Scenes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/SimpleNaturePack/Scenes/PostProcessing.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/SimpleNaturePack/Scenes/PostProcessing/PostProcessing_SimpleNaturePack.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/SimpleNaturePack/Scenes/PostProcessing/PostProcessing_SimpleNaturePack.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/SimpleNaturePack/Scenes/PostProcessing/URP_SimpleNaturePack.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/SimpleNaturePack/Scenes/PostProcessing/URP_SimpleNaturePack.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/SimpleNaturePack/Scenes/PostProcessing/URP_SimpleNaturePack_Renderer.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/SimpleNaturePack/Scenes/PostProcessing/URP_SimpleNaturePack_Renderer.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/CHAIR WARS (1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/CHAIR WARS (1).png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/CHAIR WARS.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/CHAIR WARS.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/Frame 1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/Frame 1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/Group 7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/Group 7.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/Group 9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/Group 9.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/INSTRUCTIONS.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/INSTRUCTIONS.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/InstructionsNormal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/InstructionsNormal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/InstructionsPressed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/InstructionsPressed.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/START.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/START.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/StartNormal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/StartNormal.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/StartPressed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/StartPressed.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/savior complex.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game Assets/UI Elements/savior complex.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Point Station 1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Point Station 1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Point Station 3.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Point Station 3.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Point Station 4.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Point Station 4.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Point Station.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Point Station.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PreGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PreGame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScoreManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScoreManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stations/InputStation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stations/InputStation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Filming/DirectorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Filming/DirectorManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Filming/RealityActor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Filming/RealityActor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Filming/RealityDataTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Filming/RealityDataTypes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameResultData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameResultData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interaction/InteractionCoordinator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interaction/InteractionCoordinator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerIdentity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerIdentity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteractable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteractable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Timer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/ChatBubble.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ChatBubble.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Grabbable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HapticsTester.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/IInteractable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/JellyWobble.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Prefabs/PlayerGhost.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameramanNPC.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerIdentity.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteract.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteract.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteractable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInventory.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerHaptics.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerRuntimeSet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerRuntimeSet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Resource.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ScoreManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Stations/InputStation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Stations/PlayerStationManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Stations/ProcessingStation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Timer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ChatBubble.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -812,6 +62,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -896,19 +147,32 @@
       <workItem from="1772761730661" duration="6650000" />
       <workItem from="1773037069560" duration="5664000" />
       <workItem from="1773413815651" duration="15001000" />
+      <workItem from="1774244300399" duration="3000" />
+      <workItem from="1774244517082" duration="10780000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
-    <option name="hasUnityReference" value="true" />
     <option name="unityProject" value="true" />
     <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>

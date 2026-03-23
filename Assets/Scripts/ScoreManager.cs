@@ -37,6 +37,7 @@ public class ScoreManager : MonoBehaviour
             playerScores[player] = 0;
             playerCommunityScores[player] = 0;
             PlayerIdentity id = player.GetComponent<PlayerIdentity>();
+            Debug.Log(id);
             id.UpdateScoreUI(0, true);
         }
     }

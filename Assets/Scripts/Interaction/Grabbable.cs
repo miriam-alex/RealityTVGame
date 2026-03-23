@@ -22,6 +22,7 @@ public class Grabbable : MonoBehaviour, IInteractable
         {
             inventory.AddItem(this);
         }
+        
     }
 
     public void AltInteract(PlayerIdentity requester) { /* Optional */ }

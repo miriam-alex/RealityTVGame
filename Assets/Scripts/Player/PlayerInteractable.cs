@@ -11,6 +11,9 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
     private PlayerInventory _myInventory;
     private const float COOLDOWN = 1.0f; 
 
+    private readonly System.Collections.Generic.Dictionary<int, float> _nextGiveAllowedTimeByRequester = new();
+    private readonly System.Collections.Generic.Dictionary<int, float> _nextStealAllowedTimeByRequester = new();
+
     private void Start()
     {
 		_scoreManager = FindAnyObjectByType<ScoreManager>();
@@ -35,27 +38,63 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
     public void Interact(PlayerIdentity requester)
     {
         if (!InteractionCoordinator.Instance.CanInteract(requester, _myId)) return;
-        bool isSuccess = ExecuteInventoryTransfer(_myId, requester, "Here you go!");
+
+        int requesterKey = requester != null ? requester.playerIndex : -1;
+        if (_nextGiveAllowedTimeByRequester.TryGetValue(requesterKey, out float nextAllowed) && Time.time < nextAllowed)
+            return;
+
+        bool isSuccess = ExecuteInventoryTransfer(_myId, requester, "Here you go!", out Resource transferredResource);
+
+
+        _nextGiveAllowedTimeByRequester[requesterKey] = Time.time + COOLDOWN;
+
 		// You get followers for doing a good thing on camera!
-        if (requester.isSpotted && isSuccess)
+        if (requester != null && requester.isSpotted && isSuccess)
         {
-            _scoreManager.RewardGive(requester.gameObject);
+            DirectorManager.Instance.LogDrama(
+                DramaType.GiveItem, 
+                transform,           // Where it happened
+                requester,      // The Thief
+                _myId,          // The Victim
+                ScoreManager.Instance.giveReward,                 // Score Penalty
+                $"{requester.name} is a saint, giving to ${gameObject.name}!", 
+                3f,                // High drama intensity
+                transferredResource
+            );
         }
     }
     
     public void AltInteract(PlayerIdentity requester) 
     {
         if (!InteractionCoordinator.Instance.CanInteract(requester, _myId)) return;
-        ExecuteInventoryTransfer(requester, _myId, "Stolen!");
+
+        int requesterKey = requester != null ? requester.playerIndex : -1;
+        if (_nextStealAllowedTimeByRequester.TryGetValue(requesterKey, out float nextAllowed) && Time.time < nextAllowed)
+            return;
+
+        bool isSuccess = ExecuteInventoryTransfer(requester, _myId, "Stolen!", out Resource transferredResource);
+
+        _nextStealAllowedTimeByRequester[requesterKey] = Time.time + COOLDOWN;
+
 		// If caught, you lose followers for doing a bad thing on camera.
-        if (requester.isSpotted)
+        if (requester != null && requester.isSpotted && isSuccess)
         {
-            _scoreManager.PenalizeSteal(requester.gameObject);
+            DirectorManager.Instance.LogDrama(
+                DramaType.StealItem, 
+                transform,           // Where it happened
+                requester,      // The Thief
+                _myId,          // The Victim
+                -ScoreManager.Instance.stealPenalty,                 // Score Penalty
+                $"{requester.name} caught red-handed!", 
+                8.5f,                // High drama intensity
+                transferredResource
+            );
         }
     }
     
-    private bool ExecuteInventoryTransfer(PlayerIdentity taker, PlayerIdentity giver, string label)
+    private bool ExecuteInventoryTransfer(PlayerIdentity taker, PlayerIdentity giver, string label, out Resource transferredResource)
     {
+        transferredResource = null;
         // 1. Retrieve the inventories from the passed identities
         PlayerInventory takerInv = taker.GetComponent<PlayerInventory>();
         PlayerInventory giverInv = giver.GetComponent<PlayerInventory>();
@@ -63,7 +102,15 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
         bool success = false;
         if (takerInv != null && giverInv != null)
         {
-            success = giverInv.TransferToPlayerInventory(takerInv);
+            success = giverInv.TransferToPlayerInventory(takerInv, out Grabbable transferred);
+
+            if (success && transferred != null)
+            {
+                // If this Grabbable is also a ResourceItem, record which resource moved.
+                ResourceItem resourceItem = transferred.GetComponent<ResourceItem>();
+                if (resourceItem != null && resourceItem.resource != null)
+                    transferredResource = resourceItem.resource;
+            }
         
             if (!success) 
             {
@@ -72,11 +119,21 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
         }
 
         // 4. Visual feedback
-        ChatBubble.Create(chatBubblePrefab, Vector3.up * 2, transform, label, 2f);
+        ChatBubble prefab = chatBubblePrefab;
+        if (prefab == null)
+        {
+            prefab = taker != null ? taker.GetComponent<PlayerInteract>()?.chatBubble : null;
+        }
+        if (prefab == null)
+        {
+            prefab = giver != null ? giver.GetComponent<PlayerInteract>()?.chatBubble : null;
+        }
+        
+        ChatBubble.Create(prefab, Vector3.up * 2, transform, label, 2f);
         return success;
     }
     
-    public string GetInteractionPrompt(string i, string a) => $"[{_myId.interactKey}] Give | [{_myId.altInteractKey}] Steal";
+    public string GetInteractionPrompt(string i, string a) => $"[{i}] Give | [{a}] Steal";
     
     public PlayerIdentity GetPlayerIdentity() => _myId;
 }

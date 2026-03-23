@@ -40,7 +40,7 @@ public class InteractionCoordinator : MonoBehaviour
         _activeTraders.Add(p2);
 
         // Hard-coded: This makes the Coordinator rely on PlayerInventory
-        bool tradeSucceeded = p1.GetComponent<PlayerInventory>().TransferToPlayerInventory(p2.GetComponent<PlayerInventory>());
+        bool tradeSucceeded = p1.GetComponent<PlayerInventory>().TransferToPlayerInventory(p2.GetComponent<PlayerInventory>(), out _);
 
         _activeTraders.Remove(p1);
         _activeTraders.Remove(p2);

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 public class PlayerIdentity : MonoBehaviour {
     [Header("Essentials")]
-    public int playerIndex; // Set this to 0 for P1, 1 for P2 in the Inspector
+    public int playerIndex; 
     public Color color;
     public PlayerRuntimeSet runtimeSet;
     [Header("Key Bindings")]
@@ -17,10 +17,24 @@ public class PlayerIdentity : MonoBehaviour {
     private Color normalColor = Color.white;
     private bool wasSpottedLastFrame;
     private GameObject bodyObject;
-    private TMP_Text scoreText; 
-    void Start()
+    public TMP_Text scoreText; 
+    void Awake()
     {
-        bodyObject = transform.Find("Player Body/Body").gameObject;
+        Transform bodyTransform = transform.Find("Player Body/Body");
+
+        if (bodyTransform != null)
+        {
+            bodyObject = bodyTransform.gameObject;
+        
+            MeshRenderer meshRenderer = bodyObject.GetComponent<MeshRenderer>();
+            if (meshRenderer != null) 
+                meshRenderer.material.color = color;
+        }
+        else
+        {
+            Debug.LogWarning($"[Setup Error] {gameObject.name} could not find 'Player Body/Body'. Is the hierarchy different in this scene?");
+        }
+        
         if (bodyObject != null)
         {
             MeshRenderer meshRenderer = bodyObject.GetComponent<MeshRenderer>();
@@ -50,16 +64,21 @@ public class PlayerIdentity : MonoBehaviour {
     
         runtimeSet.Add(this.gameObject);
         Debug.Log($"<color=green>SUCCESS:</color> Added {gameObject.name}. Current count: {runtimeSet.Items.Count}");
+
+        DirectorManager.Instance?.RegisterPlayer(this);
     }
 
     void OnDisable() 
     {
         runtimeSet.Remove(this.gameObject);
+
+        DirectorManager.Instance?.UnregisterPlayer(this);
     }
     
     public void UpdateScoreUI(int newScore, bool gainedPoints) 
     {
         // 1. Update the text
+        Debug.Log("newScore:"  + newScore);
         scoreText.text = newScore.ToString();
 
         // 2. Restart the animation logic (Stop current one so they don't fight)

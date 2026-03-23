@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/Playback.unity
+    guid: b8763fb825fac454191d7ed40cbf3333
+  - enabled: 1
     path: Assets/Scenes/PostGame.unity
     guid: 6f3f400583e9ad946acab3dc100b0b19
   m_configObjects:

@@ -78,6 +78,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 611f0a1efe42a7a4e94d73b7e69c529f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6089206007273634201}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 611f0a1efe42a7a4e94d73b7e69c529f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 712025511489648732}
   m_SourcePrefab: {fileID: 100100000, guid: 611f0a1efe42a7a4e94d73b7e69c529f, type: 3}
 --- !u!4 &1458831756313834385 stripped
 Transform:
@@ -184,6 +187,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93456f52f4e9b4a5facb8a84c8029273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grabbable
+--- !u!114 &712025511489648732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2266752537586919723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13881d301e7734596a4b1f68da5f149b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RealityActor
 --- !u!1001 &2950803781010884918
 PrefabInstance:
   m_ObjectHideFlags: 0

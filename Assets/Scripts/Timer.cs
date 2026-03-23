@@ -29,42 +29,62 @@ public class Timer : MonoBehaviour
                 timeRemaining = 0;
                 timerRunning = false;
 
-                // Determine winner by highest score, break ties randomly
-                var scoreManager = FindObjectOfType<ScoreManager>();
-                var playerSet = scoreManager?.playerRuntimeSet;
-                int winningPlayerId = 0;
-                Color winningPlayerColor = Color.white;
-                if (playerSet != null && playerSet.Items.Count > 0 && scoreManager != null)
-                {
-                    int maxScore = int.MinValue;
-                    List<int> topPlayers = new List<int>();
-                    for (int i = 0; i < playerSet.Items.Count; i++)
-                    {
-                        int score = scoreManager.GetScore(playerSet.Items[i]);
-                        if (score > maxScore)
-                        {
-                            maxScore = score;
-                            topPlayers.Clear();
-                            topPlayers.Add(i);
-                        }
-                        else if (score == maxScore)
-                        {
-                            topPlayers.Add(i);
-                        }
-                    }
-                    // Randomly select among top players if tie
-                    winningPlayerId = topPlayers[Random.Range(0, topPlayers.Count)];
-                    var winnerObj = playerSet.Items[winningPlayerId];
-                    var winnerIdentity = winnerObj.GetComponent<PlayerIdentity>();
-                    if (winnerIdentity != null)
-                        winningPlayerColor = winnerIdentity.color;
-                }
+                // Persist base scores/colors for playback -> postgame.
+                PersistBaseScoresForPlayback();
 
-                GameResultData.WinnerId = winningPlayerId;
-                GameResultData.WinnerColor = winningPlayerColor;
-
-                SceneManager.LoadScene("PostGame");
+                // Playback will apply drama score impacts during the clip, compute winner, then transition.
+                SceneManager.LoadScene("Playback");
             }
+        }
+    }
+
+    public static int DetermineWinnerId(Dictionary<int, int> scoresByPlayerIndex)
+    {
+        if (scoresByPlayerIndex == null || scoresByPlayerIndex.Count == 0)
+            return 0;
+
+        int maxScore = int.MinValue;
+        List<int> topPlayers = new List<int>();
+
+        foreach (var entry in scoresByPlayerIndex)
+        {
+            int playerIndex = entry.Key;
+            int score = entry.Value;
+
+            if (score > maxScore)
+            {
+                maxScore = score;
+                topPlayers.Clear();
+                topPlayers.Add(playerIndex);
+            }
+            else if (score == maxScore)
+            {
+                topPlayers.Add(playerIndex);
+            }
+        }
+
+        // Randomly select among top players if tie.
+        return topPlayers[Random.Range(0, topPlayers.Count)];
+    }
+
+    private void PersistBaseScoresForPlayback()
+    {
+        GameResultData.BaseScoresByPlayerIndex.Clear();
+        GameResultData.PlayerColorsByIndex.Clear();
+
+        var scoreManager = FindObjectOfType<ScoreManager>();
+        var playerSet = scoreManager?.playerRuntimeSet;
+        if (playerSet == null || scoreManager == null) return;
+
+        foreach (var playerObj in playerSet.Items)
+        {
+            if (playerObj == null) continue;
+            var identity = playerObj.GetComponent<PlayerIdentity>();
+            if (identity == null) continue;
+
+            int playerIndex = identity.playerIndex;
+            GameResultData.BaseScoresByPlayerIndex[playerIndex] = scoreManager.GetScore(playerObj);
+            GameResultData.PlayerColorsByIndex[playerIndex] = identity.color;
         }
     }
 

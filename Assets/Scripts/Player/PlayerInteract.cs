@@ -19,6 +19,7 @@ public class PlayerInteract : MonoBehaviour
    private PlayerInventory _inventory;
    private PlayerInput _playerInput;
    private IInteractable _currentInteractable;
+    private Transform _currentPromptTarget;
 
 
    private void Start()
@@ -39,38 +40,8 @@ public class PlayerInteract : MonoBehaviour
    private void Update()
    {
        HandleInput();
-       HandleVicinityDisplay();
    }
-  
-   private void HandleVicinityDisplay()
-   {
-       if (_currentInteractable == null) return;
-
-
-       MonoBehaviour interactableMono = _currentInteractable as MonoBehaviour;
-       if (interactableMono == null) { _currentInteractable = null; return; }
-
-
-       if (!_currentInteractable.IsAvailable(_myId)) return;
-
-
-       _msgTimer -= Time.deltaTime;
-       if (_msgTimer <= 0)
-       {
-           // Pass empty strings or null because GetInteractionPrompt now ignores them
-           // and uses its own Internal Identity (as per our updated PlayerInteractable)
-           string prompt = _currentInteractable.GetInteractionPrompt(_interactKey, _altInteractKey);
-           ChatBubble.Create(chatBubble, Vector3.up * 1.7f, interactableMono.transform, prompt, 0.25f);
-      
-           if (interactableMono.TryGetComponent(out SpotlightVisual visual))
-               visual.FlashRed(0.1f);
-
-
-           _msgTimer = 0.2f;
-       }
-   }
-
-
+   
    private void HandleInput()
    {
        // return if no playerID
@@ -119,31 +90,6 @@ public class PlayerInteract : MonoBehaviour
            {
                _currentInteractable.AltInteract(_myId);
            }
-           
-           // // 2. Logic for Trading (Requires handshake + timer)
-           // if (_currentInteractable is PlayerInteractable targetPlayer)
-           // {
-           //     bool iPressed = Keyboard.current[iKey].isPressed;
-           //     InteractionCoordinator.Instance.SetHandshake(_myId, targetPlayer.GetPlayerIdentity(), iPressed);
-           //
-           //     if (iPressed && InteractionCoordinator.Instance.IsTradeReady(_myId, targetPlayer.GetPlayerIdentity()))
-           //     {
-           //         RunHoldTimer();
-           //     }
-           //     else if (Keyboard.current[iKey].wasReleasedThisFrame)
-           //     {
-           //         _holdTimer = 0;
-           //     }
-           // }
-           // else
-           // {
-           //     // 3. Logic for Generic Objects (Instant)
-           //     if (Keyboard.current[iKey].wasPressedThisFrame)
-           //     {
-           //         _currentInteractable.Interact(_myId);
-           //     }
-           // }
-           
        }
        
        // 2. Fallback: Drop item if NOT looking at anything
@@ -159,7 +105,27 @@ public class PlayerInteract : MonoBehaviour
    {
        if (other.TryGetComponent(out IInteractable interactable)) 
        {
+         if (_currentPromptTarget != null && _currentPromptTarget != other.transform)
+         {
+             ChatBubble.Clear(_currentPromptTarget);
+         }
+
          _currentInteractable = interactable;
+         _currentPromptTarget = other.transform;
+
+         if (chatBubble != null && _myId != null && interactable.IsAvailable(_myId))
+         {
+             string prompt = interactable.GetInteractionPrompt(_interactKey, _altInteractKey);
+
+             // Add a drop hint for grabbables when you have something to drop.
+             if (interactable is Grabbable && _inventory != null && _inventory.HasItems)
+             {
+                 prompt = $"{prompt}\n[{_interactKey}] Drop";
+             }
+
+             ChatBubble.Create(chatBubble, Vector3.up * 2f, other.transform, prompt, 9999f);
+         }
+
          if (_currentInteractable is PlayerInteractable targetPlayer) 
          {
                GetComponent<PlayerHaptics>()?.Pulse(0.3f, 0.6f);
@@ -181,31 +147,14 @@ public class PlayerInteract : MonoBehaviour
            _currentInteractable = null;
            _holdTimer = 0;
        }
+
+       if (_currentPromptTarget == other.transform)
+       {
+           ChatBubble.Clear(_currentPromptTarget);
+           _currentPromptTarget = null;
+       }
    }
-  
-   // private void RunHoldTimer()
-   // {
-   //     float duration = _currentInteractable.GetHoldDuration(_myId);
-   //     _holdTimer += Time.deltaTime;
-   //     UpdateHoldUI(Mathf.Clamp01(_holdTimer / duration));
-   //
-   //     if (_holdTimer >= duration)
-   //     {
-   //         // Just trigger the master controller
-   //         _currentInteractable.Interact(_myId);
-   //         _holdTimer = 0;
-   //     }
-   // }
-  
-   // private void UpdateHoldUI(float percent)
-   // {
-   //     int totalSegments = 10;
-   //     int filledSegments = Mathf.RoundToInt(percent * totalSegments);
-   //     string bar = new string('■', filledSegments) + new string('□', totalSegments - filledSegments);
-   //     // string colorTag = _myId.spotlightOn ? "<color=red>" : "<color=green>";
-   //     ChatBubble.Create(chatBubble, Vector3.up * 2.2f, transform, $"{bar}</color>", 0.1f);
-   // }
-  
+
    public IInteractable GetCurrentTarget()
    {
        return _currentInteractable;
