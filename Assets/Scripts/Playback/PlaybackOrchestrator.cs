@@ -6,6 +6,8 @@ using System.Collections;
 
 public class PlaybackOrchestrator : MonoBehaviour 
 {
+    public AnimalCatalog animalCatalog;
+    
     [Header("UI")]
     [Tooltip("Optional. Drag a TextMeshProUGUI here to show the selected drama event during playback.")]
     public TMP_Text dramaDescriptionText;
@@ -198,18 +200,35 @@ public class PlaybackOrchestrator : MonoBehaviour
 
     private GameObject ResolvePlaybackVisualPrefab(string actorId)
     {
-        Debug.Log("ResolvePlaybackVisualPrefab");
-        if (TryParsePlayerIndex(actorId, out int playerIndex) && playerIndex >= 0)
+        // 1. Parse the player index (e.g., "Player_0" -> 0)
+        if (TryParsePlayerIndex(actorId, out int playerIndex))
         {
-            Debug.Log($"parsed index {playerIndex} from {actorId}");
-            Debug.Log("Dictionary Contents:");
-            foreach (KeyValuePair<int, GameObject> kvp in GameResultData.PlayerIndexToPrefab)
+            // 2. Check if we have a recorded animal ID for this player index
+            if (GameResultData.PlayerIndexToAnimalId.TryGetValue(playerIndex, out string animalId))
             {
-                Debug.Log($"Key: {kvp.Key}, Value: {kvp.Value.name}");
+                // 3. Resolve the string ID to an actual prefab via the catalog
+                if (animalCatalog != null)
+                {
+                    AnimalDefinition definition = animalCatalog.animals.Find(a => a.id == animalId);
+                    if (definition != null && definition.prefab != null)
+                    {
+                        Debug.Log($"[Playback] Resolved {actorId} as animal ID: {animalId}");
+                        return definition.prefab;
+                    }
+                    else
+                    {
+                        Debug.LogError($"[Playback] Catalog contains no prefab for ID: {animalId}");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("[Playback] AnimalCatalog is missing on PlaybackOrchestrator!");
+                }
             }
-            if (GameResultData.PlayerIndexToPrefab.TryGetValue(playerIndex, out GameObject prefab) && prefab != null)
-                Debug.Log($"got prefab from PlayerIndexToPrefab");
-                return prefab;
+            else
+            {
+                Debug.LogWarning($"[Playback] No entry found in GameResultData for PlayerIndex: {playerIndex}");
+            }
         }
 
         return null;

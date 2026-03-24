@@ -10965,7 +10965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b875ac2e965c4dc288e3e1f1d000d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaybackOrchestrator
-  ghostPrefab: {fileID: 5795073664236620774, guid: acffa583c9304455f80f1c825988be10, type: 3}
+  animalCatalog: {fileID: 11400000, guid: 6c8331a9afc2d41b88833bd99a0443be, type: 2}
   dramaDescriptionText: {fileID: 1198425831}
   transferTravelSeconds: 3
   transferWorldOffset: {x: 0, y: 1.2, z: 0}

@@ -5,8 +5,10 @@ using System.Collections.Generic;
 public class PlayerIdentity : MonoBehaviour {
     [Header("Essentials")]
     public int playerIndex; 
-    public GameObject bodyPrefab;
     public PlayerRuntimeSet runtimeSet;
+    public AnimalCatalog animalCatalog;
+    public Transform bodyMountPoint;
+    public string selectedAnimalId;
     [Header("Key Bindings")]
     public string interactKey = "E";
     public string altInteractKey = "F";
@@ -19,14 +21,58 @@ public class PlayerIdentity : MonoBehaviour {
     public TMP_Text scoreText; 
     void Awake()
     {
-        Transform bodyTransform = transform.Find("Player Body/Body");
         Transform scoreTextTransform = transform.Find("Overhead Canvas/Score");
         if (scoreTextTransform != null)
         { 
             scoreText = scoreTextTransform.GetComponent<TextMeshProUGUI>();
         }
     }
+
+    void Start()
+    {
+        ApplyAnimalById(selectedAnimalId);
+    }
     
+    public void ApplyAnimalById(string id)
+    {
+        AnimalDefinition definition = animalCatalog.animals.Find(a => a.id == id);
+        if (definition != null)
+        {
+            ApplyAnimal(definition);
+        }
+        else
+        {
+            Debug.LogError($"[PlayerIdentity] ID '{id}' not found in Catalog!");
+        }
+    }
+    
+    private void ApplyAnimal(AnimalDefinition definition)
+    {
+        if (bodyMountPoint == null)
+        {
+            Debug.LogError("[PlayerIdentity] bodyMountPoint is not assigned!");
+            return;
+        }
+
+        // 1. Clear existing children (Clean the mount point)
+        foreach (Transform child in bodyMountPoint)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // 2. Instantiate the prefab as a child of the mount point
+        GameObject newBody = Instantiate(definition.prefab, bodyMountPoint);
+        
+        // 3. Reset Transform to align with the Player container
+        newBody.transform.localPosition = Vector3.zero;
+        newBody.transform.localRotation = Quaternion.identity;
+
+        // 4. Update the stable ID for persistence
+        selectedAnimalId = definition.id;
+
+        Debug.Log($"[PlayerIdentity] Player {playerIndex} is now a {selectedAnimalId}");
+    }
+
     void Update()
     {
         HandleSpottedVisuals();

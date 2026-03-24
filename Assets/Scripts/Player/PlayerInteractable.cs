@@ -17,8 +17,9 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
     private void Start()
     {
 		_scoreManager = FindAnyObjectByType<ScoreManager>();
-        _myId = GetComponent<PlayerIdentity>();
-        _myInventory = GetComponent<PlayerInventory>();
+        _myId = GetComponentInParent<PlayerIdentity>();
+        _myInventory = GetComponentInParent<PlayerInventory>();
+        if (_myId == null) Debug.LogError($"[PlayerInteractable] Could not find PlayerIdentity in parent of {name}!");
     }
 
     public bool IsAvailable(PlayerIdentity requester)
@@ -57,7 +58,7 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
                 requester,      // The Thief
                 _myId,          // The Victim
                 ScoreManager.Instance.giveReward,                 // Score Penalty
-                $"{requester.name} is a saint, giving to {gameObject.name}!", 
+                $"{requester.name} is a saint, giving to {_myId.name}!", 
                 3f,                // High drama intensity
                 transferredResource
             );

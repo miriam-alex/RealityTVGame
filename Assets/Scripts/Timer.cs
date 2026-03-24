@@ -70,7 +70,7 @@ public class Timer : MonoBehaviour
     private void PersistBaseScoresForPlayback()
     {
         GameResultData.BaseScoresByPlayerIndex.Clear();
-        GameResultData.PlayerIndexToPrefab.Clear();
+        GameResultData.PlayerIndexToAnimalId.Clear();
 
         var scoreManager = ScoreManager.Instance;
         var playerSet = scoreManager?.playerRuntimeSet;
@@ -84,8 +84,8 @@ public class Timer : MonoBehaviour
 
             int playerIndex = identity.playerIndex;
             GameResultData.BaseScoresByPlayerIndex[playerIndex] = scoreManager.GetScore(playerObj);
-            GameResultData.PlayerIndexToPrefab[playerIndex] = identity.bodyPrefab;
-            Debug.Log($"saved body prefab {GameResultData.PlayerIndexToPrefab[playerIndex].name} for player w index {playerIndex}");
+            GameResultData.PlayerIndexToAnimalId[identity.playerIndex] = identity.selectedAnimalId;
+            Debug.Log($"saved body prefab {GameResultData.PlayerIndexToAnimalId[playerIndex]} for player w index {playerIndex}");
             Debug.Log($"persisted player w index {playerIndex} for playback");
         }
     }

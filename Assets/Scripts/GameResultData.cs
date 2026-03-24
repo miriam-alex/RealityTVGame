@@ -9,7 +9,7 @@ public static class GameResultData
 
     // Persisted between gameplay -> playback -> postgame.
     public static readonly Dictionary<int, int> BaseScoresByPlayerIndex = new Dictionary<int, int>();
-    public static readonly Dictionary<int, GameObject> PlayerIndexToPrefab = new Dictionary<int, GameObject>();
+    public static Dictionary<int, string> PlayerIndexToAnimalId = new Dictionary<int, string>();
 
     public static void Reset()
     {
@@ -17,6 +17,6 @@ public static class GameResultData
         WinnerPrefab = null;
         WinnerCharacter = string.Empty;
         BaseScoresByPlayerIndex.Clear();
-        PlayerIndexToPrefab.Clear();
+        PlayerIndexToAnimalId.Clear();
     }
 }
