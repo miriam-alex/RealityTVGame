@@ -134,7 +134,8 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
         return success;
     }
     
-    public string GetInteractionPrompt(string i, string a) => $"[{i}] Give | [{a}] Steal";
+    public InteractionPromptData GetInteractionPromptData(PlayerIdentity requester)
+        => InteractionPromptData.PrimaryAndSecondary("Give", "Steal");
     
     public PlayerIdentity GetPlayerIdentity() => _myId;
 }

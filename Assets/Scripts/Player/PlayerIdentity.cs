@@ -18,7 +18,7 @@ public class PlayerIdentity : MonoBehaviour {
     public Color spottedColor = Color.red;
     private Color normalColor = Color.white;
     private bool wasSpottedLastFrame;
-    public TMP_Text scoreText; 
+    private TMP_Text scoreText; 
     void Awake()
     {
         Transform scoreTextTransform = transform.Find("Overhead Canvas/Score");

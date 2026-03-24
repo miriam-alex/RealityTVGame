@@ -1,13 +1,19 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 
 public class PlayerInteract : MonoBehaviour
 {
    [Header("Settings")]
    public float interactRange = 2.5f;
-   [Header("Prefabs")]
+    [Header("Prefabs")]
    public ChatBubble chatBubble;
+
+    [Header("UI")]
+    public InteractionPromptUI promptUI;
+    public string controllerPrimaryLabel = "A";
+    public string controllerSecondaryLabel = "B";
    private string _interactKey;
    private string _altInteractKey;
   
@@ -15,7 +21,9 @@ public class PlayerInteract : MonoBehaviour
    private PlayerInventory _inventory;
    private PlayerInput _playerInput;
    private IInteractable _currentInteractable;
-    private Transform _currentPromptTarget;
+
+    private readonly Dictionary<Collider, IInteractable> _nearbyInteractables = new Dictionary<Collider, IInteractable>();
+    private IInteractable _lastPromptInteractable;
 
 
    private void Start()
@@ -35,7 +43,73 @@ public class PlayerInteract : MonoBehaviour
 
    private void Update()
    {
+       UpdateCurrentTargetAndPrompt();
        HandleInput();
+   }
+
+   private void UpdateCurrentTargetAndPrompt()
+   {
+       if (_myId == null)
+       {
+           if (promptUI != null) promptUI.Hide();
+           _currentInteractable = null;
+           _lastPromptInteractable = null;
+           return;
+       }
+
+       IInteractable best = null;
+       float bestDistSq = float.PositiveInfinity;
+       Vector3 myPos = transform.position;
+
+       foreach (var kvp in _nearbyInteractables)
+       {
+           IInteractable candidate = kvp.Value;
+           if (candidate == null) continue;
+           if (!candidate.IsAvailable(_myId)) continue;
+
+           Component candidateComponent = candidate as Component;
+           if (candidateComponent == null) continue;
+
+           float distSq = (candidateComponent.transform.position - myPos).sqrMagnitude;
+           if (distSq < bestDistSq)
+           {
+               bestDistSq = distSq;
+               best = candidate;
+           }
+       }
+
+       _currentInteractable = best;
+
+       if (_currentInteractable == _lastPromptInteractable)
+       {
+           return;
+       }
+
+       _lastPromptInteractable = _currentInteractable;
+
+       if (promptUI == null)
+       {
+           return;
+       }
+
+       if (_currentInteractable == null)
+       {
+           promptUI.Hide();
+           return;
+       }
+
+       InteractionPromptData data = _currentInteractable.GetInteractionPromptData(_myId);
+
+       bool isControllerPlayer = _myId.playerIndex == 0;
+       string primaryKeyLabel = isControllerPlayer ? controllerPrimaryLabel : _interactKey;
+       string secondaryKeyLabel = isControllerPlayer ? controllerSecondaryLabel : _altInteractKey;
+
+       promptUI.Show(
+           primaryKeyLabel,
+           data.PrimaryAction,
+           secondaryKeyLabel,
+           data.SecondaryAction,
+           data.HasSecondary);
    }
    
    private void HandleInput()
@@ -101,28 +175,9 @@ public class PlayerInteract : MonoBehaviour
    {
        if (other.TryGetComponent(out IInteractable interactable)) 
        {
-         if (_currentPromptTarget != null && _currentPromptTarget != other.transform)
-         {
-             ChatBubble.Clear(_currentPromptTarget);
-         }
+         _nearbyInteractables[other] = interactable;
 
-         _currentInteractable = interactable;
-         _currentPromptTarget = other.transform;
-
-         if (chatBubble != null && _myId != null && interactable.IsAvailable(_myId))
-         {
-             string prompt = interactable.GetInteractionPrompt(_interactKey, _altInteractKey);
-
-             // Add a drop hint for grabbables when you have something to drop.
-             if (interactable is Grabbable && _inventory != null && _inventory.HasItems)
-             {
-                 prompt = $"{prompt}\n[{_interactKey}] Drop";
-             }
-
-             ChatBubble.Create(chatBubble, Vector3.up * 2f, other.transform, prompt, 9999f);
-         }
-
-         if (_currentInteractable is PlayerInteractable targetPlayer) 
+         if (interactable is PlayerInteractable && _myId != null && interactable.IsAvailable(_myId)) 
          {
              GetComponent<PlayerHaptics>()?.Pulse(0.3f, 0.6f);
              CameramanNPC cam = Object.FindAnyObjectByType<CameramanNPC>();
@@ -138,16 +193,7 @@ public class PlayerInteract : MonoBehaviour
 
    private void OnTriggerExit(Collider other)
    {
-       if (other.TryGetComponent(out IInteractable interactable) && _currentInteractable == interactable)
-       {
-           _currentInteractable = null;
-       }
-
-       if (_currentPromptTarget == other.transform)
-       {
-           ChatBubble.Clear(_currentPromptTarget);
-           _currentPromptTarget = null;
-       }
+       _nearbyInteractables.Remove(other);
    }
 
    public IInteractable GetCurrentTarget()

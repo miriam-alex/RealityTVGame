@@ -12,7 +12,8 @@ public class Grabbable : MonoBehaviour, IInteractable
     public bool IsAvailable(PlayerIdentity requester) => !_isGrabbed;
     public float GetHoldDuration(PlayerIdentity requester) => 0f;
     
-    public string GetInteractionPrompt(string i, string a) => $"[{i}] Pick Up";
+    public InteractionPromptData GetInteractionPromptData(PlayerIdentity requester)
+        => InteractionPromptData.PrimaryOnly("Pick Up");
 
     public void Interact(PlayerIdentity requester)
     {
