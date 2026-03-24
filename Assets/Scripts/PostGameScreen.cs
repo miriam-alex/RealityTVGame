@@ -11,26 +11,43 @@ public class PostGameScreen : MonoBehaviour
     {
         // Set the player object's color and get the correct player number
         int playerNumber = GameResultData.WinnerId + 1;
-        if (playerObject != null)
+        if (playerObject == null)
         {
-            var identity = playerObject.GetComponent<PlayerIdentity>();
-            if (identity != null)
-            {
-                playerNumber = identity.playerIndex + 1;
-            }
-            var renderer = playerObject.GetComponent<MeshRenderer>();
+            return;
+        }
+
+        // Setting congratulations text
+        var identity = playerObject.GetComponent<PlayerIdentity>();
+        if (identity != null)
+        {
+            playerNumber = identity.playerIndex + 1;
+        }
+
+        gameTitleText.text = $"Congrats Player {playerNumber}";
+
+        // Setting player object's color
+        Transform playerBodyTransform = playerObject.transform.Find("Player Body");
+        if (playerBodyTransform == null)
+        {
+            Debug.LogWarning("Child named 'Player Body' not found!");
+            return;
+        }
+
+        Transform bodyTransform = playerBodyTransform.Find("Body");
+        if (bodyTransform != null)
+        {
+            MeshRenderer renderer = bodyTransform.GetComponent<MeshRenderer>();
+            // Do something with the renderer
             if (renderer != null)
             {
                 renderer.material.color = GameResultData.WinnerColor;
             }
-            else
-            {
-                var childRenderer = playerObject.GetComponentInChildren<MeshRenderer>();
-                if (childRenderer != null)
-                    childRenderer.material.color = GameResultData.WinnerColor;
-            }
         }
-        // Set the title text to "Congrats Player X" with the correct number
-        gameTitleText.text = $"Congrats Player {playerNumber}";
+        else
+        {
+            Debug.LogWarning("Child named 'Body' not found!");
+        }
+
+        return;
     }
 }

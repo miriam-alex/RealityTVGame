@@ -88,6 +88,11 @@ public class PlayerIdentity : MonoBehaviour {
     
     private void HandleSpottedVisuals()
     {
+        if (!scoreText)
+        {
+            return;
+        }
+
         // Only trigger changes when the state actually flips
         if (isSpotted != wasSpottedLastFrame)
         {

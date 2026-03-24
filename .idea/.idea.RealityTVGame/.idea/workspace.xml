@@ -5,21 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="548baca1-a2e6-4029-95e1-d3838846d670" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ScoreBubble.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ScoreBubble.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RealityTVGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RealityTVGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ChatBubble.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ChatBubble/ChatBubble.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ChatBubble/ChatBubble.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ChatBubble/ChatBubbleBG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ChatBubble/ChatBubbleBG.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playback.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Playback.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PostGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PostGame.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PostGame.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PostGame.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PreGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PreGame.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Filming/DirectorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Filming/DirectorManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Filming/RealityActor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Filming/RealityActor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Filming/RealityDataTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Filming/RealityDataTypes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameResultData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameResultData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interaction/InteractionCoordinator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interaction/InteractionCoordinator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Filming/PlaybackOrchestrator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Filming/PlaybackOrchestrator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerIdentity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerIdentity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteract.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteract.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteractable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteractable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PostGameScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PostGameScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Timer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/ChatBubble.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ChatBubble.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,18 +41,19 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/PlayerGhost.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameramanNPC.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerIdentity.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteract.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteractable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInventory.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerRuntimeSet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Resource.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Stations/InputStation.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Stations/PlayerStationManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Stations/InputStation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Stations/PlayerStationManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Stations/ProcessingStation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Timer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ChatBubble.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@973857688024/Editor/BurstDisassembler.Core.Wasm.info.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -114,13 +121,15 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="4563">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="4563" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -149,6 +158,7 @@
       <workItem from="1773413815651" duration="15001000" />
       <workItem from="1774244300399" duration="3000" />
       <workItem from="1774244517082" duration="10780000" />
+      <workItem from="1774304352569" duration="8336000" />
     </task>
     <servers />
   </component>

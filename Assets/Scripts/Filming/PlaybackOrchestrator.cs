@@ -7,6 +7,7 @@ using System.Collections;
 public class PlaybackOrchestrator : MonoBehaviour 
 {
     public GameObject ghostPrefab;
+    public GameObject scoreBubblePrefab;
     public PlayerRuntimeSet originalRuntimeSet; 
 
     [Header("UI")]
@@ -14,11 +15,9 @@ public class PlaybackOrchestrator : MonoBehaviour
     public TMP_Text dramaDescriptionText;
 
     [Header("Clip Visuals")]
-    [Tooltip("Optional. Drag a prefab here to visualize Give/Steal as an item moving between players during the clip.")]
-    public GameObject transferItemPrefab;
 
     [Tooltip("How long the transfer prop takes to travel.")]
-    public float transferTravelSeconds = 0.6f;
+    public float transferTravelSeconds = 1f;
 
     [Tooltip("World-space offset from the player position for the transfer prop.")]
     public Vector3 transferWorldOffset = new Vector3(0f, 1.2f, 0f);
@@ -32,96 +31,104 @@ public class PlaybackOrchestrator : MonoBehaviour
     public bool playDramaClipOnly = true;
 
     [Tooltip("Total clip duration in seconds.")]
-    public float dramaClipDurationSeconds = 3f;
+    public float dramaClipDurationSeconds = 5f;
 
     [Tooltip("How much of the clip occurs before the event timestamp.")]
     public float dramaClipLeadInSeconds = 1.5f;
     
+    [Header("Juice Settings")]
+    public float zoomedFOV = 30f;
+    public float cameraSmoothSpeed = 5f;
+    
+    [Header("Framing")]
+    [Tooltip("How much higher the camera looks to keep the item at the bottom.")]
+    public float itemFramingVerticalOffset = 0f;
+    
+
+    
+    // PRIVATE VARIABLES
+    private Camera _playbackCam;
+    private float _defaultFOV;
+    private bool _isZooming;
     private Dictionary<string, GameObject> _spawnedGhosts = new Dictionary<string, GameObject>();
     private float _playbackTime = 0f;
 
     private bool _hasClipWindow;
     private float _clipStartTime;
     private float _clipEndTime;
-
+    private List<DramaEvent> _topDramaEvents = new List<DramaEvent>();
     private DramaEvent _selectedDramaEvent;
+    private int _currentClipIndex = 0;
     private bool _playedTransferVisual;
+    private GameObject _currentTransferInstance;
+    
 
     void Start() 
     {
-        if (DirectorManager.Instance == null)
-        {
-            Debug.LogError("[Playback] FAILED: No DirectorManager found in scene!");
-            return;
-        }
+        if (DirectorManager.Instance == null) return;
+        
+        _playbackCam = Camera.main;
+        if (_playbackCam != null) _defaultFOV = _playbackCam.fieldOfView;
 
-        // Prevent playback ghosts from being recorded back into the ledger.
         DirectorManager.Instance.SetRecording(false);
 
-        Debug.Log($"[Playback] Starting. Found {DirectorManager.Instance.productionLedger.Count} tracks in Ledger.");
-
-        // Decide whether we should play anything BEFORE spawning ghosts.
-        ConfigureClipWindowFromDrama();
+        // Logic to find and sort the Top 3 moments
+        ConfigureHighlightReel();
 
         if (playDramaClipOnly && !_hasClipWindow)
         {
-            // In clip-only mode, no drama means no playback.
-            if (dramaDescriptionText != null)
-                dramaDescriptionText.text = string.Empty;
-
-            Debug.Log("[Playback] No drama events found; clip-only playback disabled. Nothing will play.");
-            enabled = false;
+            SceneManager.LoadScene(postGameSceneName);
             return;
         }
 
         SpawnAllRecordedActors();
+        SetupClip(_currentClipIndex);
     }
-
-    private void ConfigureClipWindowFromDrama()
+    
+    private void ConfigureHighlightReel()
     {
-        if (!playDramaClipOnly) return;
-        if (DirectorManager.Instance == null) return;
-
-        List<DramaEvent> events = DirectorManager.Instance.dramaRegistry;
-        if (events == null || events.Count == 0)
+        List<DramaEvent> allEvents = new List<DramaEvent>(DirectorManager.Instance.dramaRegistry);
+        if (allEvents.Count == 0)
         {
             _hasClipWindow = false;
-            _selectedDramaEvent = null;
-            UpdateDramaDescriptionUI();
             return;
         }
 
-        DramaEvent best = events[0];
-        for (int i = 1; i < events.Count; i++)
+        // Sort by intensity (Highest first)
+        allEvents.Sort((a, b) => b.dramaIntensity.CompareTo(a.dramaIntensity));
+
+        // Take Top 3
+        int count = Mathf.Min(3, allEvents.Count);
+        for (int i = 0; i < count; i++)
         {
-            // Prefer higher intensity; tiebreaker: bigger absolute score impact; then later timestamp.
-            DramaEvent candidate = events[i];
-            if (candidate.dramaIntensity > best.dramaIntensity)
-                best = candidate;
-            else if (Mathf.Approximately(candidate.dramaIntensity, best.dramaIntensity))
-            {
-                if (Mathf.Abs(candidate.scoreImpact) > Mathf.Abs(best.scoreImpact))
-                    best = candidate;
-                else if (Mathf.Abs(candidate.scoreImpact) == Mathf.Abs(best.scoreImpact) && candidate.timestamp > best.timestamp)
-                    best = candidate;
-            }
+            _topDramaEvents.Add(allEvents[i]);
         }
 
-        float leadIn = Mathf.Clamp(dramaClipLeadInSeconds, 0f, dramaClipDurationSeconds);
-        float clipStart = Mathf.Max(0f, best.timestamp - leadIn);
-        float clipEnd = clipStart + Mathf.Max(0.1f, dramaClipDurationSeconds);
+        _hasClipWindow = true;
+    }
+    
+    private void SetupClip(int index)
+    {
+        if (index >= _topDramaEvents.Count) return;
 
-        _clipStartTime = clipStart;
-        _clipEndTime = clipEnd;
+        _selectedDramaEvent = _topDramaEvents[index];
+    
+        float leadIn = Mathf.Clamp(dramaClipLeadInSeconds, 0f, dramaClipDurationSeconds);
+        _clipStartTime = Mathf.Max(0f, _selectedDramaEvent.timestamp - leadIn);
+        _clipEndTime = _clipStartTime + dramaClipDurationSeconds;
+    
+        _playbackTime = _clipStartTime;
+        _playedTransferVisual = false; // Reset for the new clip
         _hasClipWindow = true;
 
-        _selectedDramaEvent = best;
-
-        _playbackTime = _clipStartTime;
-
-        Debug.Log($"[Playback] Drama clip: '{best.type}' @ {best.timestamp:F2}s | Window [{_clipStartTime:F2}, {_clipEndTime:F2}] ({dramaClipDurationSeconds:F2}s)");
-
         UpdateDramaDescriptionUI();
+    }
+    
+    private void TriggerScoreBubble(int score, Transform target)
+    {
+        if (score == 0 || scoreBubblePrefab == null) return;
+        GameObject b = Instantiate(scoreBubblePrefab, target.position + Vector3.up * 2f, Quaternion.identity);
+        if (b.TryGetComponent(out ScoreBubble script)) script.Setup(score);
     }
 
     private void UpdateDramaDescriptionUI()
@@ -142,10 +149,8 @@ public class PlaybackOrchestrator : MonoBehaviour
         string itemLine = e.transferredResource != null ? $"Item: {e.transferredResource.resourceName}\n" : string.Empty;
 
         dramaDescriptionText.text =
-            $"{e.type} ({participants})\n" +
-            itemLine +
             $"{e.tvCaption}\n" +
-            $"Score: {e.scoreImpact:+#;-#;0} | Intensity: {e.dramaIntensity:0.#} | t={e.timestamp:0.00}s";
+            $"Score: {e.scoreImpact:+#;-#;0}";
     }
 
     void SpawnAllRecordedActors() 
@@ -248,109 +253,123 @@ public class PlaybackOrchestrator : MonoBehaviour
     void Update() 
     {
         _playbackTime += Time.deltaTime;
+        
+        // 1. DYNAMIC CAMERA (Includes Player Focus and Item Framing)
+        HandleDynamicCamera();
 
+        // 2. CHECK CLIP END / JUMP TO NEXT
         if (_hasClipWindow && _playbackTime > _clipEndTime)
         {
-            FinalizeScoresAndTransition();
+            _currentClipIndex++;
+            if (_currentClipIndex < _topDramaEvents.Count)
+                SetupClip(_currentClipIndex);
+            else
+                FinalizeScoresAndTransition();
             return;
         }
 
+        // 3. MOVE GHOSTS
         foreach (var entry in _spawnedGhosts) 
         {
-            string name = entry.Key;
-            Transform ghostTransform = entry.Value.transform;
-            ActorTrack track = DirectorManager.Instance.productionLedger[name];
-
-            ApplyFrame(ghostTransform, track, _playbackTime);
+            ApplyFrame(entry.Value.transform, DirectorManager.Instance.productionLedger[entry.Key], _playbackTime);
         }
 
+        // 4. TRIGGER VISUALS (Flash, Bubble, Item)
         TryPlayTransferVisual();
+    }
+    
+    private void HandleDynamicCamera()
+    {
+        if (_playbackCam == null || _selectedDramaEvent == null) return;
 
-        // Optional: Log the first few seconds of playback to see if time is moving
-        if (Time.frameCount % 60 == 0) // Roughly once per second
+        _isZooming = _playbackTime >= (_selectedDramaEvent.timestamp - 0.5f);
+        float targetFOV = _isZooming ? zoomedFOV : _defaultFOV;
+        _playbackCam.fieldOfView = Mathf.Lerp(_playbackCam.fieldOfView, targetFOV, Time.deltaTime * cameraSmoothSpeed);
+
+        if (_isZooming) 
         {
-            foreach (var ghost in _spawnedGhosts.Values)
+            _spawnedGhosts.TryGetValue(_selectedDramaEvent.actorID, out GameObject a);
+            _spawnedGhosts.TryGetValue(_selectedDramaEvent.victimID, out GameObject v);
+    
+            Vector3 lookAtPos = Vector3.zero;
+
+            if (_currentTransferInstance != null)
+                lookAtPos = _currentTransferInstance.transform.position + Vector3.up * itemFramingVerticalOffset;
+            else if (a != null && v != null)
+                lookAtPos = Vector3.Lerp(a.transform.position, v.transform.position, 0.5f) + transferWorldOffset;
+
+            if (lookAtPos != Vector3.zero) 
             {
-                Debug.Log($"[Playback] Time: {_playbackTime:F2}s | Sample Ghost Pos: {ghost.transform.position}");
-                break;
+                Quaternion lookRot = Quaternion.LookRotation(lookAtPos - _playbackCam.transform.position);
+                _playbackCam.transform.rotation = Quaternion.Slerp(_playbackCam.transform.rotation, lookRot, Time.deltaTime * cameraSmoothSpeed);
             }
         }
     }
 
     private void TryPlayTransferVisual()
     {
-        if (_playedTransferVisual) return;
-        if (transferItemPrefab == null && (_selectedDramaEvent == null || _selectedDramaEvent.transferredResource == null || _selectedDramaEvent.transferredResource.prefab == null))
-            return;
-        if (_selectedDramaEvent == null) return;
-        if (!_hasClipWindow) return;
-
-        // Only for Give/Steal, and only once per clip.
-        if (_selectedDramaEvent.type != DramaType.GiveItem && _selectedDramaEvent.type != DramaType.StealItem)
-            return;
-
-        if (_playbackTime < _selectedDramaEvent.timestamp)
-            return;
-
-        int actorIndex = _selectedDramaEvent.actorIndex;
-        int victimIndex = _selectedDramaEvent.victimIndex;
-
-        // Fallback parse from ids if indices are missing.
-        if (actorIndex < 0 && !TryParsePlayerIndex(_selectedDramaEvent.actorID, out actorIndex))
-            return;
-        if (victimIndex < 0 && !TryParsePlayerIndex(_selectedDramaEvent.victimID, out victimIndex))
-            return;
-
-        // Determine direction.
-        // GiveItem: actor -> victim.  StealItem: victim -> actor.
-        int fromIndex = _selectedDramaEvent.type == DramaType.StealItem ? victimIndex : actorIndex;
-        int toIndex = _selectedDramaEvent.type == DramaType.StealItem ? actorIndex : victimIndex;
-
-        if (!_spawnedGhosts.TryGetValue($"Player_{fromIndex}", out GameObject fromGhost) || fromGhost == null)
-            return;
-        if (!_spawnedGhosts.TryGetValue($"Player_{toIndex}", out GameObject toGhost) || toGhost == null)
-            return;
-
-        GameObject prefabToUse = _selectedDramaEvent.transferredResource != null && _selectedDramaEvent.transferredResource.prefab != null
-            ? _selectedDramaEvent.transferredResource.prefab
-            : transferItemPrefab;
-
-        if (prefabToUse == null)
-            return;
+        if (_playedTransferVisual || _selectedDramaEvent == null) return;
+        if (_playbackTime < _selectedDramaEvent.timestamp) return;
+        if (_selectedDramaEvent.type != DramaType.GiveItem && _selectedDramaEvent.type != DramaType.StealItem) return;
 
         _playedTransferVisual = true;
-        StartCoroutine(PlayTransferProp(prefabToUse, fromGhost.transform, toGhost.transform));
+
+        // Visual 1: Red Flash for Steals
+        if (_selectedDramaEvent.type == DramaType.StealItem)
+            StartCoroutine(FlashCameraColor(Color.red, 0.4f));
+
+        // Visual 2: Score Bubble over the Actor
+        if (_spawnedGhosts.TryGetValue(_selectedDramaEvent.actorID, out GameObject actorGhost))
+            TriggerScoreBubble(_selectedDramaEvent.scoreImpact, actorGhost.transform);
+
+        // Visual 3: Item Toss
+        int actorIndex, victimIndex;
+        TryParsePlayerIndex(_selectedDramaEvent.actorID, out actorIndex);
+        TryParsePlayerIndex(_selectedDramaEvent.victimID, out victimIndex);
+
+        int fromIdx = _selectedDramaEvent.type == DramaType.StealItem ? victimIndex : actorIndex;
+        int toIdx = _selectedDramaEvent.type == DramaType.StealItem ? actorIndex : victimIndex;
+
+        if (_spawnedGhosts.TryGetValue($"Player_{fromIdx}", out GameObject fromG) && 
+            _spawnedGhosts.TryGetValue($"Player_{toIdx}", out GameObject toG))
+        {
+            GameObject prefab = _selectedDramaEvent.transferredResource?.prefab;
+            if (prefab != null) StartCoroutine(PlayTransferProp(prefab, fromG.transform, toG.transform));
+        }
     }
 
     private IEnumerator PlayTransferProp(GameObject prefab, Transform from, Transform to)
     {
-        GameObject prop = Instantiate(prefab);
+        _currentTransferInstance = Instantiate(prefab);
+        if (_currentTransferInstance.TryGetComponent(out Rigidbody rb)) rb.isKinematic = true;
 
-        // Keep it purely visual.
-        if (prop.TryGetComponent(out Rigidbody rb))
-        {
-            rb.isKinematic = true;
-            rb.useGravity = false;
-        }
-
-        float duration = Mathf.Max(0.05f, transferTravelSeconds);
         float t = 0f;
-
         Vector3 start = from.position + transferWorldOffset;
         Vector3 end = to.position + transferWorldOffset;
 
-        prop.transform.position = start;
-
-        while (t < duration)
+        while (t < transferTravelSeconds)
         {
             t += Time.deltaTime;
-            float a = Mathf.Clamp01(t / duration);
-            prop.transform.position = Vector3.Lerp(start, end, a);
+            _currentTransferInstance.transform.position = Vector3.Lerp(start, end, t / transferTravelSeconds);
             yield return null;
         }
 
-        prop.transform.position = end;
-        Destroy(prop);
+        Destroy(_currentTransferInstance);
+        _currentTransferInstance = null;
+    }
+    
+    private IEnumerator FlashCameraColor(Color col, float dur)
+    {
+        if (_playbackCam == null) yield break;
+        _playbackCam.clearFlags = CameraClearFlags.SolidColor;
+        Color orig = _playbackCam.backgroundColor;
+        float elapsed = 0;
+        while(elapsed < dur) {
+            elapsed += Time.deltaTime;
+            _playbackCam.backgroundColor = Color.Lerp(col, orig, elapsed/dur);
+            yield return null;
+        }
+        _playbackCam.clearFlags = CameraClearFlags.Skybox; // Or original
     }
 
     private void FinalizeScoresAndTransition()

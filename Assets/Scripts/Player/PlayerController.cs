@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     private PlayerIdentity identity;
     private PlayerInput playerInput;
     private Vector2 moveInput;
-    private bool useController = false;
 
     // Example key names for movement (set these in Inspector or code)
     public string moveLeftKey = "A";

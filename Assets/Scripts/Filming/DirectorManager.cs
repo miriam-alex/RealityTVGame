@@ -61,15 +61,16 @@ public class DirectorManager : MonoBehaviour
 
     private void RefreshActorRegistry()
     {
-        // If any RealityActor missed registration (e.g., enabled before DirectorManager.Awake), this catches them.
-        RealityActor[] actors = FindObjectsOfType<RealityActor>();
+        RealityActor[] actors = Object.FindObjectsByType<RealityActor>(FindObjectsSortMode.None);
+    
         foreach (var actor in actors)
         {
+            // Note: FindObjectsByType only returns active/enabled objects by default,
+            // so the null check is usually redundant but safe to keep.
             if (actor != null)
                 RegisterActor(actor);
         }
     }
-
     public void SetRecording(bool shouldRecord)
     {
         isRecording = shouldRecord;

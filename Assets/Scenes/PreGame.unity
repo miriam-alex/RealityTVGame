@@ -2869,12 +2869,14 @@ MonoBehaviour:
   currentPersonality: 0
   runtimeSet: {fileID: 11400000, guid: 35d9d90b045664a289cbdc748927308e, type: 2}
   headTransform: {fileID: 349488520}
-  cone: {fileID: 0}
+  cone: {fileID: 820183316}
+  bumpPenalty: 5
   baseMoveSpeed: 0.75
   stoppingDistance: 5
   headRotationSpeed: 10
   orbitSpeed: 0.1
-  bumpPenalty: 5
+  detectionRadius: 1
+  detectionOffset: 1
 --- !u!136 &642178875
 CapsuleCollider:
   m_ObjectHideFlags: 0

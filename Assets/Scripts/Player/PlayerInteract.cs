@@ -8,13 +8,9 @@ public class PlayerInteract : MonoBehaviour
    public float interactRange = 2.5f;
    [Header("Prefabs")]
    public ChatBubble chatBubble;
-  
-   private float _holdTimer = 0f;
-  
    private string _interactKey;
    private string _altInteractKey;
   
-   private float _msgTimer = 0f;
    private PlayerIdentity _myId;
    private PlayerInventory _inventory;
    private PlayerInput _playerInput;
@@ -128,13 +124,13 @@ public class PlayerInteract : MonoBehaviour
 
          if (_currentInteractable is PlayerInteractable targetPlayer) 
          {
-               GetComponent<PlayerHaptics>()?.Pulse(0.3f, 0.6f);
-               CameramanNPC cam = FindObjectOfType<CameramanNPC>();
-               if (cam != null)
-               {
-                   cam.SetDramaState(DirectorPersonality.Aggressive, other.transform, 5.0f);
-               Debug.Log($"Camera tracking {other.name}");
-               }
+             GetComponent<PlayerHaptics>()?.Pulse(0.3f, 0.6f);
+             CameramanNPC cam = Object.FindAnyObjectByType<CameramanNPC>();
+             if (cam != null)
+             {
+                 cam.SetDramaState(DirectorPersonality.Aggressive, other.transform, 5.0f);
+                 Debug.Log($"Camera tracking {other.name}");
+             }
          }
        }
    }
@@ -145,7 +141,6 @@ public class PlayerInteract : MonoBehaviour
        if (other.TryGetComponent(out IInteractable interactable) && _currentInteractable == interactable)
        {
            _currentInteractable = null;
-           _holdTimer = 0;
        }
 
        if (_currentPromptTarget == other.transform)

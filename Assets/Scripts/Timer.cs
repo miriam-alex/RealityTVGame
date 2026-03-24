@@ -72,7 +72,7 @@ public class Timer : MonoBehaviour
         GameResultData.BaseScoresByPlayerIndex.Clear();
         GameResultData.PlayerColorsByIndex.Clear();
 
-        var scoreManager = FindObjectOfType<ScoreManager>();
+        var scoreManager = ScoreManager.Instance;
         var playerSet = scoreManager?.playerRuntimeSet;
         if (playerSet == null || scoreManager == null) return;
 

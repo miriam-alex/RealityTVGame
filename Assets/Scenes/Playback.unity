@@ -3057,12 +3057,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 756883539}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e9585268cdd64fdab29c1e1dcf84189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DirectorManager
-  dramaRegistry: []
+  dramaRegistry:
+  - type: 0
+    timestamp: 0
+    worldPosition: {x: 0, y: 0, z: 0}
+    actorID: 0
+    victimID: 1
+    actorIndex: 0
+    victimIndex: 0
+    transferredResource: {fileID: 0}
+    scoreImpact: 0
+    tvCaption: 
+    dramaIntensity: 0
   dramaDedupWindowSeconds: 0.75
   isRecording: 1
 --- !u!4 &756883541
@@ -11673,11 +11684,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaybackOrchestrator
   ghostPrefab: {fileID: 5795073664236620774, guid: acffa583c9304455f80f1c825988be10, type: 3}
+  scoreBubblePrefab: {fileID: 3425158269862569154, guid: 781bf46e0ed6244dd9e05500c08e0814, type: 3}
   originalRuntimeSet: {fileID: 11400000, guid: 35d9d90b045664a289cbdc748927308e, type: 2}
   dramaDescriptionText: {fileID: 1198425831}
+  transferTravelSeconds: 3
+  transferWorldOffset: {x: 0, y: 1.2, z: 0}
+  postGameSceneName: PostGame
   playDramaClipOnly: 1
-  dramaClipDurationSeconds: 3
+  dramaClipDurationSeconds: 6
   dramaClipLeadInSeconds: 1.5
+  zoomedFOV: 30
+  cameraSmoothSpeed: 5
+  itemFramingVerticalOffset: -1
 --- !u!4 &1633479631
 Transform:
   m_ObjectHideFlags: 0

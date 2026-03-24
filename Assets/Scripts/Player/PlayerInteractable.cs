@@ -57,7 +57,7 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
                 requester,      // The Thief
                 _myId,          // The Victim
                 ScoreManager.Instance.giveReward,                 // Score Penalty
-                $"{requester.name} is a saint, giving to ${gameObject.name}!", 
+                $"{requester.name} is a saint, giving to {gameObject.name}!", 
                 3f,                // High drama intensity
                 transferredResource
             );
