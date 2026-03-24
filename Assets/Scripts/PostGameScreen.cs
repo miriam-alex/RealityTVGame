@@ -4,26 +4,38 @@ using UnityEngine.UI;
 
 public class PostGameScreen : MonoBehaviour
 {
-    public TMP_Text gameTitleText; // Assign this to your 'gametitle' text in the Canvas
-    public GameObject playerObject; // Assign this to your player GameObject in the scene
+    public TMP_Text gameTitleText; 
+    public AnimalCatalog animalCatalog;
+    private GameObject _playerObject;
 
     void Start()
     {
-        // Set the player object's color and get the correct player number
-        int playerNumber = GameResultData.WinnerId + 1;
-        if (playerObject == null)
+        if (GameResultData.PlayerIndexToAnimalId.TryGetValue(GameResultData.WinnerId, out string animalId))
         {
-            return;
+            if (animalCatalog != null)
+            {
+                AnimalDefinition definition = animalCatalog.animals.Find(a => a.id == animalId);
+                if (definition != null && definition.prefab != null)
+                {
+                    Debug.Log($"[PostGameScreen] Resolved to animal ID: {animalId}");
+                    _playerObject = definition.prefab;
+                }
+                else
+                {
+                    Debug.LogError($"[PostGameScreen] Catalog contains no prefab for ID: {animalId}");
+                }
+            }
+            else
+            {
+                Debug.LogError("[PostGameScreen] AnimalCatalog is missing on PostGameScreen!");
+            }
         }
-
-        // Setting congratulations text
-        var identity = playerObject.GetComponent<PlayerIdentity>();
-        if (identity != null)
-        {
-            playerNumber = identity.playerIndex + 1;
-        }
-
-        gameTitleText.text = $"Congrats Player {playerNumber}";
+        
+        GameObject visual = Instantiate(_playerObject);
+        visual.transform.localPosition = Vector3.zero;
+        visual.transform.localRotation = Quaternion.identity;
+        
+        gameTitleText.text = $"PLAYER {GameResultData.WinnerId + 1} WINS!";
 
         return;
     }

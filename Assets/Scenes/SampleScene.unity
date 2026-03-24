@@ -3842,9 +3842,8 @@ GameObject:
   - component: {fileID: 810787240}
   - component: {fileID: 810787243}
   - component: {fileID: 810787242}
-  - component: {fileID: 810787241}
   m_Layer: 5
-  m_Name: Timer
+  m_Name: TimerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3869,21 +3868,6 @@ RectTransform:
   m_AnchoredPosition: {x: 25, y: 466}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &810787241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810787239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7f09fe8c7f2a954585cbbccfd420e12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Timer
-  timeRemaining: 90
-  timerRunning: 1
-  timerText: {fileID: 810787242}
 --- !u!114 &810787242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14137,6 +14121,7 @@ GameObject:
   - component: {fileID: 2098117167}
   - component: {fileID: 2098117166}
   - component: {fileID: 2098117168}
+  - component: {fileID: 2098117169}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -14213,6 +14198,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f24b644730e1d224c90a0dc00396c9bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HapticsManager
+--- !u!114 &2098117169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098117162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f09fe8c7f2a954585cbbccfd420e12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Timer
+  timeRemaining: 30
+  timerRunning: 1
+  timerText: {fileID: 810787242}
 --- !u!4 &2099440771 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 280049549110976887, guid: ef71cb488ba16b74eaf2162875b5cfe1, type: 3}
@@ -14585,11 +14585,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6338912181249505767, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.34
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6538854052649554233, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.68
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6674127263793626618, guid: 5f8c67ae04ba84ac182334c7042ed712, type: 3}
       propertyPath: m_Layer

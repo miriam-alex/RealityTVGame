@@ -1329,7 +1329,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23106866, y: 0, z: 0, w: 0.9729375}
-  m_LocalPosition: {x: -3.05, y: 2.8, z: -4.9}
+  m_LocalPosition: {x: 0, y: 2.8, z: -4.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10310,7 +10310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PostGameScreen
   gameTitleText: {fileID: 1198425831}
-  playerObject: {fileID: 0}
+  animalCatalog: {fileID: 11400000, guid: 6c8331a9afc2d41b88833bd99a0443be, type: 2}
 --- !u!114 &1531639097
 MonoBehaviour:
   m_ObjectHideFlags: 0
