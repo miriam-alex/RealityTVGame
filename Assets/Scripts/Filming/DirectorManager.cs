@@ -20,10 +20,7 @@ public class DirectorManager : MonoBehaviour
     private readonly Dictionary<string, float> _lastDramaTimeByKey = new Dictionary<string, float>();
 
     [Header("Live Recording Registry")]
-    // The list of all transforms currently being recorded (Players, Items, Camera)
     private List<RealityActor> _activeActors = new List<RealityActor>();
-
-    // Players are important enough to record even if they don't have RealityActor on their prefab.
     private readonly List<PlayerIdentity> _activePlayers = new List<PlayerIdentity>();
 
     [Header("Recording Control")]
@@ -114,9 +111,7 @@ public class DirectorManager : MonoBehaviour
             _episodeStartTime = Time.time;
             _episodeStartTimeInitialized = true;
         }
-
-        // Record every registered actor's position and rotation this frame.
-        // Note: multiple RealityActors can exist under one player hierarchy; dedupe per frame.
+        
         HashSet<string> recordedIdsThisFrame = new HashSet<string>();
 
         foreach (var actor in _activeActors) 
@@ -125,35 +120,17 @@ public class DirectorManager : MonoBehaviour
 
             string id = actor.name;
             RecordedActorType actorType = RecordedActorType.NonPlayer;
-            bool hasColor = false;
-            Color color = default;
 
             Transform recordTransform = actor.transform;
-
-            // Players get a stable ID and carry their appearance metadata.
-            // Use parent lookup so RealityActor can sit on a child object.
             PlayerIdentity playerIdentity = actor.GetComponentInParent<PlayerIdentity>();
 
             if (playerIdentity != null)
             {
                 id = $"Player_{playerIdentity.playerIndex}";
                 actorType = RecordedActorType.Player;
-                hasColor = true;
 
                 // Record the player root transform, not the child RealityActor's transform.
                 recordTransform = playerIdentity.transform;
-
-                // Prefer the actual rendered body color (in case runtime overrides identity.color).
-                Transform body = playerIdentity.transform.Find("Player Body/Body");
-                if (body != null && body.TryGetComponent(out MeshRenderer renderer) && renderer != null)
-                {
-                    // material.color matches what you see (may instantiate). Fallback to identity.color.
-                    color = renderer.material.color;
-                }
-                else
-                {
-                    color = playerIdentity.color;
-                }
             }
 
             if (recordedIdsThisFrame.Contains(id))
@@ -163,7 +140,7 @@ public class DirectorManager : MonoBehaviour
 
             if (!productionLedger.TryGetValue(id, out ActorTrack track))
             {
-                track = new ActorTrack(id, actorType, hasColor, color);
+                track = new ActorTrack(id, actorType);
                 productionLedger.Add(id, track);
             }
             else
@@ -171,12 +148,6 @@ public class DirectorManager : MonoBehaviour
                 // Backfill metadata if it wasn't known when the track was created.
                 if (track.actorType == RecordedActorType.Unknown)
                     track.actorType = actorType;
-
-                if (hasColor)
-                {
-                    track.hasColor = true;
-                    track.actorColor = color;
-                }
             }
 
             // Log the frame with episode-relative time so playback can start at t=0.
@@ -196,25 +167,16 @@ public class DirectorManager : MonoBehaviour
             recordedIdsThisFrame.Add(id);
 
             RecordedActorType actorType = RecordedActorType.Player;
-            bool hasColor = true;
-            Color color;
 
             Transform body = player.transform.Find("Player Body/Body");
-            if (body != null && body.TryGetComponent(out MeshRenderer renderer) && renderer != null)
-                color = renderer.material.color;
-            else
-                color = player.color;
-
             if (!productionLedger.TryGetValue(id, out ActorTrack track))
             {
-                track = new ActorTrack(id, actorType, hasColor, color);
+                track = new ActorTrack(id, actorType);
                 productionLedger.Add(id, track);
             }
             else
             {
                 track.actorType = RecordedActorType.Player;
-                track.hasColor = true;
-                track.actorColor = color;
             }
 
             float relativeTime = Time.time - _episodeStartTime;

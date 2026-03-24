@@ -23,8 +23,6 @@ public class ActorTrack
     public RecordedActorType actorType = RecordedActorType.Unknown;
 
     [Header("Optional Visual Metadata")]
-    public bool hasColor;
-    public Color actorColor;
     public List<RealityFrame> frames = new List<RealityFrame>();
 
     public ActorTrack(string id) 
@@ -32,12 +30,10 @@ public class ActorTrack
         actorID = id;
     }
 
-    public ActorTrack(string id, RecordedActorType type, bool hasColor, Color color)
+    public ActorTrack(string id, RecordedActorType type)
     {
         actorID = id;
         actorType = type;
-        this.hasColor = hasColor;
-        actorColor = color;
     }
 }
 

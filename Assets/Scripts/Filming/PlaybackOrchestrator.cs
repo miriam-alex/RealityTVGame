@@ -6,10 +6,6 @@ using System.Collections;
 
 public class PlaybackOrchestrator : MonoBehaviour 
 {
-    public GameObject ghostPrefab;
-    public GameObject scoreBubblePrefab;
-    public PlayerRuntimeSet originalRuntimeSet; 
-
     [Header("UI")]
     [Tooltip("Optional. Drag a TextMeshProUGUI here to show the selected drama event during playback.")]
     public TMP_Text dramaDescriptionText;
@@ -123,13 +119,6 @@ public class PlaybackOrchestrator : MonoBehaviour
 
         UpdateDramaDescriptionUI();
     }
-    
-    private void TriggerScoreBubble(int score, Transform target)
-    {
-        if (score == 0 || scoreBubblePrefab == null) return;
-        GameObject b = Instantiate(scoreBubblePrefab, target.position + Vector3.up * 2f, Quaternion.identity);
-        if (b.TryGetComponent(out ScoreBubble script)) script.Setup(score);
-    }
 
     private void UpdateDramaDescriptionUI()
     {
@@ -172,82 +161,58 @@ public class PlaybackOrchestrator : MonoBehaviour
                 Debug.Log($"[Playback] Skip track '{actorId}' type={track.actorType} frames={track.frames.Count}");
                 continue;
             }
-
-            Debug.Log($"[Playback] Use track '{actorId}' type={track.actorType} frames={track.frames.Count} hasColor={track.hasColor}");
-
-            Debug.Log($"[Playback] Spawning ghost for: {actorId}");
             
-            GameObject ghost = Instantiate(ghostPrefab);
-            ghost.name = actorId;
-
-            // Ensure transform-driven playback isn't fighting physics.
-            if (ghost.TryGetComponent(out Rigidbody rb))
-            {
-                rb.isKinematic = true;
-                rb.useGravity = false;
-            }
-
-            ApplyRecordedAppearance(ghost, actorId, track);
-            _spawnedGhosts.Add(actorId, ghost);
+            GameObject playbackActor = SpawnPlaybackActor(actorId);
+            _spawnedGhosts.Add(actorId, playbackActor);
         }
         
         Debug.Log($"[Playback] Spawning complete. Total ghosts: {_spawnedGhosts.Count}");
     }
 
-    void ApplyRecordedAppearance(GameObject ghost, string actorId, ActorTrack track)
+    private GameObject SpawnPlaybackActor(string actorId)
     {
-        if (track != null && track.hasColor)
+        GameObject root = new GameObject(actorId);
+
+        GameObject visualPrefab = ResolvePlaybackVisualPrefab(actorId);
+        if (visualPrefab != null)
         {
-            Transform body = ghost.transform.Find("Player Body/Body");
-            if (body != null)
+            GameObject visual = Instantiate(visualPrefab, root.transform);
+            visual.transform.localPosition = Vector3.zero;
+            visual.transform.localRotation = Quaternion.identity;
+        }
+        else
+        {
+            Debug.LogWarning($"[Playback] No prefab found for '{actorId}'. Assign bodyPrefab on PlayerIdentity.");
+        }
+
+        // Ensure transform-driven playback isn't fighting physics on any spawned prefab.
+        Rigidbody[] rigidbodies = root.GetComponentsInChildren<Rigidbody>(true);
+        for (int i = 0; i < rigidbodies.Length; i++)
+        {
+            rigidbodies[i].isKinematic = true;
+            rigidbodies[i].useGravity = false;
+        }
+
+        return root;
+    }
+
+    private GameObject ResolvePlaybackVisualPrefab(string actorId)
+    {
+        Debug.Log("ResolvePlaybackVisualPrefab");
+        if (TryParsePlayerIndex(actorId, out int playerIndex) && playerIndex >= 0)
+        {
+            Debug.Log($"parsed index {playerIndex} from {actorId}");
+            Debug.Log("Dictionary Contents:");
+            foreach (KeyValuePair<int, GameObject> kvp in GameResultData.PlayerIndexToPrefab)
             {
-                var renderer = body.GetComponent<MeshRenderer>();
-                if (renderer != null)
-                {
-                    renderer.material.color = track.actorColor;
-                    return;
-                }
+                Debug.Log($"Key: {kvp.Key}, Value: {kvp.Value.name}");
             }
-
-            Debug.LogWarning($"[Playback] {actorId} has recorded color but ghost body mesh was not found.");
+            if (GameResultData.PlayerIndexToPrefab.TryGetValue(playerIndex, out GameObject prefab) && prefab != null)
+                Debug.Log($"got prefab from PlayerIndexToPrefab");
+                return prefab;
         }
 
-        // Fallback: try to pull appearance from a runtime set, if it survived scene load.
-        if (originalRuntimeSet == null || originalRuntimeSet.Items.Count == 0)
-        {
-            Debug.LogWarning($"[Playback] {actorId} is grey because no recorded color and RuntimeSet is null/empty.");
-            return;
-        }
-        
-        bool foundColor = false;
-        foreach (GameObject original in originalRuntimeSet.Items)
-        {
-            if (original == null) continue;
-
-            // Prefer matching by stable player index if possible.
-            if (original.TryGetComponent(out PlayerIdentity originalIdentity))
-            {
-                string expectedId = $"Player_{originalIdentity.playerIndex}";
-                if (expectedId != actorId)
-                    continue;
-
-                Transform body = ghost.transform.Find("Player Body/Body");
-                if (body != null)
-                {
-                    var renderer = body.GetComponent<MeshRenderer>();
-                    if (renderer != null)
-                    {
-                        renderer.material.color = originalIdentity.color;
-                        Debug.Log($"[Playback] Successfully colored {actorId} to {originalIdentity.color} (fallback)");
-                        foundColor = true;
-                        break;
-                    }
-                }
-                else Debug.LogError($"[Playback] Found color for {actorId} but 'Player Body/Body' child missing!");
-            }
-        }
-
-        if (!foundColor) Debug.LogWarning($"[Playback] No matching identity found in RuntimeSet for {actorId}");
+        return null;
     }
 
     void Update() 
@@ -314,15 +279,6 @@ public class PlaybackOrchestrator : MonoBehaviour
 
         _playedTransferVisual = true;
 
-        // Visual 1: Red Flash for Steals
-        if (_selectedDramaEvent.type == DramaType.StealItem)
-            StartCoroutine(FlashCameraColor(Color.red, 0.4f));
-
-        // Visual 2: Score Bubble over the Actor
-        if (_spawnedGhosts.TryGetValue(_selectedDramaEvent.actorID, out GameObject actorGhost))
-            TriggerScoreBubble(_selectedDramaEvent.scoreImpact, actorGhost.transform);
-
-        // Visual 3: Item Toss
         int actorIndex, victimIndex;
         TryParsePlayerIndex(_selectedDramaEvent.actorID, out actorIndex);
         TryParsePlayerIndex(_selectedDramaEvent.victimID, out victimIndex);
@@ -357,21 +313,7 @@ public class PlaybackOrchestrator : MonoBehaviour
         Destroy(_currentTransferInstance);
         _currentTransferInstance = null;
     }
-    
-    private IEnumerator FlashCameraColor(Color col, float dur)
-    {
-        if (_playbackCam == null) yield break;
-        _playbackCam.clearFlags = CameraClearFlags.SolidColor;
-        Color orig = _playbackCam.backgroundColor;
-        float elapsed = 0;
-        while(elapsed < dur) {
-            elapsed += Time.deltaTime;
-            _playbackCam.backgroundColor = Color.Lerp(col, orig, elapsed/dur);
-            yield return null;
-        }
-        _playbackCam.clearFlags = CameraClearFlags.Skybox; // Or original
-    }
-
+   
     private void FinalizeScoresAndTransition()
     {
         // Avoid double-fire.
@@ -434,25 +376,6 @@ public class PlaybackOrchestrator : MonoBehaviour
     {
         int winnerPlayerIndex = Timer.DetermineWinnerId(GameResultData.BaseScoresByPlayerIndex);
         GameResultData.WinnerId = winnerPlayerIndex;
-
-        // Prefer color captured from gameplay; otherwise fall back to recorded track color.
-        if (GameResultData.PlayerColorsByIndex.TryGetValue(winnerPlayerIndex, out Color c))
-        {
-            GameResultData.WinnerColor = c;
-            return;
-        }
-
-        if (DirectorManager.Instance != null)
-        {
-            string key = $"Player_{winnerPlayerIndex}";
-            if (DirectorManager.Instance.productionLedger.TryGetValue(key, out ActorTrack track) && track != null && track.hasColor)
-            {
-                GameResultData.WinnerColor = track.actorColor;
-                return;
-            }
-        }
-
-        GameResultData.WinnerColor = Color.white;
     }
 
     private bool TryParsePlayerIndex(string id, out int playerIndex)

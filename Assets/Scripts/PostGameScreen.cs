@@ -25,29 +25,6 @@ public class PostGameScreen : MonoBehaviour
 
         gameTitleText.text = $"Congrats Player {playerNumber}";
 
-        // Setting player object's color
-        Transform playerBodyTransform = playerObject.transform.Find("Player Body");
-        if (playerBodyTransform == null)
-        {
-            Debug.LogWarning("Child named 'Player Body' not found!");
-            return;
-        }
-
-        Transform bodyTransform = playerBodyTransform.Find("Body");
-        if (bodyTransform != null)
-        {
-            MeshRenderer renderer = bodyTransform.GetComponent<MeshRenderer>();
-            // Do something with the renderer
-            if (renderer != null)
-            {
-                renderer.material.color = GameResultData.WinnerColor;
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Child named 'Body' not found!");
-        }
-
         return;
     }
 }

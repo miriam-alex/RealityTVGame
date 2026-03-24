@@ -81,9 +81,6 @@ public class PlayerController : MonoBehaviour
             return;
 
         GetComponent<PlayerHaptics>()?.Pulse(0.5f, 0.2f);
-        
-        if (identity != null) 
-            Debug.Log($"P{identity.playerIndex + 1}: Collided with {collision.collider.name}");
     }
 
     private Key GetKey(string keyName)

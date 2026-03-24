@@ -70,7 +70,7 @@ public class Timer : MonoBehaviour
     private void PersistBaseScoresForPlayback()
     {
         GameResultData.BaseScoresByPlayerIndex.Clear();
-        GameResultData.PlayerColorsByIndex.Clear();
+        GameResultData.PlayerIndexToPrefab.Clear();
 
         var scoreManager = ScoreManager.Instance;
         var playerSet = scoreManager?.playerRuntimeSet;
@@ -84,7 +84,9 @@ public class Timer : MonoBehaviour
 
             int playerIndex = identity.playerIndex;
             GameResultData.BaseScoresByPlayerIndex[playerIndex] = scoreManager.GetScore(playerObj);
-            GameResultData.PlayerColorsByIndex[playerIndex] = identity.color;
+            GameResultData.PlayerIndexToPrefab[playerIndex] = identity.bodyPrefab;
+            Debug.Log($"saved body prefab {GameResultData.PlayerIndexToPrefab[playerIndex].name} for player w index {playerIndex}");
+            Debug.Log($"persisted player w index {playerIndex} for playback");
         }
     }
 

@@ -4,20 +4,19 @@ using System.Collections.Generic;
 public static class GameResultData
 {
     public static int WinnerId;
-    public static Color WinnerColor;
+    public static GameObject WinnerPrefab;
     public static string WinnerCharacter;
 
     // Persisted between gameplay -> playback -> postgame.
-    // Key is PlayerIdentity.playerIndex.
     public static readonly Dictionary<int, int> BaseScoresByPlayerIndex = new Dictionary<int, int>();
-    public static readonly Dictionary<int, Color> PlayerColorsByIndex = new Dictionary<int, Color>();
+    public static readonly Dictionary<int, GameObject> PlayerIndexToPrefab = new Dictionary<int, GameObject>();
 
     public static void Reset()
     {
         WinnerId = 0;
-        WinnerColor = Color.white;
+        WinnerPrefab = null;
         WinnerCharacter = string.Empty;
         BaseScoresByPlayerIndex.Clear();
-        PlayerColorsByIndex.Clear();
+        PlayerIndexToPrefab.Clear();
     }
 }

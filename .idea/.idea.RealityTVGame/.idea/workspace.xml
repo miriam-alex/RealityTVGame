@@ -5,25 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="548baca1-a2e6-4029-95e1-d3838846d670" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ScoreBubble.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ScoreBubble.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RealityTVGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RealityTVGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ChatBubble.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ChatBubble/ChatBubble.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ChatBubble/ChatBubble.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ChatBubble/ChatBubbleBG.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ChatBubble/ChatBubbleBG.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AssetsStore/Weel/Assets/Materials/Weel.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AssetsStore/Weel/Assets/Materials/Weel.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Materials/Wooden Chair mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Materials/Wooden Chair mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Materials/Wooden Stool mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Materials/Wooden Stool mat.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Materials/chair albedo.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Materials/chair albedo.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/POLYART_Ancient Village/Materials/Water/PA_DayWater.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/POLYART_Ancient Village/Materials/Water/PA_DayWater.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/CameramanNPC.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/CameramanNPC.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playback.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Playback.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PostGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PostGame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PostGame.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PostGame.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PreGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PreGame.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Filming/DirectorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Filming/DirectorManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Filming/PlaybackOrchestrator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Filming/PlaybackOrchestrator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Filming/RealityDataTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Filming/RealityDataTypes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameResultData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameResultData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerIdentity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerIdentity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteract.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteract.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteractable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteractable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PostGameScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PostGameScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Timer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Timer.cs" afterDir="false" />
     </list>
@@ -158,7 +156,7 @@
       <workItem from="1773413815651" duration="15001000" />
       <workItem from="1774244300399" duration="3000" />
       <workItem from="1774244517082" duration="10780000" />
-      <workItem from="1774304352569" duration="8336000" />
+      <workItem from="1774304352569" duration="18282000" />
     </task>
     <servers />
   </component>

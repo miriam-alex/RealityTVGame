@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PlayerIdentity : MonoBehaviour {
     [Header("Essentials")]
     public int playerIndex; 
-    public Color color;
+    public GameObject bodyPrefab;
     public PlayerRuntimeSet runtimeSet;
     [Header("Key Bindings")]
     public string interactKey = "E";
@@ -16,32 +16,10 @@ public class PlayerIdentity : MonoBehaviour {
     public Color spottedColor = Color.red;
     private Color normalColor = Color.white;
     private bool wasSpottedLastFrame;
-    private GameObject bodyObject;
     public TMP_Text scoreText; 
     void Awake()
     {
         Transform bodyTransform = transform.Find("Player Body/Body");
-
-        if (bodyTransform != null)
-        {
-            bodyObject = bodyTransform.gameObject;
-        
-            MeshRenderer meshRenderer = bodyObject.GetComponent<MeshRenderer>();
-            if (meshRenderer != null) 
-                meshRenderer.material.color = color;
-        }
-        else
-        {
-            Debug.LogWarning($"[Setup Error] {gameObject.name} could not find 'Player Body/Body'. Is the hierarchy different in this scene?");
-        }
-        
-        if (bodyObject != null)
-        {
-            MeshRenderer meshRenderer = bodyObject.GetComponent<MeshRenderer>();
-            if (meshRenderer != null) 
-                meshRenderer.material.color = color;
-        }
-        
         Transform scoreTextTransform = transform.Find("Overhead Canvas/Score");
         if (scoreTextTransform != null)
         { 
@@ -128,7 +106,6 @@ public class PlayerIdentity : MonoBehaviour {
 
     private IEnumerator AnimateScoreChange(bool gainedPoints) 
     {
-        // Store original scale
         Vector3 originalScale = Vector3.one;
         Vector3 punchScale = Vector3.one * 1.5f; // Scale up by 50%
 
@@ -161,7 +138,6 @@ public class PlayerIdentity : MonoBehaviour {
             yield return null;
         }
 
-        // Reset color to white
         scoreText.color = Color.white;
     }
 }
