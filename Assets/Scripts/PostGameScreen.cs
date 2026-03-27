@@ -33,7 +33,7 @@ public class PostGameScreen : MonoBehaviour
         
         GameObject visual = Instantiate(_playerObject);
         visual.transform.localPosition = Vector3.zero;
-        visual.transform.localRotation = Quaternion.identity;
+        visual.transform.localRotation = Quaternion.Euler(0, 180,0);
         
         gameTitleText.text = $"PLAYER {GameResultData.WinnerId + 1} WINS!";
 
