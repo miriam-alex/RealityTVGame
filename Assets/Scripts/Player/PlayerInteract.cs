@@ -8,7 +8,6 @@ public class PlayerInteract : MonoBehaviour
    [Header("Settings")]
    public float interactRange = 2.5f;
     [Header("Prefabs")]
-   public ChatBubble chatBubble;
 
     [Header("UI")]
     public InteractionPromptUI promptUI;

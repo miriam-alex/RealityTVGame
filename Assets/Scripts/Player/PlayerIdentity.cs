@@ -31,6 +31,7 @@ public class PlayerIdentity : MonoBehaviour {
     void Start()
     {
         ApplyAnimalById(selectedAnimalId);
+        ChatBubbleManager.Show("testing testing!", transform, new Vector3(0, 2, 0), 5.0f);
     }
     
     public void ApplyAnimalById(string id)

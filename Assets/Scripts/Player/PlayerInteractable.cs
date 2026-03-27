@@ -3,9 +3,6 @@ using System.Collections;
 
 public class PlayerInteractable : MonoBehaviour, IInteractable
 {
-    [Header("References")]
-    public ChatBubble chatBubblePrefab;
-    
 	private ScoreManager _scoreManager;
     private PlayerIdentity _myId;
     private PlayerInventory _myInventory;
@@ -118,19 +115,7 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
                 label = $"{giver.name} is empty!";
             }
         }
-
-        // 4. Visual feedback
-        ChatBubble prefab = chatBubblePrefab;
-        if (prefab == null)
-        {
-            prefab = taker != null ? taker.GetComponent<PlayerInteract>()?.chatBubble : null;
-        }
-        if (prefab == null)
-        {
-            prefab = giver != null ? giver.GetComponent<PlayerInteract>()?.chatBubble : null;
-        }
-        
-        ChatBubble.Create(prefab, Vector3.up * 2, transform, label, 2f);
+        ChatBubbleManager.Show("Look at this!", transform, new Vector3(0, 2, 0), 5.0f);
         return success;
     }
     
