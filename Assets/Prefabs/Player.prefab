@@ -240,7 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ebbaedd2a084bc388273814e5d929d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractable
-  chatBubblePrefab: {fileID: 5711336868813938894, guid: e30e6f3fde3864760926b9149e66fd4c, type: 3}
 --- !u!1 &3153989049251890695
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,7 +473,6 @@ MonoBehaviour:
   altInteractKey: R
   isSpotted: 0
   spottedColor: {r: 1, g: 0, b: 0, a: 1}
-  scoreText: {fileID: 0}
 --- !u!114 &3779507246593982365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,7 +486,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
   interactRange: 0.5
-  chatBubble: {fileID: 5711336868813938894, guid: e30e6f3fde3864760926b9149e66fd4c, type: 3}
+  promptUI: {fileID: 0}
+  controllerPrimaryLabel: A
+  controllerSecondaryLabel: B
 --- !u!114 &4539908133405845938
 MonoBehaviour:
   m_ObjectHideFlags: 0

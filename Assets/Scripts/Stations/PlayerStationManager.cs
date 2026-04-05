@@ -15,36 +15,34 @@ public class PlayerStationManager : MonoBehaviour
     
     private List<GameObject> spawnedStations = new List<GameObject>();
 
-    void Start()
-    {
-        SpawnStationsForPlayers();
-    }
-
-    void SpawnStationsForPlayers()
+    public void SpawnStationsForPlayers()
     {
         if (inputStationPrefab == null || playerRuntimeSet == null) return;
 
+        // Clean up any old stations if this is called twice
+        ClearExistingStations();
+
         Vector3[] positions = { player1Position, player2Position, player3Position, player4Position };
+        
+        // Use the actual count of players who joined in the lobby
         int playerCount = Mathf.Min(playerRuntimeSet.Items.Count, 4);
         
         for (int i = 0; i < playerCount; i++)
         {
             GameObject playerObj = playerRuntimeSet.Items[i];
+            if (playerObj == null) continue;
+
             PlayerIdentity playerIdentity = playerObj.GetComponent<PlayerIdentity>();
-            
             if (playerIdentity == null) continue;
 
-            // Spawn station
+            // Spawn station at the designated slot for this player index
             GameObject station = Instantiate(inputStationPrefab, positions[i], Quaternion.identity);
-            station.name = $"InputStation_Player{playerIdentity.playerIndex + 1}";
+            station.name = $"InputStation_Player{playerIdentity.playerIndex}";
             
-            // Get the specific color for this player
             Color targetColor = GetPlayerColor(playerIdentity.playerIndex);
             
-            // 1. Physically tint the station
             ApplyColorToStation(station, targetColor);
             
-            // 2. Tell the script to use this color (Prevents it from resetting to Red/Blue)
             InputStation inputStation = station.GetComponent<InputStation>();
             if (inputStation != null)
             {
@@ -54,6 +52,22 @@ public class PlayerStationManager : MonoBehaviour
             spawnedStations.Add(station);
         }
     }
+
+    private void ClearExistingStations()
+    {
+        // Loop through the list of stations we tracked
+        foreach (GameObject station in spawnedStations)
+        {
+            if (station != null) 
+            {
+                Destroy(station);
+            }
+        }
+        // Empty the list so it's ready for a fresh spawn
+        spawnedStations.Clear();
+    }
+
+
 
     public Color GetPlayerColor(int playerIndex)
     {
@@ -77,7 +91,6 @@ public class PlayerStationManager : MonoBehaviour
 
     void OnDestroy()
     {
-        foreach (GameObject station in spawnedStations)
-            if (station != null) Destroy(station);
+        ClearExistingStations();
     }
 }

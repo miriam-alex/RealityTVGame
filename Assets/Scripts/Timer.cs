@@ -5,9 +5,39 @@ using System.Collections.Generic;
 public class Timer : MonoBehaviour
 {
     public float timeRemaining = 120f;
-    public bool timerRunning = true;
+    public bool timerRunning = false; 
+
+    // Add this so GameInitializer can start the clock
+    public void StartTimer()
+    {
+        timerRunning = true;
+    }
+
 
     public TMP_Text timerText;
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Find the timer text in the scene. This is a bit brittle.
+        // A better solution would be a reference passed in by the GameInitializer
+        // or a more robust service locator pattern.
+        var timerDisplay = FindAnyObjectByType<TimerDisplay>();
+        if (timerDisplay != null)
+        {
+            timerText = timerDisplay.timerText;
+        }
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

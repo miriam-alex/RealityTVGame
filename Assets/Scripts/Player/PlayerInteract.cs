@@ -111,63 +111,28 @@ public class PlayerInteract : MonoBehaviour
            data.HasSecondary);
    }
    
-   private void HandleInput()
-   {
-       // return if no playerID
-       if (_myId == null) return;
+    private void HandleInput()
+    {
+        if (_myId == null || _playerInput == null) return;
 
+        // USE ACTIONS FOR EVERYONE
+        // This allows P1, P2, P3 etc. to all use their own controllers/keys
+        bool interactPressed = _playerInput.actions["Interact"].WasPressedThisFrame();
+        
+        // Using FindAction for Steal in case it's not mapped in every Action Map
+        var stealAction = _playerInput.actions.FindAction("Steal", false);
+        bool altInteractPressed = (stealAction != null) && stealAction.WasPressedThisFrame();
 
-       Key iKey = GetKey(_myId.interactKey);
-       Key aKey = GetKey(_myId.altInteractKey);
-
-
-       bool interactPressed = false;
-       bool altInteractPressed = false;
-
-
-       // each player uses only their device: Player 1 = controller, Player 2 = keyboard
-       // will change later
-       if (_myId.playerIndex == 0)
-       {
-           // checks to see if controller input exists (similar to that in PlayerController)
-           if (_playerInput != null)
-           {
-               interactPressed = _playerInput.actions["Interact"].WasPressedThisFrame();
-               var stealAction = _playerInput.actions.FindAction("Steal", false);
-               if (stealAction != null)
-                   altInteractPressed = stealAction.WasPressedThisFrame();
-           }
-       }
-       else
-       {
-           interactPressed = Keyboard.current != null && Keyboard.current[iKey].wasPressedThisFrame;
-           altInteractPressed = Keyboard.current != null && Keyboard.current[aKey].wasPressedThisFrame;
-       }
-
-
-       // 1. If we are looking at something, handle interactions
-       if (_currentInteractable != null)
-       {
-           // Trading or Normal Interaction (Primary)
-           if (interactPressed)
-           {
-               _currentInteractable.Interact(_myId);
-           }
-
-           // Stealing (Alt)
-           if (altInteractPressed)
-           {
-               _currentInteractable.AltInteract(_myId);
-           }
-       }
-       
-       // 2. Fallback: Drop item if NOT looking at anything
-       else if (interactPressed)
-       {
-           // Simply ask the inventory to drop, don't write the logic here
-           _inventory.TryDrop();
-       }
-   }
+        if (_currentInteractable != null)
+        {
+            if (interactPressed) _currentInteractable.Interact(_myId);
+            if (altInteractPressed) _currentInteractable.AltInteract(_myId);
+        }
+        else if (interactPressed)
+        {
+            _inventory.TryDrop();
+        }
+    }
 
 
    private void OnTriggerEnter(Collider other)

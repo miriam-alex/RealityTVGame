@@ -1,6 +1,7 @@
 using UnityEngine; 
 using TMPro; 
 using System.Collections;
+using UnityEngine.InputSystem;
 using System.Collections.Generic;
 public class PlayerIdentity : MonoBehaviour {
     [Header("Essentials")]
@@ -21,19 +22,50 @@ public class PlayerIdentity : MonoBehaviour {
     private TMP_Text scoreText; 
     void Awake()
     {
+        // Existing UI finding logic...
         Transform scoreTextTransform = transform.Find("Overhead Canvas/Score");
         if (scoreTextTransform != null)
         { 
             scoreText = scoreTextTransform.GetComponent<TextMeshProUGUI>();
         }
+
+        // NEW: Self-Assign Animal based on Player Input Index
+        PlayerInput pi = GetComponent<PlayerInput>();
+            
+        // Only attempt auto-assignment if we have a PlayerInput and it's actually paired
+        // to a device (user). pi.user.valid checks if a controller is actually there.
+        if (pi != null && pi.user.valid && animalCatalog != null && string.IsNullOrEmpty(selectedAnimalId))
+        {
+            int index = pi.playerIndex;
+            
+            // Safety check the index against the list count
+            if (index >= 0 && index < animalCatalog.animals.Count)
+            {
+                selectedAnimalId = animalCatalog.animals[index].id;
+                playerIndex = index;
+                Debug.Log($"<color=cyan>[PlayerIdentity]</color> Auto-assigned ID: {selectedAnimalId} for Player {index}");
+            }
+        }
     }
+    
 
     void Start()
     {
-        ApplyAnimalById(selectedAnimalId);
-        ChatBubbleManager.Show("testing testing!", transform, new Vector3(0, 2, 0), 5.0f);
+        // Only run this if the ID has actually been set
+        if (!string.IsNullOrEmpty(selectedAnimalId))
+        {
+            ApplyAnimalById(selectedAnimalId);
+        }
+        else 
+        {
+            Debug.LogWarning("Player spawned with no ID yet. Waiting for LobbyManager...");
+        }
+
+        if (ChatBubbleManager.Instance != null)
+        {
+            ChatBubbleManager.Show("Joined!", transform, new Vector3(0, 2, 0), 5.0f);
+        }
     }
-    
     public void ApplyAnimalById(string id)
     {
         AnimalDefinition definition = animalCatalog.animals.Find(a => a.id == id);

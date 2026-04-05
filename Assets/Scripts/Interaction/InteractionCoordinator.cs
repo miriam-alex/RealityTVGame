@@ -11,6 +11,17 @@ public class InteractionCoordinator : MonoBehaviour
 
     private void Awake() => Instance = this;
 
+    public void Reset()
+    {
+        _handshake.Clear();
+        _activeTraders.Clear();
+    }
+
+    private void OnDestroy()
+    {
+        Reset();
+    }
+
     public void SetHandshake(PlayerIdentity p1, PlayerIdentity p2, bool active)
     {
         if (active) 
