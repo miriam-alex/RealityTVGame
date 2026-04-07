@@ -77,6 +77,12 @@ public class ChatBubbleManager : MonoBehaviour
         GameObject bubbleObj = Instantiate(bubblePrefab, parent);
         bubbleObj.transform.localPosition = localOffset;
         
+        // Add the Billboard component
+        if (bubbleObj.GetComponent<Billboard>() == null)
+        {
+            bubbleObj.AddComponent<Billboard>();
+        }
+        
         activeBubbles[parent] = bubbleObj;
 
         // 3. Configure Visuals

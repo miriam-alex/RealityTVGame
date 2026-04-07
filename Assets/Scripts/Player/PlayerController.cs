@@ -12,12 +12,14 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     public float groundCheckRadius = 0.2f;
+    public float coyoteTime = 0.08f;
 
     private Rigidbody rb;
     private PlayerIdentity identity;
     private PlayerInput playerInput;
     private Vector2 moveInput;
     private bool isGrounded;
+    private float lastGroundedTime = -999f;
 
     // Example key names for movement (set these in Inspector or code)
     public string moveLeftKey = "A";
@@ -64,8 +66,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Ground Check
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
+        isGrounded = Time.time <= lastGroundedTime + coyoteTime;
     }
 
     void FixedUpdate()
@@ -93,13 +94,38 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed && isGrounded)
+        if (!context.performed || !isGrounded || rb.linearVelocity.y > 0.01f)
+            return;
+
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        isGrounded = false;
+        lastGroundedTime = -999f;
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        TryMarkGrounded(collision);
+    }
+
+    private void TryMarkGrounded(Collision collision)
+    {
+        if ((groundLayer.value & (1 << collision.gameObject.layer)) == 0)
+            return;
+
+        for (int i = 0; i < collision.contactCount; i++)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            ContactPoint contact = collision.GetContact(i);
+            if (contact.normal.y >= 0.35f)
+            {
+                lastGroundedTime = Time.time;
+                isGrounded = true;
+                return;
+            }
         }
     }
 
     void OnCollisionEnter(Collision collision) {
+        TryMarkGrounded(collision);
         
         // return if colliding with other object or self
         PlayerIdentity otherIdentity = collision.gameObject.GetComponent<PlayerIdentity>();

@@ -75,6 +75,9 @@ public class GameInitializer : MonoBehaviour
         {
             introCamera.SetActive(false);
         }
+
+        // Set the main camera in the provider AFTER the switch
+        CameraProvider.MainCamera = Camera.main;
     }
 
     public void InitializeGame()

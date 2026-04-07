@@ -192,6 +192,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d6e5f0770c2128f419ce20e6bd0e0e6b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2550830506686754140}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d6e5f0770c2128f419ce20e6bd0e0e6b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7701022055360193187}
   m_SourcePrefab: {fileID: 100100000, guid: d6e5f0770c2128f419ce20e6bd0e0e6b, type: 3}
 --- !u!1 &223097907045824185 stripped
 GameObject:
@@ -283,6 +286,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13881d301e7734596a4b1f68da5f149b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RealityActor
+--- !u!114 &7701022055360193187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223097907045824185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!4 &599905577827118083 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d6e5f0770c2128f419ce20e6bd0e0e6b, type: 3}
