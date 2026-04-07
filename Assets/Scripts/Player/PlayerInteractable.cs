@@ -115,7 +115,7 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
                 label = $"{giver.name} is empty!";
             }
         }
-        ChatBubbleManager.Show("Look at this!", transform, new Vector3(0, 2, 0), 5.0f);
+        //ChatBubbleManager.Show("Look at this!", transform, new Vector3(0, 2, 0), 5.0f);
         return success;
     }
     
