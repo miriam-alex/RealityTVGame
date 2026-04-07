@@ -69,6 +69,7 @@ public class PlaybackOrchestrator : MonoBehaviour
         if (_playbackCam != null) _defaultFOV = _playbackCam.fieldOfView;
 
         DirectorManager.Instance.SetRecording(false);
+        DirectorManager.Instance.SetPlayerInput(false);
 
         // Logic to find and sort the Top 3 moments
         ConfigureHighlightReel();
@@ -338,6 +339,7 @@ public class PlaybackOrchestrator : MonoBehaviour
         // Avoid double-fire.
         enabled = false;
 
+        DirectorManager.Instance.SetPlayerInput(true);
         ApplyClipScoreAdjustments();
         DetermineWinnerAndStoreResult();
 

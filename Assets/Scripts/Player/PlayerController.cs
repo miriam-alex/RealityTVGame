@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         if (otherIdentity == null || otherIdentity == identity)
             return;
 
-        GetComponent<PlayerHaptics>()?.Pulse(0.5f, 0.2f);
+        //GetComponent<PlayerHaptics>()?.Pulse(0.5f, 0.2f);
     }
 
     private Key GetKey(string keyName)

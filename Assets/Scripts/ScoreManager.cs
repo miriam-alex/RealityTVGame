@@ -11,7 +11,6 @@ public class ScoreManager : MonoBehaviour
     [Header("Settings")]
     public int giveReward = 10;
     public int stealPenalty = 20;
-    public PlayerRuntimeSet playerRuntimeSet;
     
     private Dictionary<GameObject, int> playerScores = new Dictionary<GameObject, int>();
 
@@ -35,24 +34,21 @@ public class ScoreManager : MonoBehaviour
     {
         playerScores.Clear();
         
-        if (playerRuntimeSet == null)
+        PlayerIdentity[] players = FindObjectsOfType<PlayerIdentity>();
+        if (players == null || players.Length == 0)
         {
-            Debug.LogError("ScoreManager: PlayerRuntimeSet is missing!");
+            Debug.LogError("ScoreManager: No PlayerIdentity objects found!");
             return;
         }
 
-        foreach (GameObject player in playerRuntimeSet.Items)
+        foreach (PlayerIdentity id in players)
         {
-            if (player == null) continue;
+            if (id == null) continue;
 
+            GameObject player = id.gameObject;
             playerScores[player] = 0;
-            
-            PlayerIdentity id = player.GetComponent<PlayerIdentity>();
-            if (id != null)
-            {
-                id.UpdateScoreUI(0, true);
-                Debug.Log($"ScoreManager: Initialized Player {id.playerIndex}");
-            }
+            id.UpdateScoreUI(0, true);
+            Debug.Log($"ScoreManager: Initialized Player {id.playerIndex}");
         }
         Debug.Log($"ScoreManager: Total players initialized: {playerScores.Count}");
     }
@@ -83,6 +79,11 @@ public class ScoreManager : MonoBehaviour
         if (playerScores.ContainsKey(player))
             return playerScores[player];
         return 0;
+    }
+
+    public IEnumerable<GameObject> GetPlayers()
+    {
+        return playerScores.Keys;
     }
 
     // Helpers for other scripts

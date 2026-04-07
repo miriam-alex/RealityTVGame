@@ -100,6 +100,21 @@ public class DirectorManager : MonoBehaviour
         _activePlayers.Remove(player);
     }
 
+    public void SetPlayerInput(bool enabled)
+    {
+        foreach (var player in _activePlayers)
+        {
+            if (player != null)
+            {
+                var controller = player.GetComponent<PlayerController>();
+                if (controller != null)
+                {
+                    controller.enabled = enabled;
+                }
+            }
+        }
+    }
+
     // --- THE RECORDING LOOP ---
 
     private void FixedUpdate() 

@@ -103,10 +103,9 @@ public class Timer : MonoBehaviour
         GameResultData.PlayerIndexToAnimalId.Clear();
 
         var scoreManager = ScoreManager.Instance;
-        var playerSet = scoreManager?.playerRuntimeSet;
-        if (playerSet == null || scoreManager == null) return;
+        if (scoreManager == null) return;
 
-        foreach (var playerObj in playerSet.Items)
+        foreach (var playerObj in scoreManager.GetPlayers())
         {
             if (playerObj == null) continue;
             var identity = playerObj.GetComponent<PlayerIdentity>();
