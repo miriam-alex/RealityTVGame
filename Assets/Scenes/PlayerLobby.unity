@@ -9016,7 +9016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
   timeRemaining: 100
-  timerRunning: 1
+  timerRunning: 0
   timerText: {fileID: 1476920999}
 --- !u!114 &1461091218
 MonoBehaviour:

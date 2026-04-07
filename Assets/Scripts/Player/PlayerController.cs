@@ -7,10 +7,17 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public float rotationSpeed = 10f;
 
+    [Header("Jump Settings")]
+    public float jumpForce = 7f;
+    public Transform groundCheck;
+    public LayerMask groundLayer;
+    public float groundCheckRadius = 0.2f;
+
     private Rigidbody rb;
     private PlayerIdentity identity;
     private PlayerInput playerInput;
     private Vector2 moveInput;
+    private bool isGrounded;
 
     // Example key names for movement (set these in Inspector or code)
     public string moveLeftKey = "A";
@@ -25,13 +32,40 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
     }
 
+    void OnEnable()
+    {
+        // Manually subscribe to the jump event
+        if (playerInput != null && playerInput.actions != null)
+        {
+            playerInput.actions["Jump"].performed += OnJump;
+        }
+    }
+
+    void OnDisable()
+    {
+        // Manually unsubscribe to prevent memory leaks
+        if (playerInput != null && playerInput.actions != null)
+        {
+            playerInput.actions["Jump"].performed -= OnJump;
+        }
+    }
+
     void Start()
     {
         identity = GetComponent<PlayerIdentity>();
 
-        // adds haptics component at start of game
-        //if (GetComponent<PlayerHaptics>() == null)
-        //    gameObject.AddComponent<PlayerHaptics>();
+        if (groundCheck == null)
+        {
+            Debug.LogError("GroundCheck transform is not assigned on PlayerController. Please create an empty GameObject as a child of the player, position it at the player's feet, and assign it to the 'groundCheck' field.");
+            enabled = false; // Disable the script to prevent errors
+            return;
+        }
+    }
+
+    void Update()
+    {
+        // Ground Check
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
     void FixedUpdate()
@@ -56,7 +90,15 @@ public class PlayerController : MonoBehaviour
             rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
     }
-    
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed && isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+
     void OnCollisionEnter(Collision collision) {
         
         // return if colliding with other object or self

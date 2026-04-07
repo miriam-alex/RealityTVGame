@@ -102,12 +102,13 @@ public class PlayerInteract : MonoBehaviour
        string primaryKeyLabel = controllerPrimaryLabel;
        string secondaryKeyLabel = controllerSecondaryLabel;
 
-       promptUI.Show(
-           primaryKeyLabel,
-           data.PrimaryAction,
-           secondaryKeyLabel,
-           data.SecondaryAction,
-           data.HasSecondary);
+       //If using the UI Player Interaction Prompt Panel 
+       //promptUI.Show(
+       //    primaryKeyLabel,
+       //    data.PrimaryAction,
+       //    secondaryKeyLabel,
+       //    data.SecondaryAction,
+       //    data.HasSecondary);
    }
    
     private void HandleInput()

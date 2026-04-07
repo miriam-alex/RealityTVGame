@@ -152,7 +152,12 @@ public class GameInitializer : MonoBehaviour
         FindAnyObjectByType<PlayerStationManager>()?.SpawnStationsForPlayers();
 
         // 7. TIMER: Finally, start the game clock.
-        FindAnyObjectByType<Timer>()?.StartTimer();
+        var timer = FindAnyObjectByType<Timer>();
+        if (timer != null)
+        {
+            timer.enabled = true;
+            timer.StartTimer();
+        }
         
         Debug.Log("<color=green>Game Initialized Successfully in scene: " + targetSceneName + "</color>");
     }
