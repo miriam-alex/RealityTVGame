@@ -36,8 +36,19 @@ public class PlayerConfigManager : MonoBehaviour
         // Example: Require at least 2 players and all must be ready
         if (playerConfigs.Count >= 2 && playerConfigs.TrueForAll(p => p.IsReady))
         {
-            Debug.Log("All Players Ready! Loading SampleScene...");
-            UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+            Debug.Log("All Players Ready! Loading PlayerLobby...");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("PlayerLobby");
+        }
+    }
+
+    public void HandlePlayerReady()
+    {
+        // Find the first player who is not ready and mark them as ready.
+        var config = playerConfigs.Find(p => !p.IsReady);
+        if (config != null)
+        {
+            config.IsReady = true;
+            CheckForAllReady();
         }
     }
 }

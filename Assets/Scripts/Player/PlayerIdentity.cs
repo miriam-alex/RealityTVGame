@@ -11,8 +11,8 @@ public class PlayerIdentity : MonoBehaviour {
     public Transform bodyMountPoint;
     public string selectedAnimalId;
     [Header("Key Bindings")]
-    public string interactKey = "E";
-    public string altInteractKey = "F";
+    public string interactKey = "A";
+    public string altInteractKey = "B";
     public bool isSpotted;
     
     [Header("UI Feedback")]

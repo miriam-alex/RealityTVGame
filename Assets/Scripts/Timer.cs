@@ -62,6 +62,9 @@ public class Timer : MonoBehaviour
                 // Persist base scores/colors for playback -> postgame.
                 PersistBaseScoresForPlayback();
 
+                // Destroy player objects before leaving the scene.
+                DestroyPlayerObjects();
+
                 // Playback will apply drama score impacts during the clip, compute winner, then transition.
                 SceneManager.LoadScene("Playback");
             }
@@ -116,6 +119,22 @@ public class Timer : MonoBehaviour
             GameResultData.PlayerIndexToAnimalId[identity.playerIndex] = identity.selectedAnimalId;
             Debug.Log($"saved body prefab {GameResultData.PlayerIndexToAnimalId[playerIndex]} for player w index {playerIndex}");
             Debug.Log($"persisted player w index {playerIndex} for playback");
+        }
+    }
+
+    private void DestroyPlayerObjects()
+    {
+        var scoreManager = ScoreManager.Instance;
+        if (scoreManager == null) return;
+
+        // We need to copy the items to a new list because we will be modifying the collection as we iterate.
+        var playersToDestroy = new List<GameObject>(scoreManager.GetPlayers());
+        foreach (var playerObj in playersToDestroy)
+        {
+            if (playerObj != null)
+            {
+                Destroy(playerObj);
+            }
         }
     }
 

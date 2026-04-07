@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         identity = GetComponent<PlayerIdentity>();
+
+        // adds haptics component at start of game
+        //if (GetComponent<PlayerHaptics>() == null)
+        //    gameObject.AddComponent<PlayerHaptics>();
     }
 
     void FixedUpdate()
@@ -60,7 +64,7 @@ public class PlayerController : MonoBehaviour
         if (otherIdentity == null || otherIdentity == identity)
             return;
 
-        //GetComponent<PlayerHaptics>()?.Pulse(0.5f, 0.2f);
+        // GetComponent<PlayerHaptics>()?.Pulse(0.5f, 0.2f);
     }
 
     private Key GetKey(string keyName)

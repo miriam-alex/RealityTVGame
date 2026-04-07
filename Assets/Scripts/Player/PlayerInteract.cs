@@ -99,9 +99,8 @@ public class PlayerInteract : MonoBehaviour
 
        InteractionPromptData data = _currentInteractable.GetInteractionPromptData(_myId);
 
-       bool isControllerPlayer = _myId.playerIndex == 0;
-       string primaryKeyLabel = isControllerPlayer ? controllerPrimaryLabel : _interactKey;
-       string secondaryKeyLabel = isControllerPlayer ? controllerSecondaryLabel : _altInteractKey;
+       string primaryKeyLabel = controllerPrimaryLabel;
+       string secondaryKeyLabel = controllerSecondaryLabel;
 
        promptUI.Show(
            primaryKeyLabel,
