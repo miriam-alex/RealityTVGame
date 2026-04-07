@@ -16,9 +16,14 @@ public class InputStation : MonoBehaviour
     private Renderer stationRenderer;
     private TextMeshPro stationNameText;
     
+    [Header("Community Members")]
+    public Transform[] communityMembers;
+    public int pointsPerMember = 10;
+    public int maxVisibleMembers = 8;
+    
     [Header("Debug")]
     public int totalPointsCollected = 0;
-    
+
     private void Start()
     {
         stationRenderer = GetComponent<Renderer>();
@@ -29,7 +34,6 @@ public class InputStation : MonoBehaviour
             stationRenderer = GetComponentInChildren<Renderer>();
         }
         
-        // Set up input container if not assigned
         if (inputContainer == null)
         {
             inputContainer = GetComponentInChildren<Container>();
@@ -45,21 +49,51 @@ public class InputStation : MonoBehaviour
         }
         
         UpdateVisualFeedback();
+        UpdateCommunityMembersFromScore();
     }
 
     
     private void Update()
     {
-        // Check for items in container and process them
         if (inputContainer != null && inputContainer.items.Count > 0)
         {
             ProcessItems();
         }
     }
+
+    // calculates how many community members should be visible based on the player's score
+    // NEED TO FIX: THIS IS NOT WORKING AS INTENDED
+    // right now while community members are showing up according to players score, there is a cap
+    // on the community members array length
+    // there is no unlimited amount of community members that can spawn
+    // also, there is a discrepancy between when the score is decremented (members dont disappear)
+    // will fix!
+    private void UpdateCommunityMembersFromScore()
+    {
+        // no score manager or player assigned, return
+        if (ScoreManager.Instance == null || assignedPlayer == null) return;
+
+        // if there are no communtiy members, return
+        if (communityMembers == null || communityMembers.Length == 0) return;
+
+        // get players score
+        int score = ScoreManager.Instance.GetScore(assignedPlayer);
+        // calculate how many community members should be visible
+        int target = Mathf.FloorToInt(score / (float)pointsPerMember);
+        target = Mathf.Clamp(target, 0, maxVisibleMembers);
+        target = Mathf.Min(target, communityMembers.Length);
+
+        // activates community members based on the target score
+        // WILL FIX: this is just for testing purposes
+        for (int i = 0; i < communityMembers.Length; i++)
+        {
+            if (communityMembers[i] != null)
+                communityMembers[i].gameObject.SetActive(i < target);
+        }
+    }
     
     private void ProcessItems()
     {
-        // Process all items in the container
         for (int i = inputContainer.items.Count - 1; i >= 0; i--)
         {
             ResourceItem item = inputContainer.items[i];
@@ -67,10 +101,8 @@ public class InputStation : MonoBehaviour
             {
                 ConvertResourceToPoints(item);
                 
-                // Remove from container
                 inputContainer.items.RemoveAt(i);
                 
-                // Destroy the physical item
                 Destroy(item.gameObject);
             }
         }
@@ -93,7 +125,6 @@ public class InputStation : MonoBehaviour
         int points = resourceItem.PointsValue;
         totalPointsCollected += points;
         
-        // Add points to player via ScoreManager
         if (ScoreManager.Instance != null)
         {
             ScoreManager.Instance.RewardResources(assignedPlayer, resourceItem);
@@ -105,6 +136,7 @@ public class InputStation : MonoBehaviour
         }
 
         stationNameText.text = $"{totalPointsCollected}";
+        UpdateCommunityMembersFromScore();
     }
     
     public void AssignToPlayer(GameObject player, Color color)
@@ -116,7 +148,6 @@ public class InputStation : MonoBehaviour
         if (playerIdentity != null)
         {
             playerIndex = playerIdentity.playerIndex;
-            // The manager already handled the color, so we just update the name
             stationName = $"Player {playerIndex + 1} Collection Station";
             
             Debug.Log($"[{name}] Assigned to Player {playerIndex + 1} with color {color}");
@@ -127,11 +158,9 @@ public class InputStation : MonoBehaviour
         }
         
         UpdateVisualFeedback();
+        UpdateCommunityMembersFromScore();
     }
 
-// REMOVE the private GetPlayerColor(int index) method entirely 
-// to ensure the Manager is the only source of truth for colors.
-    
     private Color GetPlayerColor(int index)
     {
         Color[] colors = {
@@ -153,7 +182,6 @@ public class InputStation : MonoBehaviour
             stationRenderer.material.color = playerColor;
         }
         
-        // Update station name
         gameObject.name = stationName.Replace(" ", "");
     }
     
@@ -161,7 +189,6 @@ public class InputStation : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         
-        // Show station info when player is near
         if (Input.GetKeyDown(KeyCode.Q))
         {
             ShowStationInfo();
