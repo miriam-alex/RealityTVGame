@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Food
   m_EditorClassIdentifier: Assembly-CSharp::Resource
   resourceName: Food
-  pointsValue: 10
+  pointsValue: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   prefab: {fileID: 2266752537586919723, guid: 82293eb34b751604c9c77ba7880b2411, type: 3}

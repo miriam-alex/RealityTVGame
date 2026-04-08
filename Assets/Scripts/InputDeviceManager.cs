@@ -55,13 +55,8 @@ public class InputDeviceManager : MonoBehaviour
         }
         else if (pName == "Player 1" || pName == "Player 2")
         {
-            // LOCK PLAYER 1 & 2 TO KEYBOARD ONLY
-            if (pInput.user.valid && pInput.user.index != InputUser.InvalidId)
-            {
-                pInput.user.UnpairDevices(); // Disconnect them from any Gamepad
-            }
-            InputUser.PerformPairingWithDevice(Keyboard.current, pInput.user);
-            Debug.Log($"{pName} locked to Keyboard.");
+            // Allow Player 1 & 2 to use keyboard or gamepad
+            // The PlayerInput component will handle device assignment
         }
     }
 }

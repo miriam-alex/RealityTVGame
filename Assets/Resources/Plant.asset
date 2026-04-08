@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Plant
   m_EditorClassIdentifier: Assembly-CSharp::Resource
   resourceName: Wood
-  pointsValue: 10
+  pointsValue: 30
   tint: {r: 1, g: 1, b: 1, a: 1}
   prefab: {fileID: 7856434637813251239, guid: b759296a8f367e348bda7b67e2b05421, type: 3}
