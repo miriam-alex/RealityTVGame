@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class InputStation : MonoBehaviour
 {
@@ -17,12 +18,14 @@ public class InputStation : MonoBehaviour
     private TextMeshPro stationNameText;
     
     [Header("Community Members")]
-    public Transform[] communityMembers;
+    public Transform[] memberSlots;
     public int pointsPerMember = 10;
     public int maxVisibleMembers = 8;
     
     [Header("Debug")]
     public int totalPointsCollected = 0;
+
+    private List<GameObject> spawnedCommunityMembers = new List<GameObject>();
 
     private void Start()
     {
@@ -49,7 +52,7 @@ public class InputStation : MonoBehaviour
         }
         
         UpdateVisualFeedback();
-        UpdateCommunityMembersFromScore();
+        //UpdateCommunityMembersFromScore();
     }
 
     
@@ -61,8 +64,45 @@ public class InputStation : MonoBehaviour
         }
     }
 
+    private void SpawnCommunityMembers()
+    {
+        foreach (var member in spawnedCommunityMembers)
+        {
+            if (member != null)
+            {
+                Destroy(member);
+            }
+        }
+
+        spawnedCommunityMembers.Clear();
+
+        if (memberSlots == null) return;
+
+        PlayerIdentity identity = assignedPlayer?.GetComponent<PlayerIdentity>();
+        if(identity == null || identity.animalCatalog == null) return;
+
+        AnimalDefinition definition = identity.animalCatalog.animals.Find(a => a.id == identity.selectedAnimalId);
+
+        if (definition == null)
+        {
+            Debug.LogWarning($"[{name}] Could not find AnimalDefinition for player {identity.playerIndex}");
+            return;
+        }
+
+        int slotsToUse = Mathf.Min(memberSlots.Length, maxVisibleMembers);
+
+        for (int i = 0; i < slotsToUse; i++)
+        {
+            GameObject member = Instantiate(definition.prefab, memberSlots[i].position, memberSlots[i].rotation, memberSlots[i]);
+            member.transform.localScale = Vector3.one * 0.1f;
+            member.SetActive(false);
+            spawnedCommunityMembers.Add(member);
+        }
+
+        Debug.Log($"[{name}] Spawned {slotsToUse} community members for player {identity.playerIndex}");
+    }
+
     // calculates how many community members should be visible based on the player's score
-    // NEED TO FIX: THIS IS NOT WORKING AS INTENDED
     // right now while community members are showing up according to players score, there is a cap
     // on the community members array length
     // there is no unlimited amount of community members that can spawn
@@ -74,21 +114,21 @@ public class InputStation : MonoBehaviour
         if (ScoreManager.Instance == null || assignedPlayer == null) return;
 
         // if there are no communtiy members, return
-        if (communityMembers == null || communityMembers.Length == 0) return;
+        if (spawnedCommunityMembers.Count == 0) return;
 
         // get players score
         int score = ScoreManager.Instance.GetScore(assignedPlayer);
         // calculate how many community members should be visible
         int target = Mathf.FloorToInt(score / (float)pointsPerMember);
         target = Mathf.Clamp(target, 0, maxVisibleMembers);
-        target = Mathf.Min(target, communityMembers.Length);
+        target = Mathf.Min(target, spawnedCommunityMembers.Count);
 
         // activates community members based on the target score
         // WILL FIX: this is just for testing purposes
-        for (int i = 0; i < communityMembers.Length; i++)
+        for (int i = 0; i < spawnedCommunityMembers.Count; i++)
         {
-            if (communityMembers[i] != null)
-                communityMembers[i].gameObject.SetActive(i < target);
+            if (spawnedCommunityMembers[i] != null)
+                spawnedCommunityMembers[i].SetActive(i < target);
         }
     }
     
@@ -149,6 +189,8 @@ public class InputStation : MonoBehaviour
         {
             playerIndex = playerIdentity.playerIndex;
             stationName = $"Player {playerIndex + 1} Collection Station";
+
+            SpawnCommunityMembers();
             
             Debug.Log($"[{name}] Assigned to Player {playerIndex + 1} with color {color}");
         }
