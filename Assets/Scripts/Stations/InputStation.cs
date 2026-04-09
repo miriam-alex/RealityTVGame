@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public class InputStation : MonoBehaviour
 {
@@ -17,12 +19,14 @@ public class InputStation : MonoBehaviour
     private TextMeshPro stationNameText;
     
     [Header("Community Members")]
-    public Transform[] communityMembers;
+    public Transform[] memberSlots;
     public int pointsPerMember = 10;
     public int maxVisibleMembers = 8;
     
     [Header("Debug")]
     public int totalPointsCollected = 0;
+
+    private List<GameObject> spawnedCommunityMembers = new List<GameObject>();
 
     private void Start()
     {
@@ -49,7 +53,6 @@ public class InputStation : MonoBehaviour
         }
         
         UpdateVisualFeedback();
-        UpdateCommunityMembersFromScore();
     }
 
     
@@ -61,34 +64,109 @@ public class InputStation : MonoBehaviour
         }
     }
 
+    // spawns community members for the player depending on score and animal prefab
+    private void SpawnCommunityMembers()
+    {
+        foreach (var member in spawnedCommunityMembers)
+        {
+            if (member != null)
+            {
+                Destroy(member);
+            }
+        }
+
+        spawnedCommunityMembers.Clear();
+
+        if (memberSlots == null) return;
+
+        // gathers player identity and animal definition
+        PlayerIdentity identity = assignedPlayer?.GetComponent<PlayerIdentity>();
+        if(identity == null || identity.animalCatalog == null) return;
+
+        AnimalDefinition definition = identity.animalCatalog.animals.Find(a => a.id == identity.selectedAnimalId);
+
+        // no animation definition found, return
+        if (definition == null)
+        {
+            Debug.LogWarning($"[{name}] Could not find AnimalDefinition for player {identity.playerIndex}");
+            return;
+        }
+
+        int slotsToUse = Mathf.Min(memberSlots.Length, maxVisibleMembers);
+
+        // spawns community members in the slots
+        for (int i = 0; i < slotsToUse; i++)
+        {
+            GameObject member = Instantiate(definition.prefab, memberSlots[i].position, memberSlots[i].rotation, memberSlots[i]);
+            member.transform.localScale = Vector3.one * 0.1f;
+
+            // disables animator
+            Animator animator = member.GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.enabled = false;
+            }
+            member.SetActive(false);
+            spawnedCommunityMembers.Add(member);
+        }
+
+        Debug.Log($"[{name}] Spawned {slotsToUse} community members for player {identity.playerIndex}");
+    }
+
     // calculates how many community members should be visible based on the player's score
-    // NEED TO FIX: THIS IS NOT WORKING AS INTENDED
     // right now while community members are showing up according to players score, there is a cap
     // on the community members array length
     // there is no unlimited amount of community members that can spawn
     // also, there is a discrepancy between when the score is decremented (members dont disappear)
-    // will fix!
     private void UpdateCommunityMembersFromScore()
     {
         // no score manager or player assigned, return
         if (ScoreManager.Instance == null || assignedPlayer == null) return;
 
         // if there are no communtiy members, return
-        if (communityMembers == null || communityMembers.Length == 0) return;
+        if (spawnedCommunityMembers.Count == 0) return;
 
         // get players score
         int score = ScoreManager.Instance.GetScore(assignedPlayer);
         // calculate how many community members should be visible
         int target = Mathf.FloorToInt(score / (float)pointsPerMember);
         target = Mathf.Clamp(target, 0, maxVisibleMembers);
-        target = Mathf.Min(target, communityMembers.Length);
+        target = Mathf.Min(target, spawnedCommunityMembers.Count);
 
         // activates community members based on the target score
         // WILL FIX: this is just for testing purposes
-        for (int i = 0; i < communityMembers.Length; i++)
+        for (int i = 0; i < spawnedCommunityMembers.Count; i++)
         {
-            if (communityMembers[i] != null)
-                communityMembers[i].gameObject.SetActive(i < target);
+            if (spawnedCommunityMembers[i] != null)
+            {
+                bool isActive = i < target;
+                if (isActive && !spawnedCommunityMembers[i].activeSelf)
+                {
+                    spawnedCommunityMembers[i].SetActive(true);
+                    StartCoroutine(RandomJumpAnimation(spawnedCommunityMembers[i], memberSlots[i]));
+                }
+                //spawnedCommunityMembers[i].SetActive(i < target);
+
+                else if (!isActive)
+                {
+                    spawnedCommunityMembers[i].SetActive(false);
+                }
+
+            }
+        }
+    }
+
+    private IEnumerator RandomJumpAnimation(GameObject member, Transform slot)
+    {
+        float offset = Random.Range(0f, Mathf.PI * 2f);
+        float speed = Random.Range(4f, 8f);
+        float height = Random.Range(0.05f, 0.15f);
+
+        while (member != null && member.activeSelf)
+        {
+            float y = Mathf.Sin((Time.time + offset) * speed) * height;
+            member.transform.position = slot.position + new Vector3(0, y, 0);
+            yield return null;
         }
     }
     
@@ -149,6 +227,8 @@ public class InputStation : MonoBehaviour
         {
             playerIndex = playerIdentity.playerIndex;
             stationName = $"Player {playerIndex + 1} Collection Station";
+
+            SpawnCommunityMembers();
             
             Debug.Log($"[{name}] Assigned to Player {playerIndex + 1} with color {color}");
         }
