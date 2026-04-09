@@ -178,6 +178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93456f52f4e9b4a5facb8a84c8029273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grabbable
+  outlineLayer:
+    serializedVersion: 0
+    m_Bits: 2
 --- !u!114 &3516541309408163373
 MonoBehaviour:
   m_ObjectHideFlags: 0
