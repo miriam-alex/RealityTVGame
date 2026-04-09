@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class InputStation : MonoBehaviour
 {
@@ -137,7 +138,35 @@ public class InputStation : MonoBehaviour
         for (int i = 0; i < spawnedCommunityMembers.Count; i++)
         {
             if (spawnedCommunityMembers[i] != null)
-                spawnedCommunityMembers[i].SetActive(i < target);
+            {
+                bool isActive = i < target;
+                if (isActive && !spawnedCommunityMembers[i].activeSelf)
+                {
+                    spawnedCommunityMembers[i].SetActive(true);
+                    StartCoroutine(RandomJumpAnimation(spawnedCommunityMembers[i], memberSlots[i]));
+                }
+                //spawnedCommunityMembers[i].SetActive(i < target);
+
+                else if (!isActive)
+                {
+                    spawnedCommunityMembers[i].SetActive(false);
+                }
+
+            }
+        }
+    }
+
+    private IEnumerator RandomJumpAnimation(GameObject member, Transform slot)
+    {
+        float offset = Random.Range(0f, Mathf.PI * 2f);
+        float speed = Random.Range(4f, 8f);
+        float height = Random.Range(0.05f, 0.15f);
+
+        while (member != null && member.activeSelf)
+        {
+            float y = Mathf.Sin((Time.time + offset) * speed) * height;
+            member.transform.position = slot.position + new Vector3(0, y, 0);
+            yield return null;
         }
     }
     
