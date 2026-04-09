@@ -1217,10 +1217,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStationManager
   inputStationPrefab: {fileID: 1228528148330239035, guid: 7465df2ad2f46fb44ab07c9e76b573a0, type: 3}
   playerRuntimeSet: {fileID: 11400000, guid: 35d9d90b045664a289cbdc748927308e, type: 2}
-  player1Position: {x: 7, y: 0.1, z: -3}
-  player2Position: {x: 5, y: 0.1, z: -5}
-  player3Position: {x: 3, y: 0.1, z: -7}
-  player4Position: {x: 1, y: 0.1, z: -9}
+  player1Position: {x: 7, y: -0.6, z: -3}
+  player2Position: {x: 5, y: -0.6, z: -5}
+  player3Position: {x: 3, y: -0.6, z: -7}
+  player4Position: {x: 1, y: -0.6, z: -9}
 --- !u!4 &249526439
 Transform:
   m_ObjectHideFlags: 0
@@ -1745,7 +1745,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3204267, y: -2.809958e-15, z: 9.505022e-16, w: 0.9472734}
-  m_LocalPosition: {x: 4.384752e-15, y: 0.54526806, z: 4.8709216}
+  m_LocalPosition: {x: 1.08911725e-14, y: 1.8588953, z: 3.7742229}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2805,7 +2805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineGroupFraming
   FramingMode: 2
-  FramingSize: 0.77
+  FramingSize: 0.31
   CenterOffset: {x: 0, y: -0.27}
   Damping: 6
   SizeAdjustment: 2
@@ -11918,8 +11918,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496258290}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000006082581, y: 0.3088648, z: -0.000000013079425, w: 0.95110595}
-  m_LocalPosition: {x: -7.21, y: -1.08, z: 1.61}
+  m_LocalRotation: {x: 0.017831724, y: 0.3115909, z: -0.052059982, w: 0.9486216}
+  m_LocalPosition: {x: -7.16, y: -1.43, z: 1.61}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11927,7 +11927,7 @@ Transform:
   - {fileID: 1984102397}
   - {fileID: 1821442582}
   m_Father: {fileID: 1786375302}
-  m_LocalEulerAnglesHint: {x: 0, y: 35.982, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.8, y: 36.2, z: -5.04}
 --- !u!65 &1496258292
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12909,7 +12909,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 794995061760928340, guid: 6ecc2ae2fc58641888b2529ba2027749, type: 3}
       propertyPath: m_Name
-      value: P2PromtRoot
+      value: P2PromptRoot
       objectReference: {fileID: 0}
     - target: {fileID: 794995061760928340, guid: 6ecc2ae2fc58641888b2529ba2027749, type: 3}
       propertyPath: m_IsActive
