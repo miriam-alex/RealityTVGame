@@ -52,7 +52,6 @@ public class InputStation : MonoBehaviour
         }
         
         UpdateVisualFeedback();
-        //UpdateCommunityMembersFromScore();
     }
 
     
@@ -64,6 +63,7 @@ public class InputStation : MonoBehaviour
         }
     }
 
+    // spawns community members for the player depending on score and animal prefab
     private void SpawnCommunityMembers()
     {
         foreach (var member in spawnedCommunityMembers)
@@ -78,11 +78,13 @@ public class InputStation : MonoBehaviour
 
         if (memberSlots == null) return;
 
+        // gathers player identity and animal definition
         PlayerIdentity identity = assignedPlayer?.GetComponent<PlayerIdentity>();
         if(identity == null || identity.animalCatalog == null) return;
 
         AnimalDefinition definition = identity.animalCatalog.animals.Find(a => a.id == identity.selectedAnimalId);
 
+        // no animation definition found, return
         if (definition == null)
         {
             Debug.LogWarning($"[{name}] Could not find AnimalDefinition for player {identity.playerIndex}");
@@ -91,10 +93,18 @@ public class InputStation : MonoBehaviour
 
         int slotsToUse = Mathf.Min(memberSlots.Length, maxVisibleMembers);
 
+        // spawns community members in the slots
         for (int i = 0; i < slotsToUse; i++)
         {
             GameObject member = Instantiate(definition.prefab, memberSlots[i].position, memberSlots[i].rotation, memberSlots[i]);
             member.transform.localScale = Vector3.one * 0.1f;
+
+            // disables animator
+            Animator animator = member.GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.enabled = false;
+            }
             member.SetActive(false);
             spawnedCommunityMembers.Add(member);
         }
@@ -107,7 +117,6 @@ public class InputStation : MonoBehaviour
     // on the community members array length
     // there is no unlimited amount of community members that can spawn
     // also, there is a discrepancy between when the score is decremented (members dont disappear)
-    // will fix!
     private void UpdateCommunityMembersFromScore()
     {
         // no score manager or player assigned, return
