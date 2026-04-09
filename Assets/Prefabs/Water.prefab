@@ -163,6 +163,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: d6e5f0770c2128f419ce20e6bd0e0e6b, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 253
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d6e5f0770c2128f419ce20e6bd0e0e6b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 208666dd35fc1064691a604d90156cd3, type: 2}
@@ -222,7 +226,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223097907045824185}
   serializedVersion: 5
-  m_Mass: 20
+  m_Mass: 97.2
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -253,6 +257,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93456f52f4e9b4a5facb8a84c8029273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grabbable
+  outlineLayer:
+    serializedVersion: 0
+    m_Bits: 2
 --- !u!65 &-8388989085017399098
 BoxCollider:
   m_ObjectHideFlags: 0

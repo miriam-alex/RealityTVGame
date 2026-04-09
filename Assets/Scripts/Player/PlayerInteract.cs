@@ -141,6 +141,12 @@ public class PlayerInteract : MonoBehaviour
        {
          _nearbyInteractables[other] = interactable;
 
+		 if (interactable is Grabbable grabbableObj)
+		 {
+             Debug.Log("should be calling show outline");
+			grabbableObj.ShowOutline();
+		 }
+
          if (interactable is PlayerInteractable && _myId != null && interactable.IsAvailable(_myId)) 
          {
              GetComponent<PlayerHaptics>()?.Pulse(0.3f, 0.6f);
@@ -157,6 +163,14 @@ public class PlayerInteract : MonoBehaviour
 
    private void OnTriggerExit(Collider other)
    {
+       if (other.TryGetComponent(out IInteractable interactable))
+       {
+           if (interactable is Grabbable grabbableObj)
+           {
+               Debug.Log("should be calling hide outline");
+               grabbableObj.HideOutline();
+           }
+       }
        _nearbyInteractables.Remove(other);
    }
 

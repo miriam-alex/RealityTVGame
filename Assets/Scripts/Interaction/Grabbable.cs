@@ -1,14 +1,20 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal; 
 
 [RequireComponent(typeof(Rigidbody))]
 public class Grabbable : MonoBehaviour, IInteractable
 {
+    public RenderingLayerMask outlineLayer; 
     private Rigidbody _rb;
-    private PlayerIdentity _myId;
+    private MeshRenderer _meshRenderer;
     private bool _isGrabbed = false;
 
-    private void Awake() => _rb = GetComponent<Rigidbody>();
-
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+        _meshRenderer = GetComponent<MeshRenderer>();
+    }
+    
     public bool IsAvailable(PlayerIdentity requester) => !_isGrabbed;
     public float GetHoldDuration(PlayerIdentity requester) => 0f;
     
@@ -45,5 +51,17 @@ public class Grabbable : MonoBehaviour, IInteractable
         _rb.useGravity = true;
         _rb.detectCollisions = true;
     }
-    
+
+    public void ShowOutline()
+    {
+        Debug.Log("showing outline");
+        _meshRenderer.renderingLayerMask |= (uint)outlineLayer.value;
+    }
+
+    public void HideOutline()
+    {
+        Debug.Log("hiding outline");
+        _meshRenderer.renderingLayerMask &= ~(uint)outlineLayer.value;
+    }
+
 }
