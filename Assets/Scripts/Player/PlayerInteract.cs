@@ -13,6 +13,7 @@ public class PlayerInteract : MonoBehaviour
     public InteractionPromptUI promptUI;
     public string controllerPrimaryLabel = "A";
     public string controllerSecondaryLabel = "B";
+    public string controllerDropLabel = "X";
    private string _interactKey;
    private string _altInteractKey;
   
@@ -115,25 +116,36 @@ public class PlayerInteract : MonoBehaviour
     {
         if (_myId == null || _playerInput == null) return;
 
-        // USE ACTIONS FOR EVERYONE
-        // This allows P1, P2, P3 etc. to all use their own controllers/keys
-        bool interactPressed = _playerInput.actions["Interact"].WasPressedThisFrame();
-        
-        // Using FindAction for Steal in case it's not mapped in every Action Map
-        var stealAction = _playerInput.actions.FindAction("Steal", false);
-        bool altInteractPressed = (stealAction != null) && stealAction.WasPressedThisFrame();
+        // Get Inputs
+        bool interactPressed = _playerInput.actions["Interact"].WasPressedThisFrame(); // A
+        bool altInteractPressed = _playerInput.actions.FindAction("Steal")?.WasPressedThisFrame() ?? false; // B
+        bool dropPickPressed = _playerInput.actions.FindAction("Drop")?.WasPressedThisFrame() ?? false; // Y
 
         if (_currentInteractable != null)
         {
-            if (interactPressed) _currentInteractable.Interact(_myId);
-            if (altInteractPressed) _currentInteractable.AltInteract(_myId);
+            // 1. Logic for PLAYER Interaction (A and B)
+            if (_currentInteractable is PlayerInteractable)
+            {
+                if (interactPressed) _currentInteractable.Interact(_myId);    // A to Give
+                if (altInteractPressed) _currentInteractable.AltInteract(_myId); // B to Steal
+            }
+            // 2. Logic for WORLD Interaction (Y)
+            else 
+            {
+                // If it's a regular item (Grabbable), use Y to pick up
+                if (dropPickPressed) _currentInteractable.Interact(_myId);
+            }
         }
-        else if (interactPressed)
+        else
         {
-            _inventory.TryDrop();
+            // 3. Logic for DROPPING (Y)
+            // If not looking at anything, Y drops the current item
+            if (dropPickPressed)
+            {
+                _inventory.TryDrop();
+            }
         }
     }
-
 
    private void OnTriggerEnter(Collider other)
    {
