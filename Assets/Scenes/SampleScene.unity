@@ -1218,9 +1218,9 @@ MonoBehaviour:
   inputStationPrefab: {fileID: 1228528148330239035, guid: 7465df2ad2f46fb44ab07c9e76b573a0, type: 3}
   playerRuntimeSet: {fileID: 11400000, guid: 35d9d90b045664a289cbdc748927308e, type: 2}
   player1Position: {x: 7, y: -0.6, z: -3}
-  player2Position: {x: 5, y: -0.6, z: -8}
-  player3Position: {x: 3, y: -0.6, z: -13}
-  player4Position: {x: 1, y: -0.6, z: -17}
+  player2Position: {x: 5, y: 0.33, z: -8.05}
+  player3Position: {x: -4.78, y: 0.15, z: -8.429}
+  player4Position: {x: -8.17, y: -0.3, z: -3.27}
 --- !u!4 &249526439
 Transform:
   m_ObjectHideFlags: 0
