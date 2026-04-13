@@ -10908,7 +10908,7 @@ MonoBehaviour:
   playDramaClipOnly: 1
   dramaClipDurationSeconds: 4
   dramaClipLeadInSeconds: 1
-  zoomedFOV: 25
+  zoomedFOV: 35
   cameraSmoothSpeed: 5
   itemFramingVerticalOffset: -1
 --- !u!4 &1633479631

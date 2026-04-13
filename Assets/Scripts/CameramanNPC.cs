@@ -41,18 +41,13 @@ public class CameramanNPC : MonoBehaviour
         var players = runtimeSet.Items;
         if (players.Count > 0)
         {
-            // This part is for the NPC's head to look at a single player. This is correct.
             currentTarget = players[Random.Range(0, players.Count)].transform;
             personalityTimer = Random.Range(5f, 10f);
         }
 
-        // This new part is for the main camera's framing.
         if (cinemachineTargetGroup != null)
         {
-            // Clear any old targets that might have been set in the editor.
             cinemachineTargetGroup.m_Targets = new CinemachineTargetGroup.Target[0];
-
-            // Add each player from the runtime set to the target group.
             foreach (var player in players)
             {
                 cinemachineTargetGroup.AddMember(player.transform, 1, 1);
@@ -105,7 +100,7 @@ public class CameramanNPC : MonoBehaviour
             }
         }
 
-        coneRenderer.material.color = playersSpotted ? Color.green : Color.darkRed;
+        coneRenderer.material.color = playersSpotted ? Color.softYellow : Color.darkRed;
     }
 
     private void ManagePersonality()

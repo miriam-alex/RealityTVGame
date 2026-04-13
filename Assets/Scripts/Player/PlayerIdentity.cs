@@ -61,10 +61,10 @@ public class PlayerIdentity : MonoBehaviour {
             Debug.LogWarning("Player spawned with no ID yet. Waiting for LobbyManager...");
         }
 
-        if (ChatBubbleManager.Instance != null)
-        {
-            ChatBubbleManager.Show("Joined!", transform, new Vector3(0, 2, 0), 5.0f);
-        }
+        // if (ChatBubbleManager.Instance != null)
+        // {
+        //     ChatBubbleManager.Show("Joined!", transform, new Vector3(0, 2, 0), 5.0f);
+        // }
     }
     public void ApplyAnimalById(string id)
     {
