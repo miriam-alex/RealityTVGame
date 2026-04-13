@@ -1,16 +1,60 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Linq;
 
 public class PostGameScreen : MonoBehaviour
 {
     public TMP_Text gameTitleText; 
     public AnimalCatalog animalCatalog;
-    private GameObject _playerObject;
+    public List<Transform> playerPodiumPositions;
+
+    public float zLoserOffset = 5f;
 
     void Start()
     {
-        if (GameResultData.PlayerIndexToAnimalId.TryGetValue(GameResultData.WinnerId, out string animalId))
+        var sortedScores = GameResultData.BaseScoresByPlayerIndex
+            .OrderByDescending(entry => entry.Value)
+            .ToList();
+
+        if (sortedScores.Count == 0) return;
+
+        int highestScore = sortedScores[0].Value;
+    
+        var winners = sortedScores.Where(x => x.Value == highestScore).ToList();
+        bool isTie = winners.Count > 1;
+
+        if (isTie)
+        {
+            string winnerIndices = string.Join(", ", winners.Select(w => $"PLAYER {w.Key + 1}"));
+            gameTitleText.text = $"{winnerIndices} TIE WITH {highestScore} FOLLOWERS.";
+        }
+        else
+        {
+            gameTitleText.text = $"PLAYER {winners[0].Key + 1} WINS WITH {highestScore} FOLLOWERS.";
+        }
+
+        for (int i = 0; i < sortedScores.Count; i++)
+        {
+            var entry = sortedScores[i];
+            GameObject _playerObject = GetPlayerObject(entry.Key);
+            GameObject visual = Instantiate(_playerObject);
+        
+            visual.transform.position = playerPodiumPositions[i].position;
+            visual.transform.rotation = Quaternion.Euler(0, 180, 0);
+        
+            if (entry.Value != highestScore)
+            {
+                visual.transform.position += Vector3.forward * zLoserOffset;
+            }
+        }
+    }
+    
+    private GameObject GetPlayerObject(int playerIndex)
+    {
+        GameObject _playerObject = null;
+        if (GameResultData.PlayerIndexToAnimalId.TryGetValue(playerIndex, out string animalId))
         {
             if (animalCatalog != null)
             {
@@ -31,12 +75,6 @@ public class PostGameScreen : MonoBehaviour
             }
         }
         
-        GameObject visual = Instantiate(_playerObject);
-        visual.transform.localPosition = Vector3.zero;
-        visual.transform.localRotation = Quaternion.Euler(0, 180,0);
-        
-        gameTitleText.text = $"PLAYER {GameResultData.WinnerId + 1} WINS!";
-
-        return;
+        return _playerObject;
     }
 }

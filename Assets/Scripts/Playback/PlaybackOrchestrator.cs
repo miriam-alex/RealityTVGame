@@ -328,8 +328,6 @@ public class PlaybackOrchestrator : MonoBehaviour
         if (_spawnedGhosts.TryGetValue($"Player_{fromIdx}", out GameObject fromG) && 
             _spawnedGhosts.TryGetValue($"Player_{toIdx}", out GameObject toG))
         {
-            Debug.Log($"fromG: {fromG.name}");
-            Debug.Log($"toG: {toG.name}");
             GameObject prefab = _selectedDramaEvent.transferredResource?.prefab;
 
             Transform fromGTransform = GetCarryPoint(fromG);

@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="548baca1-a2e6-4029-95e1-d3838846d670" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RealityTVGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RealityTVGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Animals/CameramanNPC.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Animals/CameramanNPC.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playback.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Playback.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameramanNPC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameramanNPC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerIdentity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerIdentity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PostGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PostGame.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Playback/PlaybackOrchestrator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Playback/PlaybackOrchestrator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PostGameScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PostGameScreen.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +23,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/1e15cde98ace47179047e971fd3c94e616a00/1e/a3696ed4/02000035pdb47.il" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/200ba51048d445aeb42b332e47d3b4db15a00/d1/9919a1b5/02000027pdb33.il" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/30f1ce141a5843b8a82ab68a7cccde5815600/72/c6c42eff/02000027pdb33.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/46fa88ab7d414504b01845234567a53c15400/ae/c92e3fb0/02000021pdb28.il" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/5d352af809c44efd9b075e6b98f1921815600/d8/72f38ed8/02000015pdb20.il" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/6d70ac8f007e4d7bbe34b863459b495b15a00/65/733e9def/02000027pdb33.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/710373b89142405bbd330befbc7e921f15600/7b/da42a584/02000005pdb5.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/7ad023b769b44d3d9e4cd746d685177416a00/af/b3d41cf7/02000035pdb47.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/91bdaa75798d419bbf960d1f81a74f0316a00/c5/fc669fcb/02000015pdb20.il" root0="FORCE_HIGHLIGHTING" />
@@ -169,7 +172,7 @@
       <workItem from="1774244517082" duration="10780000" />
       <workItem from="1774304352569" duration="25192000" />
       <workItem from="1774466034217" duration="5144000" />
-      <workItem from="1776059251331" duration="12916000" />
+      <workItem from="1776059251331" duration="16240000" />
     </task>
     <servers />
   </component>
