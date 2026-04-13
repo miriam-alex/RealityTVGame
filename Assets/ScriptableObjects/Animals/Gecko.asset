@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Gecko
   m_EditorClassIdentifier: Assembly-CSharp::AnimalDefinition
   id: gecko
-  prefab: {fileID: 6842458599697738422, guid: cefda5744f2acb54d8f08973a10bee1e, type: 3}
+  prefab: {fileID: 1550606774957871126, guid: 18201d5025e66419db7cd1a5b09c424a, type: 3}

@@ -10901,14 +10901,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlaybackOrchestrator
   animalCatalog: {fileID: 11400000, guid: 6c8331a9afc2d41b88833bd99a0443be, type: 2}
   dramaDescriptionText: {fileID: 1198425831}
-  transferTravelSeconds: 3
-  transferWorldOffset: {x: 0, y: 1.2, z: 0}
+  giveTravelSeconds: 2.5
+  stealTravelSeconds: 1
   postGameSceneName: PostGame
   maxNumberOfDramaClips: 3
   playDramaClipOnly: 1
   dramaClipDurationSeconds: 4
   dramaClipLeadInSeconds: 1
-  zoomedFOV: 30
+  zoomedFOV: 25
   cameraSmoothSpeed: 5
   itemFramingVerticalOffset: -1
 --- !u!4 &1633479631

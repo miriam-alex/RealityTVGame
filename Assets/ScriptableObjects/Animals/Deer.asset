@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Deer
   m_EditorClassIdentifier: Assembly-CSharp::AnimalDefinition
   id: deer
-  prefab: {fileID: 5279811246306103102, guid: 252ba5fa5d8167e42af72cf97baa830e, type: 3}
+  prefab: {fileID: 3000948063261004271, guid: ee0357bc7e1004ce2877237f42af2551, type: 3}

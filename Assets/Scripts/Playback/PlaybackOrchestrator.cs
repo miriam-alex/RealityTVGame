@@ -14,11 +14,11 @@ public class PlaybackOrchestrator : MonoBehaviour
 
     [Header("Clip Visuals")]
 
-    [Tooltip("How long the transfer prop takes to travel.")]
-    public float transferTravelSeconds = 1f;
-
-    [Tooltip("World-space offset from the player position for the transfer prop.")]
-    public Vector3 transferWorldOffset = new Vector3(0f, 1.2f, 0f);
+    [Tooltip("How long the transfer prop takes to travel when GIVING.")]
+    public float giveTravelSeconds = 1f;
+    
+    [Tooltip("How long the transfer prop takes to travel when STEALING.")]
+    public float stealTravelSeconds = 0.5f;
 
     [Header("Scene Flow")]
     [Tooltip("Scene to load when the drama clip finishes.")]
@@ -300,7 +300,7 @@ public class PlaybackOrchestrator : MonoBehaviour
             if (_currentTransferInstance != null)
                 lookAtPos = _currentTransferInstance.transform.position + Vector3.up * itemFramingVerticalOffset;
             else if (a != null && v != null)
-                lookAtPos = Vector3.Lerp(a.transform.position, v.transform.position, 0.5f) + transferWorldOffset;
+                lookAtPos = Vector3.Lerp(a.transform.position, v.transform.position, 0.5f);
 
             if (lookAtPos != Vector3.zero) 
             {
@@ -328,19 +328,38 @@ public class PlaybackOrchestrator : MonoBehaviour
         if (_spawnedGhosts.TryGetValue($"Player_{fromIdx}", out GameObject fromG) && 
             _spawnedGhosts.TryGetValue($"Player_{toIdx}", out GameObject toG))
         {
+            Debug.Log($"fromG: {fromG.name}");
+            Debug.Log($"toG: {toG.name}");
             GameObject prefab = _selectedDramaEvent.transferredResource?.prefab;
-            if (prefab != null) StartCoroutine(PlayTransferProp(prefab, fromG.transform, toG.transform));
+
+            Transform fromGTransform = GetCarryPoint(fromG);
+            Transform toGTransform = GetCarryPoint(toG);
+            if (prefab != null) StartCoroutine(PlayTransferProp(prefab, fromGTransform, toGTransform, _selectedDramaEvent.type));
         }
     }
 
-    private IEnumerator PlayTransferProp(GameObject prefab, Transform from, Transform to)
+    private Transform GetCarryPoint(GameObject playerObject)
     {
+        // gameobject must be the animal prefab type
+        // good coding practice would prob be to enforce this
+        Transform animalTransform = playerObject.transform.GetChild(0);
+        Transform carryPoint = animalTransform.Find("ObjectCarryPoint");
+        if (carryPoint == null) {
+            Debug.LogError("CARRY POINT CANNOT BE FOUND");
+        }
+
+        return carryPoint;
+    }
+
+    private IEnumerator PlayTransferProp(GameObject prefab, Transform from, Transform to, DramaType dramaType)
+    {
+        float transferTravelSeconds = (dramaType == DramaType.GiveItem) ? giveTravelSeconds : stealTravelSeconds;
         _currentTransferInstance = Instantiate(prefab);
         if (_currentTransferInstance.TryGetComponent(out Rigidbody rb)) rb.isKinematic = true;
 
         float t = 0f;
-        Vector3 start = from.position + transferWorldOffset;
-        Vector3 end = to.position + transferWorldOffset;
+        Vector3 start = from.position;
+        Vector3 end = to.position;
 
         while (t < transferTravelSeconds)
         {

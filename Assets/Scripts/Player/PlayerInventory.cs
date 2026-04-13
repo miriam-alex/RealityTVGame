@@ -5,7 +5,6 @@ using UnityEngine.Assertions;
 public class PlayerInventory : MonoBehaviour
 {
     [Header("Settings")]
-    public Transform carryPoint;
     public float stackOffset = 0.4f; 
     public int maxCapacity = 5;
 
@@ -17,10 +16,24 @@ public class PlayerInventory : MonoBehaviour
     public int ItemCount => _heldItems.Count;
 
     public List<Grabbable> GetItems() => _heldItems;
+    
+    [SerializeField] private Transform _carryPoint;
+
         
     void Start()
     {
         _myId = GetComponent<PlayerIdentity>();
+        
+        // carry point is located within the body of PlayerBody > whatever animal prefab > ObjectCarryPoint
+        Transform bodyTransform = _myId.bodyMountPoint;
+        // the body game object SHOULD ONLY have one child
+        Transform animalTransform = bodyTransform.GetChild(0);
+        Assert.IsNotNull(animalTransform);
+        // getting ObjectCarryPoint
+        _carryPoint = animalTransform.Find("ObjectCarryPoint");
+        if (_carryPoint == null) {
+            Debug.LogError("CARRY POINT CANNOT BE FOUND");
+        }
     }
     
     public int CountItemsOfType(string itemType)
@@ -57,7 +70,7 @@ public class PlayerInventory : MonoBehaviour
         _heldItems.Add(item);
         
         item.OnPickedUp();
-        item.transform.SetParent(carryPoint);
+        item.transform.SetParent(_carryPoint);
         float verticalOffset = (_heldItems.Count - 1) * stackOffset;
         item.transform.localPosition = new Vector3(0, verticalOffset, 0);
     }

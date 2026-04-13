@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Monkey
   m_EditorClassIdentifier: Assembly-CSharp::AnimalDefinition
   id: monkey
-  prefab: {fileID: 6182162820492919152, guid: 84b7c8441f160174fa5c6f94cf397f0a, type: 3}
+  prefab: {fileID: 2074587792899427593, guid: a8ada1392e7e14a45b246b2e5f4a9128, type: 3}
