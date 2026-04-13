@@ -13,7 +13,7 @@ public class PlayerInteract : MonoBehaviour
     public InteractionPromptUI promptUI;
     public string controllerPrimaryLabel = "A";
     public string controllerSecondaryLabel = "B";
-    public string controllerDropLabel = "X";
+    public string controllerDropLabel = "";
    private string _interactKey;
    private string _altInteractKey;
   
@@ -123,23 +123,18 @@ public class PlayerInteract : MonoBehaviour
 
         if (_currentInteractable != null)
         {
-            // 1. Logic for PLAYER Interaction (A and B)
             if (_currentInteractable is PlayerInteractable)
             {
-                if (interactPressed) _currentInteractable.Interact(_myId);    // A to Give
-                if (altInteractPressed) _currentInteractable.AltInteract(_myId); // B to Steal
+                if (interactPressed) _currentInteractable.Interact(_myId);   
+                if (altInteractPressed) _currentInteractable.AltInteract(_myId); 
             }
-            // 2. Logic for WORLD Interaction (Y)
             else 
             {
-                // If it's a regular item (Grabbable), use Y to pick up
                 if (dropPickPressed) _currentInteractable.Interact(_myId);
             }
         }
         else
         {
-            // 3. Logic for DROPPING (Y)
-            // If not looking at anything, Y drops the current item
             if (dropPickPressed)
             {
                 _inventory.TryDrop();
