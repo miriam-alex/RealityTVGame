@@ -54,13 +54,11 @@ public class Grabbable : MonoBehaviour, IInteractable
 
     public void ShowOutline()
     {
-        Debug.Log("showing outline");
         _meshRenderer.renderingLayerMask |= (uint)outlineLayer.value;
     }
 
     public void HideOutline()
     {
-        Debug.Log("hiding outline");
         _meshRenderer.renderingLayerMask &= ~(uint)outlineLayer.value;
     }
 

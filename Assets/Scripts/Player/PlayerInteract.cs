@@ -150,7 +150,6 @@ public class PlayerInteract : MonoBehaviour
 
 		 if (interactable is Grabbable grabbableObj)
 		 {
-             Debug.Log("should be calling show outline");
 			grabbableObj.ShowOutline();
 		 }
 
@@ -161,7 +160,6 @@ public class PlayerInteract : MonoBehaviour
              if (cam != null)
              {
                  cam.SetDramaState(DirectorPersonality.Aggressive, other.transform, 5.0f);
-                 Debug.Log($"Camera tracking {other.name}");
              }
          }
        }
@@ -174,7 +172,6 @@ public class PlayerInteract : MonoBehaviour
        {
            if (interactable is Grabbable grabbableObj)
            {
-               Debug.Log("should be calling hide outline");
                grabbableObj.HideOutline();
            }
        }

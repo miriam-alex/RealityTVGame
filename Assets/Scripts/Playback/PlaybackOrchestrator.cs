@@ -25,6 +25,8 @@ public class PlaybackOrchestrator : MonoBehaviour
     public string postGameSceneName = "PostGame";
 
     [Header("Drama Clip")]
+    public int maxNumberOfDramaClips = 3;
+    
     [Tooltip("If true and drama events exist, playback will jump to a short clip around the best event.")]
     public bool playDramaClipOnly = true;
 
@@ -32,7 +34,7 @@ public class PlaybackOrchestrator : MonoBehaviour
     public float dramaClipDurationSeconds = 5f;
 
     [Tooltip("How much of the clip occurs before the event timestamp.")]
-    public float dramaClipLeadInSeconds = 1.5f;
+    public float dramaClipLeadInSeconds = 0f;
     
     [Header("Juice Settings")]
     public float zoomedFOV = 30f;
@@ -70,6 +72,8 @@ public class PlaybackOrchestrator : MonoBehaviour
 
         DirectorManager.Instance.SetRecording(false);
         DirectorManager.Instance.SetPlayerInput(false);
+        
+        FindAnyObjectByType<PlayerStationManager>()?.SpawnStationsForPlayers(); // we want the station prefab 
 
         // Logic to find and sort the Top 3 moments
         ConfigureHighlightReel();
@@ -93,17 +97,26 @@ public class PlaybackOrchestrator : MonoBehaviour
             return;
         }
 
-        // Sort by intensity (Highest first)
-        allEvents.Sort((a, b) => b.dramaIntensity.CompareTo(a.dramaIntensity));
+        ShuffleList(allEvents);
 
-        // Take Top 3
-        int count = Mathf.Min(3, allEvents.Count);
+        int count = Mathf.Min(maxNumberOfDramaClips, allEvents.Count);
         for (int i = 0; i < count; i++)
         {
             _topDramaEvents.Add(allEvents[i]);
         }
 
         _hasClipWindow = true;
+    }
+    
+    private void ShuffleList<T>(List<T> list)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            T temp = list[i];
+            int randomIndex = Random.Range(i, list.Count);
+            list[i] = list[randomIndex];
+            list[randomIndex] = temp;
+        }
     }
     
     private void SetupClip(int index)
@@ -117,10 +130,16 @@ public class PlaybackOrchestrator : MonoBehaviour
         _clipEndTime = _clipStartTime + dramaClipDurationSeconds;
     
         _playbackTime = _clipStartTime;
-        _playedTransferVisual = false; // Reset for the new clip
+        _playedTransferVisual = false;
         _hasClipWindow = true;
 
         UpdateDramaDescriptionUI();
+        
+        // we want to only apply the first frame of each new scene
+        foreach (var entry in _spawnedGhosts) 
+        {
+            ApplyFrame(entry.Value.transform, DirectorManager.Instance.productionLedger[entry.Key], _playbackTime);
+        }
     }
 
     private void UpdateDramaDescriptionUI()
@@ -254,10 +273,10 @@ public class PlaybackOrchestrator : MonoBehaviour
         }
 
         // 3. MOVE GHOSTS
-        foreach (var entry in _spawnedGhosts) 
-        {
-            ApplyFrame(entry.Value.transform, DirectorManager.Instance.productionLedger[entry.Key], _playbackTime);
-        }
+        // foreach (var entry in _spawnedGhosts) 
+        // {
+        //     ApplyFrame(entry.Value.transform, DirectorManager.Instance.productionLedger[entry.Key], _playbackTime);
+        // }
 
         // 4. TRIGGER VISUALS (Flash, Bubble, Item)
         TryPlayTransferVisual();

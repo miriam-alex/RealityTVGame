@@ -102,8 +102,6 @@ public class PlayerIdentity : MonoBehaviour {
 
         // 4. Update the stable ID for persistence
         selectedAnimalId = definition.id;
-
-        Debug.Log($"[PlayerIdentity] Player {playerIndex} is now a {selectedAnimalId}");
     }
 
     void Update()
@@ -127,7 +125,7 @@ public class PlayerIdentity : MonoBehaviour {
 
     void OnDisable() 
     {
-        runtimeSet.Remove(this.gameObject);
+        // runtimeSet.Remove(this.gameObject);
 
         DirectorManager.Instance?.UnregisterPlayer(this);
     }

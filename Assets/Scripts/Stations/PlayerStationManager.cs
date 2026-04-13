@@ -17,7 +17,12 @@ public class PlayerStationManager : MonoBehaviour
 
     public void SpawnStationsForPlayers()
     {
-        if (inputStationPrefab == null || playerRuntimeSet == null) return;
+        Debug.Log("In SpawnStationsForPlayers");
+        if (inputStationPrefab == null || playerRuntimeSet == null)
+        {
+            Debug.LogWarning("No player runtime set or input station prefab assigned");
+            return;
+        }
 
         // Clean up any old stations if this is called twice
         ClearExistingStations();
@@ -30,26 +35,36 @@ public class PlayerStationManager : MonoBehaviour
         for (int i = 0; i < playerCount; i++)
         {
             GameObject playerObj = playerRuntimeSet.Items[i];
-            if (playerObj == null) continue;
+            if (playerObj == null)
+            {
+                Debug.LogWarning("Player object cannot be accessed from the runtime set");
+            }
 
-            PlayerIdentity playerIdentity = playerObj.GetComponent<PlayerIdentity>();
-            if (playerIdentity == null) continue;
+            PlayerIdentity playerIdentity = playerObj ? playerObj.GetComponent<PlayerIdentity>() : null;
+            if (playerIdentity == null)
+            {
+                Debug.LogWarning("No player identity assigned");
+            }
+            
+            // if there's no player identity, it's fine for playback.
+            int playerIndex = playerIdentity ? playerIdentity.playerIndex : i;
 
             // Spawn station at the designated slot for this player index
             GameObject station = Instantiate(inputStationPrefab, positions[i], Quaternion.identity);
-            station.name = $"InputStation_Player{playerIdentity.playerIndex}";
+            station.name = $"InputStation_Player{playerIndex}";
             
-            Color targetColor = GetPlayerColor(playerIdentity.playerIndex);
+            Color targetColor = GetPlayerColor(playerIndex);
             
             ApplyColorToStation(station, targetColor);
             
             InputStation inputStation = station.GetComponent<InputStation>();
-            if (inputStation != null)
+            if (inputStation != null && playerObj != null) // assigning is not necessary for the playback
             {
                 inputStation.AssignToPlayer(playerObj, targetColor); 
             }
             
             spawnedStations.Add(station);
+            Debug.Log($"spawned station for player {playerIndex}");
         }
     }
 

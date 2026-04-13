@@ -10904,9 +10904,10 @@ MonoBehaviour:
   transferTravelSeconds: 3
   transferWorldOffset: {x: 0, y: 1.2, z: 0}
   postGameSceneName: PostGame
+  maxNumberOfDramaClips: 3
   playDramaClipOnly: 1
-  dramaClipDurationSeconds: 6
-  dramaClipLeadInSeconds: 1.5
+  dramaClipDurationSeconds: 4
+  dramaClipLeadInSeconds: 1
   zoomedFOV: 30
   cameraSmoothSpeed: 5
   itemFramingVerticalOffset: -1

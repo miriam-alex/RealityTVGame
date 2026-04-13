@@ -48,7 +48,6 @@ public class ScoreManager : MonoBehaviour
             GameObject player = id.gameObject;
             playerScores[player] = 0;
             id.UpdateScoreUI(0, true);
-            Debug.Log($"ScoreManager: Initialized Player {id.playerIndex}");
         }
         Debug.Log($"ScoreManager: Total players initialized: {playerScores.Count}");
     }
