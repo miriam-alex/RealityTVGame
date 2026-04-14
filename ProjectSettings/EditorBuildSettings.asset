@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/PreGame.unity
+    guid: e9ef4dbf9058f46408af5e19206918ac
+  - enabled: 1
+    path: Assets/Scenes/PlayerLobby.unity
+    guid: 0443b7125a487934bb0ba34ac4e77ddb
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
@@ -13,13 +19,7 @@ EditorBuildSettings:
     guid: b8763fb825fac454191d7ed40cbf3333
   - enabled: 1
     path: Assets/Scenes/PostGame.unity
-    guid: 6f3f400583e9ad946acab3dc100b0b19
-  - enabled: 1
-    path: Assets/Scenes/PreGame.unity
-    guid: e9ef4dbf9058f46408af5e19206918ac
-  - enabled: 1
-    path: Assets/Scenes/PlayerLobby.unity
-    guid: 0443b7125a487934bb0ba34ac4e77ddb
+    guid: 9d622d32b07d646a394038b68e7c1d52
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ca677c08279224a778e4854145706c73, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

@@ -535,7 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   speed: 4
   rotationSpeed: 10
-  jumpForce: 5.5
+  jumpForce: 6
   groundCheck: {fileID: 2639244449106597834}
   groundLayer:
     serializedVersion: 2
