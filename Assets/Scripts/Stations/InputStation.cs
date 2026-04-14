@@ -100,11 +100,11 @@ public class InputStation : MonoBehaviour
             GameObject member = Instantiate(definition.prefab, memberSlots[i].position, memberSlots[i].rotation, memberSlots[i]);
             member.transform.localScale = Vector3.one * 0.1f;
 
-            // disables animator
-            Animator animator = member.GetComponent<Animator>();
-            if (animator != null)
+            // disable animation on community members
+            Animator[] animators = member.GetComponentsInChildren<Animator>(true);
+            for (int j = 0; j < animators.Length; j++)
             {
-                animator.enabled = false;
+                animators[j].enabled = false;
             }
             member.SetActive(false);
             spawnedCommunityMembers.Add(member);
