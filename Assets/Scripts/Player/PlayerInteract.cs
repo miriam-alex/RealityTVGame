@@ -120,6 +120,7 @@ public class PlayerInteract : MonoBehaviour
         bool interactPressed = _playerInput.actions["Interact"].WasPressedThisFrame(); // A
         bool altInteractPressed = _playerInput.actions.FindAction("Steal")?.WasPressedThisFrame() ?? false; // B
         bool dropPickPressed = _playerInput.actions.FindAction("Drop")?.WasPressedThisFrame() ?? false; // Y
+        bool yodelPressed = _playerInput.actions.FindAction("Yodel")?.WasPressedThisFrame() ?? false; // RT
 
         if (_currentInteractable != null)
         {
@@ -138,6 +139,17 @@ public class PlayerInteract : MonoBehaviour
             if (dropPickPressed)
             {
                 _inventory.TryDrop();
+            }
+
+        }
+
+        // if player yodels, summon cameraman to player
+        if (yodelPressed)
+        {
+            CameramanNPC cam = Object.FindAnyObjectByType<CameramanNPC>();
+            if (cam != null)
+            {
+                cam.SummonToPlayer(transform, 4f);
             }
         }
     }

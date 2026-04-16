@@ -187,10 +187,31 @@ public class CameramanNPC : MonoBehaviour
         resetCoroutine = StartCoroutine(ResetToIndifferent(duration));
     }
 
+    // summon the cameraman to the player (if player yodels)
+    public void SummonToPlayer(Transform playerTransform, float focusDuration = 4f)
+    {
+        if (playerTransform == null)
+        {
+            return;
+        }
+
+        if (resetCoroutine != null)
+        {
+            StopCoroutine(resetCoroutine);
+        }
+
+        currentTarget = playerTransform;
+        currentPersonality = DirectorPersonality.Aggressive;
+        resetCoroutine = StartCoroutine(ResetToIndifferent(focusDuration));
+        Debug.Log($"[CameramanNPC] Summoned by {playerTransform.name}. via yodel.");
+        
+    }
+
     private System.Collections.IEnumerator ResetToIndifferent(float delay)
     {
         yield return new WaitForSeconds(delay);
         currentPersonality = DirectorPersonality.Indifferent;
+        Debug.Log("[CameramanNPC] Returned to Indifferent personality.");
     }
     
     void OnCollisionEnter(Collision collision)
