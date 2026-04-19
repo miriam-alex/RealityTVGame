@@ -1,16 +1,37 @@
 using UnityEngine;
+using UnityEngine.UI; // Required for the Button component
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviour
 {
     [SerializeField] private AnimalCatalog catalog;
+    [SerializeField] private Button startButton; // Drag your UI Button here in the Inspector
 
-    // This is called by the PlayerInputManager 'Player Joined' Event
     public PlayerRuntimeSet runtimeSet;
+
+    private void Start()
+    {
+        // Set initial state of the button when the lobby loads
+        UpdateStartButtonState();
+    }
+
+    private void UpdateStartButtonState()
+    {
+        if (startButton != null)
+        {
+            int count = runtimeSet.Items.Count;
+            Debug.Log($"LobbyManager: Current Player Count is {count}. Setting button interactable to {count >= 2}");
+            
+            startButton.interactable = count >= 2;
+        }
+    }
 
     public void OnStartGameClicked()
     {
+        // Extra safety check to prevent accidental triggering
+        if (runtimeSet.Items.Count < 2) return;
+
         // 1. Pack players for the trip
         foreach (GameObject player in runtimeSet.Items)
         {
@@ -21,45 +42,35 @@ public class LobbyManager : MonoBehaviour
         // 2. Switch scenes
         SceneManager.LoadScene("SampleScene"); 
     }
+
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        
         Debug.Log("<color=cyan>LobbyManager:</color> OnPlayerJoined triggered!");
 
-        if (playerInput == null) {
-            Debug.LogError("LobbyManager: playerInput is NULL! Check your Event settings.");
-            return;
-        }
-
-        PlayerIdentity identity = playerInput.GetComponent<PlayerIdentity>();
-        
-        if (identity == null) {
-            Debug.LogError("LobbyManager: Could not find PlayerIdentity on the spawned prefab!");
-            return;
-        }
-
-        int index = playerInput.playerIndex;
-        Debug.Log($"LobbyManager: Processing Player Index {index}");
-
-        if (catalog == null) {
-            Debug.LogError("LobbyManager: AnimalCatalog is NOT ASSIGNED in the inspector!");
-            return;
-        }
-
-        if (index < catalog.animals.Count)
+        // 1. ADD THIS: Ensure the player is in the runtime set
+        if (!runtimeSet.Items.Contains(playerInput.gameObject))
         {
-            string id = catalog.animals[index].id;
-            identity.playerIndex = index;
-            identity.selectedAnimalId = id; 
-            
-            Debug.Log($"LobbyManager: Assigning ID '{id}' to Player {index}");
-            identity.ApplyAnimalById(id);
+            runtimeSet.Items.Add(playerInput.gameObject);
+            Debug.Log("LobbyManager: Added player to runtimeSet. Current count: " + runtimeSet.Items.Count);
         }
-        else {
-            Debug.LogWarning($"LobbyManager: No animal found in catalog for index {index}");
+
+        // 2. KEEP YOUR EXISTING IDENTITY LOGIC
+        PlayerIdentity identity = playerInput.GetComponent<PlayerIdentity>();
+        if (identity != null)
+        {
+            int index = playerInput.playerIndex;
+            if (catalog != null && index < catalog.animals.Count)
+            {
+                string id = catalog.animals[index].id;
+                identity.playerIndex = index;
+                identity.selectedAnimalId = id; 
+                identity.ApplyAnimalById(id);
+            }
         }
         
         DontDestroyOnLoad(playerInput.gameObject);
-    }
 
+        // 3. NOW update the button
+        UpdateStartButtonState();
+    }
 }
