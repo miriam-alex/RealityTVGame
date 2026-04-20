@@ -3,16 +3,16 @@ using TMPro;
 using System.Collections;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using UnityEngine.Assertions;
+
 public class PlayerIdentity : MonoBehaviour {
     [Header("Essentials")]
     public int playerIndex; 
     public PlayerRuntimeSet runtimeSet;
     public AnimalCatalog animalCatalog;
     public Transform bodyMountPoint;
+    public Animator animator;
     public string selectedAnimalId;
-    [Header("Key Bindings")]
-    public string interactKey = "A";
-    public string altInteractKey = "B";
     public bool isSpotted;
     
     [Header("UI Feedback")]
@@ -61,10 +61,13 @@ public class PlayerIdentity : MonoBehaviour {
             Debug.LogWarning("Player spawned with no ID yet. Waiting for LobbyManager...");
         }
 
-        // if (ChatBubbleManager.Instance != null)
-        // {
-        //     ChatBubbleManager.Show("Joined!", transform, new Vector3(0, 2, 0), 5.0f);
-        // }
+        // getting animator
+        Transform animalTransform = bodyMountPoint.GetChild(0);
+        Assert.IsNotNull(animalTransform);
+        animator = animalTransform.GetComponent<Animator>();
+        if (animator == null) {
+            Debug.LogError("Animator cannot be found");
+        }
     }
     public void ApplyAnimalById(string id)
     {

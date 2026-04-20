@@ -507,7 +507,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3161298468613301832}
   - component: {fileID: 6795331777207300919}
-  - component: {fileID: 6147876873679586677}
   - component: {fileID: -78908860370964223}
   m_Layer: 0
   m_Name: Pudu
@@ -567,28 +566,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 554706830053376499}
   m_Enabled: 1
---- !u!95 &6147876873679586677
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5279811246306103102}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 790a59d5c287faa44a67a04ce02dc54c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!65 &-78908860370964223
 BoxCollider:
   m_ObjectHideFlags: 0

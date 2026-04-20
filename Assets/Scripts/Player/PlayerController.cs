@@ -16,16 +16,11 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private PlayerIdentity identity;
+    private Animator animator;
     private PlayerInput playerInput;
     private Vector2 moveInput;
     private bool isGrounded;
     private float lastGroundedTime = -999f;
-
-    // Example key names for movement (set these in Inspector or code)
-    public string moveLeftKey = "A";
-    public string moveRightKey = "D";
-    public string moveUpKey = "W";
-    public string moveDownKey = "S";
 
     void Awake()
     {
@@ -58,6 +53,7 @@ public class PlayerController : MonoBehaviour
     {
         identity = GetComponent<PlayerIdentity>();
         status = GetComponent<PlayerStatus>(); // 2. Add this line
+        animator = identity.animator;
 
         if (groundCheck == null)
         {
@@ -88,14 +84,19 @@ public class PlayerController : MonoBehaviour
             moveInput = playerInput.actions["Move"].ReadValue<Vector2>();
             movement = new Vector3(moveInput.x, 0f, moveInput.y).normalized * speed;
         }
-
         rb.linearVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
 
         if (movement != Vector3.zero)
         {
+            animator.SetBool("isRunning", true);
             Quaternion targetRotation = Quaternion.LookRotation(movement);
             rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
+
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -108,6 +109,7 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isGrounded = false;
+        animator.SetBool("isJumping", true);
         lastGroundedTime = -999f;
     }
 
@@ -135,6 +137,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision) {
         TryMarkGrounded(collision);
+        animator.SetBool("isJumping", false);
         
         // return if colliding with other object or self
         PlayerIdentity otherIdentity = collision.gameObject.GetComponent<PlayerIdentity>();

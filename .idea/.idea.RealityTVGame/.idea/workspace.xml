@@ -5,18 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="548baca1-a2e6-4029-95e1-d3838846d670" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Spotlight.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RealityTVGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RealityTVGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/External Assets/POLYART_Ancient Village/Terrain/TerrainData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/POLYART_Ancient Village/Terrain/TerrainData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Searchlight_Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Searchlight_Red.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Animals/CameramanNPC.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Animals/CameramanNPC.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameramanNPC.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameramanNPC.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spotlight.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/Quirky Series Ultimate/FREE/Animations/AC_Colobus.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/Quirky Series Ultimate/FREE/Animations/AC_Colobus.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/Quirky Series Ultimate/FREE/Animations/AC_Pudu.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/Quirky Series Ultimate/FREE/Animations/AC_Pudu.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/Quirky Series Ultimate/FREE/Prefabs/Colobus.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/Quirky Series Ultimate/FREE/Prefabs/Colobus.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/Quirky Series Ultimate/FREE/Prefabs/Gecko.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/Quirky Series Ultimate/FREE/Prefabs/Gecko.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/Quirky Series Ultimate/FREE/Prefabs/Pudu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/Quirky Series Ultimate/FREE/Prefabs/Pudu.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/External Assets/Quirky Series Ultimate/FREE/Prefabs/Squid.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/Quirky Series Ultimate/FREE/Prefabs/Squid.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Animals/Deer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Animals/Deer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Animals/Gecko.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Animals/Gecko.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Animals/Monkey.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Animals/Monkey.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Animals/Squid.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Animals/Squid.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerIdentity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerIdentity.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteract.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteract.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +36,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/1e15cde98ace47179047e971fd3c94e616a00/1e/a3696ed4/02000035pdb47.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/200ba51048d445aeb42b332e47d3b4db15a00/d1/9919a1b5/02000027pdb33.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/30f1ce141a5843b8a82ab68a7cccde5815600/72/c6c42eff/02000027pdb33.il" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/3541f634e13a4bb49c0c81a081870f3c16e00/f4/f9d0688c/0200001Bpdb23.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/46fa88ab7d414504b01845234567a53c15400/ae/c92e3fb0/02000021pdb28.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/5d352af809c44efd9b075e6b98f1921815600/d8/72f38ed8/02000015pdb20.il" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/6b2924076f094e98a27b01e3271c812815600/47/4458c06f/0200001Bpdb23.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/6d70ac8f007e4d7bbe34b863459b495b15a00/65/733e9def/02000027pdb33.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/710373b89142405bbd330befbc7e921f15600/7b/da42a584/02000005pdb5.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/7ad023b769b44d3d9e4cd746d685177416a00/af/b3d41cf7/02000035pdb47.il" root0="FORCE_HIGHLIGHTING" />
@@ -50,9 +55,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/f62881e8909546f194975b63b4983d3216a00/ec/082912b1/02000035pdb47.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/LobbyPlayer.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameramanNPC.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameResultData.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerIdentity.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteract.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteractable.cs" root0="FORCE_HIGHLIGHTING" />
@@ -93,7 +97,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "new-spotlight",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -142,13 +146,15 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="19916">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="19916" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -180,7 +186,7 @@
       <workItem from="1774304352569" duration="25192000" />
       <workItem from="1774466034217" duration="5144000" />
       <workItem from="1776059251331" duration="16240000" />
-      <workItem from="1776660406456" duration="3836000" />
+      <workItem from="1776660406456" duration="7899000" />
     </task>
     <servers />
   </component>

@@ -712,7 +712,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8648425310868573238}
   - component: {fileID: 4105349500978914225}
-  - component: {fileID: 8033698545883803558}
   - component: {fileID: 6128264642644968646}
   m_Layer: 0
   m_Name: Squid
@@ -772,28 +771,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3230127564229832065}
   m_Enabled: 1
---- !u!95 &8033698545883803558
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7511180232019162148}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c04a570a28d92374d8ad58a6c654aa1a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!65 &6128264642644968646
 BoxCollider:
   m_ObjectHideFlags: 0

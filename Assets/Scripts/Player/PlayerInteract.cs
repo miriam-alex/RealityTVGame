@@ -14,9 +14,6 @@ public class PlayerInteract : MonoBehaviour
     public string controllerPrimaryLabel = "A";
     public string controllerSecondaryLabel = "B";
     public string controllerDropLabel = "";
-   private string _interactKey;
-   private string _altInteractKey;
-  
    private PlayerIdentity _myId;
    private PlayerInventory _inventory;
    private PlayerInput _playerInput;
@@ -29,8 +26,6 @@ public class PlayerInteract : MonoBehaviour
    private void Start()
    {
        _myId = GetComponent<PlayerIdentity>();
-       _interactKey = _myId.interactKey;
-       _altInteractKey = _myId.altInteractKey;
        _inventory = GetComponent<PlayerInventory>();
        _playerInput = GetComponent<PlayerInput>();
       

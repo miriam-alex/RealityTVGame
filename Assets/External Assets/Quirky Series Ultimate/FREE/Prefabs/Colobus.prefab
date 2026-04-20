@@ -605,7 +605,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4992758198669102562}
   - component: {fileID: 1148682066818756815}
-  - component: {fileID: 8317233869622344689}
   - component: {fileID: 8245461637216822365}
   m_Layer: 0
   m_Name: Colobus
@@ -665,28 +664,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2440281965448769000}
   m_Enabled: 1
---- !u!95 &8317233869622344689
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6182162820492919152}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 40a135c99fdce2c4eb95e8e306ed8d49, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!65 &8245461637216822365
 BoxCollider:
   m_ObjectHideFlags: 0
