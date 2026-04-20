@@ -47,56 +47,71 @@ public class PlayerInteract : MonoBehaviour
        HandleInput();
    }
 
-   private void UpdateCurrentTargetAndPrompt()
-   {
-       if (_myId == null)
-       {
-           if (promptUI != null) promptUI.Hide();
-           _currentInteractable = null;
-           _lastPromptInteractable = null;
-           return;
-       }
+    private void UpdateCurrentTargetAndPrompt()
+    {
+        if (_myId == null)
+        {
+            if (promptUI != null) promptUI.Hide();
+            
+            // Ensure we clear the outline if the ID becomes null
+            if (_currentInteractable is Grabbable g) g.HideOutline();
+            
+            _currentInteractable = null;
+            _lastPromptInteractable = null;
+            return;
+        }
 
-       IInteractable best = null;
-       float bestDistSq = float.PositiveInfinity;
-       Vector3 myPos = transform.position;
+        IInteractable best = null;
+        float bestDistSq = float.PositiveInfinity;
+        Vector3 myPos = transform.position;
 
-       foreach (var kvp in _nearbyInteractables)
-       {
-           IInteractable candidate = kvp.Value;
-           if (candidate == null) continue;
-           if (!candidate.IsAvailable(_myId)) continue;
+        foreach (var kvp in _nearbyInteractables)
+        {
+            IInteractable candidate = kvp.Value;
+            if (candidate == null) continue;
+            if (!candidate.IsAvailable(_myId)) continue;
 
-           Component candidateComponent = candidate as Component;
-           if (candidateComponent == null) continue;
+            Component candidateComponent = candidate as Component;
+            if (candidateComponent == null) continue;
 
-           float distSq = (candidateComponent.transform.position - myPos).sqrMagnitude;
-           if (distSq < bestDistSq)
-           {
-               bestDistSq = distSq;
-               best = candidate;
-           }
-       }
+            float distSq = (candidateComponent.transform.position - myPos).sqrMagnitude;
+            if (distSq < bestDistSq)
+            {
+                bestDistSq = distSq;
+                best = candidate;
+            }
+        }
 
-       _currentInteractable = best;
+        // Logic to update Outlines when the target changes
+        if (_currentInteractable != best)
+        {
+            // Hide outline for old target
+            // The 'if (oldGrabbable)' check handles the MissingReferenceException
+            if (_currentInteractable is Grabbable oldGrabbable && oldGrabbable != null) 
+            {
+                oldGrabbable.HideOutline();
+            }
 
-       if (_currentInteractable == _lastPromptInteractable)
-       {
-           return;
-       }
+            _currentInteractable = best;
 
-       _lastPromptInteractable = _currentInteractable;
+            // Show outline for new target
+            if (_currentInteractable is Grabbable newGrabbable && newGrabbable != null)
+            {
+                newGrabbable.ShowOutline();
+            }
+        }
 
-       if (promptUI == null)
-       {
-           return;
-       }
+        if (_currentInteractable == _lastPromptInteractable) return;
 
-       if (_currentInteractable == null)
-       {
-           promptUI.Hide();
-           return;
-       }
+        _lastPromptInteractable = _currentInteractable;
+
+        if (promptUI == null) return;
+
+        if (_currentInteractable == null)
+        {
+            promptUI.Hide();
+            return;
+        }
 
        InteractionPromptData data = _currentInteractable.GetInteractionPromptData(_myId);
 
@@ -116,31 +131,32 @@ public class PlayerInteract : MonoBehaviour
     {
         if (_myId == null || _playerInput == null) return;
 
-        // Get Inputs
-        bool interactPressed = _playerInput.actions["Interact"].WasPressedThisFrame(); // A
-        bool altInteractPressed = _playerInput.actions.FindAction("Steal")?.WasPressedThisFrame() ?? false; // B
-        bool dropPickPressed = _playerInput.actions.FindAction("Drop")?.WasPressedThisFrame() ?? false; // Y
-        bool yodelPressed = _playerInput.actions.FindAction("Yodel")?.WasPressedThisFrame() ?? false; // RT
+        bool interactPressed = _playerInput.actions["Interact"].WasPressedThisFrame();
+        bool altInteractPressed = _playerInput.actions.FindAction("Steal")?.WasPressedThisFrame() ?? false;
+        bool dropPickPressed = _playerInput.actions.FindAction("Drop")?.WasPressedThisFrame() ?? false;
+        bool yodelPressed = _playerInput.actions.FindAction("Yodel")?.WasPressedThisFrame() ?? false;
 
         if (_currentInteractable != null)
         {
+            // 1. Handle Players (Stealing/Giving)
             if (_currentInteractable is PlayerInteractable)
             {
                 if (interactPressed) _currentInteractable.Interact(_myId);   
-                if (altInteractPressed) _currentInteractable.AltInteract(_myId); 
+                if (altInteractPressed) _currentInteractable.AltInteract(_myId);
             }
-            else 
+            // 2. Handle EVERYTHING ELSE (Pickups, etc.)
+            // This MUST be a separate check that triggers on interactPressed OR dropPickPressed
+            else
             {
-                if (dropPickPressed) _currentInteractable.Interact(_myId);
+                if (interactPressed || dropPickPressed)
+                {
+                    _currentInteractable.Interact(_myId);
+                }
             }
         }
-        else
+        else if (dropPickPressed)
         {
-            if (dropPickPressed)
-            {
-                _inventory.TryDrop();
-            }
-
+            _inventory.TryDrop();
         }
     }
 
@@ -178,4 +194,3 @@ public class PlayerInteract : MonoBehaviour
 
    private Key GetKey(string name) => System.Enum.TryParse(name, true, out Key k) ? k : Key.None;
 }
-

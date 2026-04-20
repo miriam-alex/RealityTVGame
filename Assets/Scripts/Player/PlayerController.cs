@@ -52,9 +52,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private PlayerStatus status; // 1. Add this line
+
     void Start()
     {
         identity = GetComponent<PlayerIdentity>();
+        status = GetComponent<PlayerStatus>(); // 2. Add this line
 
         if (groundCheck == null)
         {
@@ -71,14 +74,17 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 movement = Vector3.zero;
+        // If stunned, stop movement input entirely
+        if (status != null && status.isStunned)
+        {
+            // Keep existing vertical velocity (gravity) so the player doesn't float
+            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+            return;
+        }
 
-        // BEST PRACTICE: Don't check for playerIndex. 
-        // The PlayerInput component already knows which device belongs to THIS player.
+        Vector3 movement = Vector3.zero;
         if (playerInput != null)
         {
-            // This will work for Controller 1, Controller 2, or Keyboard 
-            // depending on what was used to "Join"
             moveInput = playerInput.actions["Move"].ReadValue<Vector2>();
             movement = new Vector3(moveInput.x, 0f, moveInput.y).normalized * speed;
         }
@@ -94,6 +100,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        // Prevent jumping if stunned
+        if (status != null && status.isStunned) return;
+
         if (!context.performed || !isGrounded || rb.linearVelocity.y > 0.01f)
             return;
 

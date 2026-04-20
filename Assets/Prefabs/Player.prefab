@@ -457,6 +457,7 @@ GameObject:
   - component: {fileID: 5861466163779694620}
   - component: {fileID: 5294427170204377863}
   - component: {fileID: 1202592046471000114}
+  - component: {fileID: 4555900773675973975}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -668,3 +669,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13881d301e7734596a4b1f68da5f149b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RealityActor
+--- !u!114 &4555900773675973975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5795073664236620774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3698f21bf7d4dcd47b28fb09e613b73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatus
+  successfulSteals: 0

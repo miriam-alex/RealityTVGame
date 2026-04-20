@@ -28,11 +28,11 @@ public class PostGameScreen : MonoBehaviour
         if (isTie)
         {
             string winnerIndices = string.Join(", ", winners.Select(w => $"PLAYER {w.Key + 1}"));
-            gameTitleText.text = $"{winnerIndices} TIE WITH {highestScore} FOLLOWERS.";
+            gameTitleText.text = $"{winnerIndices} TIE WITH {highestScore}K FOLLOWERS.";
         }
         else
         {
-            gameTitleText.text = $"PLAYER {winners[0].Key + 1} WINS WITH {highestScore} FOLLOWERS.";
+            gameTitleText.text = $"PLAYER {winners[0].Key + 1} WINS WITH {highestScore}K FOLLOWERS.";
         }
 
         for (int i = 0; i < sortedScores.Count; i++)

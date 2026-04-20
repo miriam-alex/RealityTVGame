@@ -10,9 +10,9 @@ public class LobbyManager : MonoBehaviour
 
     public PlayerRuntimeSet runtimeSet;
 
-    private void Start()
+    // We no longer strictly need an event trigger because we check the count every frame
+    private void Update()
     {
-        // Set initial state of the button when the lobby loads
         UpdateStartButtonState();
     }
 
@@ -20,16 +20,20 @@ public class LobbyManager : MonoBehaviour
     {
         if (startButton != null)
         {
-            int count = runtimeSet.Items.Count;
-            Debug.Log($"LobbyManager: Current Player Count is {count}. Setting button interactable to {count >= 2}");
+            // Enable button if 2 or more players are in the set
+            // You can also add && runtimeSet.Items.Count <= 4 for a max limit
+            bool canStart = runtimeSet.Items.Count >= 2;
             
-            startButton.interactable = count >= 2;
+            // Only update the interactable state if it changes to save performance
+            if (startButton.interactable != canStart)
+            {
+                startButton.interactable = canStart;
+            }
         }
     }
 
     public void OnStartGameClicked()
     {
-        // Extra safety check to prevent accidental triggering
         if (runtimeSet.Items.Count < 2) return;
 
         // 1. Pack players for the trip
@@ -43,18 +47,19 @@ public class LobbyManager : MonoBehaviour
         SceneManager.LoadScene("SampleScene"); 
     }
 
+    // This method is still useful for your Identity/Catalog assignment logic
+    // but the button state is now handled automatically by Update()
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         Debug.Log("<color=cyan>LobbyManager:</color> OnPlayerJoined triggered!");
 
-        // 1. ADD THIS: Ensure the player is in the runtime set
+        // 1. Ensure the player is in the runtime set
         if (!runtimeSet.Items.Contains(playerInput.gameObject))
         {
             runtimeSet.Items.Add(playerInput.gameObject);
-            Debug.Log("LobbyManager: Added player to runtimeSet. Current count: " + runtimeSet.Items.Count);
         }
 
-        // 2. KEEP YOUR EXISTING IDENTITY LOGIC
+        // 2. Keep your existing Identity assignment logic
         PlayerIdentity identity = playerInput.GetComponent<PlayerIdentity>();
         if (identity != null)
         {
@@ -69,8 +74,5 @@ public class LobbyManager : MonoBehaviour
         }
         
         DontDestroyOnLoad(playerInput.gameObject);
-
-        // 3. NOW update the button
-        UpdateStartButtonState();
     }
 }

@@ -41,6 +41,7 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
         if (_nextGiveAllowedTimeByRequester.TryGetValue(requesterKey, out float nextAllowed) && Time.time < nextAllowed)
             return;
 
+
         bool isSuccess = ExecuteInventoryTransfer(_myId, requester, "Here you go!", out Resource transferredResource);
 
 
@@ -64,32 +65,66 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
     
     public void AltInteract(PlayerIdentity requester) 
     {
+
+
+        // 1. Check if either player is currently stunned
+        PlayerStatus requesterStatus = requester.GetComponent<PlayerStatus>();
+        PlayerStatus victimStatus = _myId.GetComponent<PlayerStatus>();
+
+
+        if (requesterStatus != null && requesterStatus.isStunned)
+        {
+            Debug.Log("Steal blocked: You are stunned!");
+            return;
+        }
+
+        bool isAggravated = (victimStatus != null && victimStatus.isStunned);
+
         if (!InteractionCoordinator.Instance.CanInteract(requester, _myId)) return;
 
         int requesterKey = requester != null ? requester.playerIndex : -1;
         if (_nextStealAllowedTimeByRequester.TryGetValue(requesterKey, out float nextAllowed) && Time.time < nextAllowed)
             return;
 
+        if (victimStatus != null && victimStatus.isStunned)
+        {
+            Debug.Log("You are stealing from a stunned player!");
+        }
         bool isSuccess = ExecuteInventoryTransfer(requester, _myId, "Stolen!", out Resource transferredResource);
 
         _nextStealAllowedTimeByRequester[requesterKey] = Time.time + COOLDOWN;
 
-		// If caught, you lose followers for doing a bad thing on camera.
-        if (requester != null && requester.isSpotted && isSuccess)
+        // 2. If steal is successful, apply the 5-second stun to BOTH players
+        if (isSuccess)
         {
-            DirectorManager.Instance.LogDrama(
-                DramaType.StealItem, 
-                transform,           // Where it happened
-                requester,      // The Thief
-                _myId,          // The Victim
-                -ScoreManager.Instance.stealPenalty,                 // Score Penalty
-                $"{requester.name} caught red-handed!", 
-                8.5f,                // High drama intensity
-                transferredResource
-            );
+            // 2. Register the steal. This method now handles the logic of 
+            // incrementing the counter AND applying the stun if the limit is exceeded.
+            requesterStatus?.RegisterSuccessfulSteal();
+
+            // 3. Define the penalty and caption based on status
+            int penalty = isAggravated ? 100 : ScoreManager.Instance.stealPenalty;
+            string caption = isAggravated ? $"{requester.name} robbed a defenseless player!" : $"{requester.name} caught red-handed!";
+            float intensity = isAggravated ? 10f : 8.5f; // Higher intensity for aggravated
+            
+            // REMOVE: requesterStatus?.ApplyStun(5f); 
+            // Do not call ApplyStun here anymore! RegisterSuccessfulSteal handles it.
+
+            // Log drama only if successful
+            if (requester != null && requester.isSpotted)
+            {
+                DirectorManager.Instance.LogDrama(
+                    DramaType.StealItem, 
+                    transform, 
+                    requester, 
+                    _myId, 
+                    -penalty, 
+                    caption, 
+                    intensity, 
+                    transferredResource
+                );
+            }
         }
     }
-    
     private bool ExecuteInventoryTransfer(PlayerIdentity taker, PlayerIdentity giver, string label, out Resource transferredResource)
     {
         transferredResource = null;
