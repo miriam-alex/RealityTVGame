@@ -1,32 +1,20 @@
 using UnityEngine;
 using System.Collections;
-
 public class PlayerStatus : MonoBehaviour
 {
-    public bool isStunned { get; private set; }
-    public int successfulSteals = 0; // Track steals here
-    public const int STEAL_LIMIT = 3;
+    public float nextStealTime;
+    public const float COOLDOWN_DURATION = 5f;
 
-    public void ApplyStun(float duration)
+    public void SetStealCooldown()
     {
-        if (!isStunned) StartCoroutine(StunRoutine(duration));
+        nextStealTime = Time.time + COOLDOWN_DURATION;
     }
 
-    // Call this whenever a steal is successful
-    public void RegisterSuccessfulSteal()
+    public bool IsOnCooldown()
     {
-        successfulSteals++;
-        if (successfulSteals > STEAL_LIMIT)
-        {
-            ApplyStun(5f);
-            //successfulSteals = 0; // Reset after punishment
-        }
+        return Time.time < nextStealTime;
     }
 
-    private IEnumerator StunRoutine(float duration)
-    {
-        isStunned = true;
-        yield return new WaitForSeconds(duration);
-        isStunned = false;
-    }
+    
+    
 }

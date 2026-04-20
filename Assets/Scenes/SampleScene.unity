@@ -1843,7 +1843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 352908335}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3206,7 +3206,7 @@ GameObject:
   - component: {fileID: 723819498}
   - component: {fileID: 723819500}
   - component: {fileID: 723819499}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: TerrainMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

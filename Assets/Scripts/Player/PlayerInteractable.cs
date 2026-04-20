@@ -7,6 +7,11 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
     private PlayerIdentity _myId;
     private PlayerInventory _myInventory;
     private const float COOLDOWN = 1.0f; 
+    public event System.Action<float, float> OnCooldownStarted;
+
+    [SerializeField] private float maxCooldownValue = 5.0f; // Set your desired duration
+    private float currentCooldownValue = 0f;
+    private bool IsOnCooldown => currentCooldownValue > 0;
 
     private readonly System.Collections.Generic.Dictionary<int, float> _nextGiveAllowedTimeByRequester = new();
     private readonly System.Collections.Generic.Dictionary<int, float> _nextStealAllowedTimeByRequester = new();
@@ -62,67 +67,60 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
             );
         }
     }
+    public void TriggerCooldown()
+    {
+        currentCooldownValue = maxCooldownValue;
+        OnCooldownStarted?.Invoke(currentCooldownValue, maxCooldownValue);
+    }
     
     public void AltInteract(PlayerIdentity requester) 
     {
-
-
-        // 1. Check if either player is currently stunned
-        PlayerStatus requesterStatus = requester.GetComponent<PlayerStatus>();
-        PlayerStatus victimStatus = _myId.GetComponent<PlayerStatus>();
-
-
-        if (requesterStatus != null && requesterStatus.isStunned)
+        PlayerStatus thiefStatus = requester.GetComponent<PlayerStatus>();
+        if (thiefStatus != null && thiefStatus.IsOnCooldown())
         {
-            Debug.Log("Steal blocked: You are stunned!");
+            Debug.Log("Steal on cooldown!");
             return;
         }
-
-        bool isAggravated = (victimStatus != null && victimStatus.isStunned);
 
         if (!InteractionCoordinator.Instance.CanInteract(requester, _myId)) return;
-
-        int requesterKey = requester != null ? requester.playerIndex : -1;
-        if (_nextStealAllowedTimeByRequester.TryGetValue(requesterKey, out float nextAllowed) && Time.time < nextAllowed)
-            return;
-
-        if (victimStatus != null && victimStatus.isStunned)
-        {
-            Debug.Log("You are stealing from a stunned player!");
-        }
+        
         bool isSuccess = ExecuteInventoryTransfer(requester, _myId, "Stolen!", out Resource transferredResource);
 
-        _nextStealAllowedTimeByRequester[requesterKey] = Time.time + COOLDOWN;
-
-        // 2. If steal is successful, apply the 5-second stun to BOTH players
         if (isSuccess)
         {
-            // 2. Register the steal. This method now handles the logic of 
-            // incrementing the counter AND applying the stun if the limit is exceeded.
-            requesterStatus?.RegisterSuccessfulSteal();
+            // 1. Backend Status: Set cooldown on both participants
+            _myId.GetComponent<PlayerStatus>()?.SetStealCooldown();
+            thiefStatus?.SetStealCooldown();
 
-            // 3. Define the penalty and caption based on status
-            int penalty = isAggravated ? 100 : ScoreManager.Instance.stealPenalty;
-            string caption = isAggravated ? $"{requester.name} robbed a defenseless player!" : $"{requester.name} caught red-handed!";
-            float intensity = isAggravated ? 10f : 8.5f; // Higher intensity for aggravated
+            // 2. Trigger UI: Look for the UI component and trigger it ONCE per player
+            var requesterUI = requester.GetComponentInChildren<PlayerCooldownUI>();
+            requesterUI?.TriggerCooldown(); 
+
+            var victimUI = GetComponentInChildren<PlayerCooldownUI>();
+            victimUI?.TriggerCooldown();
+
+            // 3. Log the dramatic event
+            DirectorManager.Instance.LogDrama(
+                DramaType.StealItem, 
+                transform, 
+                requester, 
+                _myId, 
+                -ScoreManager.Instance.stealPenalty, 
+                $"{requester.name} stole from {_myId.name}!", 
+                8.0f, 
+                transferredResource
+            );
             
-            // REMOVE: requesterStatus?.ApplyStun(5f); 
-            // Do not call ApplyStun here anymore! RegisterSuccessfulSteal handles it.
+        }
+    }
 
-            // Log drama only if successful
-            if (requester != null && requester.isSpotted)
-            {
-                DirectorManager.Instance.LogDrama(
-                    DramaType.StealItem, 
-                    transform, 
-                    requester, 
-                    _myId, 
-                    -penalty, 
-                    caption, 
-                    intensity, 
-                    transferredResource
-                );
-            }
+
+    
+    private void Update()
+    {
+        if (currentCooldownValue > 0)
+        {
+            currentCooldownValue -= Time.deltaTime;
         }
     }
     private bool ExecuteInventoryTransfer(PlayerIdentity taker, PlayerIdentity giver, string label, out Resource transferredResource)

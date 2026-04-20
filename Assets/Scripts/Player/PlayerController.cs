@@ -70,13 +70,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // If stunned, stop movement input entirely
-        if (status != null && status.isStunned)
-        {
-            // Keep existing vertical velocity (gravity) so the player doesn't float
-            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
-            return;
-        }
 
         Vector3 movement = Vector3.zero;
         if (playerInput != null)
@@ -101,13 +94,17 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        // Prevent jumping if stunned
-        if (status != null && status.isStunned) return;
-
+        Debug.Log($"Jump Attempted. isGrounded: {isGrounded}, rb.y: {rb.linearVelocity.y}");
+    
         if (!context.performed || !isGrounded || rb.linearVelocity.y > 0.01f)
+        {
+            Debug.Log($"Jump Failed! ContextPerformed: {context.performed}, isGrounded: {isGrounded}");
             return;
+        }
 
+        Debug.Log("Jump Executed!");
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
         isGrounded = false;
         animator.SetBool("isJumping", true);
         lastGroundedTime = -999f;
@@ -120,8 +117,10 @@ public class PlayerController : MonoBehaviour
 
     private void TryMarkGrounded(Collision collision)
     {
-        if ((groundLayer.value & (1 << collision.gameObject.layer)) == 0)
-            return;
+        bool isGroundLayer = (groundLayer.value & (1 << collision.gameObject.layer)) != 0;
+        Debug.Log($"Collision with: {collision.gameObject.name}, IsGroundLayer: {isGroundLayer}");
+        
+        if (!isGroundLayer) return;
 
         for (int i = 0; i < collision.contactCount; i++)
         {
