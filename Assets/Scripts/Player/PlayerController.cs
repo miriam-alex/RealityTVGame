@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log($"Jump Attempted. isGrounded: {isGrounded}, rb.y: {rb.linearVelocity.y}");
     
-        if (!context.performed || !isGrounded || rb.linearVelocity.y > 0.01f)
+        if (!context.performed || !isGrounded)
         {
             Debug.Log($"Jump Failed! ContextPerformed: {context.performed}, isGrounded: {isGrounded}");
             return;
