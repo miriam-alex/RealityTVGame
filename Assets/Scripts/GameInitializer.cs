@@ -148,8 +148,8 @@ public class GameInitializer : MonoBehaviour
         // 4. SCORE SYSTEM: Tell the ScoreManager who is playing.
         ScoreManager.Instance?.InitializeScores();
 
-        // 5. CAMERAMAN: Tell the camera to find a target.
-        FindAnyObjectByType<CameramanNPC>()?.InitializeCameraman();
+        // // 5. CAMERAMAN: Tell the camera to find a target.
+        // FindAnyObjectByType<CameramanNPC>()?.InitializeCameraman();
 
         // 6. STATIONS: Spawn the input stations.
         FindAnyObjectByType<PlayerStationManager>()?.SpawnStationsForPlayers();

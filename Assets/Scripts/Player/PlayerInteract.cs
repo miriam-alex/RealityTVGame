@@ -142,16 +142,6 @@ public class PlayerInteract : MonoBehaviour
             }
 
         }
-
-        // if player yodels, summon cameraman to player
-        if (yodelPressed)
-        {
-            CameramanNPC cam = Object.FindAnyObjectByType<CameramanNPC>();
-            if (cam != null)
-            {
-                cam.SummonToPlayer(transform, 4f);
-            }
-        }
     }
 
    private void OnTriggerEnter(Collider other)
@@ -164,16 +154,6 @@ public class PlayerInteract : MonoBehaviour
 		 {
 			grabbableObj.ShowOutline();
 		 }
-
-         if (interactable is PlayerInteractable && _myId != null && interactable.IsAvailable(_myId)) 
-         {
-             GetComponent<PlayerHaptics>()?.Pulse(0.3f, 0.6f);
-             CameramanNPC cam = Object.FindAnyObjectByType<CameramanNPC>();
-             if (cam != null)
-             {
-                 cam.SetDramaState(DirectorPersonality.Aggressive, other.transform, 5.0f);
-             }
-         }
        }
    }
 
