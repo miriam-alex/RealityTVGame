@@ -131,6 +131,12 @@ public class PlayerInteract : MonoBehaviour
         bool dropPickPressed = _playerInput.actions.FindAction("Drop")?.WasPressedThisFrame() ?? false;
         bool yodelPressed = _playerInput.actions.FindAction("Yodel")?.WasPressedThisFrame() ?? false;
 
+        // summons spotlight to player position when yodel is pressed
+        if (yodelPressed)
+        {
+            SpotlightDirector.Instance?.SummonToPosition(transform.position);
+        }
+
         if (_currentInteractable != null)
         {
             // 1. Handle Players (Stealing/Giving)
