@@ -135,6 +135,7 @@ public class PlayerInteract : MonoBehaviour
         if (yodelPressed)
         {
             SpotlightDirector.Instance?.SummonToPosition(transform.position);
+            Debug.Log("Yodel pressed");
         }
 
         if (_currentInteractable != null)

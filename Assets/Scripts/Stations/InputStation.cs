@@ -134,7 +134,6 @@ public class InputStation : MonoBehaviour
         target = Mathf.Min(target, spawnedCommunityMembers.Count);
 
         // activates community members based on the target score
-        // WILL FIX: this is just for testing purposes
         for (int i = 0; i < spawnedCommunityMembers.Count; i++)
         {
             if (spawnedCommunityMembers[i] != null)
@@ -156,6 +155,7 @@ public class InputStation : MonoBehaviour
         }
     }
 
+    // community members jump up and down
     private IEnumerator RandomJumpAnimation(GameObject member, Transform slot)
     {
         float offset = Random.Range(0f, Mathf.PI * 2f);

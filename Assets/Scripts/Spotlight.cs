@@ -116,6 +116,7 @@ public class SpotlightDirector : MonoBehaviour
     {
         yodelSummonPosition = worldPosition;
         yodelSummonUntilTime = Time.time + yodelSummonDuration;
+        Debug.Log("Summoning spotlight to position: " + worldPosition);
     }
 
     // currentFloorTarget is set to arenaCenter at start
