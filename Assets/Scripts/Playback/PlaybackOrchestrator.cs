@@ -43,8 +43,9 @@ public class PlaybackOrchestrator : MonoBehaviour
     [Header("Framing")]
     [Tooltip("How much higher the camera looks to keep the item at the bottom.")]
     public float itemFramingVerticalOffset = 0f;
-    
 
+    [SerializeField] private Light spotlight1;
+    [SerializeField] private Light spotlight2;
     
     // PRIVATE VARIABLES
     private Camera _playbackCam;
@@ -153,15 +154,27 @@ public class PlaybackOrchestrator : MonoBehaviour
 
         // Keep this plain so it works with any UI style.
         DramaEvent e = _selectedDramaEvent;
-        string participants = string.IsNullOrEmpty(e.victimID) || e.victimID == "None"
-            ? e.actorID
-            : $"{e.actorID} → {e.victimID}";
 
-        string itemLine = e.transferredResource != null ? $"Item: {e.transferredResource.resourceName}\n" : string.Empty;
+        string caption = GenerateTVCaption(e.actorIndex, e.victimIndex, e.type);
+        
+        dramaDescriptionText.text = $"{caption} Impact: {e.scoreImpact:+#;-#;0}k followers.";
+    }
 
-        dramaDescriptionText.text =
-            $"{e.tvCaption}\n" +
-            $"Score: {e.scoreImpact:+#;-#;0}";
+    private string GenerateTVCaption(int actorIndex, int subjectIndex, DramaType type)
+    {
+        string actorName = animalCatalog.animals[actorIndex].id;
+        string subjectName = animalCatalog.animals[subjectIndex].id;
+
+        if (type == DramaType.StealItem)
+        {
+            return $"{actorName} stole from {subjectName}!";
+        }
+        else if (type == DramaType.GiveItem)
+        {
+            return $"{actorName} is a saint, giving to {subjectName}!";
+        }
+
+        return null;
     }
 
     void SpawnAllRecordedActors() 
@@ -272,13 +285,6 @@ public class PlaybackOrchestrator : MonoBehaviour
             return;
         }
 
-        // 3. MOVE GHOSTS
-        // foreach (var entry in _spawnedGhosts) 
-        // {
-        //     ApplyFrame(entry.Value.transform, DirectorManager.Instance.productionLedger[entry.Key], _playbackTime);
-        // }
-
-        // 4. TRIGGER VISUALS (Flash, Bubble, Item)
         TryPlayTransferVisual();
     }
     
@@ -328,6 +334,7 @@ public class PlaybackOrchestrator : MonoBehaviour
         if (_spawnedGhosts.TryGetValue($"Player_{fromIdx}", out GameObject fromG) && 
             _spawnedGhosts.TryGetValue($"Player_{toIdx}", out GameObject toG))
         {
+            SetupTransferSpotlights(fromG, toG, _selectedDramaEvent.type);
             GameObject prefab = _selectedDramaEvent.transferredResource?.prefab;
 
             Transform fromGTransform = GetCarryPoint(fromG);
@@ -335,7 +342,41 @@ public class PlaybackOrchestrator : MonoBehaviour
             if (prefab != null) StartCoroutine(PlayTransferProp(prefab, fromGTransform, toGTransform, _selectedDramaEvent.type));
         }
     }
+    
+    private void SetupTransferSpotlights(GameObject fromG, GameObject toG, DramaType type)
+    {
+        // Define colors based on the drama
+        Color actorColor = (type == DramaType.GiveItem) ? Color.cyan : Color.yellow;
+        Color victimColor = (type == DramaType.StealItem) ? Color.yellow : Color.red;
 
+        // Assign positions and colors
+        // We use the 'from' and 'to' logic to decide who gets which color
+        bool isSteal = type == DramaType.StealItem;
+    
+        ConfigureLight(spotlight1, fromG.transform, isSteal ? victimColor : actorColor);
+        ConfigureLight(spotlight2, toG.transform, isSteal ? actorColor : victimColor);
+    }
+
+    private void ConfigureLight(Light light, Transform target, Color color)
+    {
+        if (light == null) return;
+
+        // Position the light above the ghost (adjust the height offset as needed)
+        light.transform.position = target.position + Vector3.up * 5f;
+        light.transform.LookAt(target.position);
+    
+        light.color = color;
+        light.enabled = true;
+
+        // Optional: If you want them to turn off automatically after a delay
+        StartCoroutine(DisableLightAfterDelay(light, 2.0f));
+    }
+
+    private IEnumerator DisableLightAfterDelay(Light light, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        light.enabled = false;
+    }
     private Transform GetCarryPoint(GameObject playerObject)
     {
         // gameobject must be the animal prefab type

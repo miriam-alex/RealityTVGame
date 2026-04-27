@@ -204,7 +204,7 @@ public class DirectorManager : MonoBehaviour
     /// <summary>
     /// Logs a specific TV-worthy event using PlayerIdentity data.
     /// </summary>
-    public void LogDrama(DramaType type, Transform spot, PlayerIdentity actor, PlayerIdentity victim, int score, string caption, float intensity, Resource transferredResource = null) 
+    public void LogDrama(DramaType type, Transform spot, PlayerIdentity actor, PlayerIdentity victim, int score, float intensity, Resource transferredResource = null) 
     {
         // Ensure episode-relative timebase is initialized even if the first thing that happens is drama.
         if (!_episodeStartTimeInitialized)
@@ -244,7 +244,6 @@ public class DirectorManager : MonoBehaviour
             victimPlayerIndex,
             transferredResource,
             score, 
-            caption, 
             intensity
         );
     
@@ -258,8 +257,7 @@ public class DirectorManager : MonoBehaviour
                              $"<b>{actorName}</b> {trendIcon} <b>{type}</b> " +
                              $"{(victim != null ? $"on <b>{victim.name}</b> " : "")}" +
                              $"| <color={debugColor}>Score: {score:+#;-#;0}</color> " +
-                             $"| Intensity: <color=yellow>{intensityStars}</color> " +
-                             $"\n<color=grey><i>Caption: \"{caption}\"</i></color>";
+                             $"| Intensity: <color=yellow>{intensityStars}</color> "; 
 
         Debug.Log(detailedLog);
     }

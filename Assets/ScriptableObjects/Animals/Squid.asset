@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e641175fb2074390bd05d3d2c651782, type: 3}
   m_Name: Squid
   m_EditorClassIdentifier: Assembly-CSharp::AnimalDefinition
-  id: squid
+  id: Squid
   prefab: {fileID: 8699261529208799353, guid: 7c64f6b7c56a74ed4bcefded2977f047, type: 3}

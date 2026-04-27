@@ -69,10 +69,9 @@ public class DramaEvent
     
     [Header("TV Production Data")]
     public int scoreImpact;       // How much this changed the game
-    public string tvCaption;      // The "Headline" for the UI
     public float dramaIntensity;  // 0-10 scale to help the editor pick "Best Clips"
 
-    public DramaEvent(DramaType type, float timestamp, Transform location, string actor, string victim, int actorIndex, int victimIndex, Resource transferredResource, int score, string caption, float intensity)
+    public DramaEvent(DramaType type, float timestamp, Transform location, string actor, string victim, int actorIndex, int victimIndex, Resource transferredResource, int score,  float intensity)
     {
         this.type = type;
         this.timestamp = timestamp;
@@ -83,7 +82,6 @@ public class DramaEvent
         this.victimIndex = victimIndex;
         this.transferredResource = transferredResource;
         this.scoreImpact = score;
-        this.tvCaption = caption;
         this.dramaIntensity = intensity;
     }
 }

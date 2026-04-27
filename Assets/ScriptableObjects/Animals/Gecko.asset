@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e641175fb2074390bd05d3d2c651782, type: 3}
   m_Name: Gecko
   m_EditorClassIdentifier: Assembly-CSharp::AnimalDefinition
-  id: gecko
+  id: Gecko
   prefab: {fileID: 1550606774957871126, guid: 18201d5025e66419db7cd1a5b09c424a, type: 3}

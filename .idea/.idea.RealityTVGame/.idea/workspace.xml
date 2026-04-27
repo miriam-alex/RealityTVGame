@@ -6,53 +6,27 @@
   <component name="ChangeListManager">
     <list default="true" id="548baca1-a2e6-4029-95e1-d3838846d670" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RealityTVGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RealityTVGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/External Assets/POLYART_Ancient Village/Prefabs/PA_TreeSet1_Pile11.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/POLYART_Ancient Village/Prefabs/PA_TreeSet1_Pile11.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/External Assets/POLYART_Ancient Village/Prefabs/PA_TreeSet1_Pile12.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/POLYART_Ancient Village/Prefabs/PA_TreeSet1_Pile12.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/External Assets/POLYART_Ancient Village/Prefabs/PA_TreeSet1_Pile2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/POLYART_Ancient Village/Prefabs/PA_TreeSet1_Pile2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/External Assets/POLYART_Ancient Village/Terrain/TerrainData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/External Assets/POLYART_Ancient Village/Terrain/TerrainData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Lighting Settings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Lighting Settings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Materials/Wooden Chair mat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Materials/Wooden Chair mat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Materials/Wooden Stool mat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Materials/Wooden Stool mat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Meshes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Meshes/Wooden Chair.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Meshes/Wooden Chair.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Meshes/Wooden Stool.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Meshes/Wooden Stool.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Prefabs/Wooden Chair.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Prefabs/Wooden Chair.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Prefabs/Wooden Stool.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Prefabs/Wooden Stool.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Scenes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Scenes/Test Scene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Scenes/Test Scene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Textures/Stool albedo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Textures/Stool albedo.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Textures/chair albedo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input Actions/Game Assets/Aegis77/Wooden Chair Set/Textures/chair albedo.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Old/Finished Chair.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Old/Finished Chair.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Old/Wood.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Old/Wood.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Old/Wooden Chair.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Old/Wooden Chair.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Alphazet-Light SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Alphazet-Light SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Alphazet-SemiBold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Alphazet-SemiBold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Baby Doll SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Baby Doll SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/DialogueBox.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/DialogueBox.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Lobby.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Lobby.unity.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Playback.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Playback.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayerLobby.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayerLobby.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PostGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PostGame.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PreGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PreGame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/GameInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/GameInitializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerCooldownUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerCooldownUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Animals/Deer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Animals/Deer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Animals/Gecko.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Animals/Gecko.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Animals/Monkey.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Animals/Monkey.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Animals/Squid.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Animals/Squid.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Playback/DirectorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Playback/DirectorManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Playback/PlaybackOrchestrator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Playback/PlaybackOrchestrator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Playback/RealityDataTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Playback/RealityDataTypes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteractable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteractable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/SampleSceneProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/SampleSceneProfile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,12 +45,14 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/30f1ce141a5843b8a82ab68a7cccde5815600/72/c6c42eff/02000027pdb33.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/3541f634e13a4bb49c0c81a081870f3c16e00/f4/f9d0688c/0200001Bpdb23.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/46fa88ab7d414504b01845234567a53c15400/ae/c92e3fb0/02000021pdb28.il" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/5b36e04ad9304e2c8b23a39eac88829617600/72/1ff9652d/0200001Apdb26.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/5d352af809c44efd9b075e6b98f1921815600/d8/72f38ed8/02000015pdb20.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/69e8f9e63329492db30125ded2b0cc0717200/b6/17752611/0200000Cpdb12.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/6b2924076f094e98a27b01e3271c812815600/47/4458c06f/0200001Bpdb23.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/6d70ac8f007e4d7bbe34b863459b495b15a00/65/733e9def/02000027pdb33.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/710373b89142405bbd330befbc7e921f15600/7b/da42a584/02000005pdb5.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/7ad023b769b44d3d9e4cd746d685177416a00/af/b3d41cf7/02000035pdb47.il" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/7d1e17fe7fa04711abf215723cc08baf17400/4f/08fe980c/0200001Apdb26.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/90e87aec0bae4b0d93dbb7c31822449817200/67/7c9a66fb/0200000Cpdb12.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/91bdaa75798d419bbf960d1f81a74f0316a00/c5/fc669fcb/02000015pdb20.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/9bd78a0c78404313a1106b0a778dbad416a00/f4/9d784a72/02000035pdb47.il" root0="FORCE_HIGHLIGHTING" />
@@ -90,9 +66,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/f62881e8909546f194975b63b4983d3216a00/ec/082912b1/02000035pdb47.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/GameInitializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerIdentity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerIdentity.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteract.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteractable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteractable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInventory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerStatus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Stations/InputStation.cs" root0="SKIP_HIGHLIGHTING" />
@@ -222,7 +198,7 @@
       <workItem from="1776059251331" duration="16240000" />
       <workItem from="1776660406456" duration="7899000" />
       <workItem from="1777269537548" duration="1967000" />
-      <workItem from="1777273302561" duration="2380000" />
+      <workItem from="1777273302561" duration="7773000" />
     </task>
     <servers />
   </component>
