@@ -122,21 +122,21 @@ public class GameInitializer : MonoBehaviour
         }
 
         // 2. UI: Assign the prompt panels to the players.
-        foreach (var player in runtimeSet.Items)
-        {
-            PlayerIdentity identity = player.GetComponent<PlayerIdentity>();
-            if (identity == null) continue;
-
-            int playerIndex = identity.playerIndex;
-            if (playerIndex < _promptPanels.Length)
-            {
-                PlayerInteract pInteraction = player.GetComponent<PlayerInteract>();
-                if (pInteraction != null)
-                {
-                    pInteraction.promptUI = _promptPanels[playerIndex].GetComponent<InteractionPromptUI>();
-                }
-            }
-        }
+        // foreach (var player in runtimeSet.Items)
+        // {
+        //     PlayerIdentity identity = player.GetComponent<PlayerIdentity>();
+        //     if (identity == null) continue;
+        //
+        //     int playerIndex = identity.playerIndex;
+        //     if (playerIndex < _promptPanels.Length)
+        //     {
+        //         PlayerInteract pInteraction = player.GetComponent<PlayerInteract>();
+        //         if (pInteraction != null)
+        //         {
+        //             pInteraction.promptUI = _promptPanels[playerIndex].GetComponent<InteractionPromptUI>();
+        //         }
+        //     }
+        // }
 
         // 3. REGISTRATION: Hook players into the Managers.
         foreach (GameObject p in runtimeSet.Items)

@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8113208, g: 0.12629052, b: 0.16024229, a: 1}
+  m_Color: {r: 1, g: 0.3820755, b: 0.4138546, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -462,8 +462,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4c19b29a2905e4d9b97bf8628f22aa54, type: 2}
+  m_sharedMaterial: {fileID: -7225250571422190457, guid: 4c19b29a2905e4d9b97bf8628f22aa54, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -546,7 +546,6 @@ GameObject:
   - component: {fileID: 4539908133405845938}
   - component: {fileID: 3104512863652037812}
   - component: {fileID: 2508785779728074835}
-  - component: {fileID: 8920124956872177317}
   - component: {fileID: 5861466163779694620}
   - component: {fileID: 5294427170204377863}
   - component: {fileID: 1202592046471000114}
@@ -680,19 +679,6 @@ MonoBehaviour:
   stackOffset: 0.5
   maxCapacity: 5
   _carryPoint: {fileID: 0}
---- !u!114 &8920124956872177317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5795073664236620774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5e4e29dad6b86546bb7d685136d9d3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerResourceChain
-  currentState: 0
 --- !u!54 &5861466163779694620
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -770,7 +756,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatus
   nextStealTime: 0
-  COOLDOWN_DURATION: 5
 --- !u!1 &6671582024565397647
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,8 +823,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 63842aa6aeb01488585580bdef4897bc, type: 2}
+  m_sharedMaterial: {fileID: 932762379335923825, guid: 63842aa6aeb01488585580bdef4897bc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
