@@ -23,9 +23,11 @@ MonoBehaviour:
   - m_enabled: 1
     m_path: Assets/Scenes/PreGame.unity
   - m_enabled: 1
+    m_path: Assets/Scenes/Introduction.unity
+  - m_enabled: 1
     m_path: Assets/Scenes/PlayerLobby.unity
   - m_enabled: 1
-    m_path: Assets/Scenes/SampleScene.unity
+    m_path: Assets/Scenes/GameScene.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Playback.unity
   - m_enabled: 1

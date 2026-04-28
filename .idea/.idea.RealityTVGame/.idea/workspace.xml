@@ -156,15 +156,20 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
+<<<<<<< Updated upstream
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3001">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" value="3001" />
+=======
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+>>>>>>> Stashed changes
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -197,8 +202,12 @@
       <workItem from="1774466034217" duration="5144000" />
       <workItem from="1776059251331" duration="16240000" />
       <workItem from="1776660406456" duration="7899000" />
+<<<<<<< Updated upstream
       <workItem from="1777269537548" duration="1967000" />
       <workItem from="1777273302561" duration="7773000" />
+=======
+      <workItem from="1777304755790" duration="2000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>

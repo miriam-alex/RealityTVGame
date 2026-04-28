@@ -23,10 +23,13 @@ public class SpotlightDirector : MonoBehaviour
 
     [Header("Yodel Summon Settings")]
     public float yodelSummonDuration = 1.25f;
-    public float yodelSummonSpeed = 10f;
+    public float yodelSummonSpeed = 20f;
+    public float yodelHoldTime = 1.25f;
 
     private float timer;
     private float yodelSummonUntilTime;
+    private bool isYodelActive = false;
+    private bool isYodelAtTarget = false;
     private Vector3 yodelSummonPosition;
     private Vector3 yodelSummonTarget;
     private Vector3 currentFloorTarget;

@@ -943,6 +943,7 @@ MonoBehaviour:
   - or just menace your friends for FAME!
   - we'll capture as much as we can on camera... and THE NATION WILL JUDGE YOU ACCORDINGLY!
   - what are you waiting for? go on then!!!
+  nextSceneName: PlayerLobby
 --- !u!4 &2129458385
 Transform:
   m_ObjectHideFlags: 0

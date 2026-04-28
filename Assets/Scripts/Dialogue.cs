@@ -11,10 +11,30 @@ public class Dialogue : MonoBehaviour
     public float textSpeed;
     [SerializeField] private InputActionReference clickAction; // Drag your click action here
 
+    // for narration audio
+    [SerializeField] private AudioClip audioClip;
+    [SerializeField] private AudioSource audioSource;
+
     private int index;
     private Coroutine typingCoroutine;
     private List<string> lines;
     public Action OnDialogueComplete;
+
+    // plays narration audio when dialogue is started
+    private void Awake()
+    {
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+        }
+
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+    }
 
     private void OnEnable()
     {
@@ -45,6 +65,7 @@ public class Dialogue : MonoBehaviour
         index = 0;
         textComponent.text = string.Empty;
         typingCoroutine = StartCoroutine(TypeLine());
+        PlayLineAudio(index);
     }
 
     // This replaces OnPointerClick
@@ -67,6 +88,17 @@ public class Dialogue : MonoBehaviour
             NextLine();
         }
     }
+
+
+    // plays audio for each line of dialogue
+    private void PlayLineAudio(int index)
+    {
+        if (audioSource == null ) return;
+        if (audioClip == null) return;
+
+        audioSource.Stop();
+        audioSource.PlayOneShot(audioClip);
+    }
     
     IEnumerator TypeLine()
     {
@@ -84,9 +116,11 @@ public class Dialogue : MonoBehaviour
         {
             index++;
             typingCoroutine = StartCoroutine(TypeLine());
+            PlayLineAudio(index);
         }
         else
         {
+            if (audioSource != null) audioSource.Stop();
             OnDialogueComplete?.Invoke();
             Destroy(gameObject);
         }
