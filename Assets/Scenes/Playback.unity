@@ -11201,6 +11201,9 @@ MonoBehaviour:
   itemFramingVerticalOffset: -1
   spotlight1: {fileID: 1017099543}
   spotlight2: {fileID: 1142291141}
+  audioSource: {fileID: 0}
+  caughtStealingAudioClip: {fileID: 8300000, guid: 8a5eb49bf791e614b99b5584a9b17aae, type: 3}
+  caughtGivingAudioClip: {fileID: 8300000, guid: 64590d89768902246a0054e7fb7c23c3, type: 3}
 --- !u!4 &1633479631
 Transform:
   m_ObjectHideFlags: 0

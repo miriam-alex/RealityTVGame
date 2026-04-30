@@ -46,6 +46,11 @@ public class PlaybackOrchestrator : MonoBehaviour
 
     [SerializeField] private Light spotlight1;
     [SerializeField] private Light spotlight2;
+
+    // for audio
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip caughtStealingAudioClip;
+    [SerializeField] private AudioClip caughtGivingAudioClip;
     
     // PRIVATE VARIABLES
     private Camera _playbackCam;
@@ -79,6 +84,18 @@ public class PlaybackOrchestrator : MonoBehaviour
         // Logic to find and sort the Top 3 moments
         ConfigureHighlightReel();
 
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+        }
+
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+
         if (playDramaClipOnly && !_hasClipWindow)
         {
             SceneManager.LoadScene(postGameSceneName);
@@ -88,6 +105,12 @@ public class PlaybackOrchestrator : MonoBehaviour
         SpawnAllRecordedActors();
         SetupClip(_currentClipIndex);
     }
+
+    private void PlaySfx(AudioClip clip)
+   {
+    if (audioSource == null || clip == null) return;
+    audioSource.PlayOneShot(clip);
+   }
     
     private void ConfigureHighlightReel()
     {
@@ -125,6 +148,14 @@ public class PlaybackOrchestrator : MonoBehaviour
         if (index >= _topDramaEvents.Count) return;
 
         _selectedDramaEvent = _topDramaEvents[index];
+        if (_selectedDramaEvent.type == DramaType.StealItem)
+        {
+            PlaySfx(caughtStealingAudioClip);
+        }
+        else if (_selectedDramaEvent.type == DramaType.GiveItem)
+        {
+            PlaySfx(caughtGivingAudioClip);
+        }
     
         float leadIn = Mathf.Clamp(dramaClipLeadInSeconds, 0f, dramaClipDurationSeconds);
         _clipStartTime = Mathf.Max(0f, _selectedDramaEvent.timestamp - leadIn);
