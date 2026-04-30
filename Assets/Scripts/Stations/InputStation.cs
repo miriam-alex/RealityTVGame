@@ -27,11 +27,24 @@ public class InputStation : MonoBehaviour
     public int totalPointsCollected = 0;
 
     private List<GameObject> spawnedCommunityMembers = new List<GameObject>();
+    
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip goalAudioClip;
 
     private void Start()
     {
         stationRenderer = GetComponent<Renderer>();
         stationNameText = GetComponentInChildren<TextMeshPro>();
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+        }
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
         
         if (stationRenderer == null)
         {
@@ -206,6 +219,10 @@ public class InputStation : MonoBehaviour
         if (ScoreManager.Instance != null)
         {
             ScoreManager.Instance.RewardResources(assignedPlayer, resourceItem);
+            if (audioSource != null && goalAudioClip != null)
+            {
+                audioSource.PlayOneShot(goalAudioClip);
+            }
             Debug.Log($"[{name}] Player {playerIndex + 1} gained {points} points from {resourceItem.ResourceName} (Total: {totalPointsCollected})");
         }
         else

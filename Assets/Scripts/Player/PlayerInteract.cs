@@ -22,6 +22,12 @@ public class PlayerInteract : MonoBehaviour
     private readonly Dictionary<Collider, IInteractable> _nearbyInteractables = new Dictionary<Collider, IInteractable>();
     private IInteractable _lastPromptInteractable;
 
+    // for audio
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip interactAudioClip;
+    [SerializeField] private AudioClip stealAudioClip;
+    [SerializeField] private AudioClip yodelAudioClip;
+
 
    private void Start()
    {
@@ -33,6 +39,24 @@ public class PlayerInteract : MonoBehaviour
        if (col == null) col = gameObject.AddComponent<SphereCollider>();
        col.isTrigger = true;
        col.radius = interactRange;
+
+       if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+        }
+
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+   }
+
+   private void PlaySfx(AudioClip clip)
+   {
+    if (audioSource == null || clip == null) return;
+    audioSource.PlayOneShot(clip);
    }
 
 
@@ -135,6 +159,7 @@ public class PlayerInteract : MonoBehaviour
         if (yodelPressed)
         {
             SpotlightDirector.Instance?.SummonToPosition(transform.position);
+            PlaySfx(yodelAudioClip);
             Debug.Log("Yodel pressed");
         }
 
@@ -143,14 +168,29 @@ public class PlayerInteract : MonoBehaviour
             // 1. Handle Players (Stealing/Giving)
             if (_currentInteractable is PlayerInteractable)
             {
-                if (interactPressed) _currentInteractable.Interact(_myId);   
-                if (altInteractPressed) _currentInteractable.AltInteract(_myId);
+                if (interactPressed)
+                {
+                    _currentInteractable.Interact(_myId);
+                    PlaySfx(interactAudioClip);
+                }
+
+                if (altInteractPressed)
+                {
+                    _currentInteractable.AltInteract(_myId);
+                    PlaySfx(stealAudioClip);
+                }
             }
             // 2. Handle EVERYTHING ELSE (Pickups, etc.)
             // This MUST be a separate check that triggers on interactPressed OR dropPickPressed
             else
             {
-                if (interactPressed || dropPickPressed)
+                if (interactPressed)
+                {
+                    _currentInteractable.Interact(_myId);
+                    PlaySfx(interactAudioClip);
+                }
+
+                if (dropPickPressed)
                 {
                     _currentInteractable.Interact(_myId);
                 }

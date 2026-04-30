@@ -333,6 +333,8 @@ MonoBehaviour:
   pointsPerMember: 10
   maxVisibleMembers: 8
   totalPointsCollected: 0
+  audioSource: {fileID: 0}
+  goalAudioClip: {fileID: 8300000, guid: da003880e9a818d4eacd29ff43127250, type: 3}
 --- !u!1 &2301534028506703480
 GameObject:
   m_ObjectHideFlags: 0

@@ -289,6 +289,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractable
   maxCooldownValue: 5
+  audioSource: {fileID: 0}
+  giveAudioClip: {fileID: 8300000, guid: 7ceb1c3518173cf458cb851c885b982e, type: 3}
 --- !u!1 &3153989049251890695
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,6 +615,10 @@ MonoBehaviour:
   controllerPrimaryLabel: A
   controllerSecondaryLabel: B
   controllerDropLabel: 
+  audioSource: {fileID: 0}
+  interactAudioClip: {fileID: 0}
+  stealAudioClip: {fileID: 8300000, guid: c215c4cf4d2bab048a7dd6225676037d, type: 3}
+  yodelAudioClip: {fileID: 0}
 --- !u!114 &4539908133405845938
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,13 +16,34 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
     private readonly System.Collections.Generic.Dictionary<int, float> _nextGiveAllowedTimeByRequester = new();
     private readonly System.Collections.Generic.Dictionary<int, float> _nextStealAllowedTimeByRequester = new();
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip giveAudioClip;
+
     private void Start()
     {
 		_scoreManager = FindAnyObjectByType<ScoreManager>();
         _myId = GetComponentInParent<PlayerIdentity>();
         _myInventory = GetComponentInParent<PlayerInventory>();
         if (_myId == null) Debug.LogError($"[PlayerInteractable] Could not find PlayerIdentity in parent of {name}!");
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+        }
+
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
     }
+
+    private void PlaySfx(AudioClip clip)
+   {
+    if (audioSource == null || clip == null) return;
+    audioSource.PlayOneShot(clip);
+   }
 
     public bool IsAvailable(PlayerIdentity requester)
     {
@@ -48,6 +69,11 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
 
 
         bool isSuccess = ExecuteInventoryTransfer(_myId, requester, "Here you go!", out Resource transferredResource);
+
+        if (isSuccess)
+        {
+            PlaySfx(giveAudioClip);
+        }
 
 
         _nextGiveAllowedTimeByRequester[requesterKey] = Time.time + COOLDOWN;
