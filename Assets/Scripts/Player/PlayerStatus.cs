@@ -3,6 +3,7 @@ using System.Collections;
 public class PlayerStatus : MonoBehaviour
 {
     public float nextStealTime;
+    public float nextYodelTime;
     public const float COOLDOWN_DURATION = 5f;
 
     public void SetStealCooldown()
@@ -15,6 +16,13 @@ public class PlayerStatus : MonoBehaviour
         return Time.time < nextStealTime;
     }
 
-    
-    
+    public void SetYodelCooldown()
+    {
+        nextYodelTime = Time.time + COOLDOWN_DURATION;
+    }
+
+    public bool IsYodelOnCooldown()
+    {
+        return Time.time < nextYodelTime;
+    }
 }
