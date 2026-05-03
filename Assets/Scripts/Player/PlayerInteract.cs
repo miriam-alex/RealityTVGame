@@ -161,11 +161,24 @@ public class PlayerInteract : MonoBehaviour
         bool yodelPressed = _playerInput.actions.FindAction("Yodel")?.WasPressedThisFrame() ?? false;
 
         // summons spotlight to player position when yodel is pressed
+        // with cooldown
         if (yodelPressed)
         {
-            SpotlightDirector.Instance?.SummonToPosition(transform.position);
-            PlaySfx(yodelAudioClip);
-            Debug.Log("Yodel pressed");
+            PlayerStatus playerStatus = GetComponent<PlayerStatus>();
+            if (playerStatus != null && playerStatus.IsYodelOnCooldown())
+            {
+                Debug.Log("Yodel on cooldown!");
+            }
+
+            else
+            {
+                SpotlightDirector.Instance?.SummonToPosition(transform.position);
+                PlaySfx(yodelAudioClip);
+                Debug.Log("Yodel pressed");
+                playerStatus?.SetYodelCooldown();
+                GetComponentInChildren<PlayerCooldownUI>()?.TriggerCooldown();
+
+            }
         }
 
         if (_currentInteractable != null)
