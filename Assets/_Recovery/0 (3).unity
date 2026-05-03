@@ -698,7 +698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LobbyManager
   catalog: {fileID: 11400000, guid: 6c8331a9afc2d41b88833bd99a0443be, type: 2}
   startButton: {fileID: 519751772}
-  clickAction: {fileID: -9111688829416262899, guid: 83179096697958948b25481e8936e8d3, type: 3}
+  clickAction: {fileID: 7955898677356725750, guid: 83179096697958948b25481e8936e8d3, type: 3}
   runtimeSet: {fileID: 11400000, guid: 35d9d90b045664a289cbdc748927308e, type: 2}
 --- !u!4 &286302317
 Transform:
@@ -2841,7 +2841,7 @@ MonoBehaviour:
   m_JoinAction:
     m_UseReference: 0
     m_Action:
-      m_Name: Join
+      m_Name: 
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: 50451f87-d8f4-4d9b-a9b1-c62dc7c78fb0

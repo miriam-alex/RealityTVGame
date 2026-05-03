@@ -94,8 +94,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        Debug.Log($"Jump Attempted. isGrounded: {isGrounded}, rb.y: {rb.linearVelocity.y}");
-    
         if (!context.performed || !isGrounded)
         {
             Debug.Log($"Jump Failed! ContextPerformed: {context.performed}, isGrounded: {isGrounded}");
@@ -118,8 +116,6 @@ public class PlayerController : MonoBehaviour
     private void TryMarkGrounded(Collision collision)
     {
         bool isGroundLayer = (groundLayer.value & (1 << collision.gameObject.layer)) != 0;
-        Debug.Log($"Collision with: {collision.gameObject.name}, IsGroundLayer: {isGroundLayer}");
-        
         if (!isGroundLayer) return;
 
         for (int i = 0; i < collision.contactCount; i++)

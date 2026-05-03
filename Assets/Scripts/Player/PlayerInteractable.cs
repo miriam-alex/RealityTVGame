@@ -63,12 +63,13 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
     {
         if (!InteractionCoordinator.Instance.CanInteract(requester, _myId)) return;
 
-        int requesterKey = requester != null ? requester.playerIndex : -1;
-        if (_nextGiveAllowedTimeByRequester.TryGetValue(requesterKey, out float nextAllowed) && Time.time < nextAllowed)
-            return;
+        // int requesterKey = requester != null ? requester.playerIndex : -1;
+        // if (_nextGiveAllowedTimeByRequester.TryGetValue(requesterKey, out float nextAllowed) && Time.time < nextAllowed)
+        //     return;
 
-
+        Debug.Log("Interacting: " + requester.name);
         bool isSuccess = ExecuteInventoryTransfer(_myId, requester, "Here you go!", out Resource transferredResource);
+        Debug.Log($"Inventory transfer status: {isSuccess}");
 
         if (isSuccess)
         {
@@ -76,10 +77,9 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
         }
 
 
-        _nextGiveAllowedTimeByRequester[requesterKey] = Time.time + COOLDOWN;
-
+        // _nextGiveAllowedTimeByRequester[requesterKey] = Time.time + COOLDOWN;
 		// You get followers for doing a good thing on camera!
-        if (requester != null && requester.isSpotted && isSuccess)
+        if (isSuccess && requester != null && requester.isSpotted)
         {
             DirectorManager.Instance.LogDrama(
                 DramaType.GiveItem, 
@@ -103,7 +103,7 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
         PlayerStatus thiefStatus = requester.GetComponent<PlayerStatus>();
         if (thiefStatus != null && thiefStatus.IsOnCooldown())
         {
-            Debug.Log("Steal on cooldown!");
+            Debug.Log("Tried to steal on cooldown!");
             return;
         }
 
@@ -124,17 +124,24 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
             var victimUI = GetComponentInChildren<PlayerCooldownUI>();
             victimUI?.TriggerCooldown();
 
-            // 3. Log the dramatic event
-            DirectorManager.Instance.LogDrama(
-                DramaType.StealItem, 
-                transform, 
-                requester, 
-                _myId, 
-                -ScoreManager.Instance.stealPenalty, 
-                8.0f, 
-                transferredResource
-            );
-            
+            if (requester != null && requester.isSpotted)
+            {
+                Debug.Log($"{requester.name} caught stealing on camera!");
+                DirectorManager.Instance.LogDrama(
+                    DramaType.StealItem,
+                    transform,
+                    requester,
+                    _myId,
+                    -ScoreManager.Instance.stealPenalty,
+                    8.0f,
+                    transferredResource
+                );
+            }
+            else
+            {
+                Debug.Log($"{requester.name} stole but evaded the camera!");
+            }
+
         }
     }
 
@@ -169,9 +176,16 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
         
             if (!success) 
             {
+                Debug.LogError($"Transfer from {giver.name}'s inventory to {taker.name}'s inventory failed!");
                 label = $"{giver.name} is empty!";
             }
         }
+        else
+        {
+            if (takerInv == null) {Debug.LogError($"{taker.name}'s inventory is null!");}
+            if (giverInv == null) {Debug.LogError($"{giver.name}'s inventory is null!");}
+        }
+
         //ChatBubbleManager.Show("Look at this!", transform, new Vector3(0, 2, 0), 5.0f);
         return success;
     }

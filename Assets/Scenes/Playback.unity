@@ -11317,6 +11317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaybackOrchestrator
   animalCatalog: {fileID: 11400000, guid: 6c8331a9afc2d41b88833bd99a0443be, type: 2}
+  clickAction: {fileID: -2555886487368569462, guid: 83179096697958948b25481e8936e8d3, type: 3}
   dramaDescriptionText: {fileID: 1198425831}
   giveTravelSeconds: 2.5
   stealTravelSeconds: 1

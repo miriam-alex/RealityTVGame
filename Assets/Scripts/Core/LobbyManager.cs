@@ -7,8 +7,21 @@ public class LobbyManager : MonoBehaviour
 {
     [SerializeField] private AnimalCatalog catalog;
     [SerializeField] private Button startButton; // Drag your UI Button here in the Inspector
+    [SerializeField] private InputActionReference clickAction;
 
     public PlayerRuntimeSet runtimeSet;
+    
+    private void OnEnable()
+    {
+        clickAction.action.performed += OnClickPerformed;
+        clickAction.action.Enable();
+    }
+    
+    private void OnDisable()
+    {
+        clickAction.action.performed -= OnClickPerformed;
+        clickAction.action.Disable();
+    }
 
     // We no longer strictly need an event trigger because we check the count every frame
     private void Update()
@@ -30,6 +43,11 @@ public class LobbyManager : MonoBehaviour
                 startButton.interactable = canStart;
             }
         }
+    }
+    
+    public void OnClickPerformed(InputAction.CallbackContext context)
+    {
+        OnStartGameClicked();
     }
 
     public void OnStartGameClicked()
