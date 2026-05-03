@@ -14,10 +14,14 @@ public class PlayerInteract : MonoBehaviour
     public string controllerPrimaryLabel = "A";
     public string controllerSecondaryLabel = "B";
     public string controllerDropLabel = "";
-   private PlayerIdentity _myId;
-   private PlayerInventory _inventory;
-   private PlayerInput _playerInput;
-   private IInteractable _currentInteractable;
+    private PlayerIdentity _myId;
+    private PlayerInventory _inventory;
+    private PlayerInput _playerInput;
+    private IInteractable _currentInteractable;
+    public event System.Action<PlayerIdentity> OnGrabbed;
+
+    public static System.Action<GameObject, GameObject> OnStealAction; // (thief, victim)
+    public static System.Action<GameObject, GameObject> OnGiveAction;  // (giver, receiver)
 
     private readonly Dictionary<Collider, IInteractable> _nearbyInteractables = new Dictionary<Collider, IInteractable>();
     private IInteractable _lastPromptInteractable;
@@ -28,6 +32,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private AudioClip stealAudioClip;
     [SerializeField] private AudioClip yodelAudioClip;
 
+    public bool isHoldingItem => _inventory != null && _inventory.HasItem();
 
    private void Start()
    {
@@ -166,17 +171,19 @@ public class PlayerInteract : MonoBehaviour
         if (_currentInteractable != null)
         {
             // 1. Handle Players (Stealing/Giving)
-            if (_currentInteractable is PlayerInteractable)
+            if (_currentInteractable is PlayerInteractable otherPlayer)
             {
                 if (interactPressed)
                 {
                     _currentInteractable.Interact(_myId);
+                    OnGiveAction?.Invoke(this.gameObject, otherPlayer.gameObject);
                     PlaySfx(interactAudioClip);
                 }
 
                 if (altInteractPressed)
                 {
                     _currentInteractable.AltInteract(_myId);
+                    OnStealAction?.Invoke(this.gameObject, otherPlayer.gameObject);
                     PlaySfx(stealAudioClip);
                 }
             }

@@ -75,6 +75,12 @@ public class PlayerInventory : MonoBehaviour
         item.transform.localPosition = new Vector3(0, verticalOffset, 0);
     }
 
+    public bool HasItem()
+    {
+        // Check if the list of held items is not empty
+        return _heldItems != null && _heldItems.Count > 0; 
+    }
+
     public Grabbable DropLastItem()
     {
         if (!HasItems)

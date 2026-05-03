@@ -2,18 +2,11 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+
 public class Timer : MonoBehaviour
 {
     public float timeRemaining = 120f;
     public bool timerRunning = false; 
-
-    // Add this so GameInitializer can start the clock
-    public void StartTimer()
-    {
-        timerRunning = true;
-    }
-
-
     public TMP_Text timerText;
 
     private void OnEnable()
@@ -28,23 +21,23 @@ public class Timer : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Find the timer text in the scene. This is a bit brittle.
-        // A better solution would be a reference passed in by the GameInitializer
-        // or a more robust service locator pattern.
-        var timerDisplay = FindAnyObjectByType<TimerDisplay>();
+        // Stop the timer from running during the transition/intro
+        timerRunning = false;
+
+        var timerDisplay = Object.FindFirstObjectByType<TimerDisplay>();
         if (timerDisplay != null)
         {
             timerText = timerDisplay.timerText;
         }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void StartTimer()
     {
-        
+        timerRunning = true;
+        // Immediate UI refresh to prevent tutorial time from showing
+        DisplayTime(timeRemaining);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (timerRunning)
@@ -59,13 +52,8 @@ public class Timer : MonoBehaviour
                 timeRemaining = 0;
                 timerRunning = false;
 
-                // Persist base scores/colors for playback -> postgame.
                 PersistBaseScoresForPlayback();
-
-                // Destroy player objects before leaving the scene.
                 DestroyPlayerObjects();
-
-                // Playback will apply drama score impacts during the clip, compute winner, then transition.
                 SceneManager.LoadScene("Playback");
             }
         }
@@ -96,7 +84,6 @@ public class Timer : MonoBehaviour
             }
         }
 
-        // Randomly select among top players if tie.
         return topPlayers[Random.Range(0, topPlayers.Count)];
     }
 
@@ -117,8 +104,6 @@ public class Timer : MonoBehaviour
             int playerIndex = identity.playerIndex;
             GameResultData.BaseScoresByPlayerIndex[playerIndex] = scoreManager.GetScore(playerObj);
             GameResultData.PlayerIndexToAnimalId[identity.playerIndex] = identity.selectedAnimalId;
-            Debug.Log($"saved body prefab {GameResultData.PlayerIndexToAnimalId[playerIndex]} for player w index {playerIndex}");
-            Debug.Log($"persisted player w index {playerIndex} for playback");
         }
     }
 
@@ -127,24 +112,22 @@ public class Timer : MonoBehaviour
         var scoreManager = ScoreManager.Instance;
         if (scoreManager == null) return;
 
-        // We need to copy the items to a new list because we will be modifying the collection as we iterate.
         var playersToDestroy = new List<GameObject>(scoreManager.GetPlayers());
         foreach (var playerObj in playersToDestroy)
         {
-            if (playerObj != null)
-            {
-                Destroy(playerObj);
-            }
+            if (playerObj != null) Destroy(playerObj);
         }
     }
 
     void DisplayTime(float time)
     {
-        time += 1;
-        
+        // Floor it so 00:00 is exactly when the timer hits 0
         float minutes = Mathf.FloorToInt(time / 60);
         float seconds = Mathf.FloorToInt(time % 60);
         
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        if (timerText != null)
+        {
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
     }
 }

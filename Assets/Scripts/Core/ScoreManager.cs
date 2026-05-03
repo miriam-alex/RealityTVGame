@@ -6,6 +6,8 @@ using System.Linq;
 
 public class ScoreManager : MonoBehaviour
 {
+
+    public static event System.Action<GameObject, int> OnScoreChanged;
     public static ScoreManager Instance; 
 
     [Header("Settings")]
@@ -65,6 +67,7 @@ public class ScoreManager : MonoBehaviour
                 bool gainedPoints = (amount > 0);
                 id.UpdateScoreUI(playerScores[player], gainedPoints);
             }
+            OnScoreChanged?.Invoke(player, playerScores[player]);
         }
         else 
         {
@@ -77,6 +80,10 @@ public class ScoreManager : MonoBehaviour
     {
         if (playerScores.ContainsKey(player))
             return playerScores[player];
+        
+        // DEBUG: If this prints, your station is giving points to an object 
+        // that isn't in the ScoreManager's dictionary!
+        Debug.LogWarning($"ScoreManager: Key not found for {player.name}"); 
         return 0;
     }
 

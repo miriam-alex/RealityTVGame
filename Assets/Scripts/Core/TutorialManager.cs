@@ -1,148 +1,286 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 public class TutorialManager : MonoBehaviour
 {
-    public enum TutorialStep
+    public enum TutorialStep { 
+        Intro, PickupItem, WaterOnly, WaterAndPlant, WaterPlantAndFood, 
+        StealCircle, GiveCircle, SpotlightAction, YodelFinal, Complete 
+    }
+    public TutorialStep currentStep = TutorialStep.Intro;
+
+    [Header("UI & Dialogue Config")]
+    public GameObject dialogueBoxPrefab; 
+    public Canvas canvasObj;             
+    public PlayerRuntimeSet playerRuntimeSet;
+    
+    [Header("Dialogue Content")]
+    public List<string> introLines;
+    public List<string> pickupLines; 
+    public List<string> waterOnlyLines;
+    public List<string> plantingLines;
+    public List<string> cookingLines;
+    public List<string> stealLines;
+    public List<string> giveLines;
+    public List<string> spotlightLines;
+    public List<string> yodelLines;
+
+    [Header("Station References")]
+    public GameObject plantingStation;
+    public GameObject cookingStation;
+    
+    [Header("Spotlight Reference")]
+    public GameObject spotlight;
+
+    [Header("Arrows")]
+    public GameObject arrowPickupStation;
+    public GameObject arrowPlantingStation;
+    public GameObject arrowCookingStation;
+    public List<GameObject> playerBinArrows; 
+
+    private HashSet<GameObject> playersWhoFinishedTask = new HashSet<GameObject>();
+
+    private void Start()
     {
-        Step1_Jump,
-        Step2_CollectWater,
-        Step3_ConvertToPlant,
-        Step4_ConvertToFood,
-        Step5_PracticeSteal,
-        Step6_PracticeGive,
-        Step7_StealOnCamera,
-        Step8_ShowPlayback,
-        Complete
+        // 1. Initialize world state
+        if(plantingStation) plantingStation.SetActive(false);
+        if(cookingStation) cookingStation.SetActive(false);
+        if(spotlight) spotlight.SetActive(false);
+
+        // 2. Start the intro sequence
+        StartCoroutine(InitialPopupDelay());
+        RefreshArrows();
     }
 
-    [SerializeField] private Text tutorialUIText; // Assign a UI Text element in the Inspector
-    [SerializeField] private PlayerRuntimeSet playerRuntimeSet; // Assign your PlayerRuntimeSet SO
-
-    private TutorialStep currentStep;
-    private Dictionary<GameObject, bool> stepCompletionStatus;
-
-    void Start()
+    private IEnumerator InitialPopupDelay()
     {
-        if (playerRuntimeSet == null || playerRuntimeSet.Items.Count == 0)
-        {
-            Debug.LogError("PlayerRuntimeSet is not assigned or is empty!");
-            return;
-        }
-
-        InitializeStepCompletion();
-        SetStep(TutorialStep.Step1_Jump);
+        // Wait one frame to ensure UI and Managers are initialized
+        yield return null; 
+        ShowPopup(introLines);
+        
+        // IMPORTANT: We do NOT call AdvanceStep() here anymore.
+        // Instead, we manually move to PickupItem so the Update loop starts checking for picks.
+        currentStep = TutorialStep.PickupItem;
+        
+        // If you want the Pickup instructions to show immediately after Intro, 
+        // you can call ShowPopup(pickupLines) here or wait for the player to close the box.
+        RefreshArrows();
+        ShowPopup(pickupLines);
     }
 
-    void Update()
+    private void OnEnable() 
     {
-        if (tutorialUIText == null) return;
-
-        // This is where the logic for checking step completion will go.
-        // For now, we'll just use a debug key to advance.
-        if (Input.GetKeyDown(KeyCode.Space)) // TEMPORARY: Press Space to advance
-        {
-            AdvanceToNextStep();
-        }
+        ScoreManager.OnScoreChanged += HandleScoreChanged;
+        PlayerInteract.OnStealAction += HandleStealAction;
+        PlayerInteract.OnGiveAction += HandleGiveAction;
+        //PlayerController.OnYodelCalled += HandleYodelAction;
     }
 
-    private void SetStep(TutorialStep newStep)
+    private void OnDisable() 
     {
-        currentStep = newStep;
-        ResetStepCompletion();
-
-        switch (currentStep)
-        {
-            case TutorialStep.Step1_Jump:
-                tutorialUIText.text = "Step 1: All players jump onto the mound!";
-                // TODO: Add logic to detect when players are on the mound
-                break;
-            case TutorialStep.Step2_CollectWater:
-                tutorialUIText.text = "Step 2: All players grab a water and drop it in your bin!";
-                // TODO: Add logic to check bin contents
-                break;
-            case TutorialStep.Step3_ConvertToPlant:
-                tutorialUIText.text = "Step 3: All players convert water to a plant and drop it in the bin!";
-                // TODO: Add logic to check bin contents
-                break;
-            case TutorialStep.Step4_ConvertToFood:
-                tutorialUIText.text = "Step 4: All players convert a plant to food and drop it in the bin!";
-                // TODO: Add logic to check bin contents
-                break;
-            case TutorialStep.Step5_PracticeSteal:
-                tutorialUIText.text = "Step 5: Practice stealing! Follow the instructions.";
-                // TODO: Implement the circular stealing logic
-                break;
-            case TutorialStep.Step6_PracticeGive:
-                tutorialUIText.text = "Step 6: Practice giving! Follow the instructions.";
-                // TODO: Implement the circular giving logic
-                break;
-            case TutorialStep.Step7_StealOnCamera:
-                tutorialUIText.text = "Step 7: A random player will be asked to steal on camera.";
-                // TODO: Implement random player selection and camera logic
-                break;
-
-            case TutorialStep.Step8_ShowPlayback:
-                tutorialUIText.text = "Step 8: Showing the playback.";
-                // TODO: Trigger playback scene/logic
-                break;
-
-            case TutorialStep.Complete:
-                tutorialUIText.text = "Tutorial Complete! Loading the main game...";
-                LoadMainGame();
-                break;
-        }
+        ScoreManager.OnScoreChanged -= HandleScoreChanged;
+        PlayerInteract.OnStealAction -= HandleStealAction;
+        PlayerInteract.OnGiveAction -= HandleGiveAction;
+        //PlayerController.OnYodelCalled -= HandleYodelAction;
     }
 
-    public void MarkPlayerStepComplete(GameObject player)
+    private void Update()
     {
-        if (stepCompletionStatus.ContainsKey(player))
+        // Only check for pickups during the specific pickup step
+        if (currentStep == TutorialStep.PickupItem) 
         {
-            stepCompletionStatus[player] = true;
-            CheckForAllPlayersComplete();
+            CheckPickupTask();
         }
     }
 
-    private void CheckForAllPlayersComplete()
+    // --- TASK LOGIC ---
+
+    private void CheckPickupTask()
     {
-        if (stepCompletionStatus.Values.All(completed => completed))
+        if (playerRuntimeSet == null || playerRuntimeSet.Items.Count == 0) return;
+
+        // Check if all players in the runtime set are holding an item
+        bool allPlayersHolding = playerRuntimeSet.Items.All(p => {
+            var interactScript = p.GetComponent<PlayerInteract>(); 
+            return interactScript != null && interactScript.isHoldingItem; 
+        });
+
+        if (allPlayersHolding) 
         {
-            AdvanceToNextStep();
+            AdvanceStep();
         }
     }
 
-    private void AdvanceToNextStep()
+    private void HandleScoreChanged(GameObject player, int newScore)
     {
-        if (currentStep < TutorialStep.Complete)
+        // Ignore scores if the tutorial is finished or in pickup phase
+        if (currentStep == TutorialStep.Complete || currentStep == TutorialStep.PickupItem) return;
+        
+        // Logic for score-based steps (Water, Plant, Cook)
+        if (newScore >= GetCurrentThreshold())
         {
-            SetStep(currentStep + 1);
+            playersWhoFinishedTask.Add(player);
+
+            // Turn off specific bin arrow for this player
+            if (currentStep == TutorialStep.WaterOnly)
+            {
+                int playerIndex = playerRuntimeSet.Items.IndexOf(player);
+                if (playerIndex >= 0 && playerIndex < playerBinArrows.Count)
+                {
+                    if (playerBinArrows[playerIndex] != null)
+                        playerBinArrows[playerIndex].SetActive(false);
+                }
+            }
+            CheckStepCompletion();
         }
     }
 
-    private void InitializeStepCompletion()
+
+    private void HandleStealAction(GameObject thief, GameObject victim)
     {
-        stepCompletionStatus = new Dictionary<GameObject, bool>();
-        foreach (var player in playerRuntimeSet.Items)
+        if (currentStep != TutorialStep.StealCircle && currentStep != TutorialStep.SpotlightAction) return;
+
+        if (currentStep == TutorialStep.StealCircle)
         {
-            stepCompletionStatus.Add(player, false);
+            playersWhoFinishedTask.Add(thief);
+            
+            Debug.Log($"{thief.name} performed a steal. Progress: {playersWhoFinishedTask.Count}/{playerRuntimeSet.Items.Count}");
+
+            // 3. Check if everyone is done
+            CheckStepCompletion();
+        }
+        else if (currentStep == TutorialStep.SpotlightAction)
+        {
+            if (IsUnderSpotlight(thief) && IsUnderSpotlight(victim))
+            {
+                if (playerRuntimeSet.Items.IndexOf(thief) == 0 && playerRuntimeSet.Items.IndexOf(victim) == 1)
+                {
+                    playersWhoFinishedTask.Add(thief);
+                    CheckStepCompletion();
+                }
+            }
         }
     }
 
-    private void ResetStepCompletion()
+    private void HandleGiveAction(GameObject giver, GameObject receiver)
     {
-        var players = new List<GameObject>(stepCompletionStatus.Keys);
-        foreach (var player in players)
+        if (currentStep != TutorialStep.GiveCircle && currentStep != TutorialStep.SpotlightAction) return;
+
+        if (currentStep == TutorialStep.GiveCircle)
         {
-            stepCompletionStatus[player] = false;
+            playersWhoFinishedTask.Add(giver);
+            
+            Debug.Log($"{giver.name} performed a give. Progress: {playersWhoFinishedTask.Count}/{playerRuntimeSet.Items.Count}");
+
+            // 3. Check if everyone is done
+            CheckStepCompletion();
+        }
+        else if (currentStep == TutorialStep.SpotlightAction)
+        {
+            int pCount = playerRuntimeSet.Items.Count;
+            int gIdx = playerRuntimeSet.Items.IndexOf(giver);
+            int rIdx = playerRuntimeSet.Items.IndexOf(receiver);
+
+            bool isValid = false;
+            if (pCount >= 3 && gIdx == 1 && rIdx == 2) isValid = true; 
+            if (pCount == 4 && gIdx == 2 && rIdx == 3) isValid = true; 
+            if (pCount == 2 && gIdx == 1 && rIdx == 0) isValid = true; 
+
+            if (isValid && IsUnderSpotlight(giver))
+            {
+                playersWhoFinishedTask.Add(giver);
+                CheckStepCompletion();
+            }
         }
     }
 
-    private void LoadMainGame()
+    private void HandleYodelAction(GameObject player)
     {
-        // This will load your main game scene.
-        SceneManager.LoadScene("GameScene");
+        if (currentStep == TutorialStep.YodelFinal)
+        {
+            playersWhoFinishedTask.Add(player);
+            CheckStepCompletion();
+        }
+    }
+
+    private bool IsUnderSpotlight(GameObject obj)
+    {
+        return SpotlightDirector.Instance != null && SpotlightDirector.Instance.IsObjectLit(obj);
+    }
+
+    private void CheckStepCompletion()
+    {
+        int requiredCount = (currentStep == TutorialStep.SpotlightAction) ? 2 : playerRuntimeSet.Items.Count;
+
+        if (playersWhoFinishedTask.Count >= requiredCount)
+        {
+            playersWhoFinishedTask.Clear();
+            AdvanceStep();
+        }
+    }
+
+    private void AdvanceStep()
+    {
+        if (currentStep == TutorialStep.Complete) return;
+        currentStep++;
+        
+        List<string> nextLines = currentStep switch {
+            TutorialStep.PickupItem => pickupLines,
+            TutorialStep.WaterOnly => waterOnlyLines,
+            TutorialStep.WaterAndPlant => plantingLines,
+            TutorialStep.WaterPlantAndFood => cookingLines,
+            TutorialStep.StealCircle => stealLines,
+            TutorialStep.GiveCircle => giveLines,
+            TutorialStep.SpotlightAction => spotlightLines,
+            //TutorialStep.YodelFinal => yodelLines,
+            _ => null
+        };
+
+        // Station/Spotlight Persistence
+        if (plantingStation) plantingStation.SetActive(currentStep >= TutorialStep.WaterAndPlant);
+        if (cookingStation) cookingStation.SetActive(currentStep >= TutorialStep.WaterPlantAndFood);
+        if (spotlight) spotlight.SetActive(currentStep >= TutorialStep.SpotlightAction);
+
+        if (nextLines != null) ShowPopup(nextLines);
+        RefreshArrows();
+    }
+
+    private void RefreshArrows()
+    {
+        if(arrowPickupStation) arrowPickupStation.SetActive(currentStep == TutorialStep.PickupItem);
+        if(arrowPlantingStation) arrowPlantingStation.SetActive(currentStep == TutorialStep.WaterAndPlant);
+        if(arrowCookingStation) arrowCookingStation.SetActive(currentStep == TutorialStep.WaterPlantAndFood);
+
+        bool isWaterStep = (currentStep == TutorialStep.WaterOnly);
+        int playerCount = playerRuntimeSet != null ? playerRuntimeSet.Items.Count : 0;
+        for (int i = 0; i < playerBinArrows.Count; i++)
+        {
+            if (playerBinArrows[i]) 
+                playerBinArrows[i].SetActive(isWaterStep && i < playerCount);
+        }
+    }
+
+    private void ShowPopup(List<string> lines)
+    {
+        if (lines == null || lines.Count == 0 || canvasObj == null) return;
+        
+        GameObject db = Instantiate(dialogueBoxPrefab, canvasObj.transform, false);
+        Dialogue dialogue = db.GetComponent<Dialogue>();
+        if (dialogue != null) 
+        {
+            dialogue.Initialize(lines);
+        }
+    }
+
+    private int GetCurrentThreshold()
+    {
+        return currentStep switch {
+            TutorialStep.WaterOnly => 10,
+            TutorialStep.WaterAndPlant => 30,
+            TutorialStep.WaterPlantAndFood => 40,
+            _ => 0 
+        };
     }
 }

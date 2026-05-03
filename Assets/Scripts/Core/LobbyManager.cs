@@ -44,7 +44,7 @@ public class LobbyManager : MonoBehaviour
         runtimeSet.Items.RemoveAll(item => item == null);
 
         // 2. Switch scenes
-        SceneManager.LoadScene("GameScene"); 
+        SceneManager.LoadScene("Tutorial"); 
     }
 
     // This method is still useful for your Identity/Catalog assignment logic

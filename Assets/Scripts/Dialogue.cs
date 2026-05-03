@@ -59,6 +59,8 @@ public class Dialogue : MonoBehaviour
         lines = givenLines;
         StartDialogue();
     }
+
+    
     
     void StartDialogue()
     {
@@ -76,13 +78,16 @@ public class Dialogue : MonoBehaviour
     
     private void HandleInput()
     {
-        // If the text is still typing, finish it instantly
+        // 1. SAFETY: Prevent the "NullReferenceException" you saw in the logs
+        // by checking if lines are loaded before trying to read them.
+        if (lines == null || lines.Count == 0 || index >= lines.Count) return;
+
         if (textComponent.text != lines[index])
         {
+            // Finish typing current line instantly
             if (typingCoroutine != null) StopCoroutine(typingCoroutine);
             textComponent.text = lines[index];
         }
-        // If the text is finished, go to the next line
         else
         {
             NextLine();
@@ -106,23 +111,29 @@ public class Dialogue : MonoBehaviour
         foreach (char c in lines[index].ToCharArray())
         {
             textComponent.text += c;
-            yield return new WaitForSeconds(textSpeed);
+            // Use Realtime to keep UI timing consistent
+            yield return new WaitForSecondsRealtime(textSpeed);
         }
     }
-
     void NextLine()
     {
         if (index < lines.Count - 1)
         {
             index++;
+            textComponent.text = string.Empty;
             typingCoroutine = StartCoroutine(TypeLine());
-            PlayLineAudio(index);
+            PlayLineAudio(index); //
         }
         else
         {
+            // 2. THE CLEANUP: The player pressed A on the last line.
             if (audioSource != null) audioSource.Stop();
-            OnDialogueComplete?.Invoke();
-            Destroy(gameObject);
+            
+            // Notify any listeners (like TutorialManager) the box is gone
+            OnDialogueComplete?.Invoke(); 
+            
+            // 3. THE DESTRUCTION: This removes the UI from the game state
+            Destroy(gameObject); 
         }
     }
 }

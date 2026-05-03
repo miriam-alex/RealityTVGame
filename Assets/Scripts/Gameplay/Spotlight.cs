@@ -144,4 +144,30 @@ public class SpotlightDirector : MonoBehaviour
             if (id != null) id.isSpotted = true;
         }
     }
+
+    // Method for TutorialManager to check if a player is in the light
+    public bool IsObjectLit(GameObject obj)
+    {
+        if (obj.TryGetComponent(out PlayerIdentity id))
+        {
+            return id.isSpotted; // Use the detection logic already running in Update
+        }
+        return false;
+    }
+
+    // Method for TutorialManager to turn the spotlight on/off
+    public void SetSpotlightActive(bool active)
+    {
+        // This toggles the entire GameObject (the light, the cone, the indicator)
+        this.gameObject.SetActive(active);
+        
+        // Safety: If turned off, ensure all players are marked as not spotted
+        if (!active && runtimeSet != null)
+        {
+            foreach (var p in runtimeSet.Items)
+            {
+                if (p.TryGetComponent(out PlayerIdentity id)) id.isSpotted = false;
+            }
+        }
+    }
 }

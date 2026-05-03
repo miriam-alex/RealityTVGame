@@ -72,6 +72,7 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
 
         if (isSuccess)
         {
+            PlayerInteract.OnGiveAction?.Invoke(requester.gameObject, this.gameObject);
             PlaySfx(giveAudioClip);
         }
 
@@ -123,6 +124,8 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
 
             var victimUI = GetComponentInChildren<PlayerCooldownUI>();
             victimUI?.TriggerCooldown();
+
+            PlayerInteract.OnStealAction?.Invoke(requester.gameObject, this.gameObject);
 
             // 3. Log the dramatic event
             DirectorManager.Instance.LogDrama(
