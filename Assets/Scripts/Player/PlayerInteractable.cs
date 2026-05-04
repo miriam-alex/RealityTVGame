@@ -115,15 +115,15 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
         if (isSuccess)
         {
             // 1. Backend Status: Set cooldown on both participants
-            _myId.GetComponent<PlayerStatus>()?.SetStealCooldown();
+            //_myId.GetComponent<PlayerStatus>()?.SetStealCooldown();
             thiefStatus?.SetStealCooldown();
 
             // 2. Trigger UI: Look for the UI component and trigger it ONCE per player
             var requesterUI = requester.GetComponentInChildren<PlayerCooldownUI>();
             requesterUI?.TriggerCooldown(); 
 
-            var victimUI = GetComponentInChildren<PlayerCooldownUI>();
-            victimUI?.TriggerCooldown();
+            //var victimUI = GetComponentInChildren<PlayerCooldownUI>();
+            //victimUI?.TriggerCooldown();
 
             PlayerInteract.OnStealAction?.Invoke(requester.gameObject, this.gameObject);
 
