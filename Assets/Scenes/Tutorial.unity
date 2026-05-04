@@ -9920,40 +9920,43 @@ MonoBehaviour:
   canvasObj: {fileID: 278752123}
   playerRuntimeSet: {fileID: 11400000, guid: 35d9d90b045664a289cbdc748927308e, type: 2}
   introLines:
-  - welcome to the tutorial round! I will be teaching you how to play
-  - let's start off easy an try picking up the water. press [X] to pick up and drop
-    items
+  - 'welcome to the tutorial round! '
+  - it's embarassing to fail in front of the nation, so study up.
+  - 'let''s start off easy. press [X] to pick up a bucket of water! '
   pickupLines: []
   waterOnlyLines:
-  - great! now lets give some water to the community. each player should drop a water
-    into their bin
-  - press [A] to jump and remember to press [X] to pick up and drop items
+  - great! now let's give some water to the community. each player should
+  - drop a water into their bin!
+  - press [A] to jump and [X] to pick up and drop items
   plantingLines:
-  - 'yay! your reputation has increased! giving water to the community increases
-    your reputation by 10 '
-  - now lets try and give the community something better.
-  - Take a water and drop it near the planting station to get a plant and then drop
-    that in your bin
+  - 'yay! your reputation has increased! giving water to the community '
+  - increases your reputation by 10k followers.
+  - now let's try and give the community something better.
+  - take a water and drop it near the planting station to get a plant. then, drop
+    that in your bin!
   cookingLines:
-  - now your reputation has increased even more. look at your communities!
-  - now lets try and give the community something EVEN  BETTER. and then drop that
-    in your bin
-  - 'Use the cooking station to turn a plant into food '
+  - your reputation has increased even more! look at your community!
+  - now let's try and give the community something EVEN BETTER.
+  - 'use the cooking station to turn a plant into food '
+  - then drop the result into your bin!
   stealLines:
-  - nice! if you want to be a little mean... you can STEAL from another players
-  - press [B] to steal. but be careful! theres a cooldown on your steal so use it
-    wisely
-  - we will proceed once EVERYONE has stolen at least once
+  - nice! if you want to be mean, you can STEAL from other players.
+  - 'press [B] to steal. '
+  - be careful! there's a cooldown on your ability to steal. use it wisely.
+  - we will proceed once EVERYONE has stolen at least once.
   giveLines:
-  - you can also be nice... you can GIVE to another player
-  - press [Y] to give. we will proceed once EVERYONE has given at least once
+  - 'I GUESS you can also be nice... '
+  - 'you can GIVE to another player! press [Y] to give. '
+  - we will proceed once EVERYONE has given at least once.
   spotlightLines:
-  - you can steal and give all you want...
-  - but be aware... If you are caught by the camera... the world may or may not see
-    exactly what you have done
+  - you can steal all you want, but it only matters if you're caught.
+  - BEWARE!! if you are caught by the camera doing something shady, the people will
+    turn on you.
+  - even worse, you might lose some followers...
+  - on the bright side, people might like if you did something nice.
   yodelLines:
   - you can also yodel and bring the camera to you!
-  - press [RT] to yodel! we will proceed once EVERYONE has yodelled
+  - press [RT] to yodel! we will proceed once EVERYONE has yodelled!
   plantingStation: {fileID: 1496258290}
   cookingStation: {fileID: 1265355021}
   spotlight: {fileID: 6122114769769476525}
