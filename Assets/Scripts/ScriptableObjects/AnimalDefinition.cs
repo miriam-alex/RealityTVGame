@@ -5,4 +5,5 @@ public class AnimalDefinition : ScriptableObject
 {
     public string id;
     public GameObject prefab;
+    public Sprite icon;
 }

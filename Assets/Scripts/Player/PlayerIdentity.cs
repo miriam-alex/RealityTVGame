@@ -22,18 +22,14 @@ public class PlayerIdentity : MonoBehaviour {
     private TMP_Text scoreText; 
     void Awake()
     {
-        // Existing UI finding logic...
         Transform scoreTextTransform = transform.Find("Overhead Canvas/Score");
         if (scoreTextTransform != null)
         { 
             scoreText = scoreTextTransform.GetComponent<TextMeshProUGUI>();
         }
 
-        // NEW: Self-Assign Animal based on Player Input Index
         PlayerInput pi = GetComponent<PlayerInput>();
-            
-        // Only attempt auto-assignment if we have a PlayerInput and it's actually paired
-        // to a device (user). pi.user.valid checks if a controller is actually there.
+        
         if (pi != null && pi.user.valid && animalCatalog != null && string.IsNullOrEmpty(selectedAnimalId))
         {
             int index = pi.playerIndex;
@@ -71,7 +67,7 @@ public class PlayerIdentity : MonoBehaviour {
     }
     public void ApplyAnimalById(string id)
     {
-        AnimalDefinition definition = animalCatalog.animals.Find(a => a.id == id);
+        AnimalDefinition definition = animalCatalog.GetAnimalDefinition(id);
         if (definition != null)
         {
             ApplyAnimal(definition);

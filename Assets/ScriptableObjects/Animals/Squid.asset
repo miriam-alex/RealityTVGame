@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AnimalDefinition
   id: Squid
   prefab: {fileID: 8699261529208799353, guid: 7c64f6b7c56a74ed4bcefded2977f047, type: 3}
+  icon: {fileID: 21300000, guid: d1d5723c4a4304312b6db36cc3c9f724, type: 3}

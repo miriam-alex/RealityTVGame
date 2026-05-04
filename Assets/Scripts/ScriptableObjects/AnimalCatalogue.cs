@@ -5,10 +5,15 @@ using UnityEngine;
 public class AnimalCatalog : ScriptableObject
 {
     public List<AnimalDefinition> animals;
-
-    public AnimalDefinition GetRandomAnimal()
+    
+    public AnimalDefinition GetAnimalDefinition(string animalID)
     {
-        if (animals == null || animals.Count == 0) return null;
-        return animals[Random.Range(0, animals.Count)];
+        AnimalDefinition definition = animals.Find(a => a.id == animalID);
+        return definition;
+    }
+
+    public AnimalDefinition GetAnimalDefinition(int animalIndex)
+    {
+        return animals[animalIndex];
     }
 }

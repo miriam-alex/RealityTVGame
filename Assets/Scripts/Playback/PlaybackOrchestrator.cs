@@ -47,6 +47,8 @@ public class PlaybackOrchestrator : MonoBehaviour
 
     [SerializeField] private Light spotlight1;
     [SerializeField] private Light spotlight2;
+    [SerializeField] private InputActionReference clickAction;
+    [SerializeField] private GameObject followerPopUp;
 
     // for audio
     [SerializeField] private AudioSource audioSource;
@@ -68,9 +70,7 @@ public class PlaybackOrchestrator : MonoBehaviour
     private int _currentClipIndex = 0;
     private bool _playedTransferVisual;
     private GameObject _currentTransferInstance;
-    [SerializeField] private InputActionReference clickAction;
     private bool _waitingForInput = false;
-    
 
     void Start() 
     {
@@ -104,6 +104,8 @@ public class PlaybackOrchestrator : MonoBehaviour
             SceneManager.LoadScene(postGameSceneName);
             return;
         }
+        
+        followerPopUp.SetActive(false);
 
         SpawnAllRecordedActors();
         SetupClip(_currentClipIndex);
@@ -204,7 +206,7 @@ public class PlaybackOrchestrator : MonoBehaviour
 
         string caption = GenerateTVCaption(e.actorIndex, e.victimIndex, e.type);
         
-        dramaDescriptionText.text = $"{caption} Impact: {e.scoreImpact:+#;-#;0}k followers.";
+        dramaDescriptionText.text = caption;
     }
 
     private string GenerateTVCaption(int actorIndex, int subjectIndex, DramaType type)
@@ -321,6 +323,9 @@ public class PlaybackOrchestrator : MonoBehaviour
             _waitingForInput = false;
         
             _currentClipIndex++;
+
+            followerPopUp.SetActive(false);
+
             if (_currentClipIndex < _topDramaEvents.Count)
             {
                 SetupClip(_currentClipIndex);
@@ -479,7 +484,32 @@ public class PlaybackOrchestrator : MonoBehaviour
             _currentTransferInstance.transform.position = Vector3.Lerp(start, end, t / transferTravelSeconds);
             yield return null;
         }
+        
+        int pIndex = _selectedDramaEvent.actorIndex;
+        AnimalDefinition pAnimalDef = animalCatalog.GetAnimalDefinition(pIndex);
+        int impact = _selectedDramaEvent.scoreImpact;
+        
+        int startScore = GetCurrentScore(pIndex);
 
+        if (!GameResultData.BaseScoresByPlayerIndex.ContainsKey(pIndex))
+            GameResultData.BaseScoresByPlayerIndex[pIndex] = 0;
+        GameResultData.BaseScoresByPlayerIndex[pIndex] += impact;
+        GameResultData.BaseScoresByPlayerIndex[pIndex] = Mathf.Max(0, GameResultData.BaseScoresByPlayerIndex[pIndex]);
+        
+        int endScore = GameResultData.BaseScoresByPlayerIndex[pIndex];
+        
+        followerPopUp.SetActive(true);
+        if (followerPopUp.TryGetComponent(out SocialMediaPopUp popUpScript))
+        {
+            popUpScript.Initialize(pAnimalDef);
+            int actorIndex = _selectedDramaEvent.actorIndex;
+            int currentScore = GameResultData.BaseScoresByPlayerIndex.ContainsKey(actorIndex) 
+                ? GameResultData.BaseScoresByPlayerIndex[actorIndex] 
+                : 0;
+
+            popUpScript.TriggerPopUp(startScore, endScore);
+        }
+        
         Destroy(_currentTransferInstance);
         _currentTransferInstance = null;
     }
@@ -502,44 +532,28 @@ public class PlaybackOrchestrator : MonoBehaviour
         Debug.Log($"[Playback] Drama clip complete. Loading '{postGameSceneName}'.");
         SceneManager.LoadScene(postGameSceneName);
     }
+    
+    private int GetCurrentScore(int playerIndex)
+    {
+        if (GameResultData.BaseScoresByPlayerIndex.TryGetValue(playerIndex, out int score))
+        {
+            return score;
+        }
+        return 0;
+    }
 
     private void ApplyClipScoreAdjustments()
     {
-        if (!_hasClipWindow) return;
-        if (DirectorManager.Instance == null) return;
-        var events = DirectorManager.Instance.dramaRegistry;
-        if (events == null || events.Count == 0) return;
-
-        // Ensure we have score entries for known players.
+        // This now ONLY ensures that players who HAD NO EVENTS 
+        // still have a '0' entry in the dictionary so the winner logic doesn't crash.
         foreach (var kvp in DirectorManager.Instance.productionLedger)
         {
             if (kvp.Value == null || kvp.Value.actorType != RecordedActorType.Player) continue;
-            if (TryParsePlayerIndex(kvp.Key, out int pIndex) && !GameResultData.BaseScoresByPlayerIndex.ContainsKey(pIndex))
-                GameResultData.BaseScoresByPlayerIndex[pIndex] = 0;
-        }
-
-        // Apply score impacts for any drama events that occur during the clip window.
-        for (int i = 0; i < events.Count; i++)
-        {
-            DramaEvent e = events[i];
-            if (e == null) continue;
-
-            if (e.timestamp < _clipStartTime || e.timestamp > _clipEndTime)
-                continue;
-
-            int actorIndex = e.actorIndex;
-            if (actorIndex < 0)
+            if (TryParsePlayerIndex(kvp.Key, out int pIndex))
             {
-                // Fallback parse from actorID string if needed.
-                if (!TryParsePlayerIndex(e.actorID, out actorIndex))
-                    continue;
+                if (!GameResultData.BaseScoresByPlayerIndex.ContainsKey(pIndex))
+                    GameResultData.BaseScoresByPlayerIndex[pIndex] = 0;
             }
-
-            if (!GameResultData.BaseScoresByPlayerIndex.ContainsKey(actorIndex))
-                GameResultData.BaseScoresByPlayerIndex[actorIndex] = 0;
-
-            GameResultData.BaseScoresByPlayerIndex[actorIndex] += e.scoreImpact;
-            GameResultData.BaseScoresByPlayerIndex[actorIndex] = Mathf.Max(0, GameResultData.BaseScoresByPlayerIndex[actorIndex]);
         }
     }
 
