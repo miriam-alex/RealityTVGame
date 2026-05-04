@@ -9933,8 +9933,8 @@ MonoBehaviour:
   - 'yay! your reputation has increased! giving water to the community '
   - increases your reputation by 10k followers.
   - now let's try and give the community something better.
-  - take a water and drop it near the planting station to get a plant. then, drop
-    that in your bin!
+  - 'take a water and drop it near the planting station to get a plant. '
+  - then, drop that in your bin!
   cookingLines:
   - your reputation has increased even more! look at your community!
   - now let's try and give the community something EVEN BETTER.
@@ -9951,12 +9951,12 @@ MonoBehaviour:
   - we will proceed once EVERYONE has given at least once.
   spotlightLines:
   - you can steal all you want, but it only matters if you're caught.
-  - BEWARE!! if you are caught by the camera doing something shady, the people will
-    turn on you.
-  - even worse, you might lose some followers...
+  - BEWARE!! if you are caught by the camera doing something shady,
+  - ' the people will turn on you.. or even worse, you might lose some followers...'
   - on the bright side, people might like if you did something nice.
+  - let's try shall we! try stealing or giving under the spotlight
   yodelLines:
-  - you can also yodel and bring the camera to you!
+  - ok great! you can also yodel and bring the camera to you!
   - press [RT] to yodel! we will proceed once EVERYONE has yodelled!
   plantingStation: {fileID: 1496258290}
   cookingStation: {fileID: 1265355021}

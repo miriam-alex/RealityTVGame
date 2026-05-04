@@ -207,11 +207,12 @@ public class PlayerInteract : MonoBehaviour
             // This MUST be a separate check that triggers on interactPressed OR dropPickPressed
             else
             {
-                if (interactPressed)
-                {
-                    _currentInteractable.Interact(_myId);
-                    PlaySfx(interactAudioClip);
-                }
+
+                // if (interactPressed)
+                // {
+                //    _currentInteractable.Interact(_myId);
+                //    PlaySfx(interactAudioClip);
+                //}
 
                 if (dropPickPressed)
                 {
