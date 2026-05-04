@@ -32,7 +32,7 @@ public class PlayerCooldownUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         StopAllCoroutines();
-        StartCoroutine(RunTimer(5.0f, 5.0f));
+        StartCoroutine(RunTimer(30.0f, 30.0f));
     }
 
     private void StartCooldown(float current, float total)

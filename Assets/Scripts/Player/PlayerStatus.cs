@@ -4,7 +4,7 @@ public class PlayerStatus : MonoBehaviour
 {
     public float nextStealTime;
     public float nextYodelTime;
-    public const float COOLDOWN_DURATION = 5f;
+    public const float COOLDOWN_DURATION = 30.0f;
 
     public void SetStealCooldown()
     {

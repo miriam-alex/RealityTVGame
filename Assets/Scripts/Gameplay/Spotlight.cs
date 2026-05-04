@@ -18,6 +18,7 @@ public class SpotlightDirector : MonoBehaviour
     public PlayerRuntimeSet runtimeSet;
     public LayerMask floorLayer; // IMPORTANT: Set this to your "Floor" layer
 
+
     [Header("Detection Settings")]
     public float baseRadius = 0.5f;
 
@@ -33,6 +34,8 @@ public class SpotlightDirector : MonoBehaviour
     private Vector3 yodelSummonPosition;
     private Vector3 yodelSummonTarget;
     private Vector3 currentFloorTarget;
+    private bool isStationary = false;
+    private Vector3 stationaryTarget;
 
     private void Awake()
     {
@@ -61,9 +64,14 @@ public class SpotlightDirector : MonoBehaviour
         timer += Time.deltaTime * sweepSpeed;
         Vector3 desiredFloorTarget;
 
+        if (isStationary) 
+        {
+            desiredFloorTarget = stationaryTarget;
+        }
+
         // sets spotlight to yodel summon position if yodel is active
         // instant move to yodel summon position (exactly where to go, not smoothed)
-        if (Time.time < yodelSummonUntilTime)
+        else if (Time.time < yodelSummonUntilTime)
         {
             desiredFloorTarget = yodelSummonPosition;
             
@@ -170,4 +178,11 @@ public class SpotlightDirector : MonoBehaviour
             }
         }
     }
-}
+
+    public void SetStationary(Vector3 worldPos, bool status)
+    {
+        isStationary = status;
+        // Use the world position so it aligns with your arenaCenter logic
+        stationaryTarget = worldPos; 
+    }
+    }

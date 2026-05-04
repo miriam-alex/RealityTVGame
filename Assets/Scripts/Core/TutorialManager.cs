@@ -225,6 +225,8 @@ public class TutorialManager : MonoBehaviour
             StartCoroutine(ShowFinalCongratsAndTransition());
             return;
         }
+
+
         List<string> nextLines = currentStep switch {
             TutorialStep.PickupItem => pickupLines,
             TutorialStep.WaterOnly => waterOnlyLines,
@@ -241,6 +243,27 @@ public class TutorialManager : MonoBehaviour
         if (plantingStation) plantingStation.SetActive(currentStep >= TutorialStep.WaterAndPlant);
         if (cookingStation) cookingStation.SetActive(currentStep >= TutorialStep.WaterPlantAndFood);
         if (spotlight) spotlight.SetActive(currentStep >= TutorialStep.SpotlightAction);
+
+        
+        if (currentStep == TutorialStep.SpotlightAction)
+        {
+            if (spotlight) spotlight.SetActive(true);
+
+            // Tell the director to freeze at a central tutorial point
+            if (SpotlightDirector.Instance != null)
+            {
+                Vector3 centerPoint = new Vector3(0, 0, 0); // Replace with your center coordinates
+                SpotlightDirector.Instance.SetStationary(centerPoint, true);
+            }
+        }
+
+        else if (currentStep > TutorialStep.SpotlightAction)
+        {
+            if (SpotlightDirector.Instance != null)
+            {
+                SpotlightDirector.Instance.SetStationary(Vector3.zero, false);
+            }
+        }
 
         if (nextLines != null) ShowPopup(nextLines);
         RefreshArrows();

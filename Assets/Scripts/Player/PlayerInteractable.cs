@@ -6,10 +6,10 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
 	private ScoreManager _scoreManager;
     private PlayerIdentity _myId;
     private PlayerInventory _myInventory;
-    private const float COOLDOWN = 1.0f; 
+    private const float COOLDOWN = 30.0f; 
     public event System.Action<float, float> OnCooldownStarted;
 
-    [SerializeField] private float maxCooldownValue = 5.0f; // Set your desired duration
+    [SerializeField] private float maxCooldownValue = 30.0f; // Set your desired duration
     private float currentCooldownValue = 0f;
     private bool IsOnCooldown => currentCooldownValue > 0;
 
