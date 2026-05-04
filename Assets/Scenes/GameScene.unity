@@ -14411,12 +14411,24 @@ PrefabInstance:
       value: 0.41
       objectReference: {fileID: 0}
     - target: {fileID: 6369606691509516495, guid: 9aba8fee538a34fd5be3266d87262dbd, type: 3}
+      propertyPath: sweepRange.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6369606691509516495, guid: 9aba8fee538a34fd5be3266d87262dbd, type: 3}
+      propertyPath: sweepRange.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6369606691509516495, guid: 9aba8fee538a34fd5be3266d87262dbd, type: 3}
+      propertyPath: arenaCenter.y
+      value: -0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 6369606691509516495, guid: 9aba8fee538a34fd5be3266d87262dbd, type: 3}
       propertyPath: baseMoveSpeed
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6369606691509516495, guid: 9aba8fee538a34fd5be3266d87262dbd, type: 3}
       propertyPath: spotlightSize
-      value: 5.81
+      value: 5.61
       objectReference: {fileID: 0}
     - target: {fileID: 6369606691509516495, guid: 9aba8fee538a34fd5be3266d87262dbd, type: 3}
       propertyPath: playerLayer.m_Bits

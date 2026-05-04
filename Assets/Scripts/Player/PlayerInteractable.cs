@@ -176,7 +176,7 @@ public class PlayerInteractable : MonoBehaviour, IInteractable
         
             if (!success) 
             {
-                Debug.LogError($"Transfer from {giver.name}'s inventory to {taker.name}'s inventory failed!");
+                // Debug.LogError($"Transfer from {giver.name}'s inventory to {taker.name}'s inventory failed!");
                 label = $"{giver.name} is empty!";
             }
         }
