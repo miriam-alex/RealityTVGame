@@ -78,9 +78,9 @@ Shader "Hidden/Outlines/Free Outline/Outline"
             float2 uv = IN.positionHCS.xy / _ScaledScreenParams.xy;
 
             #if UNITY_REVERSED_Z
-            real depth = GameSceneDepth(uv);
+            real depth = SampleSceneDepth(uv);
             #else
-            real depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, GameSceneDepth(uv));
+            real depth = lerp(UNITY_NEAR_CLIP_VALUE, 1, SampleSceneDepth(uv));
             #endif
 
             return IN.positionHCS.z < depth ? _OutlineOccludedColor : _OutlineColor;
