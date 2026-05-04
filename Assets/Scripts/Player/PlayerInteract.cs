@@ -18,6 +18,8 @@ public class PlayerInteract : MonoBehaviour
     private PlayerInventory _inventory;
     private PlayerInput _playerInput;
     private IInteractable _currentInteractable;
+
+    public static System.Action<GameObject> OnYodelAction;
     public event System.Action<PlayerIdentity> OnGrabbed;
 
     public static System.Action<GameObject, GameObject> OnStealAction; // (thief, victim)
@@ -172,6 +174,7 @@ public class PlayerInteract : MonoBehaviour
 
             else
             {
+                OnYodelAction?.Invoke(this.gameObject);
                 SpotlightDirector.Instance?.SummonToPosition(transform.position);
                 PlaySfx(yodelAudioClip);
                 Debug.Log("Yodel pressed");

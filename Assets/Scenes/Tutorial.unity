@@ -9952,7 +9952,8 @@ MonoBehaviour:
   - but be aware... If you are caught by the camera... the world may or may not see
     exactly what you have done
   yodelLines:
-  - YODEL
+  - you can also yodel and bring the camera to you!
+  - press [RT] to yodel! we will proceed once EVERYONE has yodelled
   plantingStation: {fileID: 1496258290}
   cookingStation: {fileID: 1265355021}
   spotlight: {fileID: 6122114769769476525}
@@ -9992,7 +9993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialSkipManager
   skipPopupUI: {fileID: 780802179}
-  skipAction: {fileID: 8747804029799513939, guid: 83179096697958948b25481e8936e8d3, type: 3}
+  skipAction: {fileID: -2314235889555789502, guid: 83179096697958948b25481e8936e8d3, type: 3}
   confirmAction: {fileID: -2555886487368569462, guid: 83179096697958948b25481e8936e8d3, type: 3}
   cancelAction: {fileID: -8940900486578724637, guid: 83179096697958948b25481e8936e8d3, type: 3}
   gameSceneName: GameScene

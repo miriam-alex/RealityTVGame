@@ -28,8 +28,8 @@ public class SpotlightDirector : MonoBehaviour
 
     private float timer;
     private float yodelSummonUntilTime;
-    private bool isYodelActive = false;
-    private bool isYodelAtTarget = false;
+    // private bool isYodelActive = false;
+    // private bool isYodelAtTarget = false;
     private Vector3 yodelSummonPosition;
     private Vector3 yodelSummonTarget;
     private Vector3 currentFloorTarget;

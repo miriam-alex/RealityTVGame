@@ -698,6 +698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LobbyManager
   catalog: {fileID: 11400000, guid: 6c8331a9afc2d41b88833bd99a0443be, type: 2}
   startButton: {fileID: 519751772}
+  clickAction: {fileID: -9111688829416262899, guid: 83179096697958948b25481e8936e8d3, type: 3}
   runtimeSet: {fileID: 11400000, guid: 35d9d90b045664a289cbdc748927308e, type: 2}
 --- !u!4 &286302317
 Transform:
@@ -1518,8 +1519,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -398}
-  m_SizeDelta: {x: 136.69, y: 35.6}
+  m_AnchoredPosition: {x: 0, y: -388.5}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &519751772
 MonoBehaviour:
@@ -1564,19 +1565,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 519751773}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 286302316}
-        m_TargetAssemblyTypeName: LobbyManager, Assembly-CSharp
-        m_MethodName: OnStartGameClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &519751773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1597,7 +1586,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0159064be38fa4a24b694df76ad5c484, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1fe7387cfbaae4ae5be861f483357555, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2852,7 +2841,7 @@ MonoBehaviour:
   m_JoinAction:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Join
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: 50451f87-d8f4-4d9b-a9b1-c62dc7c78fb0
@@ -8786,7 +8775,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -11}
+  m_AnchoredPosition: {x: 0, y: -11.8}
   m_SizeDelta: {x: 210.4, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1342765818
@@ -8809,7 +8798,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: start!
+  m_text: Y
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 63842aa6aeb01488585580bdef4897bc, type: 2}
   m_sharedMaterial: {fileID: 932762379335923825, guid: 63842aa6aeb01488585580bdef4897bc, type: 2}
@@ -9300,7 +9289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f09fe8c7f2a954585cbbccfd420e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
-  timeRemaining: 90
+  timeRemaining: 30
   timerRunning: 0
   timerText: {fileID: 1476920999}
 --- !u!114 &1461091218
@@ -11096,7 +11085,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -104.81, y: 0}
-  m_SizeDelta: {x: 1000, y: 50}
+  m_SizeDelta: {x: 1655, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2116605383
 MonoBehaviour:
@@ -11118,7 +11107,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press [A] to join!
+  m_text: Press [A] to join! Once all players have joined, click [Y] to start.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 63842aa6aeb01488585580bdef4897bc, type: 2}
   m_sharedMaterial: {fileID: 932762379335923825, guid: 63842aa6aeb01488585580bdef4897bc, type: 2}
@@ -11145,8 +11134,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45.9
-  m_fontSizeBase: 45.9
+  m_fontSize: 45.78
+  m_fontSizeBase: 45.78
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

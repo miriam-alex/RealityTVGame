@@ -15,14 +15,12 @@ public class CutsceneClickthrough : MonoBehaviour
 
     private void OnEnable()
     {
-        // Subscribe to the "performed" event
         clickAction.action.performed += OnClickPerformed;
         clickAction.action.Enable();
     }
 
     private void OnDisable()
     {
-        // Unsubscribe to avoid memory leaks or errors when the object is destroyed
         clickAction.action.performed -= OnClickPerformed;
         clickAction.action.Disable();
     }

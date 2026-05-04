@@ -61,6 +61,7 @@ public class InteractionCoordinator : MonoBehaviour
     public bool CanInteract(PlayerIdentity p1, PlayerIdentity p2)
     {
         // A player is available if they are NOT in the active trade set
-        return !_activeTraders.Contains(p1) && !_activeTraders.Contains(p2);
+        bool canInteract = !_activeTraders.Contains(p1) && !_activeTraders.Contains(p2);
+        return canInteract;
     }
 }

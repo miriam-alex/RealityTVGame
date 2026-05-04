@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   textComponent: {fileID: 5100295258053856544}
   textSpeed: 0.05
-  clickAction: {fileID: -2555886487368569462, guid: 83179096697958948b25481e8936e8d3, type: 3}
+  clickAction: {fileID: -9111688829416262899, guid: 83179096697958948b25481e8936e8d3, type: 3}
   audioClip: {fileID: 8300000, guid: 56c313ff42af8e14694789dca352c31e, type: 3}
   audioSource: {fileID: 0}
 --- !u!1 &6799284011226804451

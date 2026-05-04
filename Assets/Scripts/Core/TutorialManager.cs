@@ -75,7 +75,7 @@ public class TutorialManager : MonoBehaviour
         ScoreManager.OnScoreChanged += HandleScoreChanged;
         PlayerInteract.OnStealAction += HandleStealAction;
         PlayerInteract.OnGiveAction += HandleGiveAction;
-        //PlayerController.OnYodelCalled += HandleYodelAction;
+        PlayerInteract.OnYodelAction += HandleYodelAction;
     }
 
     private void OnDisable() 
@@ -83,7 +83,7 @@ public class TutorialManager : MonoBehaviour
         ScoreManager.OnScoreChanged -= HandleScoreChanged;
         PlayerInteract.OnStealAction -= HandleStealAction;
         PlayerInteract.OnGiveAction -= HandleGiveAction;
-        //PlayerController.OnYodelCalled -= HandleYodelAction;
+        PlayerInteract.OnYodelAction -= HandleYodelAction;
     }
 
     private void Update()
@@ -145,22 +145,22 @@ public class TutorialManager : MonoBehaviour
         if (currentStep == TutorialStep.StealCircle)
         {
             playersWhoFinishedTask.Add(thief);
-            
-            Debug.Log($"{thief.name} performed a steal. Progress: {playersWhoFinishedTask.Count}/{playerRuntimeSet.Items.Count}");
-
-            // 3. Check if everyone is done
             CheckStepCompletion();
         }
         else if (currentStep == TutorialStep.SpotlightAction)
         {
-            if (IsUnderSpotlight(thief) && IsUnderSpotlight(victim))
+            // Get the identity to check if they are currently "spotted" by the spotlight
+            var identity = thief.GetComponent<PlayerIdentity>();
+            
+            // Progress if the thief is caught on camera during the act
+            if (identity != null && identity.isSpotted)
             {
-                if (playerRuntimeSet.Items.IndexOf(thief) == 0 && playerRuntimeSet.Items.IndexOf(victim) == 1)
-                {
-                    playersWhoFinishedTask.Add(thief);
-                    CheckStepCompletion();
-                }
+                playersWhoFinishedTask.Add(thief);
+                Debug.Log($"[Tutorial] {thief.name} caught stealing on camera!");
+                CheckStepCompletion();
             }
+
+            
         }
     }
 
@@ -171,26 +171,17 @@ public class TutorialManager : MonoBehaviour
         if (currentStep == TutorialStep.GiveCircle)
         {
             playersWhoFinishedTask.Add(giver);
-            
-            Debug.Log($"{giver.name} performed a give. Progress: {playersWhoFinishedTask.Count}/{playerRuntimeSet.Items.Count}");
-
-            // 3. Check if everyone is done
             CheckStepCompletion();
         }
         else if (currentStep == TutorialStep.SpotlightAction)
         {
-            int pCount = playerRuntimeSet.Items.Count;
-            int gIdx = playerRuntimeSet.Items.IndexOf(giver);
-            int rIdx = playerRuntimeSet.Items.IndexOf(receiver);
+            var identity = giver.GetComponent<PlayerIdentity>();
 
-            bool isValid = false;
-            if (pCount >= 3 && gIdx == 1 && rIdx == 2) isValid = true; 
-            if (pCount == 4 && gIdx == 2 && rIdx == 3) isValid = true; 
-            if (pCount == 2 && gIdx == 1 && rIdx == 0) isValid = true; 
-
-            if (isValid && IsUnderSpotlight(giver))
+            // Progress if the giver is caught on camera during the act
+            if (identity != null && identity.isSpotted)
             {
                 playersWhoFinishedTask.Add(giver);
+                Debug.Log($"[Tutorial] {giver.name} caught giving on camera!");
                 CheckStepCompletion();
             }
         }
@@ -212,7 +203,7 @@ public class TutorialManager : MonoBehaviour
 
     private void CheckStepCompletion()
     {
-        int requiredCount = (currentStep == TutorialStep.SpotlightAction) ? 2 : playerRuntimeSet.Items.Count;
+        int requiredCount = (currentStep == TutorialStep.SpotlightAction) ? 1 : playerRuntimeSet.Items.Count;
 
         if (playersWhoFinishedTask.Count >= requiredCount)
         {
@@ -224,8 +215,16 @@ public class TutorialManager : MonoBehaviour
     private void AdvanceStep()
     {
         if (currentStep == TutorialStep.Complete) return;
+
+
         currentStep++;
-        
+
+
+        if (currentStep == TutorialStep.Complete)
+        {
+            StartCoroutine(ShowFinalCongratsAndTransition());
+            return;
+        }
         List<string> nextLines = currentStep switch {
             TutorialStep.PickupItem => pickupLines,
             TutorialStep.WaterOnly => waterOnlyLines,
@@ -234,7 +233,7 @@ public class TutorialManager : MonoBehaviour
             TutorialStep.StealCircle => stealLines,
             TutorialStep.GiveCircle => giveLines,
             TutorialStep.SpotlightAction => spotlightLines,
-            //TutorialStep.YodelFinal => yodelLines,
+            TutorialStep.YodelFinal => yodelLines,
             _ => null
         };
 
@@ -245,6 +244,33 @@ public class TutorialManager : MonoBehaviour
 
         if (nextLines != null) ShowPopup(nextLines);
         RefreshArrows();
+    }
+
+    private IEnumerator ShowFinalCongratsAndTransition()
+    {
+        // Optional: wait a moment for the final yodel sound/effect to finish
+        yield return new WaitForSeconds(1.0f);
+
+        if (dialogueBoxPrefab == null || canvasObj == null) yield break;
+
+        GameObject db = Instantiate(dialogueBoxPrefab, canvasObj.transform, false);
+        Dialogue dialogue = db.GetComponent<Dialogue>();
+
+        if (dialogue != null)
+        {
+            List<string> finalCongrats = new List<string> { 
+                "Incredible! The audience loves you.", 
+                "Now, let's see who can truly capture the spotlight.",
+                "The show starts... NOW!" 
+            };
+
+            dialogue.Initialize(finalCongrats);
+
+            // This triggers the scene load ONLY after the player clicks through the last line
+            dialogue.OnDialogueComplete = () => {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene"); 
+            };
+        }
     }
 
     private void RefreshArrows()

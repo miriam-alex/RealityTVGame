@@ -8807,19 +8807,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1051494053}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2065122564}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Introduction
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1051494053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12179,8 +12167,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.3, y: -12.2}
-  m_SizeDelta: {x: 73.5, y: 50}
+  m_AnchoredPosition: {x: 6.3, y: -17.3}
+  m_SizeDelta: {x: 109.3, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1992504015
 MonoBehaviour:
@@ -12202,7 +12190,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: start!
+  m_text: Press [Y] to start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 63842aa6aeb01488585580bdef4897bc, type: 2}
   m_sharedMaterial: {fileID: 932762379335923825, guid: 63842aa6aeb01488585580bdef4897bc, type: 2}
@@ -12229,8 +12217,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.7
-  m_fontSizeBase: 18.7
+  m_fontSize: 9.72
+  m_fontSizeBase: 9.72
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12644,6 +12632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69de11f04e9d63748a7f5ec1d852b934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
+  clickAction: {fileID: -9111688829416262899, guid: 83179096697958948b25481e8936e8d3, type: 3}
+  sceneToTransitionTo: Introduction
 --- !u!4 &2065122565
 Transform:
   m_ObjectHideFlags: 0

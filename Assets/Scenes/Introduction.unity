@@ -1060,7 +1060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneClickthrough
   dialogueBoxPrefab: {fileID: 5033743395083517000, guid: 3cdc466a205524cab997e0e01e0fe5cb, type: 3}
-  clickAction: {fileID: -2555886487368569462, guid: 83179096697958948b25481e8936e8d3, type: 3}
+  clickAction: {fileID: -9111688829416262899, guid: 83179096697958948b25481e8936e8d3, type: 3}
   canvasObj: {fileID: 1139779228}
   cutsceneDialogue:
   - HELLO, NEW RECRUIT!

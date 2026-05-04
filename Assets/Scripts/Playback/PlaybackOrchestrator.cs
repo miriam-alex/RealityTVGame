@@ -1,8 +1,9 @@
 using UnityEngine;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlaybackOrchestrator : MonoBehaviour 
 {
@@ -67,6 +68,8 @@ public class PlaybackOrchestrator : MonoBehaviour
     private int _currentClipIndex = 0;
     private bool _playedTransferVisual;
     private GameObject _currentTransferInstance;
+    [SerializeField] private InputActionReference clickAction;
+    private bool _waitingForInput = false;
     
 
     void Start() 
@@ -105,12 +108,24 @@ public class PlaybackOrchestrator : MonoBehaviour
         SpawnAllRecordedActors();
         SetupClip(_currentClipIndex);
     }
+    
+    private void OnEnable()
+    {
+        clickAction.action.performed += OnClickPerformed;
+        clickAction.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        clickAction.action.performed -= OnClickPerformed;
+        clickAction.action.Disable();
+    }
 
     private void PlaySfx(AudioClip clip)
-   {
-    if (audioSource == null || clip == null) return;
-    audioSource.PlayOneShot(clip);
-   }
+    {
+        if (audioSource == null || clip == null) return;
+        audioSource.PlayOneShot(clip);
+    }
     
     private void ConfigureHighlightReel()
     {
@@ -164,6 +179,7 @@ public class PlaybackOrchestrator : MonoBehaviour
         _playbackTime = _clipStartTime;
         _playedTransferVisual = false;
         _hasClipWindow = true;
+        _waitingForInput = false;
 
         UpdateDramaDescriptionUI();
         
@@ -298,25 +314,51 @@ public class PlaybackOrchestrator : MonoBehaviour
         return null;
     }
 
-    void Update() 
+    private void OnClickPerformed(InputAction.CallbackContext context)
     {
-        _playbackTime += Time.deltaTime;
-        
-        // 1. DYNAMIC CAMERA (Includes Player Focus and Item Framing)
-        HandleDynamicCamera();
-
-        // 2. CHECK CLIP END / JUMP TO NEXT
-        if (_hasClipWindow && _playbackTime > _clipEndTime)
+        if (_waitingForInput)
         {
+            _waitingForInput = false;
+        
             _currentClipIndex++;
             if (_currentClipIndex < _topDramaEvents.Count)
+            {
                 SetupClip(_currentClipIndex);
+            }
             else
+            {
                 FinalizeScoresAndTransition();
+            }
+        }
+    }
+    
+    void Update() 
+    {
+        // Block playback if we are waiting for a click
+        if (_waitingForInput) return;
+
+        _playbackTime += Time.deltaTime;
+    
+        HandleDynamicCamera();
+
+        // Change the "End Clip" logic to set the waiting state
+        if (_hasClipWindow && _playbackTime > _clipEndTime)
+        {
+            _waitingForInput = true;
+            if (dramaDescriptionText != null)
+            {
+                dramaDescriptionText.text = "Click [Y] to Continue";
+            }
             return;
         }
 
         TryPlayTransferVisual();
+
+        // Ensure ghosts keep updating positions while the clip is running
+        foreach (var entry in _spawnedGhosts) 
+        {
+            ApplyFrame(entry.Value.transform, DirectorManager.Instance.productionLedger[entry.Key], _playbackTime);
+        }
     }
     
     private void HandleDynamicCamera()
@@ -400,7 +442,7 @@ public class PlaybackOrchestrator : MonoBehaviour
         light.enabled = true;
 
         // Optional: If you want them to turn off automatically after a delay
-        StartCoroutine(DisableLightAfterDelay(light, 2.0f));
+        StartCoroutine(DisableLightAfterDelay(light, 3.0f));
     }
 
     private IEnumerator DisableLightAfterDelay(Light light, float delay)
