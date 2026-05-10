@@ -76,7 +76,7 @@ The Interesting
 
 
 ## Play Test 2
-[Session Notes](https://docs.google.com/document/d/1oIDIbBG-6poHhfvckdD7z4yWDyml5IpCShqsbLf04UM/edit?usp=sharing)
+[Session Notes](https://docs.google.com/document/d/1NLwwQ1oxLdswB5R9RzwfHzq1ZTEK_J1oa3-FiMw6yps/edit?usp=sharing)
 
 ### Questions
 #### How do players balance actions that help their reputation vs help the community?
