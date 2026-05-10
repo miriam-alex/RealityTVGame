@@ -5503,7 +5503,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Developers:\nMiriam Alex, Shreya Kethireddy, Pallavi Srinivas\n\nPackages
+  m_text: "Developers:\nMiriam Alex, Shreya Kethi Reddy, Pallavi Srinivas\n\nPackages
     - Unity: \n2D Animation 13.0.4\n2D Aseprite Importer 3.0.1\n2D Common 12.0.2\n2D
     Pixel Perfect 5.1.1\n2D PSD Importer 12.0.1\n2D Sprite 1.0.0\n2D SpriteShape
     13.0.0\n2D Tilemap Editor 1.0.0\n2D TIlemap Extras 6.0.1\n2D Tooling 1.0.2\nAI
