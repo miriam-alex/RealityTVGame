@@ -3,6 +3,8 @@ using UnityEngine;
 public class SpotlightDirector : MonoBehaviour
 {
     public static SpotlightDirector Instance { get; private set; }
+
+    // REMOVE THIS: SWEEP PATTERN IS NOT USED
     [Header("Sweep Pattern")]
     public Vector3 arenaCenter;
     public Vector2 sweepRange = new Vector2(12f, 8f);
@@ -61,7 +63,7 @@ public class SpotlightDirector : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime * sweepSpeed;
+        //timer += Time.deltaTime * sweepSpeed;
         Vector3 desiredFloorTarget;
 
         if (isStationary) 
@@ -80,9 +82,10 @@ public class SpotlightDirector : MonoBehaviour
         else
         {
             // 1. Calculate the Target Position
-            float x = Mathf.Sin(timer) * sweepRange.x;
-            float z = Mathf.Cos(timer * 0.5f) * sweepRange.y;
-            desiredFloorTarget = arenaCenter + new Vector3(x, 0, z);
+            //float x = Mathf.Sin(timer) * sweepRange.x;
+            //float z = Mathf.Cos(timer * 0.5f) * sweepRange.y;
+            //desiredFloorTarget = arenaCenter + new Vector3(x, 0, z);
+            desiredFloorTarget = arenaCenter;
         }
 
         // smoothly move target to desired floor target
