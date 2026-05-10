@@ -1,7 +1,13 @@
 # Savior Complex: Altruism is easier when no one's watching
 
+## Final Presentation
+[Presentation Slides](https://docs.google.com/presentation/d/1L-0HXzW3WWO9DF5ZcXAGVVRzOQME9wL9iBJzZFQ2RTI/edit?usp=sharing)
+
 ## Meeting Log
 [Meeting Log](https://docs.google.com/document/d/1WGiHKozb62hxl0N-EmSt4zGKXztFwwv_JMGmu4BFY9U/edit?usp=sharing)
+
+## Game Assets
+[Asset Folder](https://drive.google.com/drive/folders/1KbselcmV1Ha_JzOF3pnHgswgxJkEFEh1?usp=sharing)
 
 ## Play Test 1
 
