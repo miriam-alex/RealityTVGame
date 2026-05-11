@@ -155,14 +155,14 @@ Additionally, we did notice that once players understood how the game structure 
 
 In terms of long-term goals, we want to iron out the playback screens and add more “juice” to them, considering this is our core mechanic. Additionally, we were thinking of adding a yodel mechanism, where we can summon the attention of the cameraman. 
 
-## Play Test - Final Review: 
+## Play Test - Final Review 
 ### Observations:
 Through our final playtest session we had a couple main notes of feedback and observations:
 - Due to the constant movement of the spotlights, our playtesters found it difficult to truly plan their movements on and off camera
 - In addition, due to actions in the spotlight only having conseuquence in the playback, our playtesters found it hard to both know if they were being caught and have it influence their next movements
 - While there is the option to yodel and call the spotlight over, the lack of UI feedback from yodeling made it difficult for players to understand it they were properly stealing in the quickness of the game
 
-### Final Improvments since Play Test Final Review:
+### Final Improvements since Play Test Final Review:
 - Spotlight Improvements:
   - We made the spotlight stationary to allow for players to plan their movements a little better. 
 - UI Feedback Improvements
