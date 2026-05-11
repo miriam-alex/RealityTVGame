@@ -1,7 +1,6 @@
 # Savior Complex: Altruism's Easier When Everyone's Watching
 
-# Summary
-
+Savior Complex is a multiplayer co-op game where you compete with your friends for fame — or for, you know, the good of the people. Collect resources and distribute them to people in need while sabotaging your teammates to raise your follower count.  Find yourself in the spotlight and let your fans judge you and your friends at your best (and worst). After all, altruism is easy when everyone’s watching.
 
 # Game Play
 [Trailer](https://drive.google.com/file/d/1_hc1qA-UrhfJIGtRzH9ve-gSJfjBfuts/view?usp=drive_link])
