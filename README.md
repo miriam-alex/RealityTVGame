@@ -1,4 +1,4 @@
-# Savior Complex: Altruism is easier when no one's watching
+# Savior Complex: Altruism's Easier When Everyone's Watching
 
 ## Final Presentation
 [Presentation Slides](https://docs.google.com/presentation/d/1L-0HXzW3WWO9DF5ZcXAGVVRzOQME9wL9iBJzZFQ2RTI/edit?usp=sharing)
