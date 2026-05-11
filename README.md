@@ -13,6 +13,12 @@ Savior Complex is a multiplayer co-op game where you compete with your friends f
 <img width="1152" height="521" alt="image" src="https://github.com/user-attachments/assets/805f84b1-b154-4fdb-b3a2-a3afece05545" />
 
 
+<details>
+  <summary>Click to view screenshots</summary>
+  <img src="https://github.com/user-attachments/assets/bfc3ecc2-941e-4ef9-abb1-74f68de8fcdb">
+  <img src="https://github.com/user-attachments/assets/bfc3ecc2-941e-4ef9-abb1-74f68de8fcdb">
+</details>
+
 
 
 ## Final Presentation
