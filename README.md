@@ -1,5 +1,17 @@
 # Savior Complex: Altruism's Easier When Everyone's Watching
 
+# Summary
+
+
+# Game Play
+<img width="1133" height="565" alt="image" src="https://github.com/user-attachments/assets/bfc3ecc2-941e-4ef9-abb1-74f68de8fcdb" />
+<img width="1153" height="641" alt="image" src="https://github.com/user-attachments/assets/3552c508-73ba-4ae7-91e2-49e14b213376" />
+<img width="1043" height="430" alt="image" src="https://github.com/user-attachments/assets/9e4aad3f-720c-4781-a240-fd163536ba55" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/995923df-4152-4280-ae49-01c20464a46e" />
+
+
+
+
 ## Final Presentation
 [Presentation Slides](https://docs.google.com/presentation/d/1L-0HXzW3WWO9DF5ZcXAGVVRzOQME9wL9iBJzZFQ2RTI/edit?usp=sharing)
 
