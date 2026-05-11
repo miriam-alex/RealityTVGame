@@ -3,7 +3,9 @@
 Savior Complex is a multiplayer co-op game where you compete with your friends for fame — or for, you know, the good of the people. Collect resources and distribute them to people in need while sabotaging your teammates to raise your follower count.  Find yourself in the spotlight and let your fans judge you and your friends at your best (and worst). After all, altruism is easy when everyone’s watching.
 
 # Game Play
+
 [Trailer](https://drive.google.com/file/d/1_hc1qA-UrhfJIGtRzH9ve-gSJfjBfuts/view?usp=drive_link])
+
 <img width="1133" height="565" alt="image" src="https://github.com/user-attachments/assets/bfc3ecc2-941e-4ef9-abb1-74f68de8fcdb" />
 <img width="1153" height="641" alt="image" src="https://github.com/user-attachments/assets/3552c508-73ba-4ae7-91e2-49e14b213376" />
 <img width="1147" height="521" alt="image" src="https://github.com/user-attachments/assets/bfb4611a-bbdb-46a4-9845-f638064cf122" />
@@ -11,13 +13,6 @@ Savior Complex is a multiplayer co-op game where you compete with your friends f
 <img width="1151" height="527" alt="image" src="https://github.com/user-attachments/assets/cffbd75f-0b1f-4e14-93ca-a50e9108911a" />
 <img width="1147" height="525" alt="image" src="https://github.com/user-attachments/assets/6050c7c8-cd4b-4154-bc41-dffbfe4852aa" />
 <img width="1152" height="521" alt="image" src="https://github.com/user-attachments/assets/805f84b1-b154-4fdb-b3a2-a3afece05545" />
-
-
-<details>
-  <summary>Click to view screenshots</summary>
-  <img src="https://github.com/user-attachments/assets/bfc3ecc2-941e-4ef9-abb1-74f68de8fcdb">
-  <img src="https://github.com/user-attachments/assets/bfc3ecc2-941e-4ef9-abb1-74f68de8fcdb">
-</details>
 
 
 
